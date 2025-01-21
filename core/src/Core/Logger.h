@@ -1,5 +1,6 @@
 #pragma once
 #include <memory>
+#include <iostream>
 
 #include <spdlog/spdlog.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
@@ -23,4 +24,4 @@ namespace Chess
 #define LOG_INFO(...) ::Chess::Logger::GetLogger()->info(__VA_ARGS__)
 #define LOG_WARN(...) ::Chess::Logger::GetLogger()->warn(__VA_ARGS__)
 #define LOG_CRITICAL(...) ::Chess::Logger::GetLogger()->critical(__VA_ARGS__)
-#define LOG_ERROR(...) ::Chess::Logger::GetLogger()->error(__VA_ARGS__)
+#define LOG_ERROR(...) ::Chess::Logger::GetLogger()->error(__VA_ARGS__)   
