@@ -7,6 +7,7 @@ This project will implement a Chess engine that uses Vulkan Compute API to condu
 
 ## Build Instructions
 ### Prerequisites
+- [Vulkan SDK](https://vulkan.lunarg.com/sdk/home)
 - CMake
 - C++ compiler; MinGW
 - VS Code (Optional)
