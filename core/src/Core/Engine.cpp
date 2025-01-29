@@ -10,8 +10,8 @@
 namespace Chess
 {
     Engine::Engine()
-    : m_Board("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"), 
-    m_Window(), m_Renderer({})
+    : m_Board("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"), // Start FEN String
+    m_Window(), m_Renderer({m_Window})
     {
         WindowSpecification spec{};
         spec.Title = "Chess";
@@ -24,7 +24,7 @@ namespace Chess
 
     Engine::~Engine()
     {
-
+        Shutdown();
     }
     
     void Engine::Run()
@@ -38,6 +38,7 @@ namespace Chess
     
     void Engine::Shutdown()
     {
+        m_Renderer.Shutdown();
         m_Running = false;
     }
 }

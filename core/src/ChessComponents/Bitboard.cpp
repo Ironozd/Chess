@@ -1,5 +1,5 @@
 #include "Bitboard.h"
-#include <type_traits>
+
 
 namespace Chess
 {
@@ -12,16 +12,6 @@ namespace Chess
     {
 
     }
-
-    //Bitboard::Bitboard(const Bitboard &other)
-    //{
-    //    this->m_Board = other.m_Board;
-    //}
-
-    //Bitboard::Bitboard(Bitboard &&other)
-    //{
-    //    this->m_Board = std::move(other.m_Board);
-    //}
 
     Bitboard::~Bitboard()
     {

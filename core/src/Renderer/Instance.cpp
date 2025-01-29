@@ -4,33 +4,23 @@
 
 #include "../Window/Window.h"
 #include "../Core/Logger.h"
+#include "DebugMessenger.h"
 
 namespace Chess
 {
-    static VKAPI_ATTR VkBool32 VKAPI_CALL debugCallback(
-        VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity,
-        VkDebugUtilsMessageTypeFlagsEXT messageType,
-        const VkDebugUtilsMessengerCallbackDataEXT *pCallbackData,
-        void *pUserData)
+    std::vector<const char *> Instance::validationLayers = {
+        "VK_LAYER_KHRONOS_validation"};
+        
+    bool Instance::validationEnabled = true;
+
+    Instance::Instance() :
+        m_Instance(VK_NULL_HANDLE)
     {
-        LOG_ERROR("Vulkan Validation Layer: {0}", pCallbackData->pMessage);
-
-        return VK_FALSE;
-    }
-
-    std::vector<const char*> Instance::validationLayers = {
-        "VK_LAYER_KHRONOS_validation"
-    };
-
-    Instance::Instance()
-        : m_Instance(VK_NULL_HANDLE)
-    {
-
     }
 
     Instance::~Instance()
     {
-        ShutdownImpl(); /** \todo Check here. */
+        ShutdownImpl(); /** @todo Check here. */
     }
 
     void Instance::InitializeImpl(const InstanceSpecification &spec)
@@ -71,10 +61,16 @@ namespace Chess
         {
             createInfo.enabledLayerCount = 1;
             createInfo.ppEnabledLayerNames = validationLayers.data();
+
+            VkDebugUtilsMessengerCreateInfoEXT debugCreateInfo{};
+            DebugMessenger::populateInfo(debugCreateInfo);
+
+            createInfo.pNext = (VkDebugUtilsMessengerCreateInfoEXT*) &debugCreateInfo;
         }
         else
         {
             createInfo.enabledLayerCount = 0;
+            createInfo.pNext = nullptr;
         }
 
         VkResult result = vkCreateInstance(&createInfo, nullptr, &m_Instance);
@@ -85,6 +81,7 @@ namespace Chess
             assert(false);
         }
     }
+
     bool Instance::ValidationExists()
     {
         uint32_t layerCount;

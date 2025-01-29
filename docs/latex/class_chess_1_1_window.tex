@@ -1,0 +1,168 @@
+\doxysection{Chess\+::Window Class Reference}
+\hypertarget{class_chess_1_1_window}{}\label{class_chess_1_1_window}\index{Chess::Window@{Chess::Window}}
+
+
+\doxylink{class_chess_1_1_window}{Window} class, uses GLFW library.  
+
+
+
+
+{\ttfamily \#include $<$Window.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_chess_1_1_window_a9cf7357e822303b352bd3c4dfccfe459}{\texorpdfstring{$\sim$}{\string~}\+Window}} ()
+\item 
+void \mbox{\hyperlink{class_chess_1_1_window_a0b44f2f50c1ae6b3738003a53d3e7d6a}{Initialize}} (const \mbox{\hyperlink{struct_chess_1_1_window_specification}{Window\+Specification}} \&spec)
+\begin{DoxyCompactList}\small\item\em Initialize window with the given specification. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_chess_1_1_window_aa27d3921274772cd973066a97b74cacd}{Terminate}} ()
+\begin{DoxyCompactList}\small\item\em Destroys window and shutdowns the GLFW library. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_chess_1_1_window_a5e14c1310a1b02622f5f8bfa452265db}{On\+Update}} ()
+\begin{DoxyCompactList}\small\item\em To be called each application lifetime tick. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_chess_1_1_window_aa1ea7beded38c8d602248e2084e64234}{Create\+Surface}} ()
+\begin{DoxyCompactList}\small\item\em Creates Vk\+Surface\+KHR for communication with Vulkan API. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_chess_1_1_window_aa5086fdb349fffc760e9fa112e1cce5f}{Destroy\+Surface}} ()
+\item 
+Vk\+Surface\+KHR \mbox{\hyperlink{class_chess_1_1_window_a8a5a79ae5f97a66877d97c215975b6db}{Surface\+Data}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::vector$<$ const char \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_chess_1_1_window_ac622368bfef31022d28ef34474a0e63a}{Get\+Extensions}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{class_chess_1_1_window}{Window} class, uses GLFW library. 
+
+Definition at line \mbox{\hyperlink{_window_8h_source_l00022}{22}} of file \mbox{\hyperlink{_window_8h_source}{Window.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_chess_1_1_window_a75de2b216bf79afde0fbf9db4bd4daa7}\label{class_chess_1_1_window_a75de2b216bf79afde0fbf9db4bd4daa7} 
+\index{Chess::Window@{Chess::Window}!Window@{Window}}
+\index{Window@{Window}!Chess::Window@{Chess::Window}}
+\doxysubsubsection{\texorpdfstring{Window()}{Window()}}
+{\footnotesize\ttfamily Chess\+::\+Window\+::\+Window (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_window_8cpp_source_l00014}{14}} of file \mbox{\hyperlink{_window_8cpp_source}{Window.\+cpp}}.
+
+\Hypertarget{class_chess_1_1_window_a9cf7357e822303b352bd3c4dfccfe459}\label{class_chess_1_1_window_a9cf7357e822303b352bd3c4dfccfe459} 
+\index{Chess::Window@{Chess::Window}!````~Window@{\texorpdfstring{$\sim$}{\string~}Window}}
+\index{````~Window@{\texorpdfstring{$\sim$}{\string~}Window}!Chess::Window@{Chess::Window}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Window()}{\string~Window()}}
+{\footnotesize\ttfamily Chess\+::\+Window\+::\texorpdfstring{$\sim$}{\string~}\+Window (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000015}{Todo}}]Rethink shutdown structure. \end{DoxyRefDesc}
+
+
+Definition at line \mbox{\hyperlink{_window_8cpp_source_l00023}{23}} of file \mbox{\hyperlink{_window_8cpp_source}{Window.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_chess_1_1_window_aa1ea7beded38c8d602248e2084e64234}\label{class_chess_1_1_window_aa1ea7beded38c8d602248e2084e64234} 
+\index{Chess::Window@{Chess::Window}!CreateSurface@{CreateSurface}}
+\index{CreateSurface@{CreateSurface}!Chess::Window@{Chess::Window}}
+\doxysubsubsection{\texorpdfstring{CreateSurface()}{CreateSurface()}}
+{\footnotesize\ttfamily void Chess\+::\+Window\+::\+Create\+Surface (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Creates Vk\+Surface\+KHR for communication with Vulkan API. 
+
+\begin{DoxyNote}{Note}
+Vulkan is platform-\/agnostic, surface creation is necessary. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{_window_8cpp_source_l00062}{62}} of file \mbox{\hyperlink{_window_8cpp_source}{Window.\+cpp}}.
+
+\Hypertarget{class_chess_1_1_window_aa5086fdb349fffc760e9fa112e1cce5f}\label{class_chess_1_1_window_aa5086fdb349fffc760e9fa112e1cce5f} 
+\index{Chess::Window@{Chess::Window}!DestroySurface@{DestroySurface}}
+\index{DestroySurface@{DestroySurface}!Chess::Window@{Chess::Window}}
+\doxysubsubsection{\texorpdfstring{DestroySurface()}{DestroySurface()}}
+{\footnotesize\ttfamily void Chess\+::\+Window\+::\+Destroy\+Surface (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_window_8cpp_source_l00076}{76}} of file \mbox{\hyperlink{_window_8cpp_source}{Window.\+cpp}}.
+
+\Hypertarget{class_chess_1_1_window_ac622368bfef31022d28ef34474a0e63a}\label{class_chess_1_1_window_ac622368bfef31022d28ef34474a0e63a} 
+\index{Chess::Window@{Chess::Window}!GetExtensions@{GetExtensions}}
+\index{GetExtensions@{GetExtensions}!Chess::Window@{Chess::Window}}
+\doxysubsubsection{\texorpdfstring{GetExtensions()}{GetExtensions()}}
+{\footnotesize\ttfamily std\+::vector$<$ const char \texorpdfstring{$\ast$}{*} $>$ Chess\+::\+Window\+::\+Get\+Extensions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_window_8cpp_source_l00047}{47}} of file \mbox{\hyperlink{_window_8cpp_source}{Window.\+cpp}}.
+
+\Hypertarget{class_chess_1_1_window_a0b44f2f50c1ae6b3738003a53d3e7d6a}\label{class_chess_1_1_window_a0b44f2f50c1ae6b3738003a53d3e7d6a} 
+\index{Chess::Window@{Chess::Window}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!Chess::Window@{Chess::Window}}
+\doxysubsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily void Chess\+::\+Window\+::\+Initialize (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_chess_1_1_window_specification}{Window\+Specification}} \&}]{spec }\end{DoxyParamCaption})}
+
+
+
+Initialize window with the given specification. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em const} & \doxylink{struct_chess_1_1_window_specification}{Window\+Specification} \&spec \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_window_8cpp_source_l00028}{28}} of file \mbox{\hyperlink{_window_8cpp_source}{Window.\+cpp}}.
+
+\Hypertarget{class_chess_1_1_window_a5e14c1310a1b02622f5f8bfa452265db}\label{class_chess_1_1_window_a5e14c1310a1b02622f5f8bfa452265db} 
+\index{Chess::Window@{Chess::Window}!OnUpdate@{OnUpdate}}
+\index{OnUpdate@{OnUpdate}!Chess::Window@{Chess::Window}}
+\doxysubsubsection{\texorpdfstring{OnUpdate()}{OnUpdate()}}
+{\footnotesize\ttfamily void Chess\+::\+Window\+::\+On\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+To be called each application lifetime tick. 
+
+
+
+Definition at line \mbox{\hyperlink{_window_8cpp_source_l00041}{41}} of file \mbox{\hyperlink{_window_8cpp_source}{Window.\+cpp}}.
+
+\Hypertarget{class_chess_1_1_window_a8a5a79ae5f97a66877d97c215975b6db}\label{class_chess_1_1_window_a8a5a79ae5f97a66877d97c215975b6db} 
+\index{Chess::Window@{Chess::Window}!SurfaceData@{SurfaceData}}
+\index{SurfaceData@{SurfaceData}!Chess::Window@{Chess::Window}}
+\doxysubsubsection{\texorpdfstring{SurfaceData()}{SurfaceData()}}
+{\footnotesize\ttfamily Vk\+Surface\+KHR Chess\+::\+Window\+::\+Surface\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_window_8h_source_l00052}{52}} of file \mbox{\hyperlink{_window_8h_source}{Window.\+h}}.
+
+\Hypertarget{class_chess_1_1_window_aa27d3921274772cd973066a97b74cacd}\label{class_chess_1_1_window_aa27d3921274772cd973066a97b74cacd} 
+\index{Chess::Window@{Chess::Window}!Terminate@{Terminate}}
+\index{Terminate@{Terminate}!Chess::Window@{Chess::Window}}
+\doxysubsubsection{\texorpdfstring{Terminate()}{Terminate()}}
+{\footnotesize\ttfamily void Chess\+::\+Window\+::\+Terminate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destroys window and shutdowns the GLFW library. 
+
+
+
+Definition at line \mbox{\hyperlink{_window_8cpp_source_l00034}{34}} of file \mbox{\hyperlink{_window_8cpp_source}{Window.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+core/src/\+Window/Window.\+h\item 
+core/src/\+Window/Window.\+cpp\end{DoxyCompactItemize}

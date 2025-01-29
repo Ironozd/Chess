@@ -6,14 +6,22 @@
 
 namespace Chess
 {
+    /**
+     * @brief Wrapper class for string_view to hold the performance optimized split function.
+     * 
+     * @todo Is the use of a wrapper to hold a single function necessary, and is there a good reason to do so?
+     */
     class FenString
     {
     public:
-        /** Default Constructors */
+        /**
+         * @brief Constructor for Fen String.
+         * 
+         * @param std::string_view &content : FEN notation string. 
+         */
         FenString(const std::string_view &content);
         FenString();
 
-        /* Copy & Move */
         FenString(const FenString &other);
         FenString(FenString &&other);
 
@@ -72,7 +80,6 @@ namespace Chess
         {
             return m_Content.size();
         }
-
     private:
         std::string_view m_Content;
     };

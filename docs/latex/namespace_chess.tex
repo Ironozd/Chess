@@ -1,0 +1,114 @@
+\doxysection{Chess Namespace Reference}
+\hypertarget{namespace_chess}{}\label{namespace_chess}\index{Chess@{Chess}}
+
+
+\doxylink{class_chess_1_1_logger}{Logger} file.  
+
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_chess_1_1_bitboard}{Bitboard}}
+\begin{DoxyCompactList}\small\item\em 64 bit board (uint64\+\_\+t) wrapper class. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_chess_1_1_board}{Board}}
+\item 
+struct \mbox{\hyperlink{struct_chess_1_1_board_components}{Board\+Components}}
+\begin{DoxyCompactList}\small\item\em This struct holds members of \doxylink{class_chess_1_1_board}{Board} class that are related to \doxylink{namespace_chess}{Chess} functionality. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_chess_1_1_debug_messenger}{Debug\+Messenger}}
+\begin{DoxyCompactList}\small\item\em Vulkan Debug Messenger class. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_chess_1_1_engine}{Engine}}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_chess_1_1_engine}{Engine} class, entry point to the \doxylink{namespace_chess}{Chess} \doxylink{class_chess_1_1_engine}{Engine}, \doxylink{class_chess_1_1_renderer}{Renderer}, \doxylink{class_chess_1_1_window}{Window}. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_chess_1_1_evaluation}{Evaluation}}
+\begin{DoxyCompactList}\small\item\em This class will hold evaluation logic. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_chess_1_1_fen_string}{Fen\+String}}
+\begin{DoxyCompactList}\small\item\em Wrapper class for string\+\_\+view to hold the performance optimized split function. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_chess_1_1_instance}{Instance}}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_chess_1_1_instance}{Instance} singleton. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_chess_1_1_instance_specification}{Instance\+Specification}}
+\item 
+class \mbox{\hyperlink{class_chess_1_1_logger}{Logger}}
+\item 
+class \mbox{\hyperlink{class_chess_1_1_logical_device}{Logical\+Device}}
+\begin{DoxyCompactList}\small\item\em Logical Device singleton. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_chess_1_1_physical_device}{Physical\+Device}}
+\begin{DoxyCompactList}\small\item\em Physical Device singleton. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_chess_1_1_physical_device_specification}{Physical\+Device\+Specification}}
+\item 
+struct \mbox{\hyperlink{struct_chess_1_1_queue_family_indices}{Queue\+Family\+Indices}}
+\begin{DoxyCompactList}\small\item\em Duplicate as in the one in Vulkan Tutorial. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_chess_1_1_renderer}{Renderer}}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_chess_1_1_renderer}{Renderer} class, lifetime of all Vulkan objects are stored here. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_chess_1_1_renderer_specification}{Renderer\+Specification}}
+\item 
+class \mbox{\hyperlink{class_chess_1_1_window}{Window}}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_chess_1_1_window}{Window} class, uses GLFW library. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_chess_1_1_window_specification}{Window\+Specification}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries Turn} \{ {\bfseries White} = 0x0000
+, {\bfseries Black} = 0x0001
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{namespace_chess_a3560352671dbb6913bc56621ea6bdd47}{display\+\_\+bits}} (T bits)
+\begin{DoxyCompactList}\small\item\em TEMPORARY FUNCTION to display bits. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{class_chess_1_1_logger}{Logger} file. 
+
+\begin{DoxyNote}{Note}
+Inspired by The\+Cherno.
+\end{DoxyNote}
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000011}{Todo}}]Only include LOGGER functions during DEBUG configuration. \end{DoxyRefDesc}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{namespace_chess_a33fe5b94609ffffd5a951a98f799fe27}\label{namespace_chess_a33fe5b94609ffffd5a951a98f799fe27} 
+\index{Chess@{Chess}!Turn@{Turn}}
+\index{Turn@{Turn}!Chess@{Chess}}
+\doxysubsubsection{\texorpdfstring{Turn}{Turn}}
+{\footnotesize\ttfamily enum Chess\+::\+Turn}
+
+
+
+Definition at line \mbox{\hyperlink{_turn_8h_source_l00005}{5}} of file \mbox{\hyperlink{_turn_8h_source}{Turn.\+h}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{namespace_chess_a3560352671dbb6913bc56621ea6bdd47}\label{namespace_chess_a3560352671dbb6913bc56621ea6bdd47} 
+\index{Chess@{Chess}!display\_bits@{display\_bits}}
+\index{display\_bits@{display\_bits}!Chess@{Chess}}
+\doxysubsubsection{\texorpdfstring{display\_bits()}{display\_bits()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void Chess\+::display\+\_\+bits (\begin{DoxyParamCaption}\item[{T}]{bits }\end{DoxyParamCaption})}
+
+
+
+TEMPORARY FUNCTION to display bits. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em bits} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+TEMPORARY FUNCTION, NOT PERFORMANCE CRITICAL. 
+\end{DoxyWarning}
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000005}{Todo}}]Modify spdlog to support std\+::bit \end{DoxyRefDesc}
+
+
+Definition at line \mbox{\hyperlink{_board_8cpp_source_l00016}{16}} of file \mbox{\hyperlink{_board_8cpp_source}{Board.\+cpp}}.
+

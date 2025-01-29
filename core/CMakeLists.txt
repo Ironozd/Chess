@@ -20,6 +20,9 @@ add_executable(Chess src/main.cpp
     # Renderer Files #
     src/Renderer/Renderer.cpp
     src/Renderer/Instance.cpp
+    src/Renderer/LogicalDevice.cpp
+    src/Renderer/DebugMessenger.cpp
+    src/Renderer/PhysicalDevice.cpp
     )
 
 target_link_libraries(Chess PRIVATE spdlog::spdlog glfw Vulkan::Vulkan)

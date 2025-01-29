@@ -3,10 +3,19 @@
 
 namespace Chess
 {
+    /**
+     * @brief TEMPORARY FUNCTION to display bits.
+     *
+     * @tparam T
+     * @param bits
+     *
+     * @warning TEMPORARY FUNCTION, NOT PERFORMANCE CRITICAL.
+     * @todo Modify spdlog to support std::bit
+     */
     template <typename T>
     void display_bits(T bits)
     {
-        size_t bits_size = sizeof(bits) * 8;
+        int bits_size = static_cast<int>(sizeof(bits) * 8);
         for (int i = bits_size - 1; i >= 0; i--)
         {
             std::cout << ((bits >> i) & 1);
@@ -41,22 +50,16 @@ namespace Chess
 
         PopulateLayout(parsed[0]);
 
-        display_bits(m_Components.m_Layout[0].Board());
-        display_bits(m_Components.m_Layout[1].Board());
-        display_bits(m_Components.m_Layout[2].Board());
-        display_bits(m_Components.m_Layout[3].Board());
-        display_bits(m_Components.m_Layout[4].Board());
-        display_bits(m_Components.m_Layout[5].Board());
-        display_bits(m_Components.m_Layout[6].Board());
-        display_bits(m_Components.m_Layout[7].Board());
-        display_bits(m_Components.m_Layout[8].Board());
-        display_bits(m_Components.m_Layout[9].Board());
-        display_bits(m_Components.m_Layout[10].Board());
-        display_bits(m_Components.m_Layout[11].Board());
-
-        return false;
+        for (int i = 0; i < 12; i++)
+        {
+            display_bits(m_Components.m_Layout[i].Board());
+        }
+        return false; // not fully implemented
     }
 
+    /**
+     * @todo Consider providing compiler the most frequent entries for better optimization.
+     */
     const size_t Board::RetrieveSet(const char &character) const
     {
         switch (character)
@@ -86,7 +89,7 @@ namespace Chess
         case 'B':
             return 11;
         default:
-            LOG_CRITICAL("::RetrieveSet:: Unkown charachter reached, returning 0.");
+            LOG_CRITICAL("::RetrieveSet:: Unkown charachter reached, returning -1.");
             return -1;
         }
     }
@@ -97,12 +100,12 @@ namespace Chess
         std::deque<FenString> parsed = fen.Split("/");
 
         size_t index = 0;
-        for (int i = parsed.size() - 1; i >= 0; i--)
+        for (size_t i = parsed.size(); i-- > 0;)
         {
             for (int j = 0; j < parsed[i].Size(); j++)
             {
                 char piece = parsed[i].Data()[j];
-                if ((piece >= 'a' && piece <= 'z') || (piece >= 'A' && piece <= 'Z'))
+                if ((piece >= 'a' && piece <= 'z') || (piece >= 'A' && piece <= 'Z')) // Performance-critcal isDigit.
                 {
                     const size_t layoutIndex = RetrieveSet(piece);
                     m_Components.m_Layout[layoutIndex].Set(index);
@@ -110,7 +113,7 @@ namespace Chess
                 }
                 else
                 {
-                    index += static_cast<size_t>(piece - '0');
+                    index += static_cast<size_t>(piece - '0'); // Performance-critical conversion to size_t
                 }
             }
         }

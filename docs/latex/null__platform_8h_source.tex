@@ -1,0 +1,288 @@
+\doxysection{null\+\_\+platform.\+h}
+\hypertarget{null__platform_8h_source}{}\label{null__platform_8h_source}\index{deps/glfw/src/null\_platform.h@{deps/glfw/src/null\_platform.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00001}00001\ \textcolor{comment}{//========================================================================}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00002}00002\ \textcolor{comment}{//\ GLFW\ 3.5\ -\/\ www.glfw.org}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00003}00003\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00004}00004\ \textcolor{comment}{//\ Copyright\ (c)\ 2016\ Google\ Inc.}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00005}00005\ \textcolor{comment}{//\ Copyright\ (c)\ 2016-\/2017\ Camilla\ Löwy\ <elmindreda@glfw.org>}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00006}00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00007}00007\ \textcolor{comment}{//\ This\ software\ is\ provided\ 'as-\/is',\ without\ any\ express\ or\ implied}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00008}00008\ \textcolor{comment}{//\ warranty.\ In\ no\ event\ will\ the\ authors\ be\ held\ liable\ for\ any\ damages}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00009}00009\ \textcolor{comment}{//\ arising\ from\ the\ use\ of\ this\ software.}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00010}00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00011}00011\ \textcolor{comment}{//\ Permission\ is\ granted\ to\ anyone\ to\ use\ this\ software\ for\ any\ purpose,}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00012}00012\ \textcolor{comment}{//\ including\ commercial\ applications,\ and\ to\ alter\ it\ and\ redistribute\ it}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00013}00013\ \textcolor{comment}{//\ freely,\ subject\ to\ the\ following\ restrictions:}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00014}00014\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00015}00015\ \textcolor{comment}{//\ 1.\ The\ origin\ of\ this\ software\ must\ not\ be\ misrepresented;\ you\ must\ not}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00016}00016\ \textcolor{comment}{//\ \ \ \ claim\ that\ you\ wrote\ the\ original\ software.\ If\ you\ use\ this\ software}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00017}00017\ \textcolor{comment}{//\ \ \ \ in\ a\ product,\ an\ acknowledgment\ in\ the\ product\ documentation\ would}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00018}00018\ \textcolor{comment}{//\ \ \ \ be\ appreciated\ but\ is\ not\ required.}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00019}00019\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00020}00020\ \textcolor{comment}{//\ 2.\ Altered\ source\ versions\ must\ be\ plainly\ marked\ as\ such,\ and\ must\ not}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00021}00021\ \textcolor{comment}{//\ \ \ \ be\ misrepresented\ as\ being\ the\ original\ software.}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00022}00022\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00023}00023\ \textcolor{comment}{//\ 3.\ This\ notice\ may\ not\ be\ removed\ or\ altered\ from\ any\ source}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00024}00024\ \textcolor{comment}{//\ \ \ \ distribution.}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00025}00025\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00026}00026\ \textcolor{comment}{//========================================================================}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00028}00028\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_WINDOW\_STATE\ \ \ \ \ \ \ \ \ \ \_GLFWwindowNull\ null;}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00029}00029\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_LIBRARY\_WINDOW\_STATE\ \ \_GLFWlibraryNull\ null;}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00030}00030\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_MONITOR\_STATE\ \ \ \ \ \ \ \ \ \_GLFWmonitorNull\ null;}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00032}00032\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_CONTEXT\_STATE}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00033}00033\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_CURSOR\_STATE}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00034}00034\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_LIBRARY\_CONTEXT\_STATE}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00036}00036\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_FIRST\ \ \ \ \ \ \ \ \ \ GLFW\_NULL\_SC\_SPACE}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00037}00037\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_SPACE\ \ \ \ \ \ \ \ \ \ 1}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00038}00038\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_APOSTROPHE\ \ \ \ \ 2}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00039}00039\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_COMMA\ \ \ \ \ \ \ \ \ \ 3}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00040}00040\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_MINUS\ \ \ \ \ \ \ \ \ \ 4}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00041}00041\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_PERIOD\ \ \ \ \ \ \ \ \ 5}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00042}00042\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_SLASH\ \ \ \ \ \ \ \ \ \ 6}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00043}00043\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_0\ \ \ \ \ \ \ \ \ \ \ \ \ \ 7}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00044}00044\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_1\ \ \ \ \ \ \ \ \ \ \ \ \ \ 8}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00045}00045\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_2\ \ \ \ \ \ \ \ \ \ \ \ \ \ 9}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00046}00046\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_3\ \ \ \ \ \ \ \ \ \ \ \ \ \ 10}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00047}00047\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_4\ \ \ \ \ \ \ \ \ \ \ \ \ \ 11}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00048}00048\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_5\ \ \ \ \ \ \ \ \ \ \ \ \ \ 12}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00049}00049\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_6\ \ \ \ \ \ \ \ \ \ \ \ \ \ 13}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00050}00050\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_7\ \ \ \ \ \ \ \ \ \ \ \ \ \ 14}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00051}00051\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_8\ \ \ \ \ \ \ \ \ \ \ \ \ \ 15}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00052}00052\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_9\ \ \ \ \ \ \ \ \ \ \ \ \ \ 16}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00053}00053\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_SEMICOLON\ \ \ \ \ \ 17}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00054}00054\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_EQUAL\ \ \ \ \ \ \ \ \ \ 18}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00055}00055\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_LEFT\_BRACKET\ \ \ 19}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00056}00056\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_BACKSLASH\ \ \ \ \ \ 20}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00057}00057\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_RIGHT\_BRACKET\ \ 21}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00058}00058\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_GRAVE\_ACCENT\ \ \ 22}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00059}00059\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_WORLD\_1\ \ \ \ \ \ \ \ 23}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00060}00060\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_WORLD\_2\ \ \ \ \ \ \ \ 24}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00061}00061\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_ESCAPE\ \ \ \ \ \ \ \ \ 25}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00062}00062\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_ENTER\ \ \ \ \ \ \ \ \ \ 26}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00063}00063\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_TAB\ \ \ \ \ \ \ \ \ \ \ \ 27}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00064}00064\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_BACKSPACE\ \ \ \ \ \ 28}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00065}00065\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_INSERT\ \ \ \ \ \ \ \ \ 29}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00066}00066\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_DELETE\ \ \ \ \ \ \ \ \ 30}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00067}00067\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_RIGHT\ \ \ \ \ \ \ \ \ \ 31}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00068}00068\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_LEFT\ \ \ \ \ \ \ \ \ \ \ 32}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00069}00069\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_DOWN\ \ \ \ \ \ \ \ \ \ \ 33}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00070}00070\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_UP\ \ \ \ \ \ \ \ \ \ \ \ \ 34}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00071}00071\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_PAGE\_UP\ \ \ \ \ \ \ \ 35}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00072}00072\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_PAGE\_DOWN\ \ \ \ \ \ 36}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00073}00073\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_HOME\ \ \ \ \ \ \ \ \ \ \ 37}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00074}00074\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_END\ \ \ \ \ \ \ \ \ \ \ \ 38}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00075}00075\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_CAPS\_LOCK\ \ \ \ \ \ 39}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00076}00076\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_SCROLL\_LOCK\ \ \ \ 40}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00077}00077\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_NUM\_LOCK\ \ \ \ \ \ \ 41}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00078}00078\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_PRINT\_SCREEN\ \ \ 42}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00079}00079\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_PAUSE\ \ \ \ \ \ \ \ \ \ 43}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00080}00080\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_A\ \ \ \ \ \ \ \ \ \ \ \ \ \ 44}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00081}00081\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_B\ \ \ \ \ \ \ \ \ \ \ \ \ \ 45}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00082}00082\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_C\ \ \ \ \ \ \ \ \ \ \ \ \ \ 46}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00083}00083\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_D\ \ \ \ \ \ \ \ \ \ \ \ \ \ 47}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00084}00084\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_E\ \ \ \ \ \ \ \ \ \ \ \ \ \ 48}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00085}00085\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_F\ \ \ \ \ \ \ \ \ \ \ \ \ \ 49}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00086}00086\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_G\ \ \ \ \ \ \ \ \ \ \ \ \ \ 50}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00087}00087\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_H\ \ \ \ \ \ \ \ \ \ \ \ \ \ 51}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00088}00088\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_I\ \ \ \ \ \ \ \ \ \ \ \ \ \ 52}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00089}00089\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_J\ \ \ \ \ \ \ \ \ \ \ \ \ \ 53}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00090}00090\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_K\ \ \ \ \ \ \ \ \ \ \ \ \ \ 54}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00091}00091\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_L\ \ \ \ \ \ \ \ \ \ \ \ \ \ 55}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00092}00092\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_M\ \ \ \ \ \ \ \ \ \ \ \ \ \ 56}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00093}00093\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_N\ \ \ \ \ \ \ \ \ \ \ \ \ \ 57}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00094}00094\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_O\ \ \ \ \ \ \ \ \ \ \ \ \ \ 58}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00095}00095\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_P\ \ \ \ \ \ \ \ \ \ \ \ \ \ 59}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00096}00096\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_Q\ \ \ \ \ \ \ \ \ \ \ \ \ \ 60}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00097}00097\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_R\ \ \ \ \ \ \ \ \ \ \ \ \ \ 61}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00098}00098\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_S\ \ \ \ \ \ \ \ \ \ \ \ \ \ 62}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00099}00099\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_T\ \ \ \ \ \ \ \ \ \ \ \ \ \ 63}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00100}00100\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_U\ \ \ \ \ \ \ \ \ \ \ \ \ \ 64}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00101}00101\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_V\ \ \ \ \ \ \ \ \ \ \ \ \ \ 65}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00102}00102\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_W\ \ \ \ \ \ \ \ \ \ \ \ \ \ 66}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00103}00103\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_X\ \ \ \ \ \ \ \ \ \ \ \ \ \ 67}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00104}00104\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_Y\ \ \ \ \ \ \ \ \ \ \ \ \ \ 68}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00105}00105\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_Z\ \ \ \ \ \ \ \ \ \ \ \ \ \ 69}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00106}00106\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_F1\ \ \ \ \ \ \ \ \ \ \ \ \ 70}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00107}00107\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_F2\ \ \ \ \ \ \ \ \ \ \ \ \ 71}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00108}00108\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_F3\ \ \ \ \ \ \ \ \ \ \ \ \ 72}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00109}00109\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_F4\ \ \ \ \ \ \ \ \ \ \ \ \ 73}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00110}00110\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_F5\ \ \ \ \ \ \ \ \ \ \ \ \ 74}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00111}00111\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_F6\ \ \ \ \ \ \ \ \ \ \ \ \ 75}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00112}00112\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_F7\ \ \ \ \ \ \ \ \ \ \ \ \ 76}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00113}00113\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_F8\ \ \ \ \ \ \ \ \ \ \ \ \ 77}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00114}00114\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_F9\ \ \ \ \ \ \ \ \ \ \ \ \ 78}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00115}00115\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_F10\ \ \ \ \ \ \ \ \ \ \ \ 79}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00116}00116\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_F11\ \ \ \ \ \ \ \ \ \ \ \ 80}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00117}00117\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_F12\ \ \ \ \ \ \ \ \ \ \ \ 81}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00118}00118\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_F13\ \ \ \ \ \ \ \ \ \ \ \ 82}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00119}00119\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_F14\ \ \ \ \ \ \ \ \ \ \ \ 83}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00120}00120\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_F15\ \ \ \ \ \ \ \ \ \ \ \ 84}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00121}00121\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_F16\ \ \ \ \ \ \ \ \ \ \ \ 85}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00122}00122\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_F17\ \ \ \ \ \ \ \ \ \ \ \ 86}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00123}00123\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_F18\ \ \ \ \ \ \ \ \ \ \ \ 87}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00124}00124\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_F19\ \ \ \ \ \ \ \ \ \ \ \ 88}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00125}00125\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_F20\ \ \ \ \ \ \ \ \ \ \ \ 89}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00126}00126\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_F21\ \ \ \ \ \ \ \ \ \ \ \ 90}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00127}00127\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_F22\ \ \ \ \ \ \ \ \ \ \ \ 91}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00128}00128\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_F23\ \ \ \ \ \ \ \ \ \ \ \ 92}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00129}00129\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_F24\ \ \ \ \ \ \ \ \ \ \ \ 93}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00130}00130\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_F25\ \ \ \ \ \ \ \ \ \ \ \ 94}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00131}00131\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_KP\_0\ \ \ \ \ \ \ \ \ \ \ 95}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00132}00132\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_KP\_1\ \ \ \ \ \ \ \ \ \ \ 96}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00133}00133\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_KP\_2\ \ \ \ \ \ \ \ \ \ \ 97}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00134}00134\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_KP\_3\ \ \ \ \ \ \ \ \ \ \ 98}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00135}00135\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_KP\_4\ \ \ \ \ \ \ \ \ \ \ 99}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00136}00136\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_KP\_5\ \ \ \ \ \ \ \ \ \ \ 100}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00137}00137\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_KP\_6\ \ \ \ \ \ \ \ \ \ \ 101}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00138}00138\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_KP\_7\ \ \ \ \ \ \ \ \ \ \ 102}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00139}00139\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_KP\_8\ \ \ \ \ \ \ \ \ \ \ 103}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00140}00140\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_KP\_9\ \ \ \ \ \ \ \ \ \ \ 104}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00141}00141\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_KP\_DECIMAL\ \ \ \ \ 105}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00142}00142\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_KP\_DIVIDE\ \ \ \ \ \ 106}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00143}00143\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_KP\_MULTIPLY\ \ \ \ 107}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00144}00144\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_KP\_SUBTRACT\ \ \ \ 108}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00145}00145\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_KP\_ADD\ \ \ \ \ \ \ \ \ 109}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00146}00146\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_KP\_ENTER\ \ \ \ \ \ \ 110}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00147}00147\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_KP\_EQUAL\ \ \ \ \ \ \ 111}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00148}00148\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_LEFT\_SHIFT\ \ \ \ \ 112}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00149}00149\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_LEFT\_CONTROL\ \ \ 113}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00150}00150\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_LEFT\_ALT\ \ \ \ \ \ \ 114}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00151}00151\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_LEFT\_SUPER\ \ \ \ \ 115}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00152}00152\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_RIGHT\_SHIFT\ \ \ \ 116}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00153}00153\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_RIGHT\_CONTROL\ \ 117}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00154}00154\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_RIGHT\_ALT\ \ \ \ \ \ 118}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00155}00155\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_RIGHT\_SUPER\ \ \ \ 119}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00156}00156\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_MENU\ \ \ \ \ \ \ \ \ \ \ 120}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00157}00157\ \textcolor{preprocessor}{\#define\ GLFW\_NULL\_SC\_LAST\ \ \ \ \ \ \ \ \ \ \ GLFW\_NULL\_SC\_MENU}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00158}00158\ }
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00159}00159\ \textcolor{keyword}{typedef}\ VkFlags\ VkHeadlessSurfaceCreateFlagsEXT;}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00160}00160\ }
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00161}\mbox{\hyperlink{struct_vk_headless_surface_create_info_e_x_t}{00161}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_vk_headless_surface_create_info_e_x_t}{VkHeadlessSurfaceCreateInfoEXT}}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00162}00162\ \{}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00163}00163\ \ \ \ \ VkStructureType\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sType;}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00164}00164\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pNext;}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00165}00165\ \ \ \ \ VkHeadlessSurfaceCreateFlagsEXT\ flags;}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00166}00166\ \}\ \mbox{\hyperlink{struct_vk_headless_surface_create_info_e_x_t}{VkHeadlessSurfaceCreateInfoEXT}};}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00167}00167\ }
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00168}00168\ \textcolor{keyword}{typedef}\ VkResult\ (APIENTRY\ *PFN\_vkCreateHeadlessSurfaceEXT)(VkInstance,\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_vk_headless_surface_create_info_e_x_t}{VkHeadlessSurfaceCreateInfoEXT}}*,\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_vk_allocation_callbacks}{VkAllocationCallbacks}}*,VkSurfaceKHR*);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00169}00169\ }
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00170}00170\ \textcolor{comment}{//\ Null-\/specific\ per-\/window\ data}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00171}00171\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00172}\mbox{\hyperlink{struct___g_l_f_wwindow_null}{00172}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct___g_l_f_wwindow_null}{\_GLFWwindowNull}}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00173}00173\ \{}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00174}00174\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ xpos;}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00175}00175\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ ypos;}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00176}00176\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ width;}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00177}00177\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ height;}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00178}00178\ \ \ \ \ GLFWbool\ \ \ \ \ \ \ \ visible;}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00179}00179\ \ \ \ \ GLFWbool\ \ \ \ \ \ \ \ iconified;}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00180}00180\ \ \ \ \ GLFWbool\ \ \ \ \ \ \ \ maximized;}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00181}00181\ \ \ \ \ GLFWbool\ \ \ \ \ \ \ \ resizable;}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00182}00182\ \ \ \ \ GLFWbool\ \ \ \ \ \ \ \ decorated;}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00183}00183\ \ \ \ \ GLFWbool\ \ \ \ \ \ \ \ floating;}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00184}00184\ \ \ \ \ GLFWbool\ \ \ \ \ \ \ \ transparent;}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00185}00185\ \ \ \ \ \textcolor{keywordtype}{float}\ \ \ \ \ \ \ \ \ \ \ opacity;}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00186}00186\ \}\ \mbox{\hyperlink{struct___g_l_f_wwindow_null}{\_GLFWwindowNull}};}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00187}00187\ }
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00188}00188\ \textcolor{comment}{//\ Null-\/specific\ per-\/monitor\ data}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00189}00189\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00190}\mbox{\hyperlink{struct___g_l_f_wmonitor_null}{00190}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct___g_l_f_wmonitor_null}{\_GLFWmonitorNull}}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00191}00191\ \{}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00192}00192\ \ \ \ \ \mbox{\hyperlink{struct_g_l_f_wgammaramp}{GLFWgammaramp}}\ \ \ ramp;}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00193}00193\ \}\ \mbox{\hyperlink{struct___g_l_f_wmonitor_null}{\_GLFWmonitorNull}};}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00194}00194\ }
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00195}00195\ \textcolor{comment}{//\ Null-\/specific\ global\ data}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00196}00196\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00197}\mbox{\hyperlink{struct___g_l_f_wlibrary_null}{00197}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct___g_l_f_wlibrary_null}{\_GLFWlibraryNull}}}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00198}00198\ \{}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00199}00199\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ xcursor;}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00200}00200\ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ ycursor;}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00201}00201\ \ \ \ \ \textcolor{keywordtype}{char}*\ \ \ \ \ \ \ \ \ \ \ clipboardString;}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00202}00202\ \ \ \ \ \mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ \ \ \ focusedWindow;}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00203}00203\ \ \ \ \ uint16\_t\ \ \ \ \ \ \ \ keycodes[GLFW\_NULL\_SC\_LAST\ +\ 1];}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00204}00204\ \ \ \ \ uint8\_t\ \ \ \ \ \ \ \ \ scancodes[GLFW\_KEY\_LAST\ +\ 1];}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00205}00205\ \}\ \mbox{\hyperlink{struct___g_l_f_wlibrary_null}{\_GLFWlibraryNull}};}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00206}00206\ }
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00207}00207\ \textcolor{keywordtype}{void}\ \_glfwPollMonitorsNull(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00208}00208\ }
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00209}00209\ GLFWbool\ \_glfwConnectNull(\textcolor{keywordtype}{int}\ platformID,\ \mbox{\hyperlink{struct___g_l_f_wplatform}{\_GLFWplatform}}*\ platform);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00210}00210\ \textcolor{keywordtype}{int}\ \_glfwInitNull(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00211}00211\ \textcolor{keywordtype}{void}\ \_glfwTerminateNull(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00212}00212\ }
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00213}00213\ \textcolor{keywordtype}{void}\ \_glfwFreeMonitorNull(\mbox{\hyperlink{struct___g_l_f_wmonitor}{\_GLFWmonitor}}*\ monitor);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00214}00214\ \textcolor{keywordtype}{void}\ \_glfwGetMonitorPosNull(\mbox{\hyperlink{struct___g_l_f_wmonitor}{\_GLFWmonitor}}*\ monitor,\ \textcolor{keywordtype}{int}*\ xpos,\ \textcolor{keywordtype}{int}*\ ypos);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00215}00215\ \textcolor{keywordtype}{void}\ \_glfwGetMonitorContentScaleNull(\mbox{\hyperlink{struct___g_l_f_wmonitor}{\_GLFWmonitor}}*\ monitor,\ \textcolor{keywordtype}{float}*\ xscale,\ \textcolor{keywordtype}{float}*\ yscale);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00216}00216\ \textcolor{keywordtype}{void}\ \_glfwGetMonitorWorkareaNull(\mbox{\hyperlink{struct___g_l_f_wmonitor}{\_GLFWmonitor}}*\ monitor,\ \textcolor{keywordtype}{int}*\ xpos,\ \textcolor{keywordtype}{int}*\ ypos,\ \textcolor{keywordtype}{int}*\ width,\ \textcolor{keywordtype}{int}*\ height);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00217}00217\ \mbox{\hyperlink{struct_g_l_f_wvidmode}{GLFWvidmode}}*\ \_glfwGetVideoModesNull(\mbox{\hyperlink{struct___g_l_f_wmonitor}{\_GLFWmonitor}}*\ monitor,\ \textcolor{keywordtype}{int}*\ found);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00218}00218\ GLFWbool\ \_glfwGetVideoModeNull(\mbox{\hyperlink{struct___g_l_f_wmonitor}{\_GLFWmonitor}}*\ monitor,\ \mbox{\hyperlink{struct_g_l_f_wvidmode}{GLFWvidmode}}*\ mode);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00219}00219\ GLFWbool\ \_glfwGetGammaRampNull(\mbox{\hyperlink{struct___g_l_f_wmonitor}{\_GLFWmonitor}}*\ monitor,\ \mbox{\hyperlink{struct_g_l_f_wgammaramp}{GLFWgammaramp}}*\ ramp);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00220}00220\ \textcolor{keywordtype}{void}\ \_glfwSetGammaRampNull(\mbox{\hyperlink{struct___g_l_f_wmonitor}{\_GLFWmonitor}}*\ monitor,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_g_l_f_wgammaramp}{GLFWgammaramp}}*\ ramp);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00221}00221\ }
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00222}00222\ GLFWbool\ \_glfwCreateWindowNull(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct___g_l_f_wwndconfig}{\_GLFWwndconfig}}*\ wndconfig,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct___g_l_f_wctxconfig}{\_GLFWctxconfig}}*\ ctxconfig,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct___g_l_f_wfbconfig}{\_GLFWfbconfig}}*\ fbconfig);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00223}00223\ \textcolor{keywordtype}{void}\ \_glfwDestroyWindowNull(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00224}00224\ \textcolor{keywordtype}{void}\ \_glfwSetWindowTitleNull(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ title);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00225}00225\ \textcolor{keywordtype}{void}\ \_glfwSetWindowIconNull(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window,\ \textcolor{keywordtype}{int}\ count,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_g_l_f_wimage}{GLFWimage}}*\ images);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00226}00226\ \textcolor{keywordtype}{void}\ \_glfwSetWindowMonitorNull(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window,\ \mbox{\hyperlink{struct___g_l_f_wmonitor}{\_GLFWmonitor}}*\ monitor,\ \textcolor{keywordtype}{int}\ xpos,\ \textcolor{keywordtype}{int}\ ypos,\ \textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height,\ \textcolor{keywordtype}{int}\ refreshRate);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00227}00227\ \textcolor{keywordtype}{void}\ \_glfwGetWindowPosNull(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window,\ \textcolor{keywordtype}{int}*\ xpos,\ \textcolor{keywordtype}{int}*\ ypos);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00228}00228\ \textcolor{keywordtype}{void}\ \_glfwSetWindowPosNull(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window,\ \textcolor{keywordtype}{int}\ xpos,\ \textcolor{keywordtype}{int}\ ypos);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00229}00229\ \textcolor{keywordtype}{void}\ \_glfwGetWindowSizeNull(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window,\ \textcolor{keywordtype}{int}*\ width,\ \textcolor{keywordtype}{int}*\ height);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00230}00230\ \textcolor{keywordtype}{void}\ \_glfwSetWindowSizeNull(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window,\ \textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00231}00231\ \textcolor{keywordtype}{void}\ \_glfwSetWindowSizeLimitsNull(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window,\ \textcolor{keywordtype}{int}\ minwidth,\ \textcolor{keywordtype}{int}\ minheight,\ \textcolor{keywordtype}{int}\ maxwidth,\ \textcolor{keywordtype}{int}\ maxheight);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00232}00232\ \textcolor{keywordtype}{void}\ \_glfwSetWindowAspectRatioNull(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window,\ \textcolor{keywordtype}{int}\ n,\ \textcolor{keywordtype}{int}\ d);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00233}00233\ \textcolor{keywordtype}{void}\ \_glfwGetFramebufferSizeNull(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window,\ \textcolor{keywordtype}{int}*\ width,\ \textcolor{keywordtype}{int}*\ height);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00234}00234\ \textcolor{keywordtype}{void}\ \_glfwGetWindowFrameSizeNull(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window,\ \textcolor{keywordtype}{int}*\ left,\ \textcolor{keywordtype}{int}*\ top,\ \textcolor{keywordtype}{int}*\ right,\ \textcolor{keywordtype}{int}*\ bottom);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00235}00235\ \textcolor{keywordtype}{void}\ \_glfwGetWindowContentScaleNull(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window,\ \textcolor{keywordtype}{float}*\ xscale,\ \textcolor{keywordtype}{float}*\ yscale);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00236}00236\ \textcolor{keywordtype}{void}\ \_glfwIconifyWindowNull(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00237}00237\ \textcolor{keywordtype}{void}\ \_glfwRestoreWindowNull(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00238}00238\ \textcolor{keywordtype}{void}\ \_glfwMaximizeWindowNull(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00239}00239\ GLFWbool\ \_glfwWindowMaximizedNull(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00240}00240\ GLFWbool\ \_glfwWindowHoveredNull(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00241}00241\ GLFWbool\ \_glfwFramebufferTransparentNull(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00242}00242\ \textcolor{keywordtype}{void}\ \_glfwSetWindowResizableNull(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window,\ GLFWbool\ enabled);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00243}00243\ \textcolor{keywordtype}{void}\ \_glfwSetWindowDecoratedNull(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window,\ GLFWbool\ enabled);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00244}00244\ \textcolor{keywordtype}{void}\ \_glfwSetWindowFloatingNull(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window,\ GLFWbool\ enabled);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00245}00245\ \textcolor{keywordtype}{void}\ \_glfwSetWindowMousePassthroughNull(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window,\ GLFWbool\ enabled);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00246}00246\ \textcolor{keywordtype}{float}\ \_glfwGetWindowOpacityNull(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00247}00247\ \textcolor{keywordtype}{void}\ \_glfwSetWindowOpacityNull(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window,\ \textcolor{keywordtype}{float}\ opacity);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00248}00248\ \textcolor{keywordtype}{void}\ \_glfwSetRawMouseMotionNull(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}\ *window,\ GLFWbool\ enabled);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00249}00249\ GLFWbool\ \_glfwRawMouseMotionSupportedNull(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00250}00250\ \textcolor{keywordtype}{void}\ \_glfwShowWindowNull(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00251}00251\ \textcolor{keywordtype}{void}\ \_glfwRequestWindowAttentionNull(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00252}00252\ \textcolor{keywordtype}{void}\ \_glfwHideWindowNull(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00253}00253\ \textcolor{keywordtype}{void}\ \_glfwFocusWindowNull(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00254}00254\ GLFWbool\ \_glfwWindowFocusedNull(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00255}00255\ GLFWbool\ \_glfwWindowIconifiedNull(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00256}00256\ GLFWbool\ \_glfwWindowVisibleNull(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00257}00257\ \textcolor{keywordtype}{void}\ \_glfwPollEventsNull(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00258}00258\ \textcolor{keywordtype}{void}\ \_glfwWaitEventsNull(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00259}00259\ \textcolor{keywordtype}{void}\ \_glfwWaitEventsTimeoutNull(\textcolor{keywordtype}{double}\ timeout);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00260}00260\ \textcolor{keywordtype}{void}\ \_glfwPostEmptyEventNull(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00261}00261\ \textcolor{keywordtype}{void}\ \_glfwGetCursorPosNull(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window,\ \textcolor{keywordtype}{double}*\ xpos,\ \textcolor{keywordtype}{double}*\ ypos);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00262}00262\ \textcolor{keywordtype}{void}\ \_glfwSetCursorPosNull(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window,\ \textcolor{keywordtype}{double}\ x,\ \textcolor{keywordtype}{double}\ y);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00263}00263\ \textcolor{keywordtype}{void}\ \_glfwSetCursorModeNull(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window,\ \textcolor{keywordtype}{int}\ mode);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00264}00264\ GLFWbool\ \_glfwCreateCursorNull(\mbox{\hyperlink{struct___g_l_f_wcursor}{\_GLFWcursor}}*\ cursor,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_g_l_f_wimage}{GLFWimage}}*\ image,\ \textcolor{keywordtype}{int}\ xhot,\ \textcolor{keywordtype}{int}\ yhot);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00265}00265\ GLFWbool\ \_glfwCreateStandardCursorNull(\mbox{\hyperlink{struct___g_l_f_wcursor}{\_GLFWcursor}}*\ cursor,\ \textcolor{keywordtype}{int}\ shape);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00266}00266\ \textcolor{keywordtype}{void}\ \_glfwDestroyCursorNull(\mbox{\hyperlink{struct___g_l_f_wcursor}{\_GLFWcursor}}*\ cursor);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00267}00267\ \textcolor{keywordtype}{void}\ \_glfwSetCursorNull(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window,\ \mbox{\hyperlink{struct___g_l_f_wcursor}{\_GLFWcursor}}*\ cursor);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00268}00268\ \textcolor{keywordtype}{void}\ \_glfwSetClipboardStringNull(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \textcolor{keywordtype}{string});}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00269}00269\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \_glfwGetClipboardStringNull(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00270}00270\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \_glfwGetScancodeNameNull(\textcolor{keywordtype}{int}\ scancode);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00271}00271\ \textcolor{keywordtype}{int}\ \_glfwGetKeyScancodeNull(\textcolor{keywordtype}{int}\ key);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00272}00272\ }
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00273}00273\ EGLenum\ \_glfwGetEGLPlatformNull(EGLint**\ attribs);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00274}00274\ EGLNativeDisplayType\ \_glfwGetEGLNativeDisplayNull(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00275}00275\ EGLNativeWindowType\ \_glfwGetEGLNativeWindowNull(\mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00276}00276\ }
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00277}00277\ \textcolor{keywordtype}{void}\ \_glfwGetRequiredInstanceExtensionsNull(\textcolor{keywordtype}{char}**\ extensions);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00278}00278\ GLFWbool\ \_glfwGetPhysicalDevicePresentationSupportNull(VkInstance\ instance,\ VkPhysicalDevice\ device,\ uint32\_t\ queuefamily);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00279}00279\ VkResult\ \_glfwCreateWindowSurfaceNull(VkInstance\ instance,\ \mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_vk_allocation_callbacks}{VkAllocationCallbacks}}*\ allocator,\ VkSurfaceKHR*\ surface);}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00280}00280\ }
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00281}00281\ \textcolor{keywordtype}{void}\ \_glfwPollMonitorsNull(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{null__platform_8h_source_l00282}00282\ }
+
+\end{DoxyCode}

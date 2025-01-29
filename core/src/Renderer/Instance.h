@@ -2,7 +2,8 @@
 #include <string_view>
 #include <vector>
 
-typedef struct VkInstance_T *VkInstance; // Forward decl
+/* Forward declaration for better compile-time and organization */
+typedef struct VkInstance_T *VkInstance;
 struct VkApplicationInfo;
 
 namespace Chess
@@ -12,7 +13,11 @@ namespace Chess
         std::string_view ApplicationName;
         std::string_view EngineName;
     };
-
+    /**
+     * @brief Instance singleton.
+     * 
+     * @note Since Vulkan instance is expected to be created and destroyed once, this class was made a singleton.
+     */
     class Instance
     {
     public:
@@ -20,11 +25,20 @@ namespace Chess
 
         static void Shutdown() { Get().ShutdownImpl(); }
 
+        /**
+         * @brief Getter for private static variable validationEnabled.
+         */
         static bool IsValidationEnabled() { return validationEnabled; }
-    private:
+        /**
+         * @brief Getter for private static variable validationLayers.
+         */
+        static std::vector<const char*> GetValidationLayers() { return validationLayers; }
+
+        static VkInstance Data() { return Get().m_Instance; }
+    private: /* Private variables*/
         VkInstance m_Instance;
-    private:
-        static const bool validationEnabled = true;
+    private: /* Below variables should be accessible before instance creation of singleton, therefore, static and private */
+        static bool validationEnabled;
         static std::vector<const char *> validationLayers;
     private: /* Singleton functionality */
         Instance();

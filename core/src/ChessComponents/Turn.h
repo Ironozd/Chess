@@ -4,7 +4,7 @@ namespace Chess
 {
     enum Turn
     {
-        White = 1,
-        Black = 2
+        White = 0x0000,
+        Black = 0x0001
     };
 }

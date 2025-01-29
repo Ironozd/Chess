@@ -1,0 +1,43 @@
+\doxysection{String.\+cpp}
+\hypertarget{_string_8cpp_source}{}\label{_string_8cpp_source}\index{core/src/ChessComponents/String.cpp@{core/src/ChessComponents/String.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_string_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}String.h"{}}}
+\DoxyCodeLine{\Hypertarget{_string_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_string_8cpp_source_l00003}00003\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_chess}{Chess}}}
+\DoxyCodeLine{\Hypertarget{_string_8cpp_source_l00004}00004\ \{}
+\DoxyCodeLine{\Hypertarget{_string_8cpp_source_l00005}\mbox{\hyperlink{class_chess_1_1_fen_string_a00e1da25cb3af801913bbcc2064b98d7}{00005}}\ \ \ \ \ FenString::FenString(\textcolor{keyword}{const}\ std::string\_view\ \&content)\ :\ m\_Content(content)}
+\DoxyCodeLine{\Hypertarget{_string_8cpp_source_l00006}00006\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_string_8cpp_source_l00007}00007\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_string_8cpp_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{_string_8cpp_source_l00009}00009\ \ \ \ \ FenString::FenString()}
+\DoxyCodeLine{\Hypertarget{_string_8cpp_source_l00010}00010\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_string_8cpp_source_l00011}00011\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_string_8cpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_string_8cpp_source_l00013}00013\ \ \ \ \ FenString::FenString(\textcolor{keyword}{const}\ FenString\ \&other)\ :\ m\_Content(other.m\_Content)}
+\DoxyCodeLine{\Hypertarget{_string_8cpp_source_l00014}00014\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_string_8cpp_source_l00015}00015\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_string_8cpp_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_string_8cpp_source_l00017}00017\ \ \ \ \ FenString::FenString(FenString\ \&\&other)\ :\ m\_Content(std::move(other.m\_Content))}
+\DoxyCodeLine{\Hypertarget{_string_8cpp_source_l00018}00018\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_string_8cpp_source_l00019}00019\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_string_8cpp_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_string_8cpp_source_l00021}\mbox{\hyperlink{class_chess_1_1_fen_string_a8348fca8e560381e776d52e3dca5eec6}{00021}}\ \ \ \ \ std::deque<FenString>\ \mbox{\hyperlink{class_chess_1_1_fen_string_a8348fca8e560381e776d52e3dca5eec6}{FenString::Split}}(std::string\_view\ delim)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_string_8cpp_source_l00022}00022\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{\Hypertarget{_string_8cpp_source_l00023}00023\ \ \ \ \ \ \ \ \ std::deque<FenString>\ result;}
+\DoxyCodeLine{\Hypertarget{_string_8cpp_source_l00024}00024\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ start\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_string_8cpp_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ end;}
+\DoxyCodeLine{\Hypertarget{_string_8cpp_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_string_8cpp_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ ((end\ =\ m\_Content.find(delim,\ start))\ !=\ std::string\_view::npos)}
+\DoxyCodeLine{\Hypertarget{_string_8cpp_source_l00028}00028\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_string_8cpp_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ result.push\_back(m\_Content.substr(start,\ end\ -\/\ start));}
+\DoxyCodeLine{\Hypertarget{_string_8cpp_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ start\ =\ end\ +\ 1;}
+\DoxyCodeLine{\Hypertarget{_string_8cpp_source_l00031}00031\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_string_8cpp_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_string_8cpp_source_l00033}00033\ \ \ \ \ \ \ \ \ result.push\_back(m\_Content.substr(start));}
+\DoxyCodeLine{\Hypertarget{_string_8cpp_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_string_8cpp_source_l00035}00035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{_string_8cpp_source_l00036}00036\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_string_8cpp_source_l00037}00037\ \}}
+
+\end{DoxyCode}

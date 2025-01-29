@@ -1,0 +1,267 @@
+\doxysection{null\+\_\+init.\+c}
+\hypertarget{null__init_8c_source}{}\label{null__init_8c_source}\index{deps/glfw/src/null\_init.c@{deps/glfw/src/null\_init.c}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00001}00001\ \textcolor{comment}{//========================================================================}}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00002}00002\ \textcolor{comment}{//\ GLFW\ 3.5\ -\/\ www.glfw.org}}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00003}00003\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00004}00004\ \textcolor{comment}{//\ Copyright\ (c)\ 2016\ Google\ Inc.}}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00005}00005\ \textcolor{comment}{//\ Copyright\ (c)\ 2016-\/2017\ Camilla\ Löwy\ <elmindreda@glfw.org>}}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00006}00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00007}00007\ \textcolor{comment}{//\ This\ software\ is\ provided\ 'as-\/is',\ without\ any\ express\ or\ implied}}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00008}00008\ \textcolor{comment}{//\ warranty.\ In\ no\ event\ will\ the\ authors\ be\ held\ liable\ for\ any\ damages}}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00009}00009\ \textcolor{comment}{//\ arising\ from\ the\ use\ of\ this\ software.}}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00010}00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00011}00011\ \textcolor{comment}{//\ Permission\ is\ granted\ to\ anyone\ to\ use\ this\ software\ for\ any\ purpose,}}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00012}00012\ \textcolor{comment}{//\ including\ commercial\ applications,\ and\ to\ alter\ it\ and\ redistribute\ it}}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00013}00013\ \textcolor{comment}{//\ freely,\ subject\ to\ the\ following\ restrictions:}}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00014}00014\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00015}00015\ \textcolor{comment}{//\ 1.\ The\ origin\ of\ this\ software\ must\ not\ be\ misrepresented;\ you\ must\ not}}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00016}00016\ \textcolor{comment}{//\ \ \ \ claim\ that\ you\ wrote\ the\ original\ software.\ If\ you\ use\ this\ software}}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00017}00017\ \textcolor{comment}{//\ \ \ \ in\ a\ product,\ an\ acknowledgment\ in\ the\ product\ documentation\ would}}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00018}00018\ \textcolor{comment}{//\ \ \ \ be\ appreciated\ but\ is\ not\ required.}}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00019}00019\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00020}00020\ \textcolor{comment}{//\ 2.\ Altered\ source\ versions\ must\ be\ plainly\ marked\ as\ such,\ and\ must\ not}}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00021}00021\ \textcolor{comment}{//\ \ \ \ be\ misrepresented\ as\ being\ the\ original\ software.}}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00022}00022\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00023}00023\ \textcolor{comment}{//\ 3.\ This\ notice\ may\ not\ be\ removed\ or\ altered\ from\ any\ source}}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00024}00024\ \textcolor{comment}{//\ \ \ \ distribution.}}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00025}00025\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00026}00026\ \textcolor{comment}{//========================================================================}}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00028}00028\ \textcolor{preprocessor}{\#include\ "{}internal.h"{}}}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00030}00030\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00031}00031\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00038}00038\ GLFWbool\ \_glfwConnectNull(\textcolor{keywordtype}{int}\ platformID,\ \mbox{\hyperlink{struct___g_l_f_wplatform}{\_GLFWplatform}}*\ platform)}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00039}00039\ \{}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00040}00040\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct___g_l_f_wplatform}{\_GLFWplatform}}\ null\ =}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00041}00041\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00042}00042\ \ \ \ \ \ \ \ \ .platformID\ =\ GLFW\_PLATFORM\_NULL,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00043}00043\ \ \ \ \ \ \ \ \ .init\ =\ \_glfwInitNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00044}00044\ \ \ \ \ \ \ \ \ .terminate\ =\ \_glfwTerminateNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00045}00045\ \ \ \ \ \ \ \ \ .getCursorPos\ =\ \_glfwGetCursorPosNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00046}00046\ \ \ \ \ \ \ \ \ .setCursorPos\ =\ \_glfwSetCursorPosNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00047}00047\ \ \ \ \ \ \ \ \ .setCursorMode\ =\ \_glfwSetCursorModeNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00048}00048\ \ \ \ \ \ \ \ \ .setRawMouseMotion\ =\ \_glfwSetRawMouseMotionNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00049}00049\ \ \ \ \ \ \ \ \ .rawMouseMotionSupported\ =\ \_glfwRawMouseMotionSupportedNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00050}00050\ \ \ \ \ \ \ \ \ .createCursor\ =\ \_glfwCreateCursorNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00051}00051\ \ \ \ \ \ \ \ \ .createStandardCursor\ =\ \_glfwCreateStandardCursorNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00052}00052\ \ \ \ \ \ \ \ \ .destroyCursor\ =\ \_glfwDestroyCursorNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00053}00053\ \ \ \ \ \ \ \ \ .setCursor\ =\ \_glfwSetCursorNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00054}00054\ \ \ \ \ \ \ \ \ .getScancodeName\ =\ \_glfwGetScancodeNameNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00055}00055\ \ \ \ \ \ \ \ \ .getKeyScancode\ =\ \_glfwGetKeyScancodeNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00056}00056\ \ \ \ \ \ \ \ \ .setClipboardString\ =\ \_glfwSetClipboardStringNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00057}00057\ \ \ \ \ \ \ \ \ .getClipboardString\ =\ \_glfwGetClipboardStringNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00058}00058\ \ \ \ \ \ \ \ \ .initJoysticks\ =\ \_glfwInitJoysticksNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00059}00059\ \ \ \ \ \ \ \ \ .terminateJoysticks\ =\ \_glfwTerminateJoysticksNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00060}00060\ \ \ \ \ \ \ \ \ .pollJoystick\ =\ \_glfwPollJoystickNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00061}00061\ \ \ \ \ \ \ \ \ .getMappingName\ =\ \_glfwGetMappingNameNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00062}00062\ \ \ \ \ \ \ \ \ .updateGamepadGUID\ =\ \_glfwUpdateGamepadGUIDNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00063}00063\ \ \ \ \ \ \ \ \ .freeMonitor\ =\ \_glfwFreeMonitorNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00064}00064\ \ \ \ \ \ \ \ \ .getMonitorPos\ =\ \_glfwGetMonitorPosNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00065}00065\ \ \ \ \ \ \ \ \ .getMonitorContentScale\ =\ \_glfwGetMonitorContentScaleNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00066}00066\ \ \ \ \ \ \ \ \ .getMonitorWorkarea\ =\ \_glfwGetMonitorWorkareaNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00067}00067\ \ \ \ \ \ \ \ \ .getVideoModes\ =\ \_glfwGetVideoModesNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00068}00068\ \ \ \ \ \ \ \ \ .getVideoMode\ =\ \_glfwGetVideoModeNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00069}00069\ \ \ \ \ \ \ \ \ .getGammaRamp\ =\ \_glfwGetGammaRampNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00070}00070\ \ \ \ \ \ \ \ \ .setGammaRamp\ =\ \_glfwSetGammaRampNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00071}00071\ \ \ \ \ \ \ \ \ .createWindow\ =\ \_glfwCreateWindowNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00072}00072\ \ \ \ \ \ \ \ \ .destroyWindow\ =\ \_glfwDestroyWindowNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00073}00073\ \ \ \ \ \ \ \ \ .setWindowTitle\ =\ \_glfwSetWindowTitleNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00074}00074\ \ \ \ \ \ \ \ \ .setWindowIcon\ =\ \_glfwSetWindowIconNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00075}00075\ \ \ \ \ \ \ \ \ .getWindowPos\ =\ \_glfwGetWindowPosNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00076}00076\ \ \ \ \ \ \ \ \ .setWindowPos\ =\ \_glfwSetWindowPosNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00077}00077\ \ \ \ \ \ \ \ \ .getWindowSize\ =\ \_glfwGetWindowSizeNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00078}00078\ \ \ \ \ \ \ \ \ .setWindowSize\ =\ \_glfwSetWindowSizeNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00079}00079\ \ \ \ \ \ \ \ \ .setWindowSizeLimits\ =\ \_glfwSetWindowSizeLimitsNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00080}00080\ \ \ \ \ \ \ \ \ .setWindowAspectRatio\ =\ \_glfwSetWindowAspectRatioNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00081}00081\ \ \ \ \ \ \ \ \ .getFramebufferSize\ =\ \_glfwGetFramebufferSizeNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00082}00082\ \ \ \ \ \ \ \ \ .getWindowFrameSize\ =\ \_glfwGetWindowFrameSizeNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00083}00083\ \ \ \ \ \ \ \ \ .getWindowContentScale\ =\ \_glfwGetWindowContentScaleNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00084}00084\ \ \ \ \ \ \ \ \ .iconifyWindow\ =\ \_glfwIconifyWindowNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00085}00085\ \ \ \ \ \ \ \ \ .restoreWindow\ =\ \_glfwRestoreWindowNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00086}00086\ \ \ \ \ \ \ \ \ .maximizeWindow\ =\ \_glfwMaximizeWindowNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00087}00087\ \ \ \ \ \ \ \ \ .showWindow\ =\ \_glfwShowWindowNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00088}00088\ \ \ \ \ \ \ \ \ .hideWindow\ =\ \_glfwHideWindowNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00089}00089\ \ \ \ \ \ \ \ \ .requestWindowAttention\ =\ \_glfwRequestWindowAttentionNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00090}00090\ \ \ \ \ \ \ \ \ .focusWindow\ =\ \_glfwFocusWindowNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00091}00091\ \ \ \ \ \ \ \ \ .setWindowMonitor\ =\ \_glfwSetWindowMonitorNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00092}00092\ \ \ \ \ \ \ \ \ .windowFocused\ =\ \_glfwWindowFocusedNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00093}00093\ \ \ \ \ \ \ \ \ .windowIconified\ =\ \_glfwWindowIconifiedNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00094}00094\ \ \ \ \ \ \ \ \ .windowVisible\ =\ \_glfwWindowVisibleNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00095}00095\ \ \ \ \ \ \ \ \ .windowMaximized\ =\ \_glfwWindowMaximizedNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00096}00096\ \ \ \ \ \ \ \ \ .windowHovered\ =\ \_glfwWindowHoveredNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00097}00097\ \ \ \ \ \ \ \ \ .framebufferTransparent\ =\ \_glfwFramebufferTransparentNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00098}00098\ \ \ \ \ \ \ \ \ .getWindowOpacity\ =\ \_glfwGetWindowOpacityNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00099}00099\ \ \ \ \ \ \ \ \ .setWindowResizable\ =\ \_glfwSetWindowResizableNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00100}00100\ \ \ \ \ \ \ \ \ .setWindowDecorated\ =\ \_glfwSetWindowDecoratedNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00101}00101\ \ \ \ \ \ \ \ \ .setWindowFloating\ =\ \_glfwSetWindowFloatingNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00102}00102\ \ \ \ \ \ \ \ \ .setWindowOpacity\ =\ \_glfwSetWindowOpacityNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00103}00103\ \ \ \ \ \ \ \ \ .setWindowMousePassthrough\ =\ \_glfwSetWindowMousePassthroughNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00104}00104\ \ \ \ \ \ \ \ \ .pollEvents\ =\ \_glfwPollEventsNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00105}00105\ \ \ \ \ \ \ \ \ .waitEvents\ =\ \_glfwWaitEventsNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00106}00106\ \ \ \ \ \ \ \ \ .waitEventsTimeout\ =\ \_glfwWaitEventsTimeoutNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00107}00107\ \ \ \ \ \ \ \ \ .postEmptyEvent\ =\ \_glfwPostEmptyEventNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00108}00108\ \ \ \ \ \ \ \ \ .getEGLPlatform\ =\ \_glfwGetEGLPlatformNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00109}00109\ \ \ \ \ \ \ \ \ .getEGLNativeDisplay\ =\ \_glfwGetEGLNativeDisplayNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00110}00110\ \ \ \ \ \ \ \ \ .getEGLNativeWindow\ =\ \_glfwGetEGLNativeWindowNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00111}00111\ \ \ \ \ \ \ \ \ .getRequiredInstanceExtensions\ =\ \_glfwGetRequiredInstanceExtensionsNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00112}00112\ \ \ \ \ \ \ \ \ .getPhysicalDevicePresentationSupport\ =\ \_glfwGetPhysicalDevicePresentationSupportNull,}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00113}00113\ \ \ \ \ \ \ \ \ .createWindowSurface\ =\ \_glfwCreateWindowSurfaceNull}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00114}00114\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00116}00116\ \ \ \ \ *platform\ =\ null;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00117}00117\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{group__init_ga2744fbb29b5631bb28802dbe0cf36eba}{GLFW\_TRUE}};}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00118}00118\ \}}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00120}00120\ \textcolor{keywordtype}{int}\ \_glfwInitNull(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00121}00121\ \{}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00122}00122\ \ \ \ \ \textcolor{keywordtype}{int}\ scancode;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00124}00124\ \ \ \ \ memset(\_glfw.null.keycodes,\ -\/1,\ \textcolor{keyword}{sizeof}(\_glfw.null.keycodes));}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00125}00125\ \ \ \ \ memset(\_glfw.null.scancodes,\ -\/1,\ \textcolor{keyword}{sizeof}(\_glfw.null.scancodes));}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00126}00126\ }
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00127}00127\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_SPACE]\ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_SPACE;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00128}00128\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_APOSTROPHE]\ \ \ \ =\ GLFW\_KEY\_APOSTROPHE;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00129}00129\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_COMMA]\ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_COMMA;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00130}00130\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_MINUS]\ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_MINUS;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00131}00131\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_PERIOD]\ \ \ \ \ \ \ \ =\ GLFW\_KEY\_PERIOD;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00132}00132\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_SLASH]\ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_SLASH;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00133}00133\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_0]\ \ \ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_0;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00134}00134\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_1]\ \ \ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_1;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00135}00135\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_2]\ \ \ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_2;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00136}00136\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_3]\ \ \ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_3;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00137}00137\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_4]\ \ \ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_4;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00138}00138\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_5]\ \ \ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_5;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00139}00139\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_6]\ \ \ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_6;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00140}00140\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_7]\ \ \ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_7;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00141}00141\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_8]\ \ \ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_8;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00142}00142\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_9]\ \ \ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_9;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00143}00143\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_SEMICOLON]\ \ \ \ \ =\ GLFW\_KEY\_SEMICOLON;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00144}00144\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_EQUAL]\ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_EQUAL;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00145}00145\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_A]\ \ \ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_A;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00146}00146\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_B]\ \ \ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_B;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00147}00147\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_C]\ \ \ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_C;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00148}00148\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_D]\ \ \ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_D;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00149}00149\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_E]\ \ \ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_E;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00150}00150\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_F]\ \ \ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_F;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00151}00151\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_G]\ \ \ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_G;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00152}00152\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_H]\ \ \ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_H;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00153}00153\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_I]\ \ \ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_I;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00154}00154\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_J]\ \ \ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_J;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00155}00155\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_K]\ \ \ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_K;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00156}00156\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_L]\ \ \ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_L;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00157}00157\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_M]\ \ \ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_M;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00158}00158\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_N]\ \ \ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_N;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00159}00159\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_O]\ \ \ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_O;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00160}00160\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_P]\ \ \ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_P;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00161}00161\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_Q]\ \ \ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_Q;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00162}00162\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_R]\ \ \ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_R;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00163}00163\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_S]\ \ \ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_S;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00164}00164\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_T]\ \ \ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_T;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00165}00165\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_U]\ \ \ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_U;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00166}00166\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_V]\ \ \ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_V;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00167}00167\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_W]\ \ \ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_W;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00168}00168\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_X]\ \ \ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_X;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00169}00169\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_Y]\ \ \ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_Y;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00170}00170\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_Z]\ \ \ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_Z;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00171}00171\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_LEFT\_BRACKET]\ \ =\ GLFW\_KEY\_LEFT\_BRACKET;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00172}00172\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_BACKSLASH]\ \ \ \ \ =\ GLFW\_KEY\_BACKSLASH;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00173}00173\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_RIGHT\_BRACKET]\ =\ GLFW\_KEY\_RIGHT\_BRACKET;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00174}00174\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_GRAVE\_ACCENT]\ \ =\ GLFW\_KEY\_GRAVE\_ACCENT;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00175}00175\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_WORLD\_1]\ \ \ \ \ \ \ =\ GLFW\_KEY\_WORLD\_1;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00176}00176\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_WORLD\_2]\ \ \ \ \ \ \ =\ GLFW\_KEY\_WORLD\_2;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00177}00177\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_ESCAPE]\ \ \ \ \ \ \ \ =\ GLFW\_KEY\_ESCAPE;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00178}00178\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_ENTER]\ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_ENTER;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00179}00179\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_TAB]\ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_TAB;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00180}00180\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_BACKSPACE]\ \ \ \ \ =\ GLFW\_KEY\_BACKSPACE;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00181}00181\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_INSERT]\ \ \ \ \ \ \ \ =\ GLFW\_KEY\_INSERT;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00182}00182\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_DELETE]\ \ \ \ \ \ \ \ =\ GLFW\_KEY\_DELETE;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00183}00183\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_RIGHT]\ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_RIGHT;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00184}00184\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_LEFT]\ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_LEFT;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00185}00185\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_DOWN]\ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_DOWN;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00186}00186\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_UP]\ \ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_UP;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00187}00187\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_PAGE\_UP]\ \ \ \ \ \ \ =\ GLFW\_KEY\_PAGE\_UP;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00188}00188\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_PAGE\_DOWN]\ \ \ \ \ =\ GLFW\_KEY\_PAGE\_DOWN;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00189}00189\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_HOME]\ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_HOME;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00190}00190\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_END]\ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_END;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00191}00191\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_CAPS\_LOCK]\ \ \ \ \ =\ GLFW\_KEY\_CAPS\_LOCK;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00192}00192\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_SCROLL\_LOCK]\ \ \ =\ GLFW\_KEY\_SCROLL\_LOCK;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00193}00193\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_NUM\_LOCK]\ \ \ \ \ \ =\ GLFW\_KEY\_NUM\_LOCK;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00194}00194\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_PRINT\_SCREEN]\ \ =\ GLFW\_KEY\_PRINT\_SCREEN;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00195}00195\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_PAUSE]\ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_PAUSE;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00196}00196\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_F1]\ \ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_F1;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00197}00197\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_F2]\ \ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_F2;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00198}00198\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_F3]\ \ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_F3;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00199}00199\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_F4]\ \ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_F4;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00200}00200\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_F5]\ \ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_F5;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00201}00201\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_F6]\ \ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_F6;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00202}00202\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_F7]\ \ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_F7;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00203}00203\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_F8]\ \ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_F8;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00204}00204\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_F9]\ \ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_F9;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00205}00205\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_F10]\ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_F10;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00206}00206\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_F11]\ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_F11;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00207}00207\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_F12]\ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_F12;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00208}00208\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_F13]\ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_F13;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00209}00209\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_F14]\ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_F14;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00210}00210\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_F15]\ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_F15;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00211}00211\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_F16]\ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_F16;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00212}00212\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_F17]\ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_F17;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00213}00213\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_F18]\ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_F18;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00214}00214\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_F19]\ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_F19;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00215}00215\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_F20]\ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_F20;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00216}00216\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_F21]\ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_F21;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00217}00217\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_F22]\ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_F22;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00218}00218\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_F23]\ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_F23;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00219}00219\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_F24]\ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_F24;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00220}00220\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_F25]\ \ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_F25;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00221}00221\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_KP\_0]\ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_KP\_0;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00222}00222\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_KP\_1]\ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_KP\_1;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00223}00223\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_KP\_2]\ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_KP\_2;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00224}00224\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_KP\_3]\ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_KP\_3;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00225}00225\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_KP\_4]\ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_KP\_4;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00226}00226\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_KP\_5]\ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_KP\_5;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00227}00227\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_KP\_6]\ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_KP\_6;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00228}00228\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_KP\_7]\ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_KP\_7;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00229}00229\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_KP\_8]\ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_KP\_8;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00230}00230\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_KP\_9]\ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_KP\_9;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00231}00231\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_KP\_DECIMAL]\ \ \ \ =\ GLFW\_KEY\_KP\_DECIMAL;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00232}00232\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_KP\_DIVIDE]\ \ \ \ \ =\ GLFW\_KEY\_KP\_DIVIDE;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00233}00233\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_KP\_MULTIPLY]\ \ \ =\ GLFW\_KEY\_KP\_MULTIPLY;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00234}00234\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_KP\_SUBTRACT]\ \ \ =\ GLFW\_KEY\_KP\_SUBTRACT;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00235}00235\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_KP\_ADD]\ \ \ \ \ \ \ \ =\ GLFW\_KEY\_KP\_ADD;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00236}00236\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_KP\_ENTER]\ \ \ \ \ \ =\ GLFW\_KEY\_KP\_ENTER;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00237}00237\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_KP\_EQUAL]\ \ \ \ \ \ =\ GLFW\_KEY\_KP\_EQUAL;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00238}00238\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_LEFT\_SHIFT]\ \ \ \ =\ GLFW\_KEY\_LEFT\_SHIFT;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00239}00239\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_LEFT\_CONTROL]\ \ =\ GLFW\_KEY\_LEFT\_CONTROL;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00240}00240\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_LEFT\_ALT]\ \ \ \ \ \ =\ GLFW\_KEY\_LEFT\_ALT;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00241}00241\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_LEFT\_SUPER]\ \ \ \ =\ GLFW\_KEY\_LEFT\_SUPER;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00242}00242\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_RIGHT\_SHIFT]\ \ \ =\ GLFW\_KEY\_RIGHT\_SHIFT;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00243}00243\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_RIGHT\_CONTROL]\ =\ GLFW\_KEY\_RIGHT\_CONTROL;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00244}00244\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_RIGHT\_ALT]\ \ \ \ \ =\ GLFW\_KEY\_RIGHT\_ALT;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00245}00245\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_RIGHT\_SUPER]\ \ \ =\ GLFW\_KEY\_RIGHT\_SUPER;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00246}00246\ \ \ \ \ \_glfw.null.keycodes[GLFW\_NULL\_SC\_MENU]\ \ \ \ \ \ \ \ \ \ =\ GLFW\_KEY\_MENU;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00247}00247\ }
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00248}00248\ \ \ \ \ \textcolor{keywordflow}{for}\ (scancode\ =\ GLFW\_NULL\_SC\_FIRST;\ \ scancode\ <\ GLFW\_NULL\_SC\_LAST;\ \ scancode++)}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00249}00249\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00250}00250\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_glfw.null.keycodes[scancode]\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00251}00251\ \ \ \ \ \ \ \ \ \ \ \ \ \_glfw.null.scancodes[\_glfw.null.keycodes[scancode]]\ =\ scancode;}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00252}00252\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00253}00253\ }
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00254}00254\ \ \ \ \ \_glfwPollMonitorsNull();}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00255}00255\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{group__init_ga2744fbb29b5631bb28802dbe0cf36eba}{GLFW\_TRUE}};}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00256}00256\ \}}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00257}00257\ }
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00258}00258\ \textcolor{keywordtype}{void}\ \_glfwTerminateNull(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00259}00259\ \{}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00260}00260\ \ \ \ \ free(\_glfw.null.clipboardString);}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00261}00261\ \ \ \ \ \_glfwTerminateOSMesa();}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00262}00262\ \ \ \ \ \_glfwTerminateEGL();}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00263}00263\ \}}
+\DoxyCodeLine{\Hypertarget{null__init_8c_source_l00264}00264\ }
+
+\end{DoxyCode}

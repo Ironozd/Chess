@@ -1,0 +1,59 @@
+\doxysection{win32\+\_\+thread.\+h}
+\hypertarget{win32__thread_8h_source}{}\label{win32__thread_8h_source}\index{deps/glfw/src/win32\_thread.h@{deps/glfw/src/win32\_thread.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{win32__thread_8h_source_l00001}00001\ \textcolor{comment}{//========================================================================}}
+\DoxyCodeLine{\Hypertarget{win32__thread_8h_source_l00002}00002\ \textcolor{comment}{//\ GLFW\ 3.5\ Win32\ -\/\ www.glfw.org}}
+\DoxyCodeLine{\Hypertarget{win32__thread_8h_source_l00003}00003\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{win32__thread_8h_source_l00004}00004\ \textcolor{comment}{//\ Copyright\ (c)\ 2002-\/2006\ Marcus\ Geelnard}}
+\DoxyCodeLine{\Hypertarget{win32__thread_8h_source_l00005}00005\ \textcolor{comment}{//\ Copyright\ (c)\ 2006-\/2017\ Camilla\ Löwy\ <elmindreda@glfw.org>}}
+\DoxyCodeLine{\Hypertarget{win32__thread_8h_source_l00006}00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{win32__thread_8h_source_l00007}00007\ \textcolor{comment}{//\ This\ software\ is\ provided\ 'as-\/is',\ without\ any\ express\ or\ implied}}
+\DoxyCodeLine{\Hypertarget{win32__thread_8h_source_l00008}00008\ \textcolor{comment}{//\ warranty.\ In\ no\ event\ will\ the\ authors\ be\ held\ liable\ for\ any\ damages}}
+\DoxyCodeLine{\Hypertarget{win32__thread_8h_source_l00009}00009\ \textcolor{comment}{//\ arising\ from\ the\ use\ of\ this\ software.}}
+\DoxyCodeLine{\Hypertarget{win32__thread_8h_source_l00010}00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{win32__thread_8h_source_l00011}00011\ \textcolor{comment}{//\ Permission\ is\ granted\ to\ anyone\ to\ use\ this\ software\ for\ any\ purpose,}}
+\DoxyCodeLine{\Hypertarget{win32__thread_8h_source_l00012}00012\ \textcolor{comment}{//\ including\ commercial\ applications,\ and\ to\ alter\ it\ and\ redistribute\ it}}
+\DoxyCodeLine{\Hypertarget{win32__thread_8h_source_l00013}00013\ \textcolor{comment}{//\ freely,\ subject\ to\ the\ following\ restrictions:}}
+\DoxyCodeLine{\Hypertarget{win32__thread_8h_source_l00014}00014\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{win32__thread_8h_source_l00015}00015\ \textcolor{comment}{//\ 1.\ The\ origin\ of\ this\ software\ must\ not\ be\ misrepresented;\ you\ must\ not}}
+\DoxyCodeLine{\Hypertarget{win32__thread_8h_source_l00016}00016\ \textcolor{comment}{//\ \ \ \ claim\ that\ you\ wrote\ the\ original\ software.\ If\ you\ use\ this\ software}}
+\DoxyCodeLine{\Hypertarget{win32__thread_8h_source_l00017}00017\ \textcolor{comment}{//\ \ \ \ in\ a\ product,\ an\ acknowledgment\ in\ the\ product\ documentation\ would}}
+\DoxyCodeLine{\Hypertarget{win32__thread_8h_source_l00018}00018\ \textcolor{comment}{//\ \ \ \ be\ appreciated\ but\ is\ not\ required.}}
+\DoxyCodeLine{\Hypertarget{win32__thread_8h_source_l00019}00019\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{win32__thread_8h_source_l00020}00020\ \textcolor{comment}{//\ 2.\ Altered\ source\ versions\ must\ be\ plainly\ marked\ as\ such,\ and\ must\ not}}
+\DoxyCodeLine{\Hypertarget{win32__thread_8h_source_l00021}00021\ \textcolor{comment}{//\ \ \ \ be\ misrepresented\ as\ being\ the\ original\ software.}}
+\DoxyCodeLine{\Hypertarget{win32__thread_8h_source_l00022}00022\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{win32__thread_8h_source_l00023}00023\ \textcolor{comment}{//\ 3.\ This\ notice\ may\ not\ be\ removed\ or\ altered\ from\ any\ source}}
+\DoxyCodeLine{\Hypertarget{win32__thread_8h_source_l00024}00024\ \textcolor{comment}{//\ \ \ \ distribution.}}
+\DoxyCodeLine{\Hypertarget{win32__thread_8h_source_l00025}00025\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{win32__thread_8h_source_l00026}00026\ \textcolor{comment}{//========================================================================}}
+\DoxyCodeLine{\Hypertarget{win32__thread_8h_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{win32__thread_8h_source_l00028}00028\ \textcolor{comment}{//\ This\ is\ a\ workaround\ for\ the\ fact\ that\ glfw3.h\ needs\ to\ export\ APIENTRY\ (for}}
+\DoxyCodeLine{\Hypertarget{win32__thread_8h_source_l00029}00029\ \textcolor{comment}{//\ example\ to\ allow\ applications\ to\ correctly\ declare\ a\ GL\_KHR\_debug\ callback)}}
+\DoxyCodeLine{\Hypertarget{win32__thread_8h_source_l00030}00030\ \textcolor{comment}{//\ but\ windows.h\ assumes\ no\ one\ will\ define\ APIENTRY\ before\ it\ does}}
+\DoxyCodeLine{\Hypertarget{win32__thread_8h_source_l00031}00031\ \textcolor{preprocessor}{\#undef\ APIENTRY}}
+\DoxyCodeLine{\Hypertarget{win32__thread_8h_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{win32__thread_8h_source_l00033}00033\ \textcolor{preprocessor}{\#include\ <windows.h>}}
+\DoxyCodeLine{\Hypertarget{win32__thread_8h_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{win32__thread_8h_source_l00035}00035\ \textcolor{preprocessor}{\#define\ GLFW\_WIN32\_TLS\_STATE\ \ \ \ \ \ \ \ \ \ \ \ \_GLFWtlsWin32\ \ \ \ \ win32;}}
+\DoxyCodeLine{\Hypertarget{win32__thread_8h_source_l00036}00036\ \textcolor{preprocessor}{\#define\ GLFW\_WIN32\_MUTEX\_STATE\ \ \ \ \ \ \ \ \ \ \_GLFWmutexWin32\ \ \ win32;}}
+\DoxyCodeLine{\Hypertarget{win32__thread_8h_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{win32__thread_8h_source_l00038}00038\ \textcolor{comment}{//\ Win32-\/specific\ thread\ local\ storage\ data}}
+\DoxyCodeLine{\Hypertarget{win32__thread_8h_source_l00039}00039\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{win32__thread_8h_source_l00040}\mbox{\hyperlink{struct___g_l_f_wtls_win32}{00040}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct___g_l_f_wtls_win32}{\_GLFWtlsWin32}}}
+\DoxyCodeLine{\Hypertarget{win32__thread_8h_source_l00041}00041\ \{}
+\DoxyCodeLine{\Hypertarget{win32__thread_8h_source_l00042}00042\ \ \ \ \ GLFWbool\ \ \ \ \ \ \ \ \ \ \ \ allocated;}
+\DoxyCodeLine{\Hypertarget{win32__thread_8h_source_l00043}00043\ \ \ \ \ DWORD\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ index;}
+\DoxyCodeLine{\Hypertarget{win32__thread_8h_source_l00044}00044\ \}\ \mbox{\hyperlink{struct___g_l_f_wtls_win32}{\_GLFWtlsWin32}};}
+\DoxyCodeLine{\Hypertarget{win32__thread_8h_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{win32__thread_8h_source_l00046}00046\ \textcolor{comment}{//\ Win32-\/specific\ mutex\ data}}
+\DoxyCodeLine{\Hypertarget{win32__thread_8h_source_l00047}00047\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{win32__thread_8h_source_l00048}\mbox{\hyperlink{struct___g_l_f_wmutex_win32}{00048}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct___g_l_f_wmutex_win32}{\_GLFWmutexWin32}}}
+\DoxyCodeLine{\Hypertarget{win32__thread_8h_source_l00049}00049\ \{}
+\DoxyCodeLine{\Hypertarget{win32__thread_8h_source_l00050}00050\ \ \ \ \ GLFWbool\ \ \ \ \ \ \ \ \ \ \ \ allocated;}
+\DoxyCodeLine{\Hypertarget{win32__thread_8h_source_l00051}00051\ \ \ \ \ CRITICAL\_SECTION\ \ \ \ section;}
+\DoxyCodeLine{\Hypertarget{win32__thread_8h_source_l00052}00052\ \}\ \mbox{\hyperlink{struct___g_l_f_wmutex_win32}{\_GLFWmutexWin32}};}
+\DoxyCodeLine{\Hypertarget{win32__thread_8h_source_l00053}00053\ }
+
+\end{DoxyCode}

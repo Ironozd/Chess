@@ -1,0 +1,95 @@
+\doxysection{Physical\+Device.\+cpp}
+\hypertarget{_physical_device_8cpp_source}{}\label{_physical_device_8cpp_source}\index{core/src/Renderer/PhysicalDevice.cpp@{core/src/Renderer/PhysicalDevice.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}PhysicalDevice.h"{}}}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <vulkan/vulkan.h>}}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}Instance.h"{}}}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}../Core/Logger.h"{}}}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}../Window/Window.h"{}}}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00010}00010\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_chess}{Chess}}}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00011}00011\ \{}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00012}00012\ \ \ \ \ PhysicalDevice::PhysicalDevice()\ :\ }
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00013}00013\ \ \ \ \ \ \ \ \ m\_PhysicalDevice(VK\_NULL\_HANDLE),\ m\_Specification(\{\textcolor{keyword}{nullptr}\})}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00014}00014\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00015}00015\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00017}00017\ \ \ \ \ \textcolor{keywordtype}{void}\ PhysicalDevice::PickImpl(\textcolor{keyword}{const}\ PhysicalDeviceSpecification\ \&spec)}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00018}00018\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00019}00019\ \ \ \ \ \ \ \ \ m\_Specification\ =\ spec;}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00020}00020\ \ \ \ \ \ \ \ \ uint32\_t\ deviceCount\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00021}00021\ \ \ \ \ \ \ \ \ vkEnumeratePhysicalDevices(Instance::Data(),\ \&deviceCount,\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00023}00023\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (deviceCount\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00024}00024\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ LOG\_ERROR(\textcolor{stringliteral}{"{}No\ GPU\ with\ Vulkan\ support\ found!"{}});}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ assert(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00027}00027\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00029}00029\ \ \ \ \ \ \ \ \ std::vector<VkPhysicalDevice>\ devices(deviceCount);}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00030}00030\ \ \ \ \ \ \ \ \ vkEnumeratePhysicalDevices(Instance::Data(),\ \&deviceCount,\ devices.data());}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&device\ :\ devices)}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00033}00033\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (IsDeviceSuitable(device))}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_PhysicalDevice\ =\ device;}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00039}00039\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_PhysicalDevice\ ==\ VK\_NULL\_HANDLE)}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ LOG\_ERROR(\textcolor{stringliteral}{"{}No\ suitable\ GPU\ found!"{}});}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ assert(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00045}00045\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00046}00046\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00048}00048\ \ \ \ \ \textcolor{keywordtype}{bool}\ PhysicalDevice::IsDeviceSuitable(VkPhysicalDevice\ device)}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00049}00049\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00050}00050\ \ \ \ \ \ \ \ \ QueueFamilyIndices\ indices\ =\ FindQueueFamilies(device);}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00052}00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ indices.IsComplete();}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00053}00053\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00055}00055\ \ \ \ \ QueueFamilyIndices\ PhysicalDevice::FindQueueFamilies(VkPhysicalDevice\ device)}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00056}00056\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00057}00057\ \ \ \ \ \ \ \ \ QueueFamilyIndices\ indices;}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ uint32\_t\ queueFamilyCount\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ vkGetPhysicalDeviceQueueFamilyProperties(device,\ \&queueFamilyCount,\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00061}00061\ \ \ \ \ \ \ \ \ std::vector<VkQueueFamilyProperties>\ queueFamilies(queueFamilyCount);}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00062}00062\ \ \ \ \ \ \ \ \ vkGetPhysicalDeviceQueueFamilyProperties(device,\ \&queueFamilyCount,\ queueFamilies.data());}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00064}00064\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ i\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00065}00065\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&queueFamily\ :\ queueFamilies)}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00066}00066\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (queueFamily.queueFlags\ \&\ VK\_QUEUE\_GRAPHICS\_BIT)}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ indices.GraphicsFamily\ =\ i;}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ VkBool32\ presentSupport\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ vkGetPhysicalDeviceSurfaceSupportKHR(device,\ i,\ m\_Specification.WindowRef-\/>SurfaceData(),\ \&presentSupport);}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (presentSupport)}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ indices.PresentFamily\ =\ i;}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (indices.IsComplete())}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ i++;}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00086}00086\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00087}00087\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ indices;}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00088}00088\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00089}00089\ \}}
+
+\end{DoxyCode}

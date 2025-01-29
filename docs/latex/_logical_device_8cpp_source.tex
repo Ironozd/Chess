@@ -1,0 +1,80 @@
+\doxysection{Logical\+Device.\+cpp}
+\hypertarget{_logical_device_8cpp_source}{}\label{_logical_device_8cpp_source}\index{core/src/Renderer/LogicalDevice.cpp@{core/src/Renderer/LogicalDevice.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}LogicalDevice.h"{}}}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <vulkan/vulkan.h>}}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}../Core/Logger.h"{}}}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}PhysicalDevice.h"{}}}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}Instance.h"{}}}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <set>}}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00010}00010\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_chess}{Chess}}}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00011}00011\ \{}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00012}00012\ \ \ \ \ LogicalDevice::LogicalDevice()\ :\ m\_LogicalDevice(VK\_NULL\_HANDLE),\ m\_GraphicsQueue(VK\_NULL\_HANDLE)}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00013}00013\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00014}00014\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00016}00016\ \ \ \ \ LogicalDevice::\string~LogicalDevice()}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00017}00017\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00018}00018\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00020}00020\ \ \ \ \ \textcolor{keywordtype}{void}\ LogicalDevice::CreateImpl()}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00021}00021\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00022}00022\ \ \ \ \ \ \ \ \ QueueFamilyIndices\ indices\ =\ PhysicalDevice::GetFamilyIndices();}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00024}00024\ \ \ \ \ \ \ \ \ std::vector<VkDeviceQueueCreateInfo>\ queueCreateInfos;}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00025}00025\ \ \ \ \ \ \ \ \ std::set<uint32\_t>\ uniqueQueueFamilies\ =\ \{indices.GraphicsFamily.value(),\ indices.PresentFamily.value()\};}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ queuePriority\ =\ 1.0f;}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (uint32\_t\ queueFamily\ :\ uniqueQueueFamilies)}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00029}00029\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ VkDeviceQueueCreateInfo\ queueCreateInfo\{\};}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ queueCreateInfo.sType\ =\ VK\_STRUCTURE\_TYPE\_DEVICE\_QUEUE\_CREATE\_INFO;}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ queueCreateInfo.queueFamilyIndex\ =\ queueFamily;}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ queueCreateInfo.queueCount\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ queueCreateInfo.pQueuePriorities\ =\ \&queuePriority;}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ queueCreateInfos.push\_back(queueCreateInfo);}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00036}00036\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00038}00038\ \ \ \ \ \ \ \ \ VkPhysicalDeviceFeatures\ deviceFeatures\{\};}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00040}00040\ \ \ \ \ \ \ \ \ VkDeviceCreateInfo\ createInfo\{\};}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ createInfo.sType\ =\ VK\_STRUCTURE\_TYPE\_DEVICE\_CREATE\_INFO;}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ createInfo.pQueueCreateInfos\ =\ queueCreateInfos.data();}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ createInfo.queueCreateInfoCount\ =\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(queueCreateInfos.size());}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00044}00044\ \ \ \ \ \ \ \ \ createInfo.pEnabledFeatures\ =\ \&deviceFeatures;}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00046}00046\ \ \ \ \ \ \ \ \ createInfo.enabledExtensionCount\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00048}00048\ \ \ \ \ \ \ \ \ std::vector<const\ char\ *>\ validationLayers\ =\ Instance::GetValidationLayers();}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00050}00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Instance::IsValidationEnabled())}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00051}00051\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ createInfo.enabledLayerCount\ =\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(validationLayers.size());}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ createInfo.ppEnabledLayerNames\ =\ validationLayers.data();}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00054}00054\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00056}00056\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ createInfo.enabledLayerCount\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00060}00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (vkCreateDevice(PhysicalDevice::Data(),\ \&createInfo,\ \textcolor{keyword}{nullptr},\ \&m\_LogicalDevice)\ !=\ VK\_SUCCESS)}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00061}00061\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ LOG\_ERROR(\textcolor{stringliteral}{"{}Logical\ device\ creation\ failed!"{}});}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ assert(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00064}00064\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00066}00066\ \ \ \ \ \ \ \ \ vkGetDeviceQueue(m\_LogicalDevice,\ indices.GraphicsFamily.value(),\ 0,\ \&m\_GraphicsQueue);}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00067}00067\ \ \ \ \ \ \ \ \ vkGetDeviceQueue(m\_LogicalDevice,\ indices.PresentFamily.value(),\ 0,\ \&m\_PresentQueue);}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00068}00068\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00070}00070\ \ \ \ \ \textcolor{keywordtype}{void}\ LogicalDevice::ShutdownImpl()}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00071}00071\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ vkDestroyDevice(m\_LogicalDevice,\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00073}00073\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_logical_device_8cpp_source_l00074}00074\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,57 @@
+\doxysection{Instance.\+h}
+\hypertarget{_instance_8h_source}{}\label{_instance_8h_source}\index{core/src/Renderer/Instance.h@{core/src/Renderer/Instance.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <string\_view>}}
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00005}00005\ \textcolor{comment}{/*\ Forward\ declaration\ for\ better\ compile-\/time\ and\ organization\ */}}
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00006}00006\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }VkInstance\_T\ *VkInstance;}
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00007}00007\ \textcolor{keyword}{struct\ }VkApplicationInfo;}
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00009}00009\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_chess}{Chess}}}
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00010}00010\ \{}
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00011}\mbox{\hyperlink{struct_chess_1_1_instance_specification}{00011}}\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_chess_1_1_instance_specification}{InstanceSpecification}}}
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00012}00012\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00013}00013\ \ \ \ \ \ \ \ \ std::string\_view\ ApplicationName;}
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00014}00014\ \ \ \ \ \ \ \ \ std::string\_view\ EngineName;}
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00015}00015\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00021}\mbox{\hyperlink{class_chess_1_1_instance}{00021}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_chess_1_1_instance}{Instance}}}
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00022}00022\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00023}00023\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00024}00024\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ Initialize(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_chess_1_1_instance_specification}{InstanceSpecification}}\ \&spec)\ \{\ Get().InitializeImpl(spec);\ \}}
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00026}00026\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ Shutdown()\ \{\ Get().ShutdownImpl();\ \}}
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00031}\mbox{\hyperlink{class_chess_1_1_instance_a3b57b3e69beef72fb6842e11ff272d39}{00031}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_chess_1_1_instance_a3b57b3e69beef72fb6842e11ff272d39}{IsValidationEnabled}}()\ \{\ \textcolor{keywordflow}{return}\ validationEnabled;\ \}}
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00035}\mbox{\hyperlink{class_chess_1_1_instance_acf16a9b6c9cc33b0c9c3977d74c09fea}{00035}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ std::vector<const\ char*>\ \mbox{\hyperlink{class_chess_1_1_instance_acf16a9b6c9cc33b0c9c3977d74c09fea}{GetValidationLayers}}()\ \{\ \textcolor{keywordflow}{return}\ validationLayers;\ \}}
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ VkInstance\ Data()\ \{\ \textcolor{keywordflow}{return}\ Get().m\_Instance;\ \}}
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00038}00038\ \ \ \ \ \textcolor{keyword}{private}:\ \textcolor{comment}{/*\ Private\ variables*/}}
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00039}00039\ \ \ \ \ \ \ \ \ VkInstance\ m\_Instance;}
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00040}00040\ \ \ \ \ \textcolor{keyword}{private}:\ \textcolor{comment}{/*\ Below\ variables\ should\ be\ accessible\ before\ instance\ creation\ of\ singleton,\ therefore,\ static\ and\ private\ */}}
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00041}00041\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ validationEnabled;}
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00042}00042\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ std::vector<const\ char\ *>\ validationLayers;}
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00043}00043\ \ \ \ \ \textcolor{keyword}{private}:\ \textcolor{comment}{/*\ Singleton\ functionality\ */}}
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00044}00044\ \ \ \ \ \ \ \ \ Instance();}
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00045}00045\ \ \ \ \ \ \ \ \ \string~Instance();}
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00047}00047\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ Instance\ \&Get()}
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00048}00048\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ Instance\ instance;}
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ instance;}
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00051}00051\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00053}00053\ \ \ \ \ \textcolor{keyword}{private}:\ \textcolor{comment}{/*\ Implementations\ */}}
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00054}00054\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ InitializeImpl(\textcolor{keyword}{const}\ InstanceSpecification\ \&spec);}
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ ShutdownImpl();}
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00057}00057\ \ \ \ \ \textcolor{keyword}{private}:\ \textcolor{comment}{/*\ Private\ functions\ */}}
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00058}00058\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ CreateInstance(\textcolor{keyword}{const}\ VkApplicationInfo\ \&appInfo);}
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00059}00059\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ ValidationExists();}
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00060}00060\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00062}00062\ \}}
+
+\end{DoxyCode}

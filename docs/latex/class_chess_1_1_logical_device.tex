@@ -1,0 +1,61 @@
+\doxysection{Chess\+::Logical\+Device Class Reference}
+\hypertarget{class_chess_1_1_logical_device}{}\label{class_chess_1_1_logical_device}\index{Chess::LogicalDevice@{Chess::LogicalDevice}}
+
+
+Logical Device singleton.  
+
+
+
+
+{\ttfamily \#include $<$Logical\+Device.\+h$>$}
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_chess_1_1_logical_device_ad7be554319aeb6d7f5e7641ddd0727b2}{Create}} ()
+\item 
+static void \mbox{\hyperlink{class_chess_1_1_logical_device_ae2d6f564a8a2fa35235f9fec03441309}{Shutdown}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Logical Device singleton. 
+
+\begin{DoxyNote}{Note}
+Since Vulkan Vk\+Device (\doxylink{class_chess_1_1_logical_device}{Logical\+Device}) is expected to be created and destroyed once and Queues that are going to be accessed throughoutare created depending on this class, this class was made a singleton. 
+
+This device can be created more than once, however, for the current use case, singleton appeared to be the better fit. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{_logical_device_8h_source_l00018}{18}} of file \mbox{\hyperlink{_logical_device_8h_source}{Logical\+Device.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_chess_1_1_logical_device_ad7be554319aeb6d7f5e7641ddd0727b2}\label{class_chess_1_1_logical_device_ad7be554319aeb6d7f5e7641ddd0727b2} 
+\index{Chess::LogicalDevice@{Chess::LogicalDevice}!Create@{Create}}
+\index{Create@{Create}!Chess::LogicalDevice@{Chess::LogicalDevice}}
+\doxysubsubsection{\texorpdfstring{Create()}{Create()}}
+{\footnotesize\ttfamily static void Chess\+::\+Logical\+Device\+::\+Create (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_logical_device_8h_source_l00021}{21}} of file \mbox{\hyperlink{_logical_device_8h_source}{Logical\+Device.\+h}}.
+
+\Hypertarget{class_chess_1_1_logical_device_ae2d6f564a8a2fa35235f9fec03441309}\label{class_chess_1_1_logical_device_ae2d6f564a8a2fa35235f9fec03441309} 
+\index{Chess::LogicalDevice@{Chess::LogicalDevice}!Shutdown@{Shutdown}}
+\index{Shutdown@{Shutdown}!Chess::LogicalDevice@{Chess::LogicalDevice}}
+\doxysubsubsection{\texorpdfstring{Shutdown()}{Shutdown()}}
+{\footnotesize\ttfamily static void Chess\+::\+Logical\+Device\+::\+Shutdown (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_logical_device_8h_source_l00022}{22}} of file \mbox{\hyperlink{_logical_device_8h_source}{Logical\+Device.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+core/src/\+Renderer/Logical\+Device.\+h\item 
+core/src/\+Renderer/Logical\+Device.\+cpp\end{DoxyCompactItemize}

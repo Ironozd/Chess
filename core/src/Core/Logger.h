@@ -6,6 +6,14 @@
 #include <spdlog/sinks/stdout_color_sinks.h>
 #include <spdlog/sinks/basic_file_sink.h>
 
+/**
+ * @brief Logger file
+ * 
+ * @note Inspired by TheCherno.
+ * 
+ * @todo Only include LOGGER functions during DEBUG configuration.
+ */
+
 namespace Chess
 {
 

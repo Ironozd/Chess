@@ -1,0 +1,55 @@
+\doxysection{cocoa\+\_\+joystick.\+h}
+\hypertarget{cocoa__joystick_8h_source}{}\label{cocoa__joystick_8h_source}\index{deps/glfw/src/cocoa\_joystick.h@{deps/glfw/src/cocoa\_joystick.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{cocoa__joystick_8h_source_l00001}00001\ \textcolor{comment}{//========================================================================}}
+\DoxyCodeLine{\Hypertarget{cocoa__joystick_8h_source_l00002}00002\ \textcolor{comment}{//\ GLFW\ 3.5\ Cocoa\ -\/\ www.glfw.org}}
+\DoxyCodeLine{\Hypertarget{cocoa__joystick_8h_source_l00003}00003\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{cocoa__joystick_8h_source_l00004}00004\ \textcolor{comment}{//\ Copyright\ (c)\ 2006-\/2017\ Camilla\ Löwy\ <elmindreda@glfw.org>}}
+\DoxyCodeLine{\Hypertarget{cocoa__joystick_8h_source_l00005}00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{cocoa__joystick_8h_source_l00006}00006\ \textcolor{comment}{//\ This\ software\ is\ provided\ 'as-\/is',\ without\ any\ express\ or\ implied}}
+\DoxyCodeLine{\Hypertarget{cocoa__joystick_8h_source_l00007}00007\ \textcolor{comment}{//\ warranty.\ In\ no\ event\ will\ the\ authors\ be\ held\ liable\ for\ any\ damages}}
+\DoxyCodeLine{\Hypertarget{cocoa__joystick_8h_source_l00008}00008\ \textcolor{comment}{//\ arising\ from\ the\ use\ of\ this\ software.}}
+\DoxyCodeLine{\Hypertarget{cocoa__joystick_8h_source_l00009}00009\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{cocoa__joystick_8h_source_l00010}00010\ \textcolor{comment}{//\ Permission\ is\ granted\ to\ anyone\ to\ use\ this\ software\ for\ any\ purpose,}}
+\DoxyCodeLine{\Hypertarget{cocoa__joystick_8h_source_l00011}00011\ \textcolor{comment}{//\ including\ commercial\ applications,\ and\ to\ alter\ it\ and\ redistribute\ it}}
+\DoxyCodeLine{\Hypertarget{cocoa__joystick_8h_source_l00012}00012\ \textcolor{comment}{//\ freely,\ subject\ to\ the\ following\ restrictions:}}
+\DoxyCodeLine{\Hypertarget{cocoa__joystick_8h_source_l00013}00013\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{cocoa__joystick_8h_source_l00014}00014\ \textcolor{comment}{//\ 1.\ The\ origin\ of\ this\ software\ must\ not\ be\ misrepresented;\ you\ must\ not}}
+\DoxyCodeLine{\Hypertarget{cocoa__joystick_8h_source_l00015}00015\ \textcolor{comment}{//\ \ \ \ claim\ that\ you\ wrote\ the\ original\ software.\ If\ you\ use\ this\ software}}
+\DoxyCodeLine{\Hypertarget{cocoa__joystick_8h_source_l00016}00016\ \textcolor{comment}{//\ \ \ \ in\ a\ product,\ an\ acknowledgment\ in\ the\ product\ documentation\ would}}
+\DoxyCodeLine{\Hypertarget{cocoa__joystick_8h_source_l00017}00017\ \textcolor{comment}{//\ \ \ \ be\ appreciated\ but\ is\ not\ required.}}
+\DoxyCodeLine{\Hypertarget{cocoa__joystick_8h_source_l00018}00018\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{cocoa__joystick_8h_source_l00019}00019\ \textcolor{comment}{//\ 2.\ Altered\ source\ versions\ must\ be\ plainly\ marked\ as\ such,\ and\ must\ not}}
+\DoxyCodeLine{\Hypertarget{cocoa__joystick_8h_source_l00020}00020\ \textcolor{comment}{//\ \ \ \ be\ misrepresented\ as\ being\ the\ original\ software.}}
+\DoxyCodeLine{\Hypertarget{cocoa__joystick_8h_source_l00021}00021\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{cocoa__joystick_8h_source_l00022}00022\ \textcolor{comment}{//\ 3.\ This\ notice\ may\ not\ be\ removed\ or\ altered\ from\ any\ source}}
+\DoxyCodeLine{\Hypertarget{cocoa__joystick_8h_source_l00023}00023\ \textcolor{comment}{//\ \ \ \ distribution.}}
+\DoxyCodeLine{\Hypertarget{cocoa__joystick_8h_source_l00024}00024\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{cocoa__joystick_8h_source_l00025}00025\ \textcolor{comment}{//========================================================================}}
+\DoxyCodeLine{\Hypertarget{cocoa__joystick_8h_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{cocoa__joystick_8h_source_l00027}00027\ \textcolor{preprocessor}{\#include\ <IOKit/IOKitLib.h>}}
+\DoxyCodeLine{\Hypertarget{cocoa__joystick_8h_source_l00028}00028\ \textcolor{preprocessor}{\#include\ <IOKit/IOCFPlugIn.h>}}
+\DoxyCodeLine{\Hypertarget{cocoa__joystick_8h_source_l00029}00029\ \textcolor{preprocessor}{\#include\ <IOKit/hid/IOHIDKeys.h>}}
+\DoxyCodeLine{\Hypertarget{cocoa__joystick_8h_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{cocoa__joystick_8h_source_l00031}00031\ \textcolor{preprocessor}{\#define\ GLFW\_COCOA\_JOYSTICK\_STATE\ \ \ \ \ \ \ \ \ \_GLFWjoystickNS\ ns;}}
+\DoxyCodeLine{\Hypertarget{cocoa__joystick_8h_source_l00032}00032\ \textcolor{preprocessor}{\#define\ GLFW\_COCOA\_LIBRARY\_JOYSTICK\_STATE}}
+\DoxyCodeLine{\Hypertarget{cocoa__joystick_8h_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{cocoa__joystick_8h_source_l00034}00034\ \textcolor{comment}{//\ Cocoa-\/specific\ per-\/joystick\ data}}
+\DoxyCodeLine{\Hypertarget{cocoa__joystick_8h_source_l00035}00035\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{cocoa__joystick_8h_source_l00036}\mbox{\hyperlink{struct___g_l_f_wjoystick_n_s}{00036}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct___g_l_f_wjoystick_n_s}{\_GLFWjoystickNS}}}
+\DoxyCodeLine{\Hypertarget{cocoa__joystick_8h_source_l00037}00037\ \{}
+\DoxyCodeLine{\Hypertarget{cocoa__joystick_8h_source_l00038}00038\ \ \ \ \ IOHIDDeviceRef\ \ \ \ \ \ device;}
+\DoxyCodeLine{\Hypertarget{cocoa__joystick_8h_source_l00039}00039\ \ \ \ \ CFMutableArrayRef\ \ \ axes;}
+\DoxyCodeLine{\Hypertarget{cocoa__joystick_8h_source_l00040}00040\ \ \ \ \ CFMutableArrayRef\ \ \ buttons;}
+\DoxyCodeLine{\Hypertarget{cocoa__joystick_8h_source_l00041}00041\ \ \ \ \ CFMutableArrayRef\ \ \ hats;}
+\DoxyCodeLine{\Hypertarget{cocoa__joystick_8h_source_l00042}00042\ \}\ \mbox{\hyperlink{struct___g_l_f_wjoystick_n_s}{\_GLFWjoystickNS}};}
+\DoxyCodeLine{\Hypertarget{cocoa__joystick_8h_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{cocoa__joystick_8h_source_l00044}00044\ GLFWbool\ \_glfwInitJoysticksCocoa(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{cocoa__joystick_8h_source_l00045}00045\ \textcolor{keywordtype}{void}\ \_glfwTerminateJoysticksCocoa(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{cocoa__joystick_8h_source_l00046}00046\ GLFWbool\ \_glfwPollJoystickCocoa(\mbox{\hyperlink{struct___g_l_f_wjoystick}{\_GLFWjoystick}}*\ js,\ \textcolor{keywordtype}{int}\ mode);}
+\DoxyCodeLine{\Hypertarget{cocoa__joystick_8h_source_l00047}00047\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \_glfwGetMappingNameCocoa(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{cocoa__joystick_8h_source_l00048}00048\ \textcolor{keywordtype}{void}\ \_glfwUpdateGamepadGUIDCocoa(\textcolor{keywordtype}{char}*\ guid);}
+\DoxyCodeLine{\Hypertarget{cocoa__joystick_8h_source_l00049}00049\ }
+
+\end{DoxyCode}

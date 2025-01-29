@@ -1,0 +1,41 @@
+\chapter{Todo List}
+\hypertarget{todo}{}\label{todo}\index{Todo List@{Todo List}}
+
+\begin{DoxyRefList}
+\item[Namespace \doxylink{namespace_chess}{Chess} ]\label{todo__todo000011}%
+\Hypertarget{todo__todo000011}%
+Only include LOGGER functions during DEBUG configuration.  
+\item[Member \doxylink{class_chess_1_1_bitboard_aab941a568d287baf7224bec2847c80fd}{Chess\+::Bitboard\+::Reset} (const size\+\_\+t \&index)]\label{todo__todo000002}%
+\Hypertarget{todo__todo000002}%
+Wrap the reset function around a performance critical bit-\/test to see whether the provided index value is 1.  
+\item[Member \doxylink{class_chess_1_1_bitboard_a639f1f0cba77a1b95b4c8b0bdd6a2994}{Chess\+::Bitboard\+::Set} (const size\+\_\+t \&index)]\label{todo__todo000001}%
+\Hypertarget{todo__todo000001}%
+Implement Copy \& Move constructors. 
+\item[Member \doxylink{class_chess_1_1_board_a15ee7b2a52ae08f051407d336110fcea}{Chess\+::Board\+::Populate} (const \doxylink{class_chess_1_1_fen_string}{Fen\+String} \&fen)]\label{todo__todo000007}%
+\Hypertarget{todo__todo000007}%
+Incomplete  
+\item[Struct \doxylink{struct_chess_1_1_board_components}{Chess\+::Board\+Components} ]\label{todo__todo000003}%
+\Hypertarget{todo__todo000003}%
+Each type (except "{}\+Bitboard"{} m\+\_\+\+Layout) will be changed to be represented in a bit form (e.\+g. White\+King\+Castle\+Ability = 0b0001).  
+\item[Member \doxylink{namespace_chess_a3560352671dbb6913bc56621ea6bdd47}{Chess\+::display\+\_\+bits} (T bits)]\label{todo__todo000005}%
+\Hypertarget{todo__todo000005}%
+Modify spdlog to support std\+::bit  
+\item[Class \doxylink{class_chess_1_1_engine}{Chess\+::Engine} ]\label{todo__todo000009}%
+\Hypertarget{todo__todo000009}%
+Seperate both engines (\doxylink{class_chess_1_1_renderer}{Renderer}, \doxylink{namespace_chess}{Chess}) 
+\item[Class \doxylink{class_chess_1_1_evaluation}{Chess\+::Evaluation} ]\label{todo__todo000008}%
+\Hypertarget{todo__todo000008}%
+Implement, re-\/think structure.  
+\item[Class \doxylink{class_chess_1_1_fen_string}{Chess\+::Fen\+String} ]\label{todo__todo000004}%
+\Hypertarget{todo__todo000004}%
+Is the use of a wrapper to hold a single function necessary, and is there a good reason to do so?  
+\item[Class \doxylink{class_chess_1_1_renderer}{Chess\+::Renderer} ]\label{todo__todo000014}%
+\Hypertarget{todo__todo000014}%
+Rename the class to suit Vulkan Compute API, and re-\/think structure.  
+\item[Struct \doxylink{struct_chess_1_1_renderer_specification}{Chess\+::Renderer\+Specification} ]\label{todo__todo000013}%
+\Hypertarget{todo__todo000013}%
+Specification behavior (holding reference of a stack allocated memory) is subject to change.  
+\item[Member \doxylink{class_chess_1_1_window_a9cf7357e822303b352bd3c4dfccfe459}{Chess\+::Window\+::\texorpdfstring{$\sim$}{\string~}\+Window} ()]\label{todo__todo000015}%
+\Hypertarget{todo__todo000015}%
+Rethink shutdown structure. 
+\end{DoxyRefList}

@@ -8,6 +8,11 @@
 
 namespace Chess
 {
+    /**
+     * @brief This struct holds members of Board class that are related to Chess functionality.
+     * 
+     * @todo Each type (except "Bitboard" m_Layout) will be changed to be represented in a bit form (e.g. WhiteKingCastleAbility = 0b0001).
+     */
     struct BoardComponents
     {
         Bitboard m_Layout[12];
