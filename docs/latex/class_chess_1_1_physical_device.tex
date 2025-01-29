@@ -1,0 +1,71 @@
+\doxysection{Chess\+::Physical\+Device Class Reference}
+\hypertarget{class_chess_1_1_physical_device}{}\label{class_chess_1_1_physical_device}\index{Chess::PhysicalDevice@{Chess::PhysicalDevice}}
+
+
+Physical Device singleton.  
+
+
+
+
+{\ttfamily \#include $<$Physical\+Device.\+h$>$}
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_chess_1_1_physical_device_ac0d67b8a5eccaf7bf29e37d7466145c8}{Pick}} (const \mbox{\hyperlink{struct_chess_1_1_physical_device_specification}{Physical\+Device\+Specification}} \&spec)
+\item 
+static Vk\+Physical\+Device \mbox{\hyperlink{class_chess_1_1_physical_device_a9539a4958ddec7ca2a94b260aa860ce2}{Data}} ()
+\item 
+static \mbox{\hyperlink{struct_chess_1_1_queue_family_indices}{Queue\+Family\+Indices}} \mbox{\hyperlink{class_chess_1_1_physical_device_ac13a2e2b7b602931cfd3620710ab7081}{Get\+Family\+Indices}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Physical Device singleton. 
+
+\begin{DoxyNote}{Note}
+Since Vulkan Vk\+Device (\doxylink{class_chess_1_1_physical_device}{Physical\+Device}) is expected to be picked once and Queues\+Families are created depending on this class, this class was made a singleton. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{_physical_device_8h_source_l00036}{36}} of file \mbox{\hyperlink{_physical_device_8h_source}{Physical\+Device.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_chess_1_1_physical_device_a9539a4958ddec7ca2a94b260aa860ce2}\label{class_chess_1_1_physical_device_a9539a4958ddec7ca2a94b260aa860ce2} 
+\index{Chess::PhysicalDevice@{Chess::PhysicalDevice}!Data@{Data}}
+\index{Data@{Data}!Chess::PhysicalDevice@{Chess::PhysicalDevice}}
+\doxysubsubsection{\texorpdfstring{Data()}{Data()}}
+{\footnotesize\ttfamily static Vk\+Physical\+Device Chess\+::\+Physical\+Device\+::\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_physical_device_8h_source_l00041}{41}} of file \mbox{\hyperlink{_physical_device_8h_source}{Physical\+Device.\+h}}.
+
+\Hypertarget{class_chess_1_1_physical_device_ac13a2e2b7b602931cfd3620710ab7081}\label{class_chess_1_1_physical_device_ac13a2e2b7b602931cfd3620710ab7081} 
+\index{Chess::PhysicalDevice@{Chess::PhysicalDevice}!GetFamilyIndices@{GetFamilyIndices}}
+\index{GetFamilyIndices@{GetFamilyIndices}!Chess::PhysicalDevice@{Chess::PhysicalDevice}}
+\doxysubsubsection{\texorpdfstring{GetFamilyIndices()}{GetFamilyIndices()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{struct_chess_1_1_queue_family_indices}{Queue\+Family\+Indices}} Chess\+::\+Physical\+Device\+::\+Get\+Family\+Indices (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_physical_device_8h_source_l00043}{43}} of file \mbox{\hyperlink{_physical_device_8h_source}{Physical\+Device.\+h}}.
+
+\Hypertarget{class_chess_1_1_physical_device_ac0d67b8a5eccaf7bf29e37d7466145c8}\label{class_chess_1_1_physical_device_ac0d67b8a5eccaf7bf29e37d7466145c8} 
+\index{Chess::PhysicalDevice@{Chess::PhysicalDevice}!Pick@{Pick}}
+\index{Pick@{Pick}!Chess::PhysicalDevice@{Chess::PhysicalDevice}}
+\doxysubsubsection{\texorpdfstring{Pick()}{Pick()}}
+{\footnotesize\ttfamily static void Chess\+::\+Physical\+Device\+::\+Pick (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_chess_1_1_physical_device_specification}{Physical\+Device\+Specification}} \&}]{spec }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_physical_device_8h_source_l00039}{39}} of file \mbox{\hyperlink{_physical_device_8h_source}{Physical\+Device.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+core/src/\+Renderer/Physical\+Device.\+h\item 
+core/src/\+Renderer/Physical\+Device.\+cpp\end{DoxyCompactItemize}

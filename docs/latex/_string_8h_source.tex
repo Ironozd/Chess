@@ -1,0 +1,66 @@
+\doxysection{String.\+h}
+\hypertarget{_string_8h_source}{}\label{_string_8h_source}\index{core/src/ChessComponents/String.h@{core/src/ChessComponents/String.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <string\_view>}}
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}Components.h"{}}}
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <deque>}}
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00007}00007\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_chess}{Chess}}}
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00008}00008\ \{}
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00014}\mbox{\hyperlink{class_chess_1_1_fen_string}{00014}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_chess_1_1_fen_string}{FenString}}}
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00015}00015\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00016}00016\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00022}00022\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_chess_1_1_fen_string}{FenString}}(\textcolor{keyword}{const}\ std::string\_view\ \&content);}
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00023}00023\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_chess_1_1_fen_string}{FenString}}();}
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00025}00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_chess_1_1_fen_string}{FenString}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_chess_1_1_fen_string}{FenString}}\ \&other);}
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00026}00026\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_chess_1_1_fen_string}{FenString}}(\mbox{\hyperlink{class_chess_1_1_fen_string}{FenString}}\ \&\&other);}
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Overloads\ */}}
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00029}00029\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ operator=(\textcolor{keyword}{const}\ std::string\_view\ \&content)}
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00030}00030\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>m\_Content\ =\ content;}
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00032}00032\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00034}00034\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_chess_1_1_fen_string}{FenString}}\ \&operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_chess_1_1_fen_string}{FenString}}\ \&content)}
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00035}00035\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>m\_Content\ =\ content.m\_Content;}
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00038}00038\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00040}00040\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ operator=(std::string\_view\ \&\&content)}
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00041}00041\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>m\_Content\ =\ std::move(content);}
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00043}00043\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00045}00045\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_chess_1_1_fen_string}{FenString}}\ \&operator=(\mbox{\hyperlink{class_chess_1_1_fen_string}{FenString}}\ \&\&content)}
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00046}00046\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ this-\/>m\_Content\ =\ std::move(content.m\_Content);}
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00049}00049\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00051}00051\ \ \ \ \ \ \ \ \ \textcolor{keyword}{operator}\ std::string\_view()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00052}00052\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_Content;}
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00054}00054\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00061}\mbox{\hyperlink{class_chess_1_1_fen_string_aebc04de38ce2efcbc7126d6d7f8d128e}{00061}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{class_chess_1_1_fen_string_aebc04de38ce2efcbc7126d6d7f8d128e}{Data}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00062}00062\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_Content.data();}
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00064}00064\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00072}00072\ \ \ \ \ \ \ \ \ std::deque<FenString>\ \mbox{\hyperlink{class_chess_1_1_fen_string_a8348fca8e560381e776d52e3dca5eec6}{Split}}(std::string\_view\ delim)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00079}\mbox{\hyperlink{class_chess_1_1_fen_string_ad5c001009dd9a9d6ee2ce603b3011560}{00079}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{class_chess_1_1_fen_string_ad5c001009dd9a9d6ee2ce603b3011560}{Size}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00080}00080\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_Content.size();}
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00082}00082\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00083}00083\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00084}00084\ \ \ \ \ \ \ \ \ std::string\_view\ m\_Content;}
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00085}00085\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_string_8h_source_l00086}00086\ \}}
+
+\end{DoxyCode}

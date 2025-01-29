@@ -1,0 +1,86 @@
+\doxysection{Window.\+cpp}
+\hypertarget{_window_8cpp_source}{}\label{_window_8cpp_source}\index{core/src/Window/Window.cpp@{core/src/Window/Window.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}Window.h"{}}}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#define\ VK\_USE\_PLATFORM\_WIN32\_KHR}}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#define\ GLFW\_INCLUDE\_VULKAN}}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <GLFW/glfw3.h>}}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#define\ GLFW\_EXPOSE\_NATIVE\_WIN32}}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <GLFW/glfw3native.h>}}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}../Renderer/Instance.h"{}}}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}../Core/Logger.h"{}}}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00012}00012\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_chess}{Chess}}}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00013}00013\ \{}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00014}00014\ \ \ \ \ Window::Window()}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00015}00015\ \ \ \ \ \ \ \ \ :\ m\_Window(nullptr)}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00016}00016\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00017}00017\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Initializes\ the\ GLFW\ library.}}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00018}00018\ \ \ \ \ \ \ \ \ glfwWindowHint(GLFW\_CLIENT\_API,\ GLFW\_NO\_API);}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00019}00019\ \ \ \ \ \ \ \ \ glfwWindowHint(GLFW\_RESIZABLE,\ GLFW\_FALSE);}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00020}00020\ \ \ \ \ \ \ \ \ glfwInit();}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00021}00021\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00023}\mbox{\hyperlink{class_chess_1_1_window_a9cf7357e822303b352bd3c4dfccfe459}{00023}}\ \ \ \ \ Window::\string~Window()}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00024}00024\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00025}00025\ \ \ \ \ \ \ \ \ Terminate();\ }
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00026}00026\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00028}\mbox{\hyperlink{class_chess_1_1_window_a0b44f2f50c1ae6b3738003a53d3e7d6a}{00028}}\ \ \ \ \ \textcolor{keywordtype}{void}\ Window::Initialize(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_chess_1_1_window_specification}{WindowSpecification}}\ \&spec)}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00029}00029\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00030}00030\ \ \ \ \ \ \ \ \ m\_Window\ =\ glfwCreateWindow(spec.Width,\ spec.Height,\ spec.Title.data(),\ \textcolor{keyword}{nullptr},\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00031}00031\ \ \ \ \ \ \ \ \ glfwMakeContextCurrent(m\_Window);}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00032}00032\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00034}\mbox{\hyperlink{class_chess_1_1_window_aa27d3921274772cd973066a97b74cacd}{00034}}\ \ \ \ \ \textcolor{keywordtype}{void}\ Window::Terminate()}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00035}00035\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00036}00036\ \ \ \ \ \ \ \ \ glfwDestroyWindow(m\_Window);}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00038}00038\ \ \ \ \ \ \ \ \ glfwTerminate();}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00039}00039\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00041}\mbox{\hyperlink{class_chess_1_1_window_a5e14c1310a1b02622f5f8bfa452265db}{00041}}\ \ \ \ \ \textcolor{keywordtype}{void}\ Window::OnUpdate()}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00042}00042\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ glfwPollEvents();}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00044}00044\ \ \ \ \ \ \ \ \ glfwSwapBuffers(m\_Window);}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00045}00045\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00047}00047\ \ \ \ \ std::vector<const\ char\ *>\ Window::GetExtensions()}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00048}00048\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00049}00049\ \ \ \ \ \ \ \ \ uint32\_t\ extensionCount\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00050}00050\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ **glfwExtensions\ =\ glfwGetRequiredInstanceExtensions(\&extensionCount);}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00052}00052\ \ \ \ \ \ \ \ \ std::vector<const\ char\ *>\ extensions(glfwExtensions,\ glfwExtensions\ +\ extensionCount);}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00054}00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Instance::IsValidationEnabled())}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00055}00055\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ extensions.push\_back(VK\_EXT\_DEBUG\_UTILS\_EXTENSION\_NAME);}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00057}00057\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ extensions;}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00060}00060\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00062}\mbox{\hyperlink{class_chess_1_1_window_aa1ea7beded38c8d602248e2084e64234}{00062}}\ \ \ \ \ \textcolor{keywordtype}{void}\ Window::CreateSurface()}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00063}00063\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00064}00064\ \ \ \ \ \ \ \ \ VkWin32SurfaceCreateInfoKHR\ createInfo\{\};}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00065}00065\ \ \ \ \ \ \ \ \ createInfo.sType\ =\ VK\_STRUCTURE\_TYPE\_WIN32\_SURFACE\_CREATE\_INFO\_KHR;}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00066}00066\ \ \ \ \ \ \ \ \ createInfo.hwnd\ =\ glfwGetWin32Window(m\_Window);}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00067}00067\ \ \ \ \ \ \ \ \ createInfo.hinstance\ =\ GetModuleHandle(\textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (vkCreateWin32SurfaceKHR(Instance::Data(),\ \&createInfo,\ \textcolor{keyword}{nullptr},\ \&m\_Surface)\ !=\ VK\_SUCCESS)}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00070}00070\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ LOG\_ERROR(\textcolor{stringliteral}{"{}Window\ surface\ creation\ failed!"{}});}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ assert(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00074}00074\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00076}00076\ \ \ \ \ \textcolor{keywordtype}{void}\ Window::DestroySurface()}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00077}00077\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00078}00078\ \ \ \ \ \ \ \ \ vkDestroySurfaceKHR(Instance::Data(),\ m\_Surface,\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00079}00079\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_window_8cpp_source_l00080}00080\ \}}
+
+\end{DoxyCode}

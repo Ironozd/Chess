@@ -1,0 +1,618 @@
+\doxysection{func\+\_\+common\+\_\+simd.\+inl}
+\hypertarget{func__common__simd_8inl_source}{}\label{func__common__simd_8inl_source}\index{deps/glm/glm/detail/func\_common\_simd.inl@{deps/glm/glm/detail/func\_common\_simd.inl}}
+\mbox{\hyperlink{func__common__simd_8inl}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00004}00004\ \textcolor{preprocessor}{\#if\ GLM\_ARCH\ \&\ GLM\_ARCH\_SSE2\_BIT}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{glm_2glm_2simd_2common_8h}{../simd/common.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <immintrin.h>}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00010}00010\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceglm}{glm}}\{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00011}00011\ \textcolor{keyword}{namespace\ }detail}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00012}00012\ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00013}00013\ \ \ \ \ \textcolor{keyword}{template}<qualifier\ Q>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00014}00014\ \ \ \ \ \textcolor{keyword}{struct\ }compute\_abs\_vector<4,\ float,\ Q,\ true>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00015}00015\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00016}00016\ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keyword}{static}\ vec<4,\ float,\ Q>\ call(vec<4,\ float,\ Q>\ \textcolor{keyword}{const}\&\ v)}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00017}00017\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00018}00018\ \ \ \ \ \ \ \ \ \ \ \ \ vec<4,\ float,\ Q>\ result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00019}00019\ \ \ \ \ \ \ \ \ \ \ \ \ result.data\ =\ glm\_vec4\_abs(v.data);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00020}00020\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00021}00021\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00022}00022\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00024}00024\ \ \ \ \ \textcolor{keyword}{template}<qualifier\ Q>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00025}00025\ \ \ \ \ \textcolor{keyword}{struct\ }compute\_abs\_vector<4,\ int,\ Q,\ true>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00026}00026\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00027}00027\ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keyword}{static}\ vec<4,\ int,\ Q>\ call(vec<4,\ int,\ Q>\ \textcolor{keyword}{const}\&\ v)}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00028}00028\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ vec<4,\ int,\ Q>\ result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ result.data\ =\ glm\_ivec4\_abs(v.data);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00032}00032\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00033}00033\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00035}00035\ \ \ \ \ \textcolor{keyword}{template}<qualifier\ Q>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00036}00036\ \ \ \ \ \textcolor{keyword}{struct\ }compute\_floor<4,\ float,\ Q,\ true>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00037}00037\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00038}00038\ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keyword}{static}\ vec<4,\ float,\ Q>\ call(vec<4,\ float,\ Q>\ \textcolor{keyword}{const}\&\ v)}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00039}00039\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ vec<4,\ float,\ Q>\ result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ result.data\ =\ glm\_vec4\_floor(v.data);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00043}00043\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00044}00044\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00046}00046\ \ \ \ \ \textcolor{keyword}{template}<qualifier\ Q>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00047}00047\ \ \ \ \ \textcolor{keyword}{struct\ }compute\_ceil<4,\ float,\ Q,\ true>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00048}00048\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00049}00049\ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keyword}{static}\ vec<4,\ float,\ Q>\ call(vec<4,\ float,\ Q>\ \textcolor{keyword}{const}\&\ v)}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00050}00050\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ vec<4,\ float,\ Q>\ result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ result.data\ =\ glm\_vec4\_ceil(v.data);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00054}00054\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00055}00055\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00057}00057\ \ \ \ \ \textcolor{keyword}{template}<qualifier\ Q>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00058}00058\ \ \ \ \ \textcolor{keyword}{struct\ }compute\_fract<4,\ float,\ Q,\ true>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00059}00059\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00060}00060\ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keyword}{static}\ vec<4,\ float,\ Q>\ call(vec<4,\ float,\ Q>\ \textcolor{keyword}{const}\&\ v)}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00061}00061\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ vec<4,\ float,\ Q>\ result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ result.data\ =\ glm\_vec4\_fract(v.data);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00065}00065\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00066}00066\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00068}00068\ \ \ \ \ \textcolor{keyword}{template}<qualifier\ Q>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00069}00069\ \ \ \ \ \textcolor{keyword}{struct\ }compute\_round<4,\ float,\ Q,\ true>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00070}00070\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00071}00071\ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keyword}{static}\ vec<4,\ float,\ Q>\ call(vec<4,\ float,\ Q>\ \textcolor{keyword}{const}\&\ v)}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00072}00072\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ vec<4,\ float,\ Q>\ result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ result.data\ =\ glm\_vec4\_round(v.data);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00076}00076\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00077}00077\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00079}00079\ \ \ \ \ \textcolor{keyword}{template}<qualifier\ Q>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00080}00080\ \ \ \ \ \textcolor{keyword}{struct\ }compute\_mod<4,\ float,\ Q,\ true>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00081}00081\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00082}00082\ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keyword}{static}\ vec<4,\ float,\ Q>\ call(vec<4,\ float,\ Q>\ \textcolor{keyword}{const}\&\ x,\ vec<4,\ float,\ Q>\ \textcolor{keyword}{const}\&\ y)}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00083}00083\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ vec<4,\ float,\ Q>\ result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ result.data\ =\ glm\_vec4\_mod(x.data,\ y.data);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00087}00087\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00088}00088\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00090}00090\ \ \ \ \ \textcolor{keyword}{template}<qualifier\ Q>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00091}00091\ \ \ \ \ \textcolor{keyword}{struct\ }compute\_min\_vector<4,\ float,\ Q,\ true>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00092}00092\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00093}00093\ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keyword}{static}\ vec<4,\ float,\ Q>\ call(vec<4,\ float,\ Q>\ \textcolor{keyword}{const}\&\ v1,\ vec<4,\ float,\ Q>\ \textcolor{keyword}{const}\&\ v2)}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00094}00094\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ vec<4,\ float,\ Q>\ result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ result.data\ =\ \_mm\_min\_ps(v1.data,\ v2.data);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00098}00098\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00099}00099\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00101}00101\ \ \ \ \ \textcolor{keyword}{template}<qualifier\ Q>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00102}00102\ \ \ \ \ \textcolor{keyword}{struct\ }compute\_min\_vector<4,\ int,\ Q,\ true>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00103}00103\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00104}00104\ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keyword}{static}\ vec<4,\ int,\ Q>\ call(vec<4,\ int,\ Q>\ \textcolor{keyword}{const}\&\ v1,\ vec<4,\ int,\ Q>\ \textcolor{keyword}{const}\&\ v2)}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00105}00105\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ vec<4,\ int,\ Q>\ result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ result.data\ =\ \_mm\_min\_epi32(v1.data,\ v2.data);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00109}00109\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00110}00110\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00112}00112\ \ \ \ \ \textcolor{keyword}{template}<qualifier\ Q>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00113}00113\ \ \ \ \ \textcolor{keyword}{struct\ }compute\_min\_vector<4,\ uint,\ Q,\ true>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00114}00114\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00115}00115\ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keyword}{static}\ vec<4,\ uint,\ Q>\ call(vec<4,\ uint,\ Q>\ \textcolor{keyword}{const}\&\ v1,\ vec<4,\ uint,\ Q>\ \textcolor{keyword}{const}\&\ v2)}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00116}00116\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ vec<4,\ uint,\ Q>\ result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ result.data\ =\ \_mm\_min\_epu32(v1.data,\ v2.data);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00120}00120\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00121}00121\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00123}00123\ \ \ \ \ \textcolor{keyword}{template}<qualifier\ Q>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00124}00124\ \ \ \ \ \textcolor{keyword}{struct\ }compute\_max\_vector<4,\ float,\ Q,\ true>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00125}00125\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00126}00126\ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keyword}{static}\ vec<4,\ float,\ Q>\ call(vec<4,\ float,\ Q>\ \textcolor{keyword}{const}\&\ v1,\ vec<4,\ float,\ Q>\ \textcolor{keyword}{const}\&\ v2)}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00127}00127\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ vec<4,\ float,\ Q>\ result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ result.data\ =\ \_mm\_max\_ps(v1.data,\ v2.data);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00131}00131\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00132}00132\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00133}00133\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00134}00134\ \ \ \ \ \textcolor{keyword}{template}<qualifier\ Q>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00135}00135\ \ \ \ \ \textcolor{keyword}{struct\ }compute\_max\_vector<4,\ int,\ Q,\ true>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00136}00136\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00137}00137\ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keyword}{static}\ vec<4,\ int,\ Q>\ call(vec<4,\ int,\ Q>\ \textcolor{keyword}{const}\&\ v1,\ vec<4,\ int,\ Q>\ \textcolor{keyword}{const}\&\ v2)}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00138}00138\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ vec<4,\ int,\ Q>\ result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ result.data\ =\ \_mm\_max\_epi32(v1.data,\ v2.data);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00142}00142\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00143}00143\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00145}00145\ \ \ \ \ \textcolor{keyword}{template}<qualifier\ Q>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00146}00146\ \ \ \ \ \textcolor{keyword}{struct\ }compute\_max\_vector<4,\ uint,\ Q,\ true>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00147}00147\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00148}00148\ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keyword}{static}\ vec<4,\ uint,\ Q>\ call(vec<4,\ uint,\ Q>\ \textcolor{keyword}{const}\&\ v1,\ vec<4,\ uint,\ Q>\ \textcolor{keyword}{const}\&\ v2)}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00149}00149\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ vec<4,\ uint,\ Q>\ result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ result.data\ =\ \_mm\_max\_epu32(v1.data,\ v2.data);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00153}00153\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00154}00154\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00155}00155\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00156}00156\ \ \ \ \ \textcolor{keyword}{template}<qualifier\ Q>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00157}00157\ \ \ \ \ \textcolor{keyword}{struct\ }compute\_clamp\_vector<4,\ float,\ Q,\ true>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00158}00158\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00159}00159\ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keyword}{static}\ vec<4,\ float,\ Q>\ call(vec<4,\ float,\ Q>\ \textcolor{keyword}{const}\&\ x,\ vec<4,\ float,\ Q>\ \textcolor{keyword}{const}\&\ minVal,\ vec<4,\ float,\ Q>\ \textcolor{keyword}{const}\&\ maxVal)}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00160}00160\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ vec<4,\ float,\ Q>\ result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ \ result.data\ =\ \_mm\_min\_ps(\_mm\_max\_ps(x.data,\ minVal.data),\ maxVal.data);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00164}00164\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00165}00165\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00166}00166\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00167}00167\ \ \ \ \ \textcolor{keyword}{template}<qualifier\ Q>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00168}00168\ \ \ \ \ \textcolor{keyword}{struct\ }compute\_clamp\_vector<4,\ int,\ Q,\ true>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00169}00169\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00170}00170\ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keyword}{static}\ vec<4,\ int,\ Q>\ call(vec<4,\ int,\ Q>\ \textcolor{keyword}{const}\&\ x,\ vec<4,\ int,\ Q>\ \textcolor{keyword}{const}\&\ minVal,\ vec<4,\ int,\ Q>\ \textcolor{keyword}{const}\&\ maxVal)}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00171}00171\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ vec<4,\ int,\ Q>\ result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ result.data\ =\ \_mm\_min\_epi32(\_mm\_max\_epi32(x.data,\ minVal.data),\ maxVal.data);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00175}00175\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00176}00176\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00177}00177\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00178}00178\ \ \ \ \ \textcolor{keyword}{template}<qualifier\ Q>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00179}00179\ \ \ \ \ \textcolor{keyword}{struct\ }compute\_clamp\_vector<4,\ uint,\ Q,\ true>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00180}00180\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00181}00181\ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keyword}{static}\ vec<4,\ uint,\ Q>\ call(vec<4,\ uint,\ Q>\ \textcolor{keyword}{const}\&\ x,\ vec<4,\ uint,\ Q>\ \textcolor{keyword}{const}\&\ minVal,\ vec<4,\ uint,\ Q>\ \textcolor{keyword}{const}\&\ maxVal)}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00182}00182\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00183}00183\ \ \ \ \ \ \ \ \ \ \ \ \ vec<4,\ uint,\ Q>\ result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00184}00184\ \ \ \ \ \ \ \ \ \ \ \ \ result.data\ =\ \_mm\_min\_epu32(\_mm\_max\_epu32(x.data,\ minVal.data),\ maxVal.data);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00185}00185\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00186}00186\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00187}00187\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00188}00188\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00189}00189\ \ \ \ \ \textcolor{keyword}{template}<qualifier\ Q>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00190}00190\ \ \ \ \ \textcolor{keyword}{struct\ }compute\_mix\_vector<4,\ float,\ bool,\ Q,\ true>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00191}00191\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00192}00192\ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keyword}{static}\ vec<4,\ float,\ Q>\ call(vec<4,\ float,\ Q>\ \textcolor{keyword}{const}\&\ x,\ vec<4,\ float,\ Q>\ \textcolor{keyword}{const}\&\ y,\ vec<4,\ bool,\ Q>\ \textcolor{keyword}{const}\&\ a)}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00193}00193\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00194}00194\ \ \ \ \ \ \ \ \ \ \ \ \ \_\_m128i\ \textcolor{keyword}{const}\ Load\ =\ \_mm\_set\_epi32(-\/\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(a.w),\ -\/\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(a.z),\ -\/\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(a.y),\ -\/\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(a.x));}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00195}00195\ \ \ \ \ \ \ \ \ \ \ \ \ \_\_m128\ \textcolor{keyword}{const}\ Mask\ =\ \_mm\_castsi128\_ps(Load);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00196}00196\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00197}00197\ \ \ \ \ \ \ \ \ \ \ \ \ vec<4,\ float,\ Q>\ Result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00198}00198\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ \ \ \ \ if\ 0\ \&\&\ GLM\_ARCH\ \&\ GLM\_ARCH\_AVX}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00199}00199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Result.data\ =\ \_mm\_blendv\_ps(x.data,\ y.data,\ Mask);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00200}00200\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ \ \ \ \ else}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00201}00201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Result.data\ =\ \_mm\_or\_ps(\_mm\_and\_ps(Mask,\ y.data),\ \_mm\_andnot\_ps(Mask,\ x.data));}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00202}00202\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ \ \ \ \ endif}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00203}00203\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00204}00204\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00205}00205\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00206}00206\ \textcolor{comment}{/*\ FIXME}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00207}00207\ \textcolor{comment}{\ \ \ \ template<qualifier\ Q>}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00208}00208\ \textcolor{comment}{\ \ \ \ struct\ compute\_step\_vector<float,\ Q,\ tvec4>}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00209}00209\ \textcolor{comment}{\ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00210}00210\ \textcolor{comment}{\ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ static\ vec<4,\ float,\ Q>\ call(vec<4,\ float,\ Q>\ const\&\ edge,\ vec<4,\ float,\ Q>\ const\&\ x)}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00211}00211\ \textcolor{comment}{\ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00212}00212\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ vec<4,\ float,\ Q>\ Result;}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00213}00213\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ result.data\ =\ glm\_vec4\_step(edge.data,\ x.data);}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00214}00214\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ return\ result;}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00215}00215\ \textcolor{comment}{\ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00216}00216\ \textcolor{comment}{\ \ \ \ \};}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00217}00217\ \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00218}00218\ \ \ \ \ \textcolor{keyword}{template}<qualifier\ Q>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00219}00219\ \ \ \ \ \textcolor{keyword}{struct\ }compute\_smoothstep\_vector<4,\ float,\ Q,\ true>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00220}00220\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00221}00221\ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keyword}{static}\ vec<4,\ float,\ Q>\ call(vec<4,\ float,\ Q>\ \textcolor{keyword}{const}\&\ edge0,\ vec<4,\ float,\ Q>\ \textcolor{keyword}{const}\&\ edge1,\ vec<4,\ float,\ Q>\ \textcolor{keyword}{const}\&\ x)}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00222}00222\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00223}00223\ \ \ \ \ \ \ \ \ \ \ \ \ vec<4,\ float,\ Q>\ Result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00224}00224\ \ \ \ \ \ \ \ \ \ \ \ \ Result.data\ =\ glm\_vec4\_smoothstep(edge0.data,\ edge1.data,\ x.data);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00225}00225\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00226}00226\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00227}00227\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00228}00228\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00229}00229\ \ \ \ \ \textcolor{keyword}{template}<qualifier\ Q>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00230}00230\ \ \ \ \ \textcolor{keyword}{struct\ }compute\_fma<4,\ float,\ Q,\ true>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00231}00231\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00232}00232\ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keyword}{static}\ vec<4,\ float,\ Q>\ call(vec<4,\ float,\ Q>\ \textcolor{keyword}{const}\&\ a,\ vec<4,\ float,\ Q>\ \textcolor{keyword}{const}\&\ b,\ vec<4,\ float,\ Q>\ \textcolor{keyword}{const}\&\ c)}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00233}00233\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00234}00234\ \ \ \ \ \ \ \ \ \ \ \ \ vec<4,\ float,\ Q>\ Result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00235}00235\ \ \ \ \ \ \ \ \ \ \ \ \ Result.data\ =\ glm\_vec4\_fma(a.data,\ b.data,\ c.data);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00236}00236\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00237}00237\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00238}00238\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00239}00239\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00240}00240\ \ \ \ \ \textcolor{keyword}{template}<qualifier\ Q>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00241}00241\ \ \ \ \ \textcolor{keyword}{struct\ }compute\_fma<3,\ float,\ Q,\ true>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00242}00242\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00243}00243\ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keyword}{static}\ vec<3,\ float,\ Q>\ call(vec<3,\ float,\ Q>\ \textcolor{keyword}{const}\&\ a,\ vec<3,\ float,\ Q>\ \textcolor{keyword}{const}\&\ b,\ vec<3,\ float,\ Q>\ \textcolor{keyword}{const}\&\ c)}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00244}00244\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00245}00245\ \ \ \ \ \ \ \ \ \ \ \ \ vec<3,\ float,\ Q>\ Result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00246}00246\ \ \ \ \ \ \ \ \ \ \ \ \ Result.data\ =\ glm\_vec4\_fma(a.data,\ b.data,\ c.data);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00247}00247\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00248}00248\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00249}00249\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00250}00250\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00251}00251\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00252}00252\ \ \ \ \ \textcolor{keyword}{template}<qualifier\ Q>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00253}00253\ \ \ \ \ \textcolor{keyword}{struct\ }compute\_fma<4,\ double,\ Q,\ true>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00254}00254\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00255}00255\ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keyword}{static}\ vec<4,\ double,\ Q>\ call(vec<4,\ double,\ Q>\ \textcolor{keyword}{const}\&\ a,\ vec<4,\ double,\ Q>\ \textcolor{keyword}{const}\&\ b,\ vec<4,\ double,\ Q>\ \textcolor{keyword}{const}\&\ c)}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00256}00256\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00257}00257\ \ \ \ \ \ \ \ \ \ \ \ \ vec<4,\ double,\ Q>\ Result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00258}00258\ \textcolor{preprocessor}{\#\ \ \ if\ (GLM\_ARCH\ \&\ GLM\_ARCH\_AVX2\_BIT)\ \&\&\ !(GLM\_COMPILER\ \&\ GLM\_COMPILER\_CLANG)}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00259}00259\ \ \ \ \ \ \ \ \ \ \ \ \ Result.data\ =\ \_mm256\_fmadd\_pd(a.data,\ b.data,\ c.data);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00260}00260\ \textcolor{preprocessor}{\#\ \ \ elif\ (GLM\_ARCH\ \&\ GLM\_ARCH\_AVX\_BIT)}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00261}00261\ \ \ \ \ \ \ \ \ \ \ \ \ Result.data\ =\ \_mm256\_add\_pd(\_mm256\_mul\_pd(a.data,\ b.data),\ c.data);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00262}00262\ \textcolor{preprocessor}{\#\ \ \ else}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00263}00263\ \ \ \ \ \ \ \ \ \ \ \ \ Result.data.setv(0,\ \_mm\_add\_pd(\_mm\_mul\_pd(a.data.getv(0),\ b.data.getv(0)),\ c.data.getv(0)));}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00264}00264\ \ \ \ \ \ \ \ \ \ \ \ \ Result.data.setv(1,\ \_mm\_add\_pd(\_mm\_mul\_pd(a.data.getv(1),\ b.data.getv(1)),\ c.data.getv(1)));}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00265}00265\ \textcolor{preprocessor}{\#\ \ \ endif}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00266}00266\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00267}00267\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00268}00268\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00269}00269\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00270}00270\ \ \ \ \ \textcolor{comment}{//\ copy\ vec3\ to\ vec4\ and\ set\ w\ to\ 0}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00271}00271\ \ \ \ \ \textcolor{keyword}{template}<qualifier\ Q>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00272}00272\ \ \ \ \ \textcolor{keyword}{struct\ }convert\_vec3\_to\_vec4W0<float,\ Q,\ true>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00273}00273\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00274}00274\ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keyword}{static}\ vec<4,\ float,\ Q>\ call(vec<3,\ float,\ Q>\ \textcolor{keyword}{const}\&\ a)}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00275}00275\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00276}00276\ \ \ \ \ \ \ \ \ \ \ \ \ vec<4,\ float,\ Q>\ v;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00277}00277\ \textcolor{preprocessor}{\#if\ (GLM\_ARCH\ \&\ GLM\_ARCH\_SSE41\_BIT)}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00278}00278\ \ \ \ \ \ \ \ \ \ \ \ \ v.data\ =\ \_mm\_blend\_ps(a.data,\ \_mm\_setzero\_ps(),\ 8);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00279}00279\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00280}00280\ \ \ \ \ \ \ \ \ \ \ \ \ \_\_m128i\ \mbox{\hyperlink{structmask}{mask}}\ =\ \_mm\_set\_epi32(0,\ 0xFFFFFFFF,\ 0xFFFFFFFF,\ 0xFFFFFFFF);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00281}00281\ \ \ \ \ \ \ \ \ \ \ \ \ \_\_m128\ v0\ =\ \_mm\_castsi128\_ps(\_mm\_and\_si128(\_mm\_castps\_si128(a.data),\ \mbox{\hyperlink{structmask}{mask}}));}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00282}00282\ \ \ \ \ \ \ \ \ \ \ \ \ v.data\ =\ v0;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00283}00283\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00284}00284\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ v;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00285}00285\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00286}00286\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00287}00287\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00288}00288\ \ \ \ \ \textcolor{comment}{//\ copy\ vec3\ to\ vec4\ and\ set\ w\ to\ 1}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00289}00289\ \ \ \ \ \textcolor{keyword}{template}<qualifier\ Q>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00290}00290\ \ \ \ \ \textcolor{keyword}{struct\ }convert\_vec3\_to\_vec4W1<float,\ Q,\ true>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00291}00291\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00292}00292\ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keyword}{static}\ vec<4,\ float,\ Q>\ call(vec<3,\ float,\ Q>\ \textcolor{keyword}{const}\&\ a)}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00293}00293\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00294}00294\ \ \ \ \ \ \ \ \ \ \ \ \ vec<4,\ float,\ Q>\ v;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00295}00295\ \textcolor{preprocessor}{\#if\ (GLM\_ARCH\ \&\ GLM\_ARCH\_SSE41\_BIT)}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00296}00296\ \ \ \ \ \ \ \ \ \ \ \ \ v.data\ =\ \_mm\_blend\_ps(a.data,\ \_mm\_set1\_ps(1.0f),\ 8);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00297}00297\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00298}00298\ \ \ \ \ \ \ \ \ \ \ \ \ \_\_m128\ t1\ =\ \_mm\_shuffle\_ps(a.data,\ a.data,\ \_MM\_SHUFFLE(0,\ 2,\ 1,\ 3));\ \textcolor{comment}{//permute\ x,\ w}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00299}00299\ \ \ \ \ \ \ \ \ \ \ \ \ \_\_m128\ t2\ =\ \_mm\_move\_ss(t1,\ \_mm\_set\_ss(1.0f));\ \textcolor{comment}{//\ set\ x\ to\ 1.0f}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00300}00300\ \ \ \ \ \ \ \ \ \ \ \ \ v.data\ =\ \_mm\_shuffle\_ps(t2,\ t2,\ \_MM\_SHUFFLE(0,\ 2,\ 1,\ 3));\ \textcolor{comment}{//permute\ x,\ w}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00301}00301\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00302}00302\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ v;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00303}00303\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00304}00304\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00305}00305\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00306}00306\ \ \ \ \ \textcolor{comment}{//\ copy\ vec3\ to\ vec4\ and\ set\ w\ to\ vec3.z}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00307}00307\ \ \ \ \ \textcolor{keyword}{template}<qualifier\ Q>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00308}00308\ \ \ \ \ \textcolor{keyword}{struct\ }convert\_vec3\_to\_vec4WZ<float,\ Q,\ true>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00309}00309\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00310}00310\ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keyword}{static}\ vec<4,\ float,\ Q>\ call(vec<3,\ float,\ Q>\ \textcolor{keyword}{const}\&\ a)}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00311}00311\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00312}00312\ \ \ \ \ \ \ \ \ \ \ \ \ vec<4,\ float,\ Q>\ v;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00313}00313\ \ \ \ \ \ \ \ \ \ \ \ \ v.data\ =\ \_mm\_shuffle\_ps(a.data,\ a.data,\ \_MM\_SHUFFLE(2,\ 2,\ 1,\ 0));}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00314}00314\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ v;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00315}00315\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00316}00316\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00317}00317\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00318}00318\ \ \ \ \ \textcolor{comment}{//\ copy\ vec3\ to\ vec4\ and\ set\ w\ to\ 0}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00319}00319\ \ \ \ \ \textcolor{keyword}{template}<qualifier\ Q>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00320}00320\ \ \ \ \ \textcolor{keyword}{struct\ }convert\_vec3\_to\_vec4W0<double,\ Q,\ true>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00321}00321\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00322}00322\ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keyword}{static}\ vec<4,\ double,\ Q>\ call(vec<3,\ double,\ Q>\ \textcolor{keyword}{const}\&\ a)}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00323}00323\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00324}00324\ \ \ \ \ \ \ \ \ \ \ \ \ vec<4,\ double,\ Q>\ v;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00325}00325\ \textcolor{preprocessor}{\#if\ (GLM\_ARCH\ \&\ GLM\_ARCH\_AVX\_BIT)}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00326}00326\ \ \ \ \ \ \ \ \ \ \ \ \ v.data\ =\ \_mm256\_blend\_pd(a.data,\ \_mm256\_setzero\_pd(),\ 8);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00327}00327\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00328}00328\ \ \ \ \ \ \ \ \ \ \ \ \ v.data.setv(0,\ a.data.getv(0));}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00329}00329\ \ \ \ \ \ \ \ \ \ \ \ \ glm\_dvec2\ av2\ =\ a.data.getv(1);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00330}00330\ \ \ \ \ \ \ \ \ \ \ \ \ av2\ =\ \_mm\_shuffle\_pd(av2,\ \_mm\_setzero\_pd(),\ 2);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00331}00331\ \ \ \ \ \ \ \ \ \ \ \ \ v.data.setv(1,\ av2);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00332}00332\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00333}00333\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ v;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00334}00334\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00335}00335\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00336}00336\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00337}00337\ \ \ \ \ \textcolor{comment}{//\ copy\ vec3\ to\ vec4\ and\ set\ w\ to\ vec3.z}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00338}00338\ \ \ \ \ \textcolor{keyword}{template}<qualifier\ Q>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00339}00339\ \ \ \ \ \textcolor{keyword}{struct\ }convert\_vec3\_to\_vec4WZ<double,\ Q,\ true>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00340}00340\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00341}00341\ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keyword}{static}\ vec<4,\ double,\ Q>\ call(vec<3,\ double,\ Q>\ \textcolor{keyword}{const}\&\ a)}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00342}00342\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00343}00343\ \ \ \ \ \ \ \ \ \ \ \ \ vec<4,\ double,\ Q>\ v;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00344}00344\ \textcolor{preprocessor}{\#if\ (GLM\_ARCH\ \&\ GLM\_ARCH\_AVX\_BIT)}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00345}00345\ \ \ \ \ \ \ \ \ \ \ \ \ v.data\ =\ \_mm256\_permute\_pd(a.data,\ 2);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00346}00346\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00347}00347\ \ \ \ \ \ \ \ \ \ \ \ \ v.data.setv(0,\ a.data.getv(0));}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00348}00348\ \ \ \ \ \ \ \ \ \ \ \ \ glm\_dvec2\ av2\ =\ a.data.getv(1);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00349}00349\ \ \ \ \ \ \ \ \ \ \ \ \ \_\_m128d\ t1\ =\ \_mm\_shuffle\_pd(av2,\ av2,\ 0);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00350}00350\ \ \ \ \ \ \ \ \ \ \ \ \ v.data.setv(1,\ t1);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00351}00351\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00352}00352\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ v;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00353}00353\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00354}00354\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00355}00355\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00356}00356\ \ \ \ \ \textcolor{comment}{//\ copy\ vec3\ to\ vec4\ and\ set\ w\ to\ 1}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00357}00357\ \ \ \ \ \textcolor{keyword}{template}<qualifier\ Q>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00358}00358\ \ \ \ \ \textcolor{keyword}{struct\ }convert\_vec3\_to\_vec4W1<double,\ Q,\ true>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00359}00359\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00360}00360\ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keyword}{static}\ vec<4,\ double,\ Q>\ call(vec<3,\ double,\ Q>\ \textcolor{keyword}{const}\&\ a)}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00361}00361\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00362}00362\ \ \ \ \ \ \ \ \ \ \ \ \ vec<4,\ double,\ Q>\ v;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00363}00363\ \textcolor{preprocessor}{\#if\ (GLM\_ARCH\ \&\ GLM\_ARCH\_AVX\_BIT)}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00364}00364\ \ \ \ \ \ \ \ \ \ \ \ \ v.data\ =\ \_mm256\_blend\_pd(a.data,\ \_mm256\_set1\_pd(1.0),\ 8);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00365}00365\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00366}00366\ \ \ \ \ \ \ \ \ \ \ \ \ v.data.setv(0,\ a.data.getv(0));}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00367}00367\ \ \ \ \ \ \ \ \ \ \ \ \ glm\_dvec2\ av2\ =\ a.data.getv(1);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00368}00368\ \ \ \ \ \ \ \ \ \ \ \ \ av2\ =\ \_mm\_shuffle\_pd(av2,\ \_mm\_set1\_pd(1.),\ 2);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00369}00369\ \ \ \ \ \ \ \ \ \ \ \ \ v.data.setv(1,\ av2);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00370}00370\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00371}00371\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ v;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00372}00372\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00373}00373\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00374}00374\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00375}00375\ \ \ \ \ \textcolor{keyword}{template}<qualifier\ Q>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00376}00376\ \ \ \ \ \textcolor{keyword}{struct\ }convert\_vec4\_to\_vec3<float,\ Q,\ true>\ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00377}00377\ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keyword}{static}\ vec<3,\ float,\ Q>\ call(vec<4,\ float,\ Q>\ \textcolor{keyword}{const}\&\ a)}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00378}00378\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00379}00379\ \ \ \ \ \ \ \ \ \ \ \ \ vec<3,\ float,\ Q>\ v;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00380}00380\ \ \ \ \ \ \ \ \ \ \ \ \ v.data\ =\ a.data;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00381}00381\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ v;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00382}00382\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00383}00383\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00384}00384\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00385}00385\ \ \ \ \ \textcolor{keyword}{template}<qualifier\ Q>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00386}00386\ \ \ \ \ \textcolor{keyword}{struct\ }convert\_vec4\_to\_vec3<double,\ Q,\ true>\ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00387}00387\ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keyword}{static}\ vec<3,\ double,\ Q>\ call(vec<4,\ double,\ Q>\ \textcolor{keyword}{const}\&\ a)}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00388}00388\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00389}00389\ \ \ \ \ \ \ \ \ \ \ \ \ vec<3,\ double,\ Q>\ v;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00390}00390\ \textcolor{preprocessor}{\#if\ GLM\_ARCH\ \&\ GLM\_ARCH\_AVX\_BIT}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00391}00391\ \ \ \ \ \ \ \ \ \ \ \ \ v.data\ =\ a.data;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00392}00392\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00393}00393\ \ \ \ \ \ \ \ \ \ \ \ \ v.data.setv(0,\ a.data.getv(0));}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00394}00394\ \ \ \ \ \ \ \ \ \ \ \ \ v.data.setv(1,\ a.data.getv(1));}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00395}00395\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00396}00396\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ v;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00397}00397\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00398}00398\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00399}00399\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00400}00400\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00401}00401\ \ \ \ \ \textcolor{comment}{//\ set\ all\ coordinates\ to\ same\ value\ vec[c]}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00402}00402\ \ \ \ \ \textcolor{keyword}{template}<length\_t\ L,\ qualifier\ Q>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00403}00403\ \ \ \ \ \textcolor{keyword}{struct\ }convert\_splat<L,\ float,\ Q,\ true>\ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00404}00404\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keywordtype}{int}\ c>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00405}00405\ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ GLM\_CONSTEXPR\ \textcolor{keyword}{static}\ vec<L,\ float,\ Q>\ call(vec<L,\ float,\ Q>\ \textcolor{keyword}{const}\&\ a)}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00406}00406\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00407}00407\ \ \ \ \ \ \ \ \ \ \ \ \ vec<L,\ float,\ Q>\ Result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00408}00408\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ s\ =\ \_MM\_SHUFFLE(c,\ c,\ c,\ c);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00409}00409\ \ \ \ \ \ \ \ \ \ \ \ \ glm\_f32vec4\ va\ =\ \textcolor{keyword}{static\_cast<}glm\_f32vec4\textcolor{keyword}{>}(a.data);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00410}00410\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ \ \ \ \ if\ GLM\_ARCH\ \&\ GLM\_ARCH\_AVX\_BIT}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00411}00411\ \ \ \ \ \ \ \ \ \ \ \ \ Result.data\ =\ \_mm\_permute\_ps(va,\ s);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00412}00412\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ \ \ \ \ else}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00413}00413\ \ \ \ \ \ \ \ \ \ \ \ \ Result.data\ =\ \_mm\_shuffle\_ps(va,\ va,\ s);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00414}00414\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ \ \ \ \ endif}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00415}00415\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00416}00416\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00417}00417\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00418}00418\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00419}00419\ \ \ \ \ \textcolor{comment}{//\ set\ all\ coordinates\ to\ same\ value\ vec[c]}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00420}00420\ \ \ \ \ \textcolor{keyword}{template}<length\_t\ L,\ qualifier\ Q>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00421}00421\ \ \ \ \ \textcolor{keyword}{struct\ }convert\_splat<L,\ double,\ Q,\ true>\ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00422}00422\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00423}00423\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keywordtype}{bool},\ \textcolor{keywordtype}{int}\ c>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00424}00424\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }detailSSE}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00425}00425\ \ \ \ \ \ \ \ \ \{\};}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00426}00426\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00427}00427\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keywordtype}{int}\ c>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00428}00428\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }detailSSE<true,\ c>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00429}00429\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00430}00430\ \ \ \ \ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ GLM\_CONSTEXPR\ \textcolor{keyword}{static}\ vec<L,\ double,\ Q>\ call(vec<L,\ double,\ Q>\ \textcolor{keyword}{const}\&\ a)}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00431}00431\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00432}00432\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vec<L,\ double,\ Q>\ Result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00433}00433\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glm\_f64vec2\ r0\ =\ \_mm\_shuffle\_pd(a.data.getv(0),\ a.data.getv(0),\ c\ |\ c\ <<\ 1);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00434}00434\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Result.data.setv(0,\ r0);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00435}00435\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Result.data.setv(1,\ r0);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00436}00436\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00437}00437\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00438}00438\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00439}00439\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00440}00440\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keywordtype}{int}\ c>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00441}00441\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }detailSSE<false,\ c>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00442}00442\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00443}00443\ \ \ \ \ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ GLM\_CONSTEXPR\ \textcolor{keyword}{static}\ vec<L,\ double,\ Q>\ call(vec<L,\ double,\ Q>\ \textcolor{keyword}{const}\&\ a)}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00444}00444\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00445}00445\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vec<L,\ double,\ Q>\ Result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00446}00446\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ d\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\textcolor{keyword}{>}(c\ -\/\ 2);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00447}00447\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glm\_f64vec2\ r0\ =\ \_mm\_shuffle\_pd(a.data.getv(1),\ a.data.getv(1),\ d\ |\ d\ <<\ 1);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00448}00448\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Result.data.setv(0,\ r0);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00449}00449\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Result.data.setv(1,\ r0);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00450}00450\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00451}00451\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00452}00452\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00453}00453\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00454}00454\ \textcolor{preprocessor}{\#if\ GLM\_ARCH\ \&\ GLM\_ARCH\_AVX\_BIT}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00455}00455\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keywordtype}{bool},\ \textcolor{keywordtype}{int}\ c>\ \textcolor{comment}{//note:\ bool\ is\ useless\ but\ needed\ to\ compil\ on\ linux\ (gcc)}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00456}00456\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }detailAVX}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00457}00457\ \ \ \ \ \ \ \ \ \{\};}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00458}00458\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00459}00459\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keywordtype}{bool}\ b>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00460}00460\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }detailAVX<b,\ 0>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00461}00461\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00462}00462\ \ \ \ \ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ GLM\_CONSTEXPR\ \textcolor{keyword}{static}\ vec<L,\ double,\ Q>\ call(vec<L,\ double,\ Q>\ \textcolor{keyword}{const}\&\ a)}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00463}00463\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00464}00464\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vec<L,\ double,\ Q>\ Result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00465}00465\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_\_m256d\ t1\ =\ \_mm256\_permute2f128\_pd(a.data,\ a.data,\ 0x0);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00466}00466\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Result.data\ =\ \_mm256\_permute\_pd(t1,\ 0);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00467}00467\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00468}00468\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00469}00469\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00470}00470\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00471}00471\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keywordtype}{bool}\ b>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00472}00472\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }detailAVX<b,\ 1>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00473}00473\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00474}00474\ \ \ \ \ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ GLM\_CONSTEXPR\ \textcolor{keyword}{static}\ vec<L,\ double,\ Q>\ call(vec<L,\ double,\ Q>\ \textcolor{keyword}{const}\&\ a)}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00475}00475\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00476}00476\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vec<L,\ double,\ Q>\ Result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00477}00477\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_\_m256d\ t1\ =\ \_mm256\_permute2f128\_pd(a.data,\ a.data,\ 0x0);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00478}00478\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Result.data\ =\ \_mm256\_permute\_pd(t1,\ 0xf);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00479}00479\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00480}00480\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00481}00481\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00482}00482\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00483}00483\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keywordtype}{bool}\ b>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00484}00484\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }detailAVX<b,\ 2>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00485}00485\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00486}00486\ \ \ \ \ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ GLM\_CONSTEXPR\ \textcolor{keyword}{static}\ vec<L,\ double,\ Q>\ call(vec<L,\ double,\ Q>\ \textcolor{keyword}{const}\&\ a)}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00487}00487\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00488}00488\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vec<L,\ double,\ Q>\ Result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00489}00489\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_\_m256d\ t2\ =\ \_mm256\_permute2f128\_pd(a.data,\ a.data,\ 0x11);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00490}00490\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Result.data\ =\ \_mm256\_permute\_pd(t2,\ 0x0);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00491}00491\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00492}00492\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00493}00493\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00494}00494\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00495}00495\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keywordtype}{bool}\ b>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00496}00496\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }detailAVX<b,\ 3>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00497}00497\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00498}00498\ \ \ \ \ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ GLM\_CONSTEXPR\ \textcolor{keyword}{static}\ vec<L,\ double,\ Q>\ call(vec<L,\ double,\ Q>\ \textcolor{keyword}{const}\&\ a)}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00499}00499\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00500}00500\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vec<L,\ double,\ Q>\ Result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00501}00501\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_\_m256d\ t2\ =\ \_mm256\_permute2f128\_pd(a.data,\ a.data,\ 0x11);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00502}00502\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Result.data\ =\ \_mm256\_permute\_pd(t2,\ 0xf);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00503}00503\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00504}00504\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00505}00505\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00506}00506\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//GLM\_ARCH\ \&\ GLM\_ARCH\_AVX\_BIT}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00507}00507\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00508}00508\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keywordtype}{int}\ c>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00509}00509\ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ GLM\_CONSTEXPR\ \textcolor{keyword}{static}\ vec<L,\ double,\ Q>\ call(vec<L,\ double,\ Q>\ \textcolor{keyword}{const}\&\ a)}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00510}00510\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00511}00511\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//return\ compute\_splat<L,\ double,\ Q,\ false>::call<c>(a);}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00512}00512\ \ \ \ \ \ \ \ \ \ \ \ \ vec<L,\ double,\ Q>\ Result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00513}00513\ \textcolor{preprocessor}{\#\ \ \ if\ GLM\_ARCH\ \&\ GLM\_ARCH\_AVX2\_BIT}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00514}00514\ \ \ \ \ \ \ \ \ \ \ \ \ Result.data\ =\ \_mm256\_permute4x64\_pd(a.data,\ \_MM\_SHUFFLE(c,\ c,\ c,\ c));}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00515}00515\ \textcolor{preprocessor}{\#\ \ \ elif\ GLM\_ARCH\ \&\ GLM\_ARCH\_AVX\_BIT}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00516}00516\ \ \ \ \ \ \ \ \ \ \ \ \ Result\ =\ detailAVX<true,\ c>::call(a);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00517}00517\ \textcolor{preprocessor}{\#\ \ \ else}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00518}00518\ \textcolor{preprocessor}{\#if\ 1\ }\textcolor{comment}{//detail<(c\ <=\ 1),\ c>::call2(a)\ is\ equivalent\ to\ following\ code\ but\ without\ if\ constexpr\ usage}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00519}00519\ \ \ \ \ \ \ \ \ \ \ \ \ Result\ =\ detailSSE<(c\ <=\ 1),\ c>::call(a);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00520}00520\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00521}00521\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ \textcolor{keyword}{constexpr}\ (c\ <=\ 1)}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00522}00522\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00523}00523\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glm\_f64vec2\ r0\ =\ \_mm\_shuffle\_pd(a.data.getv(0),\ a.data.getv(0),\ c\ |\ c\ <<\ 1);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00524}00524\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Result.data.setv(0,\ r0);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00525}00525\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Result.data.setv(1,\ r0);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00526}00526\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00527}00527\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00528}00528\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00529}00529\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ d\ =\ (\textcolor{keywordtype}{unsigned}\ int)(c\ -\/\ 2);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00530}00530\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glm\_f64vec2\ r0\ =\ \_mm\_shuffle\_pd(a.data.getv(1),\ a.data.getv(1),\ d\ |\ d\ <<\ 1);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00531}00531\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Result.data.setv(0,\ r0);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00532}00532\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Result.data.setv(1,\ r0);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00533}00533\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00534}00534\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00535}00535\ \textcolor{preprocessor}{\#\ \ \ \ \ \ \ \ \ \ \ endif}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00536}00536\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00537}00537\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00538}00538\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00539}00539\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00540}00540\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00541}00541\ \}\textcolor{comment}{//namespace\ detail}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00542}00542\ \}\textcolor{comment}{//namespace\ glm}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00543}00543\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00544}00544\ \textcolor{preprocessor}{\#endif}\textcolor{comment}{//GLM\_ARCH\ \&\ GLM\_ARCH\_SSE2\_BIT}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00545}00545\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00546}00546\ \textcolor{preprocessor}{\#if\ GLM\_ARCH\ \&\ GLM\_ARCH\_NEON\_BIT}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00547}00547\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceglm}{glm}}\ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00548}00548\ \ \ \ \ \textcolor{keyword}{namespace\ }detail\ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00549}00549\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00550}00550\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<qualifier\ Q>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00551}00551\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }convert\_vec3\_to\_vec4W0<float,\ Q,\ true>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00552}00552\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00553}00553\ \ \ \ \ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keyword}{static}\ vec<4,\ float,\ Q>\ call(vec<3,\ float,\ Q>\ \textcolor{keyword}{const}\&\ a)}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00554}00554\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00555}00555\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vec<4,\ float,\ Q>\ v;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00556}00556\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ uint32x4\_t\ \mbox{\hyperlink{structmask}{mask}}\ =\ \{\ 0,\ 0xFFFFFFFF,\ 0xFFFFFFFF,\ 0xFFFFFFFF\ \};}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00557}00557\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ v.data\ =\ vbslq\_f32(\mbox{\hyperlink{structmask}{mask}},\ a.data,\ vdupq\_n\_f32(0));}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00558}00558\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ v;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00559}00559\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00560}00560\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00561}00561\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00562}00562\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<qualifier\ Q>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00563}00563\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }convert\_vec4\_to\_vec3<float,\ Q,\ true>\ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00564}00564\ \ \ \ \ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ \textcolor{keyword}{static}\ vec<3,\ float,\ Q>\ call(vec<4,\ float,\ Q>\ \textcolor{keyword}{const}\&\ a)}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00565}00565\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00566}00566\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vec<3,\ float,\ Q>\ v;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00567}00567\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ v.data\ =\ a.data;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00568}00568\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ v;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00569}00569\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00570}00570\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00571}00571\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00572}00572\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<length\_t\ L,\ qualifier\ Q>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00573}00573\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }compute\_splat<L,\ float,\ Q,\ true>\ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00574}00574\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keywordtype}{int}\ c>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00575}00575\ \ \ \ \ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ GLM\_CONSTEXPR\ \textcolor{keyword}{static}\ vec<L,\ float,\ Q>\ call(vec<L,\ float,\ Q>\ \textcolor{keyword}{const}\&)}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00576}00576\ \ \ \ \ \ \ \ \ \ \ \ \ \{\}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00577}00577\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00578}00578\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00579}00579\ \ \ \ \ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ GLM\_CONSTEXPR\ \textcolor{keyword}{static}\ vec<L,\ float,\ Q>\ call<0>(vec<L,\ float,\ Q>\ \textcolor{keyword}{const}\&\ a)}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00580}00580\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00581}00581\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vec<L,\ float,\ Q>\ Result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00582}00582\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Result.data\ =\ vdupq\_lane\_f32(vget\_low\_f32(a.data),\ 0);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00583}00583\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00584}00584\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00585}00585\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00586}00586\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00587}00587\ \ \ \ \ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ GLM\_CONSTEXPR\ \textcolor{keyword}{static}\ vec<L,\ float,\ Q>\ call<1>(vec<L,\ float,\ Q>\ \textcolor{keyword}{const}\&\ a)}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00588}00588\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00589}00589\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vec<L,\ float,\ Q>\ Result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00590}00590\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Result.data\ =\ vdupq\_lane\_f32(vget\_low\_f32(a.data),\ 1);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00591}00591\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00592}00592\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00593}00593\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00594}00594\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00595}00595\ \ \ \ \ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ GLM\_CONSTEXPR\ \textcolor{keyword}{static}\ vec<L,\ float,\ Q>\ call<2>(vec<L,\ float,\ Q>\ \textcolor{keyword}{const}\&\ a)}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00596}00596\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00597}00597\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vec<L,\ float,\ Q>\ Result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00598}00598\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Result.data\ =\ vdupq\_lane\_f32(vget\_high\_f32(a.data),\ 0);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00599}00599\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00600}00600\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00601}00601\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00602}00602\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<>}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00603}00603\ \ \ \ \ \ \ \ \ \ \ \ \ GLM\_FUNC\_QUALIFIER\ GLM\_CONSTEXPR\ \textcolor{keyword}{static}\ vec<L,\ float,\ Q>\ call<3>(vec<L,\ float,\ Q>\ \textcolor{keyword}{const}\&\ a)}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00604}00604\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00605}00605\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vec<L,\ float,\ Q>\ Result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00606}00606\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Result.data\ =\ vdupq\_lane\_f32(vget\_high\_f32(a.data),\ 1);}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00607}00607\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Result;}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00608}00608\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00609}00609\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00610}00610\ }
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00611}00611\ \}\textcolor{comment}{//namespace\ detail}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00612}00612\ \}\textcolor{comment}{//namespace\ glm}}
+\DoxyCodeLine{\Hypertarget{func__common__simd_8inl_source_l00613}00613\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//GLM\_ARCH\ \&\ GLM\_ARCH\_NEON\_BIT}}
+
+\end{DoxyCode}

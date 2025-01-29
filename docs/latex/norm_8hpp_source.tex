@@ -1,0 +1,56 @@
+\doxysection{norm.\+hpp}
+\hypertarget{norm_8hpp_source}{}\label{norm_8hpp_source}\index{deps/glm/glm/gtx/norm.hpp@{deps/glm/glm/gtx/norm.hpp}}
+\mbox{\hyperlink{norm_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{norm_8hpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{norm_8hpp_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{norm_8hpp_source_l00015}00015\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{norm_8hpp_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{norm_8hpp_source_l00017}00017\ \textcolor{comment}{//\ Dependency:}}
+\DoxyCodeLine{\Hypertarget{norm_8hpp_source_l00018}00018\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{geometric_8hpp}{../geometric.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{norm_8hpp_source_l00019}00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{component__wise_8hpp}{../gtx/component\_wise.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{norm_8hpp_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{norm_8hpp_source_l00021}00021\ \textcolor{preprocessor}{\#ifndef\ GLM\_ENABLE\_EXPERIMENTAL}}
+\DoxyCodeLine{\Hypertarget{norm_8hpp_source_l00022}00022\ \textcolor{preprocessor}{\#\ \ \ error\ "{}GLM:\ GLM\_GTX\_norm\ is\ an\ experimental\ extension\ and\ may\ change\ in\ the\ future.\ Use\ \#define\ GLM\_ENABLE\_EXPERIMENTAL\ before\ including\ it,\ if\ you\ really\ want\ to\ use\ it."{}}}
+\DoxyCodeLine{\Hypertarget{norm_8hpp_source_l00023}00023\ \textcolor{preprocessor}{\#elif\ GLM\_MESSAGES\ ==\ GLM\_ENABLE\ \&\&\ !defined(GLM\_EXT\_INCLUDED)}}
+\DoxyCodeLine{\Hypertarget{norm_8hpp_source_l00024}00024\ \textcolor{preprocessor}{\#\ \ \ pragma\ message("{}GLM:\ GLM\_GTX\_norm\ extension\ included"{})}}
+\DoxyCodeLine{\Hypertarget{norm_8hpp_source_l00025}00025\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{norm_8hpp_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{norm_8hpp_source_l00027}00027\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespaceglm}{glm}}}
+\DoxyCodeLine{\Hypertarget{norm_8hpp_source_l00028}00028\ \{}
+\DoxyCodeLine{\Hypertarget{norm_8hpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{norm_8hpp_source_l00034}00034\ \ \ \ \ \textcolor{keyword}{template}<length\_t\ L,\ \textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{\Hypertarget{norm_8hpp_source_l00035}00035\ \ \ \ \ GLM\_FUNC\_DECL\ T\ \mbox{\hyperlink{group__gtx__norm_ga8d1789651050adb7024917984b41c3de}{length2}}(vec<L,\ T,\ Q>\ \textcolor{keyword}{const}\&\ x);}
+\DoxyCodeLine{\Hypertarget{norm_8hpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{norm_8hpp_source_l00039}00039\ \ \ \ \ \textcolor{keyword}{template}<length\_t\ L,\ \textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{\Hypertarget{norm_8hpp_source_l00040}00040\ \ \ \ \ GLM\_FUNC\_DECL\ T\ \mbox{\hyperlink{group__gtx__norm_ga85660f1b79f66c09c7b5a6f80e68c89f}{distance2}}(vec<L,\ T,\ Q>\ \textcolor{keyword}{const}\&\ p0,\ vec<L,\ T,\ Q>\ \textcolor{keyword}{const}\&\ p1);}
+\DoxyCodeLine{\Hypertarget{norm_8hpp_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{norm_8hpp_source_l00044}00044\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{\Hypertarget{norm_8hpp_source_l00045}00045\ \ \ \ \ GLM\_FUNC\_DECL\ T\ \mbox{\hyperlink{group__gtx__norm_gae2fc0b2aa967bebfd6a244700bff6997}{l1Norm}}(vec<3,\ T,\ Q>\ \textcolor{keyword}{const}\&\ x,\ vec<3,\ T,\ Q>\ \textcolor{keyword}{const}\&\ y);}
+\DoxyCodeLine{\Hypertarget{norm_8hpp_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{norm_8hpp_source_l00049}00049\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{\Hypertarget{norm_8hpp_source_l00050}00050\ \ \ \ \ GLM\_FUNC\_DECL\ T\ \mbox{\hyperlink{group__gtx__norm_gae2fc0b2aa967bebfd6a244700bff6997}{l1Norm}}(vec<3,\ T,\ Q>\ \textcolor{keyword}{const}\&\ v);}
+\DoxyCodeLine{\Hypertarget{norm_8hpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{norm_8hpp_source_l00054}00054\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{\Hypertarget{norm_8hpp_source_l00055}00055\ \ \ \ \ GLM\_FUNC\_DECL\ T\ \mbox{\hyperlink{group__gtx__norm_ga41340b2ef40a9307ab0f137181565168}{l2Norm}}(vec<3,\ T,\ Q>\ \textcolor{keyword}{const}\&\ x,\ vec<3,\ T,\ Q>\ \textcolor{keyword}{const}\&\ y);}
+\DoxyCodeLine{\Hypertarget{norm_8hpp_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{norm_8hpp_source_l00059}00059\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{\Hypertarget{norm_8hpp_source_l00060}00060\ \ \ \ \ GLM\_FUNC\_DECL\ T\ \mbox{\hyperlink{group__gtx__norm_ga41340b2ef40a9307ab0f137181565168}{l2Norm}}(vec<3,\ T,\ Q>\ \textcolor{keyword}{const}\&\ x);}
+\DoxyCodeLine{\Hypertarget{norm_8hpp_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{norm_8hpp_source_l00064}00064\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{\Hypertarget{norm_8hpp_source_l00065}00065\ \ \ \ \ GLM\_FUNC\_DECL\ T\ \mbox{\hyperlink{group__gtx__norm_gacad23d30497eb16f67709f2375d1f66a}{lxNorm}}(vec<3,\ T,\ Q>\ \textcolor{keyword}{const}\&\ x,\ vec<3,\ T,\ Q>\ \textcolor{keyword}{const}\&\ y,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ Depth);}
+\DoxyCodeLine{\Hypertarget{norm_8hpp_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{norm_8hpp_source_l00069}00069\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{\Hypertarget{norm_8hpp_source_l00070}00070\ \ \ \ \ GLM\_FUNC\_DECL\ T\ \mbox{\hyperlink{group__gtx__norm_gacad23d30497eb16f67709f2375d1f66a}{lxNorm}}(vec<3,\ T,\ Q>\ \textcolor{keyword}{const}\&\ x,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ Depth);}
+\DoxyCodeLine{\Hypertarget{norm_8hpp_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{norm_8hpp_source_l00074}00074\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{\Hypertarget{norm_8hpp_source_l00075}00075\ \ \ \ \ GLM\_FUNC\_DECL\ T\ \mbox{\hyperlink{group__gtx__norm_gad58a8231fc32e38104a9e1c4d3c0cb64}{lMaxNorm}}(vec<3,\ T,\ Q>\ \textcolor{keyword}{const}\&\ x,\ vec<3,\ T,\ Q>\ \textcolor{keyword}{const}\&\ y);}
+\DoxyCodeLine{\Hypertarget{norm_8hpp_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{norm_8hpp_source_l00079}00079\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T,\ qualifier\ Q>}
+\DoxyCodeLine{\Hypertarget{norm_8hpp_source_l00080}00080\ \ \ \ \ GLM\_FUNC\_DECL\ T\ \mbox{\hyperlink{group__gtx__norm_gad58a8231fc32e38104a9e1c4d3c0cb64}{lMaxNorm}}(vec<3,\ T,\ Q>\ \textcolor{keyword}{const}\&\ x);}
+\DoxyCodeLine{\Hypertarget{norm_8hpp_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{norm_8hpp_source_l00083}00083\ \}\textcolor{comment}{//namespace\ glm}}
+\DoxyCodeLine{\Hypertarget{norm_8hpp_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{norm_8hpp_source_l00085}00085\ \textcolor{preprocessor}{\#include\ "{}norm.inl"{}}}
+
+\end{DoxyCode}

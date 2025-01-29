@@ -1,0 +1,120 @@
+\doxysection{Instance.\+cpp}
+\hypertarget{_instance_8cpp_source}{}\label{_instance_8cpp_source}\index{core/src/Renderer/Instance.cpp@{core/src/Renderer/Instance.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}Instance.h"{}}}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <vulkan/vulkan.h>}}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}../Window/Window.h"{}}}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}../Core/Logger.h"{}}}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}DebugMessenger.h"{}}}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00009}00009\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_chess}{Chess}}}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00010}00010\ \{}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00011}00011\ \ \ \ \ std::vector<const\ char\ *>\ Instance::validationLayers\ =\ \{}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00012}00012\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}VK\_LAYER\_KHRONOS\_validation"{}}\};}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00013}00013\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00014}00014\ \ \ \ \ \textcolor{keywordtype}{bool}\ Instance::validationEnabled\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00016}00016\ \ \ \ \ Instance::Instance()\ :}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00017}00017\ \ \ \ \ \ \ \ \ m\_Instance(VK\_NULL\_HANDLE)}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00018}00018\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00019}00019\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00021}00021\ \ \ \ \ Instance::\string~Instance()}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00022}00022\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00023}00023\ \ \ \ \ \ \ \ \ ShutdownImpl();\ }
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00024}00024\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00026}00026\ \ \ \ \ \textcolor{keywordtype}{void}\ Instance::InitializeImpl(\textcolor{keyword}{const}\ InstanceSpecification\ \&spec)}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00027}00027\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00028}00028\ \ \ \ \ \ \ \ \ VkApplicationInfo\ appInfo\{\};}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00029}00029\ \ \ \ \ \ \ \ \ appInfo.sType\ =\ VK\_STRUCTURE\_TYPE\_APPLICATION\_INFO;}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00030}00030\ \ \ \ \ \ \ \ \ appInfo.pApplicationName\ =\ spec.ApplicationName.data();}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00031}00031\ \ \ \ \ \ \ \ \ appInfo.applicationVersion\ =\ VK\_MAKE\_VERSION(0,\ 0,\ 1);}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00032}00032\ \ \ \ \ \ \ \ \ appInfo.pEngineName\ =\ spec.EngineName.data();}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00033}00033\ \ \ \ \ \ \ \ \ appInfo.engineVersion\ =\ VK\_MAKE\_VERSION(0,\ 0,\ 1);}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00034}00034\ \ \ \ \ \ \ \ \ appInfo.apiVersion\ =\ VK\_API\_VERSION\_1\_0;}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00036}00036\ \ \ \ \ \ \ \ \ CreateInstance(appInfo);}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00037}00037\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00039}00039\ \ \ \ \ \textcolor{keywordtype}{void}\ Instance::ShutdownImpl()}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00040}00040\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ vkDestroyInstance(m\_Instance,\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00042}00042\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00044}00044\ \ \ \ \ \textcolor{keywordtype}{void}\ Instance::CreateInstance(\textcolor{keyword}{const}\ VkApplicationInfo\ \&appInfo)}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00045}00045\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00046}00046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (validationEnabled\ \&\&\ !(ValidationExists()))}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00047}00047\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ LOG\_ERROR(\textcolor{stringliteral}{"{}Validation\ layers\ not\ available"{}});}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ assert(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00050}00050\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00051}00051\ \ \ \ \ \ \ \ \ VkInstanceCreateInfo\ createInfo\{\};}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00052}00052\ \ \ \ \ \ \ \ \ createInfo.sType\ =\ VK\_STRUCTURE\_TYPE\_INSTANCE\_CREATE\_INFO;}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00053}00053\ \ \ \ \ \ \ \ \ createInfo.pApplicationInfo\ =\ \&appInfo;}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00055}00055\ \ \ \ \ \ \ \ \ std::vector<const\ char\ *>\ extensions\ =\ Window::GetExtensions();}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00057}00057\ \ \ \ \ \ \ \ \ createInfo.enabledExtensionCount\ =\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(extensions.size());}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ createInfo.ppEnabledExtensionNames\ =\ extensions.data();}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00060}00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (validationEnabled\ ==\ \textcolor{keyword}{true})}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00061}00061\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ createInfo.enabledLayerCount\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ createInfo.ppEnabledLayerNames\ =\ validationLayers.data();}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ VkDebugUtilsMessengerCreateInfoEXT\ debugCreateInfo\{\};}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ DebugMessenger::populateInfo(debugCreateInfo);}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ createInfo.pNext\ =\ (VkDebugUtilsMessengerCreateInfoEXT*)\ \&debugCreateInfo;}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00070}00070\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00071}00071\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ createInfo.enabledLayerCount\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ createInfo.pNext\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00074}00074\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00076}00076\ \ \ \ \ \ \ \ \ VkResult\ result\ =\ vkCreateInstance(\&createInfo,\ \textcolor{keyword}{nullptr},\ \&m\_Instance);}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00078}00078\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (result\ !=\ VK\_SUCCESS)}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00079}00079\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ LOG\_ERROR(\textcolor{stringliteral}{"{}Instance\ creation\ failed."{}});}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ assert(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00082}00082\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00083}00083\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00085}00085\ \ \ \ \ \textcolor{keywordtype}{bool}\ Instance::ValidationExists()}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00086}00086\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00087}00087\ \ \ \ \ \ \ \ \ uint32\_t\ layerCount;}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ vkEnumerateInstanceLayerProperties(\&layerCount,\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00090}00090\ \ \ \ \ \ \ \ \ std::vector<VkLayerProperties>\ availableLayers(layerCount);}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ vkEnumerateInstanceLayerProperties(\&layerCount,\ availableLayers.data());}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *layerName\ :\ validationLayers)}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ found\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&layerProperties\ :\ availableLayers)}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (strcmp(layerProperties.layerName,\ layerName)\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ found\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (found\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00110}00110\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00112}00112\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00113}00113\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00114}00114\ \}}
+
+\end{DoxyCode}

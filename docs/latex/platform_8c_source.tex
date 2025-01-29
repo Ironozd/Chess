@@ -1,0 +1,212 @@
+\doxysection{platform.\+c}
+\hypertarget{platform_8c_source}{}\label{platform_8c_source}\index{deps/glfw/src/platform.c@{deps/glfw/src/platform.c}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00001}00001\ \textcolor{comment}{//========================================================================}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00002}00002\ \textcolor{comment}{//\ GLFW\ 3.5\ -\/\ www.glfw.org}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00003}00003\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00004}00004\ \textcolor{comment}{//\ Copyright\ (c)\ 2002-\/2006\ Marcus\ Geelnard}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00005}00005\ \textcolor{comment}{//\ Copyright\ (c)\ 2006-\/2018\ Camilla\ Löwy\ <elmindreda@glfw.org>}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00006}00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00007}00007\ \textcolor{comment}{//\ This\ software\ is\ provided\ 'as-\/is',\ without\ any\ express\ or\ implied}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00008}00008\ \textcolor{comment}{//\ warranty.\ In\ no\ event\ will\ the\ authors\ be\ held\ liable\ for\ any\ damages}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00009}00009\ \textcolor{comment}{//\ arising\ from\ the\ use\ of\ this\ software.}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00010}00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00011}00011\ \textcolor{comment}{//\ Permission\ is\ granted\ to\ anyone\ to\ use\ this\ software\ for\ any\ purpose,}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00012}00012\ \textcolor{comment}{//\ including\ commercial\ applications,\ and\ to\ alter\ it\ and\ redistribute\ it}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00013}00013\ \textcolor{comment}{//\ freely,\ subject\ to\ the\ following\ restrictions:}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00014}00014\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00015}00015\ \textcolor{comment}{//\ 1.\ The\ origin\ of\ this\ software\ must\ not\ be\ misrepresented;\ you\ must\ not}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00016}00016\ \textcolor{comment}{//\ \ \ \ claim\ that\ you\ wrote\ the\ original\ software.\ If\ you\ use\ this\ software}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00017}00017\ \textcolor{comment}{//\ \ \ \ in\ a\ product,\ an\ acknowledgment\ in\ the\ product\ documentation\ would}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00018}00018\ \textcolor{comment}{//\ \ \ \ be\ appreciated\ but\ is\ not\ required.}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00019}00019\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00020}00020\ \textcolor{comment}{//\ 2.\ Altered\ source\ versions\ must\ be\ plainly\ marked\ as\ such,\ and\ must\ not}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00021}00021\ \textcolor{comment}{//\ \ \ \ be\ misrepresented\ as\ being\ the\ original\ software.}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00022}00022\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00023}00023\ \textcolor{comment}{//\ 3.\ This\ notice\ may\ not\ be\ removed\ or\ altered\ from\ any\ source}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00024}00024\ \textcolor{comment}{//\ \ \ \ distribution.}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00025}00025\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00026}00026\ \textcolor{comment}{//========================================================================}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00028}00028\ \textcolor{preprocessor}{\#include\ "{}internal.h"{}}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00030}00030\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00031}00031\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00033}00033\ \textcolor{comment}{//\ These\ construct\ a\ string\ literal\ from\ individual\ numeric\ constants}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00034}00034\ \textcolor{preprocessor}{\#define\ \_GLFW\_CONCAT\_VERSION(m,\ n,\ r)\ \#m\ "{}."{}\ \#n\ "{}."{}\ \#r}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00035}00035\ \textcolor{preprocessor}{\#define\ \_GLFW\_MAKE\_VERSION(m,\ n,\ r)\ \_GLFW\_CONCAT\_VERSION(m,\ n,\ r)}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00041}00041\ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keyword}{struct}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00042}00042\ \{}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00043}00043\ \ \ \ \ \textcolor{keywordtype}{int}\ ID;}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00044}00044\ \ \ \ \ GLFWbool\ (*connect)(int,\mbox{\hyperlink{struct___g_l_f_wplatform}{\_GLFWplatform}}*);}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00045}00045\ \}\ supportedPlatforms[]\ =}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00046}00046\ \{}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00047}00047\ \textcolor{preprocessor}{\#if\ defined(\_GLFW\_WIN32)}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00048}00048\ \ \ \ \ \{\ GLFW\_PLATFORM\_WIN32,\ \_glfwConnectWin32\ \},}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00049}00049\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00050}00050\ \textcolor{preprocessor}{\#if\ defined(\_GLFW\_COCOA)}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00051}00051\ \ \ \ \ \{\ GLFW\_PLATFORM\_COCOA,\ \_glfwConnectCocoa\ \},}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00052}00052\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00053}00053\ \textcolor{preprocessor}{\#if\ defined(\_GLFW\_WAYLAND)}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00054}00054\ \ \ \ \ \{\ GLFW\_PLATFORM\_WAYLAND,\ \_glfwConnectWayland\ \},}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00055}00055\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00056}00056\ \textcolor{preprocessor}{\#if\ defined(\_GLFW\_X11)}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00057}00057\ \ \ \ \ \{\ GLFW\_PLATFORM\_X11,\ \_glfwConnectX11\ \},}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00058}00058\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00059}00059\ \};}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00061}00061\ GLFWbool\ \_glfwSelectPlatform(\textcolor{keywordtype}{int}\ desiredID,\ \mbox{\hyperlink{struct___g_l_f_wplatform}{\_GLFWplatform}}*\ platform)}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00062}00062\ \{}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00063}00063\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ count\ =\ \textcolor{keyword}{sizeof}(supportedPlatforms)\ /\ \textcolor{keyword}{sizeof}(supportedPlatforms[0]);}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00064}00064\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ i;}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00066}00066\ \ \ \ \ \textcolor{keywordflow}{if}\ (desiredID\ !=\ \mbox{\hyperlink{group__init_ga18b2d37374d0dea28cd69194fa85b859}{GLFW\_ANY\_PLATFORM}}\ \&\&}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00067}00067\ \ \ \ \ \ \ \ \ desiredID\ !=\ GLFW\_PLATFORM\_WIN32\ \&\&}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00068}00068\ \ \ \ \ \ \ \ \ desiredID\ !=\ GLFW\_PLATFORM\_COCOA\ \&\&}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00069}00069\ \ \ \ \ \ \ \ \ desiredID\ !=\ GLFW\_PLATFORM\_WAYLAND\ \&\&}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00070}00070\ \ \ \ \ \ \ \ \ desiredID\ !=\ GLFW\_PLATFORM\_X11\ \&\&}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00071}00071\ \ \ \ \ \ \ \ \ desiredID\ !=\ GLFW\_PLATFORM\_NULL)}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00072}00072\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00073}00073\ \ \ \ \ \ \ \ \ \_glfwInputError(\mbox{\hyperlink{group__errors_ga76f6bb9c4eea73db675f096b404593ce}{GLFW\_INVALID\_ENUM}},\ \textcolor{stringliteral}{"{}Invalid\ platform\ ID\ 0x\%08X"{}},\ desiredID);}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00074}00074\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{group__init_gac877fe3b627d21ef3a0a23e0a73ba8c5}{GLFW\_FALSE}};}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00075}00075\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00077}00077\ \ \ \ \ \textcolor{comment}{//\ Only\ allow\ the\ Null\ platform\ if\ specifically\ requested}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00078}00078\ \ \ \ \ \textcolor{keywordflow}{if}\ (desiredID\ ==\ GLFW\_PLATFORM\_NULL)}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00079}00079\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_glfwConnectNull(desiredID,\ platform);}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00080}00080\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (count\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00081}00081\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00082}00082\ \ \ \ \ \ \ \ \ \_glfwInputError(\mbox{\hyperlink{group__errors_ga3608c6c29ab7a72f3bf019f4c3a2563d}{GLFW\_PLATFORM\_UNAVAILABLE}},\ \textcolor{stringliteral}{"{}This\ binary\ only\ supports\ the\ Null\ platform"{}});}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00083}00083\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{group__init_gac877fe3b627d21ef3a0a23e0a73ba8c5}{GLFW\_FALSE}};}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00084}00084\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00086}00086\ \textcolor{preprocessor}{\#if\ defined(\_GLFW\_WAYLAND)\ \&\&\ defined(\_GLFW\_X11)}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00087}00087\ \ \ \ \ \textcolor{keywordflow}{if}\ (desiredID\ ==\ \mbox{\hyperlink{group__init_ga18b2d37374d0dea28cd69194fa85b859}{GLFW\_ANY\_PLATFORM}})}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00088}00088\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00089}00089\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \textcolor{keyword}{const}\ session\ =\ getenv(\textcolor{stringliteral}{"{}XDG\_SESSION\_TYPE"{}});}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00090}00090\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (session)}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00091}00091\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Only\ follow\ XDG\_SESSION\_TYPE\ if\ it\ is\ set\ correctly\ and\ the}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ environment\ looks\ plausble;\ otherwise\ fall\ back\ to\ detection}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (strcmp(session,\ \textcolor{stringliteral}{"{}wayland"{}})\ ==\ 0\ \&\&\ getenv(\textcolor{stringliteral}{"{}WAYLAND\_DISPLAY"{}}))}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ desiredID\ =\ GLFW\_PLATFORM\_WAYLAND;}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (strcmp(session,\ \textcolor{stringliteral}{"{}x11"{}})\ ==\ 0\ \&\&\ getenv(\textcolor{stringliteral}{"{}DISPLAY"{}}))}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ desiredID\ =\ GLFW\_PLATFORM\_X11;}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00098}00098\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00099}00099\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00100}00100\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00102}00102\ \ \ \ \ \textcolor{keywordflow}{if}\ (desiredID\ ==\ \mbox{\hyperlink{group__init_ga18b2d37374d0dea28cd69194fa85b859}{GLFW\_ANY\_PLATFORM}})}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00103}00103\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00104}00104\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ there\ is\ exactly\ one\ platform\ available\ for\ auto-\/selection,\ let\ it\ emit\ the}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00105}00105\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ error\ on\ failure\ as\ the\ platform-\/specific\ error\ description\ may\ be\ more\ helpful}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00106}00106\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (count\ ==\ 1)}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ supportedPlatforms[0].connect(supportedPlatforms[0].ID,\ platform);}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00109}00109\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (i\ =\ 0;\ \ i\ <\ count;\ \ i++)}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00110}00110\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (supportedPlatforms[i].connect(desiredID,\ platform))}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{group__init_ga2744fbb29b5631bb28802dbe0cf36eba}{GLFW\_TRUE}};}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00113}00113\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00115}00115\ \ \ \ \ \ \ \ \ \_glfwInputError(\mbox{\hyperlink{group__errors_ga3608c6c29ab7a72f3bf019f4c3a2563d}{GLFW\_PLATFORM\_UNAVAILABLE}},\ \textcolor{stringliteral}{"{}Failed\ to\ detect\ any\ supported\ platform"{}});}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00116}00116\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00117}00117\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00118}00118\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00119}00119\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (i\ =\ 0;\ \ i\ <\ count;\ \ i++)}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00120}00120\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (supportedPlatforms[i].ID\ ==\ desiredID)}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ supportedPlatforms[i].connect(desiredID,\ platform);}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00123}00123\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00125}00125\ \ \ \ \ \ \ \ \ \_glfwInputError(\mbox{\hyperlink{group__errors_ga3608c6c29ab7a72f3bf019f4c3a2563d}{GLFW\_PLATFORM\_UNAVAILABLE}},\ \textcolor{stringliteral}{"{}The\ requested\ platform\ is\ not\ supported"{}});}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00126}00126\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00128}00128\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{group__init_gac877fe3b627d21ef3a0a23e0a73ba8c5}{GLFW\_FALSE}};}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00129}00129\ \}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00130}00130\ }
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00134}00134\ }
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00135}\mbox{\hyperlink{group__init_gac2d1735162a981fcaa8fb386740aa5ce}{00135}}\ GLFWAPI\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group__init_gac2d1735162a981fcaa8fb386740aa5ce}{glfwGetPlatform}}(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00136}00136\ \{}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00137}00137\ \ \ \ \ \_GLFW\_REQUIRE\_INIT\_OR\_RETURN(0);}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00138}00138\ \ \ \ \ \textcolor{keywordflow}{return}\ \_glfw.platform.platformID;}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00139}00139\ \}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00140}00140\ }
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00141}\mbox{\hyperlink{group__init_ga7b57ba0946498e8621f4d969bbcecfba}{00141}}\ GLFWAPI\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group__init_ga7b57ba0946498e8621f4d969bbcecfba}{glfwPlatformSupported}}(\textcolor{keywordtype}{int}\ platformID)}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00142}00142\ \{}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00143}00143\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ count\ =\ \textcolor{keyword}{sizeof}(supportedPlatforms)\ /\ \textcolor{keyword}{sizeof}(supportedPlatforms[0]);}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00144}00144\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ i;}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00145}00145\ }
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00146}00146\ \ \ \ \ \textcolor{keywordflow}{if}\ (platformID\ !=\ GLFW\_PLATFORM\_WIN32\ \&\&}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00147}00147\ \ \ \ \ \ \ \ \ platformID\ !=\ GLFW\_PLATFORM\_COCOA\ \&\&}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00148}00148\ \ \ \ \ \ \ \ \ platformID\ !=\ GLFW\_PLATFORM\_WAYLAND\ \&\&}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00149}00149\ \ \ \ \ \ \ \ \ platformID\ !=\ GLFW\_PLATFORM\_X11\ \&\&}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00150}00150\ \ \ \ \ \ \ \ \ platformID\ !=\ GLFW\_PLATFORM\_NULL)}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00151}00151\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00152}00152\ \ \ \ \ \ \ \ \ \_glfwInputError(\mbox{\hyperlink{group__errors_ga76f6bb9c4eea73db675f096b404593ce}{GLFW\_INVALID\_ENUM}},\ \textcolor{stringliteral}{"{}Invalid\ platform\ ID\ 0x\%08X"{}},\ platformID);}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00153}00153\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{group__init_gac877fe3b627d21ef3a0a23e0a73ba8c5}{GLFW\_FALSE}};}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00154}00154\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00155}00155\ }
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00156}00156\ \ \ \ \ \textcolor{keywordflow}{if}\ (platformID\ ==\ GLFW\_PLATFORM\_NULL)}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00157}00157\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{group__init_ga2744fbb29b5631bb28802dbe0cf36eba}{GLFW\_TRUE}};}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00158}00158\ }
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00159}00159\ \ \ \ \ \textcolor{keywordflow}{for}\ (i\ =\ 0;\ \ i\ <\ count;\ \ i++)}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00160}00160\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00161}00161\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (platformID\ ==\ supportedPlatforms[i].ID)}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{group__init_ga2744fbb29b5631bb28802dbe0cf36eba}{GLFW\_TRUE}};}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00163}00163\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00164}00164\ }
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00165}00165\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{group__init_gac877fe3b627d21ef3a0a23e0a73ba8c5}{GLFW\_FALSE}};}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00166}00166\ \}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00167}00167\ }
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00168}\mbox{\hyperlink{group__init_gae5952184a0db36e24d1de7805b8b0945}{00168}}\ GLFWAPI\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{group__init_gae5952184a0db36e24d1de7805b8b0945}{glfwGetVersionString}}(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00169}00169\ \{}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00170}00170\ \ \ \ \ \textcolor{keywordflow}{return}\ \_GLFW\_MAKE\_VERSION(\mbox{\hyperlink{group__init_ga6337d9ea43b22fc529b2bba066b4a576}{GLFW\_VERSION\_MAJOR}},}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00171}00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__init_gaf80d40f0aea7088ff337606e9c48f7a3}{GLFW\_VERSION\_MINOR}},}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__init_gab72ae2e2035d9ea461abc3495eac0502}{GLFW\_VERSION\_REVISION}})}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00173}00173\ \textcolor{preprocessor}{\#if\ defined(\_GLFW\_WIN32)}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00174}00174\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\ Win32\ WGL"{}}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00175}00175\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00176}00176\ \textcolor{preprocessor}{\#if\ defined(\_GLFW\_COCOA)}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00177}00177\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\ Cocoa\ NSGL"{}}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00178}00178\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00179}00179\ \textcolor{preprocessor}{\#if\ defined(\_GLFW\_WAYLAND)}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00180}00180\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\ Wayland"{}}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00181}00181\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00182}00182\ \textcolor{preprocessor}{\#if\ defined(\_GLFW\_X11)}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00183}00183\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\ X11\ GLX"{}}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00184}00184\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00185}00185\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\ Null"{}}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00186}00186\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\ EGL"{}}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00187}00187\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\ OSMesa"{}}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00188}00188\ \textcolor{preprocessor}{\#if\ defined(\_\_MINGW64\_VERSION\_MAJOR)}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00189}00189\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\ MinGW-\/w64"{}}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00190}00190\ \textcolor{preprocessor}{\#elif\ defined(\_\_MINGW32\_\_)}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00191}00191\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\ MinGW"{}}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00192}00192\ \textcolor{preprocessor}{\#elif\ defined(\_MSC\_VER)}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00193}00193\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\ VisualC"{}}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00194}00194\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00195}00195\ \textcolor{preprocessor}{\#if\ defined(\_GLFW\_USE\_HYBRID\_HPG)\ ||\ defined(\_GLFW\_USE\_OPTIMUS\_HPG)}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00196}00196\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\ hybrid-\/GPU"{}}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00197}00197\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00198}00198\ \textcolor{preprocessor}{\#if\ defined(\_POSIX\_MONOTONIC\_CLOCK)}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00199}00199\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\ monotonic"{}}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00200}00200\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00201}00201\ \textcolor{preprocessor}{\#if\ defined(\_GLFW\_BUILD\_DLL)}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00202}00202\ \textcolor{preprocessor}{\#if\ defined(\_WIN32)}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00203}00203\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\ DLL"{}}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00204}00204\ \textcolor{preprocessor}{\#elif\ defined(\_\_APPLE\_\_)}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00205}00205\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\ dynamic"{}}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00206}00206\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00207}00207\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\ shared"{}}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00208}00208\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00209}00209\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00210}00210\ \ \ \ \ \ \ \ \ ;}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00211}00211\ \}}
+\DoxyCodeLine{\Hypertarget{platform_8c_source_l00212}00212\ }
+
+\end{DoxyCode}

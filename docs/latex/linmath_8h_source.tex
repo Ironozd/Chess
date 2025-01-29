@@ -1,0 +1,612 @@
+\doxysection{linmath.\+h}
+\hypertarget{linmath_8h_source}{}\label{linmath_8h_source}\index{deps/glfw/deps/linmath.h@{deps/glfw/deps/linmath.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00001}00001\ \textcolor{preprocessor}{\#ifndef\ LINMATH\_H}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00002}00002\ \textcolor{preprocessor}{\#define\ LINMATH\_H}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <math.h>}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00008}00008\ \textcolor{comment}{/*\ 2021-\/03-\/21\ Camilla\ Löwy\ <elmindreda@elmindreda.org>}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00009}00009\ \textcolor{comment}{\ *\ -\/\ Replaced\ double\ constants\ with\ float\ equivalents}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00010}00010\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00012}00012\ \textcolor{preprocessor}{\#ifdef\ LINMATH\_NO\_INLINE}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00013}00013\ \textcolor{preprocessor}{\#define\ LINMATH\_H\_FUNC\ static}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00014}00014\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00015}00015\ \textcolor{preprocessor}{\#define\ LINMATH\_H\_FUNC\ static\ inline}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00016}00016\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00018}00018\ \textcolor{preprocessor}{\#define\ LINMATH\_H\_DEFINE\_VEC(n)\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00019}00019\ \textcolor{preprocessor}{typedef\ float\ vec\#\#n[n];\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00020}00020\ \textcolor{preprocessor}{LINMATH\_H\_FUNC\ void\ vec\#\#n\#\#\_add(vec\#\#n\ r,\ vec\#\#n\ const\ a,\ vec\#\#n\ const\ b)\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00021}00021\ \textcolor{preprocessor}{\{\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00022}00022\ \textcolor{preprocessor}{\ \ \ \ int\ i;\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00023}00023\ \textcolor{preprocessor}{\ \ \ \ for(i=0;\ i<n;\ ++i)\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00024}00024\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ r[i]\ =\ a[i]\ +\ b[i];\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00025}00025\ \textcolor{preprocessor}{\}\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00026}00026\ \textcolor{preprocessor}{LINMATH\_H\_FUNC\ void\ vec\#\#n\#\#\_sub(vec\#\#n\ r,\ vec\#\#n\ const\ a,\ vec\#\#n\ const\ b)\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00027}00027\ \textcolor{preprocessor}{\{\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00028}00028\ \textcolor{preprocessor}{\ \ \ \ int\ i;\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00029}00029\ \textcolor{preprocessor}{\ \ \ \ for(i=0;\ i<n;\ ++i)\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00030}00030\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ r[i]\ =\ a[i]\ -\/\ b[i];\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00031}00031\ \textcolor{preprocessor}{\}\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00032}00032\ \textcolor{preprocessor}{LINMATH\_H\_FUNC\ void\ vec\#\#n\#\#\_scale(vec\#\#n\ r,\ vec\#\#n\ const\ v,\ float\ const\ s)\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00033}00033\ \textcolor{preprocessor}{\{\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00034}00034\ \textcolor{preprocessor}{\ \ \ \ int\ i;\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00035}00035\ \textcolor{preprocessor}{\ \ \ \ for(i=0;\ i<n;\ ++i)\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00036}00036\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ r[i]\ =\ v[i]\ *\ s;\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00037}00037\ \textcolor{preprocessor}{\}\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00038}00038\ \textcolor{preprocessor}{LINMATH\_H\_FUNC\ float\ vec\#\#n\#\#\_mul\_inner(vec\#\#n\ const\ a,\ vec\#\#n\ const\ b)\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00039}00039\ \textcolor{preprocessor}{\{\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00040}00040\ \textcolor{preprocessor}{\ \ \ \ float\ p\ =\ 0.f;\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00041}00041\ \textcolor{preprocessor}{\ \ \ \ int\ i;\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00042}00042\ \textcolor{preprocessor}{\ \ \ \ for(i=0;\ i<n;\ ++i)\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00043}00043\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ p\ +=\ b[i]*a[i];\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00044}00044\ \textcolor{preprocessor}{\ \ \ \ return\ p;\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00045}00045\ \textcolor{preprocessor}{\}\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00046}00046\ \textcolor{preprocessor}{LINMATH\_H\_FUNC\ float\ vec\#\#n\#\#\_len(vec\#\#n\ const\ v)\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00047}00047\ \textcolor{preprocessor}{\{\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00048}00048\ \textcolor{preprocessor}{\ \ \ \ return\ sqrtf(vec\#\#n\#\#\_mul\_inner(v,v));\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00049}00049\ \textcolor{preprocessor}{\}\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00050}00050\ \textcolor{preprocessor}{LINMATH\_H\_FUNC\ void\ vec\#\#n\#\#\_norm(vec\#\#n\ r,\ vec\#\#n\ const\ v)\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00051}00051\ \textcolor{preprocessor}{\{\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00052}00052\ \textcolor{preprocessor}{\ \ \ \ float\ k\ =\ 1.f\ /\ vec\#\#n\#\#\_len(v);\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00053}00053\ \textcolor{preprocessor}{\ \ \ \ vec\#\#n\#\#\_scale(r,\ v,\ k);\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00054}00054\ \textcolor{preprocessor}{\}\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00055}00055\ \textcolor{preprocessor}{LINMATH\_H\_FUNC\ void\ vec\#\#n\#\#\_min(vec\#\#n\ r,\ vec\#\#n\ const\ a,\ vec\#\#n\ const\ b)\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00056}00056\ \textcolor{preprocessor}{\{\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00057}00057\ \textcolor{preprocessor}{\ \ \ \ int\ i;\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00058}00058\ \textcolor{preprocessor}{\ \ \ \ for(i=0;\ i<n;\ ++i)\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00059}00059\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ r[i]\ =\ a[i]<b[i]\ ?\ a[i]\ :\ b[i];\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00060}00060\ \textcolor{preprocessor}{\}\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00061}00061\ \textcolor{preprocessor}{LINMATH\_H\_FUNC\ void\ vec\#\#n\#\#\_max(vec\#\#n\ r,\ vec\#\#n\ const\ a,\ vec\#\#n\ const\ b)\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00062}00062\ \textcolor{preprocessor}{\{\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00063}00063\ \textcolor{preprocessor}{\ \ \ \ int\ i;\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00064}00064\ \textcolor{preprocessor}{\ \ \ \ for(i=0;\ i<n;\ ++i)\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00065}00065\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ r[i]\ =\ a[i]>b[i]\ ?\ a[i]\ :\ b[i];\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00066}00066\ \textcolor{preprocessor}{\}\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00067}00067\ \textcolor{preprocessor}{LINMATH\_H\_FUNC\ void\ vec\#\#n\#\#\_dup(vec\#\#n\ r,\ vec\#\#n\ const\ src)\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00068}00068\ \textcolor{preprocessor}{\{\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00069}00069\ \textcolor{preprocessor}{\ \ \ \ int\ i;\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00070}00070\ \textcolor{preprocessor}{\ \ \ \ for(i=0;\ i<n;\ ++i)\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00071}00071\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ r[i]\ =\ src[i];\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00072}00072\ \textcolor{preprocessor}{\}}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00074}00074\ LINMATH\_H\_DEFINE\_VEC(2)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00075}00075\ LINMATH\_H\_DEFINE\_VEC(3)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00076}00076\ LINMATH\_H\_DEFINE\_VEC(4)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00078}00078\ LINMATH\_H\_FUNC\ \textcolor{keywordtype}{void}\ vec3\_mul\_cross(vec3\ r,\ vec3\ const\ a,\ vec3\ const\ b)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00079}00079\ \{}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00080}00080\ \ \ \ \ r[0]\ =\ a[1]*b[2]\ -\/\ a[2]*b[1];}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00081}00081\ \ \ \ \ r[1]\ =\ a[2]*b[0]\ -\/\ a[0]*b[2];}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00082}00082\ \ \ \ \ r[2]\ =\ a[0]*b[1]\ -\/\ a[1]*b[0];}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00083}00083\ \}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00085}00085\ LINMATH\_H\_FUNC\ \textcolor{keywordtype}{void}\ vec3\_reflect(vec3\ r,\ vec3\ \textcolor{keyword}{const}\ v,\ vec3\ \textcolor{keyword}{const}\ n)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00086}00086\ \{}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00087}00087\ \ \ \ \ \textcolor{keywordtype}{float}\ p\ =\ 2.f\ *\ vec3\_mul\_inner(v,\ n);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00088}00088\ \ \ \ \ \textcolor{keywordtype}{int}\ i;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00089}00089\ \ \ \ \ \textcolor{keywordflow}{for}(i=0;i<3;++i)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00090}00090\ \ \ \ \ \ \ \ \ r[i]\ =\ v[i]\ -\/\ p*n[i];}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00091}00091\ \}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00093}00093\ LINMATH\_H\_FUNC\ \textcolor{keywordtype}{void}\ vec4\_mul\_cross(vec4\ r,\ vec4\ \textcolor{keyword}{const}\ a,\ vec4\ \textcolor{keyword}{const}\ b)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00094}00094\ \{}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00095}00095\ \ \ \ \ r[0]\ =\ a[1]*b[2]\ -\/\ a[2]*b[1];}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00096}00096\ \ \ \ \ r[1]\ =\ a[2]*b[0]\ -\/\ a[0]*b[2];}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00097}00097\ \ \ \ \ r[2]\ =\ a[0]*b[1]\ -\/\ a[1]*b[0];}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00098}00098\ \ \ \ \ r[3]\ =\ 1.f;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00099}00099\ \}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00101}00101\ LINMATH\_H\_FUNC\ \textcolor{keywordtype}{void}\ vec4\_reflect(vec4\ r,\ vec4\ \textcolor{keyword}{const}\ v,\ vec4\ \textcolor{keyword}{const}\ n)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00102}00102\ \{}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00103}00103\ \ \ \ \ \textcolor{keywordtype}{float}\ p\ \ =\ 2.f*vec4\_mul\_inner(v,\ n);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00104}00104\ \ \ \ \ \textcolor{keywordtype}{int}\ i;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00105}00105\ \ \ \ \ \textcolor{keywordflow}{for}(i=0;i<4;++i)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00106}00106\ \ \ \ \ \ \ \ \ r[i]\ =\ v[i]\ -\/\ p*n[i];}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00107}00107\ \}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00109}00109\ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{group__core__vector_ga233f0e8f1aecf686e67c5c39316c4da8}{vec4}}\ mat4x4[4];}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00110}00110\ LINMATH\_H\_FUNC\ \textcolor{keywordtype}{void}\ mat4x4\_identity(mat4x4\ M)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00111}00111\ \{}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00112}00112\ \ \ \ \ \textcolor{keywordtype}{int}\ i,\ j;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00113}00113\ \ \ \ \ \textcolor{keywordflow}{for}(i=0;\ i<4;\ ++i)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00114}00114\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(j=0;\ j<4;\ ++j)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ M[i][j]\ =\ i==j\ ?\ 1.f\ :\ 0.f;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00116}00116\ \}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00117}00117\ LINMATH\_H\_FUNC\ \textcolor{keywordtype}{void}\ mat4x4\_dup(mat4x4\ M,\ mat4x4\ \textcolor{keyword}{const}\ N)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00118}00118\ \{}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00119}00119\ \ \ \ \ \textcolor{keywordtype}{int}\ i;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00120}00120\ \ \ \ \ \textcolor{keywordflow}{for}(i=0;\ i<4;\ ++i)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00121}00121\ \ \ \ \ \ \ \ \ vec4\_dup(M[i],\ N[i]);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00122}00122\ \}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00123}00123\ LINMATH\_H\_FUNC\ \textcolor{keywordtype}{void}\ mat4x4\_row(vec4\ r,\ mat4x4\ \textcolor{keyword}{const}\ M,\ \textcolor{keywordtype}{int}\ i)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00124}00124\ \{}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00125}00125\ \ \ \ \ \textcolor{keywordtype}{int}\ k;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00126}00126\ \ \ \ \ \textcolor{keywordflow}{for}(k=0;\ k<4;\ ++k)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00127}00127\ \ \ \ \ \ \ \ \ r[k]\ =\ M[k][i];}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00128}00128\ \}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00129}00129\ LINMATH\_H\_FUNC\ \textcolor{keywordtype}{void}\ mat4x4\_col(vec4\ r,\ mat4x4\ \textcolor{keyword}{const}\ M,\ \textcolor{keywordtype}{int}\ i)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00130}00130\ \{}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00131}00131\ \ \ \ \ \textcolor{keywordtype}{int}\ k;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00132}00132\ \ \ \ \ \textcolor{keywordflow}{for}(k=0;\ k<4;\ ++k)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00133}00133\ \ \ \ \ \ \ \ \ r[k]\ =\ M[i][k];}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00134}00134\ \}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00135}00135\ LINMATH\_H\_FUNC\ \textcolor{keywordtype}{void}\ mat4x4\_transpose(mat4x4\ M,\ mat4x4\ \textcolor{keyword}{const}\ N)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00136}00136\ \{}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00137}00137\ \ \ \ \ \textcolor{comment}{//\ Note:\ if\ M\ and\ N\ are\ the\ same,\ the\ user\ has\ to}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00138}00138\ \ \ \ \ \textcolor{comment}{//\ explicitly\ make\ a\ copy\ of\ M\ and\ set\ it\ to\ N.}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00139}00139\ \ \ \ \ \textcolor{keywordtype}{int}\ i,\ j;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00140}00140\ \ \ \ \ \textcolor{keywordflow}{for}(j=0;\ j<4;\ ++j)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00141}00141\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(i=0;\ i<4;\ ++i)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ M[i][j]\ =\ N[j][i];}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00143}00143\ \}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00144}00144\ LINMATH\_H\_FUNC\ \textcolor{keywordtype}{void}\ mat4x4\_add(mat4x4\ M,\ mat4x4\ \textcolor{keyword}{const}\ a,\ mat4x4\ \textcolor{keyword}{const}\ b)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00145}00145\ \{}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00146}00146\ \ \ \ \ \textcolor{keywordtype}{int}\ i;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00147}00147\ \ \ \ \ \textcolor{keywordflow}{for}(i=0;\ i<4;\ ++i)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00148}00148\ \ \ \ \ \ \ \ \ vec4\_add(M[i],\ a[i],\ b[i]);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00149}00149\ \}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00150}00150\ LINMATH\_H\_FUNC\ \textcolor{keywordtype}{void}\ mat4x4\_sub(mat4x4\ M,\ mat4x4\ \textcolor{keyword}{const}\ a,\ mat4x4\ \textcolor{keyword}{const}\ b)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00151}00151\ \{}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00152}00152\ \ \ \ \ \textcolor{keywordtype}{int}\ i;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00153}00153\ \ \ \ \ \textcolor{keywordflow}{for}(i=0;\ i<4;\ ++i)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00154}00154\ \ \ \ \ \ \ \ \ vec4\_sub(M[i],\ a[i],\ b[i]);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00155}00155\ \}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00156}00156\ LINMATH\_H\_FUNC\ \textcolor{keywordtype}{void}\ mat4x4\_scale(mat4x4\ M,\ mat4x4\ \textcolor{keyword}{const}\ a,\ \textcolor{keywordtype}{float}\ k)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00157}00157\ \{}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00158}00158\ \ \ \ \ \textcolor{keywordtype}{int}\ i;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00159}00159\ \ \ \ \ \textcolor{keywordflow}{for}(i=0;\ i<4;\ ++i)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00160}00160\ \ \ \ \ \ \ \ \ vec4\_scale(M[i],\ a[i],\ k);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00161}00161\ \}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00162}00162\ LINMATH\_H\_FUNC\ \textcolor{keywordtype}{void}\ mat4x4\_scale\_aniso(mat4x4\ M,\ mat4x4\ \textcolor{keyword}{const}\ a,\ \textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y,\ \textcolor{keywordtype}{float}\ z)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00163}00163\ \{}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00164}00164\ \ \ \ \ vec4\_scale(M[0],\ a[0],\ x);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00165}00165\ \ \ \ \ vec4\_scale(M[1],\ a[1],\ y);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00166}00166\ \ \ \ \ vec4\_scale(M[2],\ a[2],\ z);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00167}00167\ \ \ \ \ vec4\_dup(M[3],\ a[3]);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00168}00168\ \}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00169}00169\ LINMATH\_H\_FUNC\ \textcolor{keywordtype}{void}\ mat4x4\_mul(mat4x4\ M,\ mat4x4\ \textcolor{keyword}{const}\ a,\ mat4x4\ \textcolor{keyword}{const}\ b)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00170}00170\ \{}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00171}00171\ \ \ \ \ mat4x4\ temp;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00172}00172\ \ \ \ \ \textcolor{keywordtype}{int}\ k,\ r,\ c;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00173}00173\ \ \ \ \ \textcolor{keywordflow}{for}(c=0;\ c<4;\ ++c)\ \textcolor{keywordflow}{for}(r=0;\ r<4;\ ++r)\ \{}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00174}00174\ \ \ \ \ \ \ \ \ temp[c][r]\ =\ 0.f;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00175}00175\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(k=0;\ k<4;\ ++k)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ temp[c][r]\ +=\ a[k][r]\ *\ b[c][k];}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00177}00177\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00178}00178\ \ \ \ \ mat4x4\_dup(M,\ temp);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00179}00179\ \}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00180}00180\ LINMATH\_H\_FUNC\ \textcolor{keywordtype}{void}\ mat4x4\_mul\_vec4(vec4\ r,\ mat4x4\ \textcolor{keyword}{const}\ M,\ vec4\ \textcolor{keyword}{const}\ v)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00181}00181\ \{}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00182}00182\ \ \ \ \ \textcolor{keywordtype}{int}\ i,\ j;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00183}00183\ \ \ \ \ \textcolor{keywordflow}{for}(j=0;\ j<4;\ ++j)\ \{}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00184}00184\ \ \ \ \ \ \ \ \ r[j]\ =\ 0.f;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00185}00185\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(i=0;\ i<4;\ ++i)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ r[j]\ +=\ M[i][j]\ *\ v[i];}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00187}00187\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00188}00188\ \}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00189}00189\ LINMATH\_H\_FUNC\ \textcolor{keywordtype}{void}\ mat4x4\_translate(mat4x4\ T,\ \textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y,\ \textcolor{keywordtype}{float}\ z)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00190}00190\ \{}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00191}00191\ \ \ \ \ mat4x4\_identity(T);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00192}00192\ \ \ \ \ T[3][0]\ =\ x;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00193}00193\ \ \ \ \ T[3][1]\ =\ y;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00194}00194\ \ \ \ \ T[3][2]\ =\ z;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00195}00195\ \}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00196}00196\ LINMATH\_H\_FUNC\ \textcolor{keywordtype}{void}\ mat4x4\_translate\_in\_place(mat4x4\ M,\ \textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y,\ \textcolor{keywordtype}{float}\ z)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00197}00197\ \{}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00198}00198\ \ \ \ \ \mbox{\hyperlink{group__core__vector_ga233f0e8f1aecf686e67c5c39316c4da8}{vec4}}\ t\ =\ \{x,\ y,\ z,\ 0\};}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00199}00199\ \ \ \ \ \mbox{\hyperlink{group__core__vector_ga233f0e8f1aecf686e67c5c39316c4da8}{vec4}}\ r;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00200}00200\ \ \ \ \ \textcolor{keywordtype}{int}\ i;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00201}00201\ \ \ \ \ \textcolor{keywordflow}{for}\ (i\ =\ 0;\ i\ <\ 4;\ ++i)\ \{}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00202}00202\ \ \ \ \ \ \ \ \ mat4x4\_row(r,\ M,\ i);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00203}00203\ \ \ \ \ \ \ \ \ M[3][i]\ +=\ vec4\_mul\_inner(r,\ t);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00204}00204\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00205}00205\ \}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00206}00206\ LINMATH\_H\_FUNC\ \textcolor{keywordtype}{void}\ mat4x4\_from\_vec3\_mul\_outer(mat4x4\ M,\ vec3\ \textcolor{keyword}{const}\ a,\ vec3\ \textcolor{keyword}{const}\ b)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00207}00207\ \{}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00208}00208\ \ \ \ \ \textcolor{keywordtype}{int}\ i,\ j;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00209}00209\ \ \ \ \ \textcolor{keywordflow}{for}(i=0;\ i<4;\ ++i)\ \textcolor{keywordflow}{for}(j=0;\ j<4;\ ++j)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00210}00210\ \ \ \ \ \ \ \ \ M[i][j]\ =\ i<3\ \&\&\ j<3\ ?\ a[i]\ *\ b[j]\ :\ 0.f;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00211}00211\ \}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00212}00212\ LINMATH\_H\_FUNC\ \textcolor{keywordtype}{void}\ mat4x4\_rotate(mat4x4\ R,\ mat4x4\ \textcolor{keyword}{const}\ M,\ \textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y,\ \textcolor{keywordtype}{float}\ z,\ \textcolor{keywordtype}{float}\ angle)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00213}00213\ \{}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00214}00214\ \ \ \ \ \textcolor{keywordtype}{float}\ s\ =\ sinf(angle);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00215}00215\ \ \ \ \ \textcolor{keywordtype}{float}\ c\ =\ cosf(angle);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00216}00216\ \ \ \ \ \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{vec3}}\ u\ =\ \{x,\ y,\ z\};}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00217}00217\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00218}00218\ \ \ \ \ \textcolor{keywordflow}{if}(vec3\_len(u)\ >\ 1e-\/4)\ \{}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00219}00219\ \ \ \ \ \ \ \ \ vec3\_norm(u,\ u);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00220}00220\ \ \ \ \ \ \ \ \ mat4x4\ T;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00221}00221\ \ \ \ \ \ \ \ \ mat4x4\_from\_vec3\_mul\_outer(T,\ u,\ u);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00222}00222\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00223}00223\ \ \ \ \ \ \ \ \ mat4x4\ S\ =\ \{}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00224}00224\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \ \ \ 0,\ \ u[2],\ -\/u[1],\ 0\},}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00225}00225\ \ \ \ \ \ \ \ \ \ \ \ \ \{-\/u[2],\ \ \ \ \ 0,\ \ u[0],\ 0\},}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00226}00226\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ u[1],\ -\/u[0],\ \ \ \ \ 0,\ 0\},}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00227}00227\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \ \ \ 0,\ \ \ \ \ 0,\ \ \ \ \ 0,\ 0\}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00228}00228\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00229}00229\ \ \ \ \ \ \ \ \ mat4x4\_scale(S,\ S,\ s);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00230}00230\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00231}00231\ \ \ \ \ \ \ \ \ mat4x4\ C;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00232}00232\ \ \ \ \ \ \ \ \ mat4x4\_identity(C);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00233}00233\ \ \ \ \ \ \ \ \ mat4x4\_sub(C,\ C,\ T);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00234}00234\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00235}00235\ \ \ \ \ \ \ \ \ mat4x4\_scale(C,\ C,\ c);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00236}00236\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00237}00237\ \ \ \ \ \ \ \ \ mat4x4\_add(T,\ T,\ C);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00238}00238\ \ \ \ \ \ \ \ \ mat4x4\_add(T,\ T,\ S);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00239}00239\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00240}00240\ \ \ \ \ \ \ \ \ T[3][3]\ =\ 1.f;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00241}00241\ \ \ \ \ \ \ \ \ mat4x4\_mul(R,\ M,\ T);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00242}00242\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00243}00243\ \ \ \ \ \ \ \ \ mat4x4\_dup(R,\ M);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00244}00244\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00245}00245\ \}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00246}00246\ LINMATH\_H\_FUNC\ \textcolor{keywordtype}{void}\ mat4x4\_rotate\_X(mat4x4\ Q,\ mat4x4\ \textcolor{keyword}{const}\ M,\ \textcolor{keywordtype}{float}\ angle)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00247}00247\ \{}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00248}00248\ \ \ \ \ \textcolor{keywordtype}{float}\ s\ =\ sinf(angle);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00249}00249\ \ \ \ \ \textcolor{keywordtype}{float}\ c\ =\ cosf(angle);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00250}00250\ \ \ \ \ mat4x4\ R\ =\ \{}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00251}00251\ \ \ \ \ \ \ \ \ \{1.f,\ 0.f,\ 0.f,\ 0.f\},}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00252}00252\ \ \ \ \ \ \ \ \ \{0.f,\ \ \ c,\ \ \ s,\ 0.f\},}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00253}00253\ \ \ \ \ \ \ \ \ \{0.f,\ \ -\/s,\ \ \ c,\ 0.f\},}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00254}00254\ \ \ \ \ \ \ \ \ \{0.f,\ 0.f,\ 0.f,\ 1.f\}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00255}00255\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00256}00256\ \ \ \ \ mat4x4\_mul(Q,\ M,\ R);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00257}00257\ \}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00258}00258\ LINMATH\_H\_FUNC\ \textcolor{keywordtype}{void}\ mat4x4\_rotate\_Y(mat4x4\ Q,\ mat4x4\ \textcolor{keyword}{const}\ M,\ \textcolor{keywordtype}{float}\ angle)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00259}00259\ \{}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00260}00260\ \ \ \ \ \textcolor{keywordtype}{float}\ s\ =\ sinf(angle);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00261}00261\ \ \ \ \ \textcolor{keywordtype}{float}\ c\ =\ cosf(angle);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00262}00262\ \ \ \ \ mat4x4\ R\ =\ \{}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00263}00263\ \ \ \ \ \ \ \ \ \{\ \ \ c,\ 0.f,\ \ -\/s,\ 0.f\},}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00264}00264\ \ \ \ \ \ \ \ \ \{\ 0.f,\ 1.f,\ 0.f,\ 0.f\},}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00265}00265\ \ \ \ \ \ \ \ \ \{\ \ \ s,\ 0.f,\ \ \ c,\ 0.f\},}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00266}00266\ \ \ \ \ \ \ \ \ \{\ 0.f,\ 0.f,\ 0.f,\ 1.f\}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00267}00267\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00268}00268\ \ \ \ \ mat4x4\_mul(Q,\ M,\ R);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00269}00269\ \}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00270}00270\ LINMATH\_H\_FUNC\ \textcolor{keywordtype}{void}\ mat4x4\_rotate\_Z(mat4x4\ Q,\ mat4x4\ \textcolor{keyword}{const}\ M,\ \textcolor{keywordtype}{float}\ angle)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00271}00271\ \{}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00272}00272\ \ \ \ \ \textcolor{keywordtype}{float}\ s\ =\ sinf(angle);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00273}00273\ \ \ \ \ \textcolor{keywordtype}{float}\ c\ =\ cosf(angle);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00274}00274\ \ \ \ \ mat4x4\ R\ =\ \{}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00275}00275\ \ \ \ \ \ \ \ \ \{\ \ \ c,\ \ \ s,\ 0.f,\ 0.f\},}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00276}00276\ \ \ \ \ \ \ \ \ \{\ \ -\/s,\ \ \ c,\ 0.f,\ 0.f\},}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00277}00277\ \ \ \ \ \ \ \ \ \{\ 0.f,\ 0.f,\ 1.f,\ 0.f\},}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00278}00278\ \ \ \ \ \ \ \ \ \{\ 0.f,\ 0.f,\ 0.f,\ 1.f\}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00279}00279\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00280}00280\ \ \ \ \ mat4x4\_mul(Q,\ M,\ R);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00281}00281\ \}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00282}00282\ LINMATH\_H\_FUNC\ \textcolor{keywordtype}{void}\ mat4x4\_invert(mat4x4\ T,\ mat4x4\ \textcolor{keyword}{const}\ M)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00283}00283\ \{}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00284}00284\ \ \ \ \ \textcolor{keywordtype}{float}\ s[6];}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00285}00285\ \ \ \ \ \textcolor{keywordtype}{float}\ c[6];}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00286}00286\ \ \ \ \ s[0]\ =\ M[0][0]*M[1][1]\ -\/\ M[1][0]*M[0][1];}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00287}00287\ \ \ \ \ s[1]\ =\ M[0][0]*M[1][2]\ -\/\ M[1][0]*M[0][2];}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00288}00288\ \ \ \ \ s[2]\ =\ M[0][0]*M[1][3]\ -\/\ M[1][0]*M[0][3];}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00289}00289\ \ \ \ \ s[3]\ =\ M[0][1]*M[1][2]\ -\/\ M[1][1]*M[0][2];}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00290}00290\ \ \ \ \ s[4]\ =\ M[0][1]*M[1][3]\ -\/\ M[1][1]*M[0][3];}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00291}00291\ \ \ \ \ s[5]\ =\ M[0][2]*M[1][3]\ -\/\ M[1][2]*M[0][3];}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00292}00292\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00293}00293\ \ \ \ \ c[0]\ =\ M[2][0]*M[3][1]\ -\/\ M[3][0]*M[2][1];}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00294}00294\ \ \ \ \ c[1]\ =\ M[2][0]*M[3][2]\ -\/\ M[3][0]*M[2][2];}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00295}00295\ \ \ \ \ c[2]\ =\ M[2][0]*M[3][3]\ -\/\ M[3][0]*M[2][3];}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00296}00296\ \ \ \ \ c[3]\ =\ M[2][1]*M[3][2]\ -\/\ M[3][1]*M[2][2];}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00297}00297\ \ \ \ \ c[4]\ =\ M[2][1]*M[3][3]\ -\/\ M[3][1]*M[2][3];}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00298}00298\ \ \ \ \ c[5]\ =\ M[2][2]*M[3][3]\ -\/\ M[3][2]*M[2][3];}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00299}00299\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00300}00300\ \ \ \ \ \textcolor{comment}{/*\ Assumes\ it\ is\ invertible\ */}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00301}00301\ \ \ \ \ \textcolor{keywordtype}{float}\ idet\ =\ 1.0f/(\ s[0]*c[5]-\/s[1]*c[4]+s[2]*c[3]+s[3]*c[2]-\/s[4]*c[1]+s[5]*c[0]\ );}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00302}00302\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00303}00303\ \ \ \ \ T[0][0]\ =\ (\ M[1][1]\ *\ c[5]\ -\/\ M[1][2]\ *\ c[4]\ +\ M[1][3]\ *\ c[3])\ *\ idet;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00304}00304\ \ \ \ \ T[0][1]\ =\ (-\/M[0][1]\ *\ c[5]\ +\ M[0][2]\ *\ c[4]\ -\/\ M[0][3]\ *\ c[3])\ *\ idet;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00305}00305\ \ \ \ \ T[0][2]\ =\ (\ M[3][1]\ *\ s[5]\ -\/\ M[3][2]\ *\ s[4]\ +\ M[3][3]\ *\ s[3])\ *\ idet;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00306}00306\ \ \ \ \ T[0][3]\ =\ (-\/M[2][1]\ *\ s[5]\ +\ M[2][2]\ *\ s[4]\ -\/\ M[2][3]\ *\ s[3])\ *\ idet;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00307}00307\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00308}00308\ \ \ \ \ T[1][0]\ =\ (-\/M[1][0]\ *\ c[5]\ +\ M[1][2]\ *\ c[2]\ -\/\ M[1][3]\ *\ c[1])\ *\ idet;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00309}00309\ \ \ \ \ T[1][1]\ =\ (\ M[0][0]\ *\ c[5]\ -\/\ M[0][2]\ *\ c[2]\ +\ M[0][3]\ *\ c[1])\ *\ idet;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00310}00310\ \ \ \ \ T[1][2]\ =\ (-\/M[3][0]\ *\ s[5]\ +\ M[3][2]\ *\ s[2]\ -\/\ M[3][3]\ *\ s[1])\ *\ idet;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00311}00311\ \ \ \ \ T[1][3]\ =\ (\ M[2][0]\ *\ s[5]\ -\/\ M[2][2]\ *\ s[2]\ +\ M[2][3]\ *\ s[1])\ *\ idet;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00312}00312\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00313}00313\ \ \ \ \ T[2][0]\ =\ (\ M[1][0]\ *\ c[4]\ -\/\ M[1][1]\ *\ c[2]\ +\ M[1][3]\ *\ c[0])\ *\ idet;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00314}00314\ \ \ \ \ T[2][1]\ =\ (-\/M[0][0]\ *\ c[4]\ +\ M[0][1]\ *\ c[2]\ -\/\ M[0][3]\ *\ c[0])\ *\ idet;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00315}00315\ \ \ \ \ T[2][2]\ =\ (\ M[3][0]\ *\ s[4]\ -\/\ M[3][1]\ *\ s[2]\ +\ M[3][3]\ *\ s[0])\ *\ idet;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00316}00316\ \ \ \ \ T[2][3]\ =\ (-\/M[2][0]\ *\ s[4]\ +\ M[2][1]\ *\ s[2]\ -\/\ M[2][3]\ *\ s[0])\ *\ idet;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00317}00317\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00318}00318\ \ \ \ \ T[3][0]\ =\ (-\/M[1][0]\ *\ c[3]\ +\ M[1][1]\ *\ c[1]\ -\/\ M[1][2]\ *\ c[0])\ *\ idet;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00319}00319\ \ \ \ \ T[3][1]\ =\ (\ M[0][0]\ *\ c[3]\ -\/\ M[0][1]\ *\ c[1]\ +\ M[0][2]\ *\ c[0])\ *\ idet;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00320}00320\ \ \ \ \ T[3][2]\ =\ (-\/M[3][0]\ *\ s[3]\ +\ M[3][1]\ *\ s[1]\ -\/\ M[3][2]\ *\ s[0])\ *\ idet;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00321}00321\ \ \ \ \ T[3][3]\ =\ (\ M[2][0]\ *\ s[3]\ -\/\ M[2][1]\ *\ s[1]\ +\ M[2][2]\ *\ s[0])\ *\ idet;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00322}00322\ \}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00323}00323\ LINMATH\_H\_FUNC\ \textcolor{keywordtype}{void}\ mat4x4\_orthonormalize(mat4x4\ R,\ mat4x4\ \textcolor{keyword}{const}\ M)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00324}00324\ \{}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00325}00325\ \ \ \ \ mat4x4\_dup(R,\ M);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00326}00326\ \ \ \ \ \textcolor{keywordtype}{float}\ s\ =\ 1.f;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00327}00327\ \ \ \ \ \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{vec3}}\ h;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00328}00328\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00329}00329\ \ \ \ \ vec3\_norm(R[2],\ R[2]);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00330}00330\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00331}00331\ \ \ \ \ s\ =\ vec3\_mul\_inner(R[1],\ R[2]);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00332}00332\ \ \ \ \ vec3\_scale(h,\ R[2],\ s);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00333}00333\ \ \ \ \ vec3\_sub(R[1],\ R[1],\ h);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00334}00334\ \ \ \ \ vec3\_norm(R[1],\ R[1]);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00335}00335\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00336}00336\ \ \ \ \ s\ =\ vec3\_mul\_inner(R[0],\ R[2]);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00337}00337\ \ \ \ \ vec3\_scale(h,\ R[2],\ s);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00338}00338\ \ \ \ \ vec3\_sub(R[0],\ R[0],\ h);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00339}00339\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00340}00340\ \ \ \ \ s\ =\ vec3\_mul\_inner(R[0],\ R[1]);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00341}00341\ \ \ \ \ vec3\_scale(h,\ R[1],\ s);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00342}00342\ \ \ \ \ vec3\_sub(R[0],\ R[0],\ h);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00343}00343\ \ \ \ \ vec3\_norm(R[0],\ R[0]);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00344}00344\ \}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00345}00345\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00346}00346\ LINMATH\_H\_FUNC\ \textcolor{keywordtype}{void}\ mat4x4\_frustum(mat4x4\ M,\ \textcolor{keywordtype}{float}\ l,\ \textcolor{keywordtype}{float}\ r,\ \textcolor{keywordtype}{float}\ b,\ \textcolor{keywordtype}{float}\ t,\ \textcolor{keywordtype}{float}\ n,\ \textcolor{keywordtype}{float}\ f)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00347}00347\ \{}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00348}00348\ \ \ \ \ M[0][0]\ =\ 2.f*n/(r-\/l);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00349}00349\ \ \ \ \ M[0][1]\ =\ M[0][2]\ =\ M[0][3]\ =\ 0.f;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00350}00350\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00351}00351\ \ \ \ \ M[1][1]\ =\ 2.f*n/(t-\/b);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00352}00352\ \ \ \ \ M[1][0]\ =\ M[1][2]\ =\ M[1][3]\ =\ 0.f;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00353}00353\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00354}00354\ \ \ \ \ M[2][0]\ =\ (r+l)/(r-\/l);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00355}00355\ \ \ \ \ M[2][1]\ =\ (t+b)/(t-\/b);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00356}00356\ \ \ \ \ M[2][2]\ =\ -\/(f+n)/(f-\/n);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00357}00357\ \ \ \ \ M[2][3]\ =\ -\/1.f;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00358}00358\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00359}00359\ \ \ \ \ M[3][2]\ =\ -\/2.f*(f*n)/(f-\/n);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00360}00360\ \ \ \ \ M[3][0]\ =\ M[3][1]\ =\ M[3][3]\ =\ 0.f;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00361}00361\ \}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00362}00362\ LINMATH\_H\_FUNC\ \textcolor{keywordtype}{void}\ mat4x4\_ortho(mat4x4\ M,\ \textcolor{keywordtype}{float}\ l,\ \textcolor{keywordtype}{float}\ r,\ \textcolor{keywordtype}{float}\ b,\ \textcolor{keywordtype}{float}\ t,\ \textcolor{keywordtype}{float}\ n,\ \textcolor{keywordtype}{float}\ f)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00363}00363\ \{}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00364}00364\ \ \ \ \ M[0][0]\ =\ 2.f/(r-\/l);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00365}00365\ \ \ \ \ M[0][1]\ =\ M[0][2]\ =\ M[0][3]\ =\ 0.f;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00366}00366\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00367}00367\ \ \ \ \ M[1][1]\ =\ 2.f/(t-\/b);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00368}00368\ \ \ \ \ M[1][0]\ =\ M[1][2]\ =\ M[1][3]\ =\ 0.f;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00369}00369\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00370}00370\ \ \ \ \ M[2][2]\ =\ -\/2.f/(f-\/n);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00371}00371\ \ \ \ \ M[2][0]\ =\ M[2][1]\ =\ M[2][3]\ =\ 0.f;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00372}00372\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00373}00373\ \ \ \ \ M[3][0]\ =\ -\/(r+l)/(r-\/l);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00374}00374\ \ \ \ \ M[3][1]\ =\ -\/(t+b)/(t-\/b);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00375}00375\ \ \ \ \ M[3][2]\ =\ -\/(f+n)/(f-\/n);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00376}00376\ \ \ \ \ M[3][3]\ =\ 1.f;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00377}00377\ \}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00378}00378\ LINMATH\_H\_FUNC\ \textcolor{keywordtype}{void}\ mat4x4\_perspective(mat4x4\ m,\ \textcolor{keywordtype}{float}\ y\_fov,\ \textcolor{keywordtype}{float}\ aspect,\ \textcolor{keywordtype}{float}\ n,\ \textcolor{keywordtype}{float}\ f)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00379}00379\ \{}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00380}00380\ \ \ \ \ \textcolor{comment}{/*\ NOTE:\ Degrees\ are\ an\ unhandy\ unit\ to\ work\ with.}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00381}00381\ \textcolor{comment}{\ \ \ \ \ *\ linmath.h\ uses\ radians\ for\ everything!\ */}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00382}00382\ \ \ \ \ \textcolor{keywordtype}{float}\ \textcolor{keyword}{const}\ a\ =\ 1.f\ /\ tanf(y\_fov\ /\ 2.f);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00383}00383\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00384}00384\ \ \ \ \ m[0][0]\ =\ a\ /\ aspect;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00385}00385\ \ \ \ \ m[0][1]\ =\ 0.f;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00386}00386\ \ \ \ \ m[0][2]\ =\ 0.f;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00387}00387\ \ \ \ \ m[0][3]\ =\ 0.f;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00388}00388\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00389}00389\ \ \ \ \ m[1][0]\ =\ 0.f;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00390}00390\ \ \ \ \ m[1][1]\ =\ a;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00391}00391\ \ \ \ \ m[1][2]\ =\ 0.f;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00392}00392\ \ \ \ \ m[1][3]\ =\ 0.f;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00393}00393\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00394}00394\ \ \ \ \ m[2][0]\ =\ 0.f;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00395}00395\ \ \ \ \ m[2][1]\ =\ 0.f;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00396}00396\ \ \ \ \ m[2][2]\ =\ -\/((f\ +\ n)\ /\ (f\ -\/\ n));}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00397}00397\ \ \ \ \ m[2][3]\ =\ -\/1.f;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00398}00398\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00399}00399\ \ \ \ \ m[3][0]\ =\ 0.f;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00400}00400\ \ \ \ \ m[3][1]\ =\ 0.f;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00401}00401\ \ \ \ \ m[3][2]\ =\ -\/((2.f\ *\ f\ *\ n)\ /\ (f\ -\/\ n));}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00402}00402\ \ \ \ \ m[3][3]\ =\ 0.f;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00403}00403\ \}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00404}00404\ LINMATH\_H\_FUNC\ \textcolor{keywordtype}{void}\ mat4x4\_look\_at(mat4x4\ m,\ vec3\ \textcolor{keyword}{const}\ eye,\ vec3\ \textcolor{keyword}{const}\ center,\ vec3\ \textcolor{keyword}{const}\ up)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00405}00405\ \{}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00406}00406\ \ \ \ \ \textcolor{comment}{/*\ Adapted\ from\ Android's\ OpenGL\ Matrix.java.\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00407}00407\ \ \ \ \ \textcolor{comment}{/*\ See\ the\ OpenGL\ GLUT\ documentation\ for\ gluLookAt\ for\ a\ description\ */}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00408}00408\ \ \ \ \ \textcolor{comment}{/*\ of\ the\ algorithm.\ We\ implement\ it\ in\ a\ straightforward\ way:\ \ \ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00409}00409\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00410}00410\ \ \ \ \ \textcolor{comment}{/*\ TODO:\ The\ negation\ of\ of\ can\ be\ spared\ by\ swapping\ the\ order\ of}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00411}00411\ \textcolor{comment}{\ \ \ \ \ *\ \ \ \ \ \ \ operands\ in\ the\ following\ cross\ products\ in\ the\ right\ way.\ */}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00412}00412\ \ \ \ \ \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{vec3}}\ f;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00413}00413\ \ \ \ \ vec3\_sub(f,\ center,\ eye);\ \ \ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00414}00414\ \ \ \ \ vec3\_norm(f,\ f);\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00415}00415\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00416}00416\ \ \ \ \ \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{vec3}}\ s;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00417}00417\ \ \ \ \ vec3\_mul\_cross(s,\ f,\ up);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00418}00418\ \ \ \ \ vec3\_norm(s,\ s);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00419}00419\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00420}00420\ \ \ \ \ \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{vec3}}\ t;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00421}00421\ \ \ \ \ vec3\_mul\_cross(t,\ s,\ f);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00422}00422\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00423}00423\ \ \ \ \ m[0][0]\ =\ \ s[0];}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00424}00424\ \ \ \ \ m[0][1]\ =\ \ t[0];}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00425}00425\ \ \ \ \ m[0][2]\ =\ -\/f[0];}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00426}00426\ \ \ \ \ m[0][3]\ =\ \ \ 0.f;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00427}00427\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00428}00428\ \ \ \ \ m[1][0]\ =\ \ s[1];}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00429}00429\ \ \ \ \ m[1][1]\ =\ \ t[1];}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00430}00430\ \ \ \ \ m[1][2]\ =\ -\/f[1];}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00431}00431\ \ \ \ \ m[1][3]\ =\ \ \ 0.f;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00432}00432\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00433}00433\ \ \ \ \ m[2][0]\ =\ \ s[2];}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00434}00434\ \ \ \ \ m[2][1]\ =\ \ t[2];}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00435}00435\ \ \ \ \ m[2][2]\ =\ -\/f[2];}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00436}00436\ \ \ \ \ m[2][3]\ =\ \ \ 0.f;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00437}00437\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00438}00438\ \ \ \ \ m[3][0]\ =\ \ 0.f;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00439}00439\ \ \ \ \ m[3][1]\ =\ \ 0.f;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00440}00440\ \ \ \ \ m[3][2]\ =\ \ 0.f;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00441}00441\ \ \ \ \ m[3][3]\ =\ \ 1.f;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00442}00442\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00443}00443\ \ \ \ \ mat4x4\_translate\_in\_place(m,\ -\/eye[0],\ -\/eye[1],\ -\/eye[2]);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00444}00444\ \}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00445}00445\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00446}00446\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{float}\ quat[4];}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00447}00447\ \textcolor{preprocessor}{\#define\ quat\_add\ vec4\_add}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00448}00448\ \textcolor{preprocessor}{\#define\ quat\_sub\ vec4\_sub}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00449}00449\ \textcolor{preprocessor}{\#define\ quat\_norm\ vec4\_norm}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00450}00450\ \textcolor{preprocessor}{\#define\ quat\_scale\ vec4\_scale}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00451}00451\ \textcolor{preprocessor}{\#define\ quat\_mul\_inner\ vec4\_mul\_inner}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00452}00452\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00453}00453\ LINMATH\_H\_FUNC\ \textcolor{keywordtype}{void}\ quat\_identity(quat\ q)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00454}00454\ \{}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00455}00455\ \ \ \ \ q[0]\ =\ q[1]\ =\ q[2]\ =\ 0.f;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00456}00456\ \ \ \ \ q[3]\ =\ 1.f;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00457}00457\ \}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00458}00458\ LINMATH\_H\_FUNC\ \textcolor{keywordtype}{void}\ quat\_mul(quat\ r,\ quat\ \textcolor{keyword}{const}\ p,\ quat\ \textcolor{keyword}{const}\ q)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00459}00459\ \{}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00460}00460\ \ \ \ \ \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{vec3}}\ w;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00461}00461\ \ \ \ \ vec3\_mul\_cross(r,\ p,\ q);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00462}00462\ \ \ \ \ vec3\_scale(w,\ p,\ q[3]);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00463}00463\ \ \ \ \ vec3\_add(r,\ r,\ w);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00464}00464\ \ \ \ \ vec3\_scale(w,\ q,\ p[3]);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00465}00465\ \ \ \ \ vec3\_add(r,\ r,\ w);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00466}00466\ \ \ \ \ r[3]\ =\ p[3]*q[3]\ -\/\ vec3\_mul\_inner(p,\ q);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00467}00467\ \}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00468}00468\ LINMATH\_H\_FUNC\ \textcolor{keywordtype}{void}\ quat\_conj(quat\ r,\ quat\ \textcolor{keyword}{const}\ q)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00469}00469\ \{}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00470}00470\ \ \ \ \ \textcolor{keywordtype}{int}\ i;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00471}00471\ \ \ \ \ \textcolor{keywordflow}{for}(i=0;\ i<3;\ ++i)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00472}00472\ \ \ \ \ \ \ \ \ r[i]\ =\ -\/q[i];}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00473}00473\ \ \ \ \ r[3]\ =\ q[3];}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00474}00474\ \}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00475}00475\ LINMATH\_H\_FUNC\ \textcolor{keywordtype}{void}\ quat\_rotate(quat\ r,\ \textcolor{keywordtype}{float}\ angle,\ vec3\ \textcolor{keyword}{const}\ axis)\ \{}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00476}00476\ \ \ \ \ \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{vec3}}\ axis\_norm;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00477}00477\ \ \ \ \ vec3\_norm(axis\_norm,\ axis);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00478}00478\ \ \ \ \ \textcolor{keywordtype}{float}\ s\ =\ sinf(angle\ /\ 2);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00479}00479\ \ \ \ \ \textcolor{keywordtype}{float}\ c\ =\ cosf(angle\ /\ 2);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00480}00480\ \ \ \ \ vec3\_scale(r,\ axis\_norm,\ s);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00481}00481\ \ \ \ \ r[3]\ =\ c;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00482}00482\ \}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00483}00483\ LINMATH\_H\_FUNC\ \textcolor{keywordtype}{void}\ quat\_mul\_vec3(vec3\ r,\ quat\ \textcolor{keyword}{const}\ q,\ vec3\ \textcolor{keyword}{const}\ v)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00484}00484\ \{}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00485}00485\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00486}00486\ \textcolor{comment}{\ *\ Method\ by\ Fabian\ 'ryg'\ Giessen\ (of\ Farbrausch)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00487}00487\ \textcolor{comment}{t\ =\ 2\ *\ cross(q.xyz,\ v)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00488}00488\ \textcolor{comment}{v'\ =\ v\ +\ q.w\ *\ t\ +\ cross(q.xyz,\ t)}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00489}00489\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00490}00490\ \ \ \ \ \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{vec3}}\ t;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00491}00491\ \ \ \ \ \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{vec3}}\ q\_xyz\ =\ \{q[0],\ q[1],\ q[2]\};}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00492}00492\ \ \ \ \ \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{vec3}}\ u\ =\ \{q[0],\ q[1],\ q[2]\};}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00493}00493\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00494}00494\ \ \ \ \ vec3\_mul\_cross(t,\ q\_xyz,\ v);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00495}00495\ \ \ \ \ vec3\_scale(t,\ t,\ 2);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00496}00496\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00497}00497\ \ \ \ \ vec3\_mul\_cross(u,\ q\_xyz,\ t);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00498}00498\ \ \ \ \ vec3\_scale(t,\ t,\ q[3]);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00499}00499\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00500}00500\ \ \ \ \ vec3\_add(r,\ v,\ t);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00501}00501\ \ \ \ \ vec3\_add(r,\ r,\ u);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00502}00502\ \}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00503}00503\ LINMATH\_H\_FUNC\ \textcolor{keywordtype}{void}\ mat4x4\_from\_quat(mat4x4\ M,\ quat\ \textcolor{keyword}{const}\ q)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00504}00504\ \{}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00505}00505\ \ \ \ \ \textcolor{keywordtype}{float}\ a\ =\ q[3];}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00506}00506\ \ \ \ \ \textcolor{keywordtype}{float}\ b\ =\ q[0];}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00507}00507\ \ \ \ \ \textcolor{keywordtype}{float}\ c\ =\ q[1];}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00508}00508\ \ \ \ \ \textcolor{keywordtype}{float}\ d\ =\ q[2];}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00509}00509\ \ \ \ \ \textcolor{keywordtype}{float}\ a2\ =\ a*a;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00510}00510\ \ \ \ \ \textcolor{keywordtype}{float}\ b2\ =\ b*b;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00511}00511\ \ \ \ \ \textcolor{keywordtype}{float}\ c2\ =\ c*c;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00512}00512\ \ \ \ \ \textcolor{keywordtype}{float}\ d2\ =\ d*d;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00513}00513\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00514}00514\ \ \ \ \ M[0][0]\ =\ a2\ +\ b2\ -\/\ c2\ -\/\ d2;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00515}00515\ \ \ \ \ M[0][1]\ =\ 2.f*(b*c\ +\ a*d);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00516}00516\ \ \ \ \ M[0][2]\ =\ 2.f*(b*d\ -\/\ a*c);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00517}00517\ \ \ \ \ M[0][3]\ =\ 0.f;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00518}00518\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00519}00519\ \ \ \ \ M[1][0]\ =\ 2*(b*c\ -\/\ a*d);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00520}00520\ \ \ \ \ M[1][1]\ =\ a2\ -\/\ b2\ +\ c2\ -\/\ d2;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00521}00521\ \ \ \ \ M[1][2]\ =\ 2.f*(c*d\ +\ a*b);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00522}00522\ \ \ \ \ M[1][3]\ =\ 0.f;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00523}00523\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00524}00524\ \ \ \ \ M[2][0]\ =\ 2.f*(b*d\ +\ a*c);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00525}00525\ \ \ \ \ M[2][1]\ =\ 2.f*(c*d\ -\/\ a*b);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00526}00526\ \ \ \ \ M[2][2]\ =\ a2\ -\/\ b2\ -\/\ c2\ +\ d2;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00527}00527\ \ \ \ \ M[2][3]\ =\ 0.f;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00528}00528\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00529}00529\ \ \ \ \ M[3][0]\ =\ M[3][1]\ =\ M[3][2]\ =\ 0.f;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00530}00530\ \ \ \ \ M[3][3]\ =\ 1.f;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00531}00531\ \}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00532}00532\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00533}00533\ LINMATH\_H\_FUNC\ \textcolor{keywordtype}{void}\ mat4x4o\_mul\_quat(mat4x4\ R,\ mat4x4\ \textcolor{keyword}{const}\ M,\ quat\ \textcolor{keyword}{const}\ q)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00534}00534\ \{}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00535}00535\ \textcolor{comment}{/*\ \ XXX:\ The\ way\ this\ is\ written\ only\ works\ for\ orthogonal\ matrices.\ */}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00536}00536\ \textcolor{comment}{/*\ TODO:\ Take\ care\ of\ non-\/orthogonal\ case.\ */}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00537}00537\ \ \ \ \ quat\_mul\_vec3(R[0],\ q,\ M[0]);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00538}00538\ \ \ \ \ quat\_mul\_vec3(R[1],\ q,\ M[1]);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00539}00539\ \ \ \ \ quat\_mul\_vec3(R[2],\ q,\ M[2]);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00540}00540\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00541}00541\ \ \ \ \ R[3][0]\ =\ R[3][1]\ =\ R[3][2]\ =\ 0.f;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00542}00542\ \ \ \ \ R[0][3]\ =\ M[0][3];}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00543}00543\ \ \ \ \ R[1][3]\ =\ M[1][3];}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00544}00544\ \ \ \ \ R[2][3]\ =\ M[2][3];}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00545}00545\ \ \ \ \ R[3][3]\ =\ M[3][3];\ \ \textcolor{comment}{//\ typically\ 1.0,\ but\ here\ we\ make\ it\ general}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00546}00546\ \}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00547}00547\ LINMATH\_H\_FUNC\ \textcolor{keywordtype}{void}\ quat\_from\_mat4x4(quat\ q,\ mat4x4\ \textcolor{keyword}{const}\ M)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00548}00548\ \{}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00549}00549\ \ \ \ \ \textcolor{keywordtype}{float}\ r=0.f;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00550}00550\ \ \ \ \ \textcolor{keywordtype}{int}\ i;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00551}00551\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00552}00552\ \ \ \ \ \textcolor{keywordtype}{int}\ perm[]\ =\ \{\ 0,\ 1,\ 2,\ 0,\ 1\ \};}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00553}00553\ \ \ \ \ \textcolor{keywordtype}{int}\ *p\ =\ perm;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00554}00554\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00555}00555\ \ \ \ \ \textcolor{keywordflow}{for}(i\ =\ 0;\ i<3;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00556}00556\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ m\ =\ M[i][i];}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00557}00557\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\ m\ <\ r\ )}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00558}00558\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00559}00559\ \ \ \ \ \ \ \ \ m\ =\ r;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00560}00560\ \ \ \ \ \ \ \ \ p\ =\ \&perm[i];}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00561}00561\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00562}00562\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00563}00563\ \ \ \ \ r\ =\ sqrtf(1.f\ +\ M[p[0]][p[0]]\ -\/\ M[p[1]][p[1]]\ -\/\ M[p[2]][p[2]]\ );}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00564}00564\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00565}00565\ \ \ \ \ \textcolor{keywordflow}{if}(r\ <\ 1e-\/6)\ \{}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00566}00566\ \ \ \ \ \ \ \ \ q[0]\ =\ 1.f;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00567}00567\ \ \ \ \ \ \ \ \ q[1]\ =\ q[2]\ =\ q[3]\ =\ 0.f;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00568}00568\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00569}00569\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00570}00570\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00571}00571\ \ \ \ \ q[0]\ =\ r/2.f;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00572}00572\ \ \ \ \ q[1]\ =\ (M[p[0]][p[1]]\ -\/\ M[p[1]][p[0]])/(2.f*r);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00573}00573\ \ \ \ \ q[2]\ =\ (M[p[2]][p[0]]\ -\/\ M[p[0]][p[2]])/(2.f*r);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00574}00574\ \ \ \ \ q[3]\ =\ (M[p[2]][p[1]]\ -\/\ M[p[1]][p[2]])/(2.f*r);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00575}00575\ \}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00576}00576\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00577}00577\ LINMATH\_H\_FUNC\ \textcolor{keywordtype}{void}\ mat4x4\_arcball(mat4x4\ R,\ mat4x4\ \textcolor{keyword}{const}\ M,\ \mbox{\hyperlink{structvec2}{vec2}}\ \textcolor{keyword}{const}\ \_a,\ \mbox{\hyperlink{structvec2}{vec2}}\ \textcolor{keyword}{const}\ \_b,\ \textcolor{keywordtype}{float}\ s)}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00578}00578\ \{}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00579}00579\ \ \ \ \ \mbox{\hyperlink{structvec2}{vec2}}\ a;\ memcpy(a,\ \_a,\ \textcolor{keyword}{sizeof}(a));}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00580}00580\ \ \ \ \ \mbox{\hyperlink{structvec2}{vec2}}\ b;\ memcpy(b,\ \_b,\ \textcolor{keyword}{sizeof}(b));}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00581}00581\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00582}00582\ \ \ \ \ \textcolor{keywordtype}{float}\ z\_a\ =\ 0.f;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00583}00583\ \ \ \ \ \textcolor{keywordtype}{float}\ z\_b\ =\ 0.f;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00584}00584\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00585}00585\ \ \ \ \ \textcolor{keywordflow}{if}(vec2\_len(a)\ <\ 1.f)\ \{}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00586}00586\ \ \ \ \ \ \ \ \ z\_a\ =\ sqrtf(1.f\ -\/\ vec2\_mul\_inner(a,\ a));}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00587}00587\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00588}00588\ \ \ \ \ \ \ \ \ vec2\_norm(a,\ a);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00589}00589\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00590}00590\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00591}00591\ \ \ \ \ \textcolor{keywordflow}{if}(vec2\_len(b)\ <\ 1.f)\ \{}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00592}00592\ \ \ \ \ \ \ \ \ z\_b\ =\ sqrtf(1.f\ -\/\ vec2\_mul\_inner(b,\ b));}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00593}00593\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00594}00594\ \ \ \ \ \ \ \ \ vec2\_norm(b,\ b);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00595}00595\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00596}00596\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00597}00597\ \ \ \ \ \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{vec3}}\ a\_\ =\ \{a[0],\ a[1],\ z\_a\};}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00598}00598\ \ \ \ \ \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{vec3}}\ b\_\ =\ \{b[0],\ b[1],\ z\_b\};}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00599}00599\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00600}00600\ \ \ \ \ \mbox{\hyperlink{group__core__vector_ga4320b87e41013b7e875f845f439fc498}{vec3}}\ c\_;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00601}00601\ \ \ \ \ vec3\_mul\_cross(c\_,\ a\_,\ b\_);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00602}00602\ }
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00603}00603\ \ \ \ \ \textcolor{keywordtype}{float}\ \textcolor{keyword}{const}\ angle\ =\ acos(vec3\_mul\_inner(a\_,\ b\_))\ *\ s;}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00604}00604\ \ \ \ \ mat4x4\_rotate(R,\ M,\ c\_[0],\ c\_[1],\ c\_[2],\ angle);}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00605}00605\ \}}
+\DoxyCodeLine{\Hypertarget{linmath_8h_source_l00606}00606\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

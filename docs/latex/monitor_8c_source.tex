@@ -1,0 +1,552 @@
+\doxysection{monitor.\+c}
+\hypertarget{monitor_8c_source}{}\label{monitor_8c_source}\index{deps/glfw/src/monitor.c@{deps/glfw/src/monitor.c}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00001}00001\ \textcolor{comment}{//========================================================================}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00002}00002\ \textcolor{comment}{//\ GLFW\ 3.5\ -\/\ www.glfw.org}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00003}00003\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00004}00004\ \textcolor{comment}{//\ Copyright\ (c)\ 2002-\/2006\ Marcus\ Geelnard}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00005}00005\ \textcolor{comment}{//\ Copyright\ (c)\ 2006-\/2019\ Camilla\ Löwy\ <elmindreda@glfw.org>}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00006}00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00007}00007\ \textcolor{comment}{//\ This\ software\ is\ provided\ 'as-\/is',\ without\ any\ express\ or\ implied}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00008}00008\ \textcolor{comment}{//\ warranty.\ In\ no\ event\ will\ the\ authors\ be\ held\ liable\ for\ any\ damages}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00009}00009\ \textcolor{comment}{//\ arising\ from\ the\ use\ of\ this\ software.}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00010}00010\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00011}00011\ \textcolor{comment}{//\ Permission\ is\ granted\ to\ anyone\ to\ use\ this\ software\ for\ any\ purpose,}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00012}00012\ \textcolor{comment}{//\ including\ commercial\ applications,\ and\ to\ alter\ it\ and\ redistribute\ it}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00013}00013\ \textcolor{comment}{//\ freely,\ subject\ to\ the\ following\ restrictions:}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00014}00014\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00015}00015\ \textcolor{comment}{//\ 1.\ The\ origin\ of\ this\ software\ must\ not\ be\ misrepresented;\ you\ must\ not}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00016}00016\ \textcolor{comment}{//\ \ \ \ claim\ that\ you\ wrote\ the\ original\ software.\ If\ you\ use\ this\ software}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00017}00017\ \textcolor{comment}{//\ \ \ \ in\ a\ product,\ an\ acknowledgment\ in\ the\ product\ documentation\ would}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00018}00018\ \textcolor{comment}{//\ \ \ \ be\ appreciated\ but\ is\ not\ required.}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00019}00019\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00020}00020\ \textcolor{comment}{//\ 2.\ Altered\ source\ versions\ must\ be\ plainly\ marked\ as\ such,\ and\ must\ not}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00021}00021\ \textcolor{comment}{//\ \ \ \ be\ misrepresented\ as\ being\ the\ original\ software.}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00022}00022\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00023}00023\ \textcolor{comment}{//\ 3.\ This\ notice\ may\ not\ be\ removed\ or\ altered\ from\ any\ source}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00024}00024\ \textcolor{comment}{//\ \ \ \ distribution.}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00025}00025\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00026}00026\ \textcolor{comment}{//========================================================================}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00028}00028\ \textcolor{preprocessor}{\#include\ "{}internal.h"{}}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00030}00030\ \textcolor{preprocessor}{\#include\ <assert.h>}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00031}00031\ \textcolor{preprocessor}{\#include\ <math.h>}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00032}00032\ \textcolor{preprocessor}{\#include\ <float.h>}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00033}00033\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00034}00034\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00035}00035\ \textcolor{preprocessor}{\#include\ <limits.h>}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00038}00038\ \textcolor{comment}{//\ Lexically\ compare\ video\ modes,\ used\ by\ qsort}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00039}00039\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00040}00040\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ compareVideoModes(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ fp,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ sp)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00041}00041\ \{}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00042}00042\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_g_l_f_wvidmode}{GLFWvidmode}}*\ fm\ =\ fp;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00043}00043\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_g_l_f_wvidmode}{GLFWvidmode}}*\ sm\ =\ sp;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00044}00044\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ fbpp\ =\ fm-\/>\mbox{\hyperlink{struct_g_l_f_wvidmode_a6066c4ecd251098700062d3b735dba1b}{redBits}}\ +\ fm-\/>\mbox{\hyperlink{struct_g_l_f_wvidmode_a292fdd281f3485fb3ff102a5bda43faa}{greenBits}}\ +\ fm-\/>\mbox{\hyperlink{struct_g_l_f_wvidmode_af310977f58d2e3b188175b6e3d314047}{blueBits}};}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00045}00045\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ sbpp\ =\ sm-\/>\mbox{\hyperlink{struct_g_l_f_wvidmode_a6066c4ecd251098700062d3b735dba1b}{redBits}}\ +\ sm-\/>\mbox{\hyperlink{struct_g_l_f_wvidmode_a292fdd281f3485fb3ff102a5bda43faa}{greenBits}}\ +\ sm-\/>\mbox{\hyperlink{struct_g_l_f_wvidmode_af310977f58d2e3b188175b6e3d314047}{blueBits}};}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00046}00046\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ farea\ =\ fm-\/>\mbox{\hyperlink{struct_g_l_f_wvidmode_a698dcb200562051a7249cb6ae154c71d}{width}}\ *\ fm-\/>\mbox{\hyperlink{struct_g_l_f_wvidmode_ac65942a5f6981695517437a9d571d03c}{height}};}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00047}00047\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ sarea\ =\ sm-\/>\mbox{\hyperlink{struct_g_l_f_wvidmode_a698dcb200562051a7249cb6ae154c71d}{width}}\ *\ sm-\/>\mbox{\hyperlink{struct_g_l_f_wvidmode_ac65942a5f6981695517437a9d571d03c}{height}};}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00049}00049\ \ \ \ \ \textcolor{comment}{//\ First\ sort\ on\ color\ bits\ per\ pixel}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00050}00050\ \ \ \ \ \textcolor{keywordflow}{if}\ (fbpp\ !=\ sbpp)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00051}00051\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ fbpp\ -\/\ sbpp;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00053}00053\ \ \ \ \ \textcolor{comment}{//\ Then\ sort\ on\ screen\ area}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00054}00054\ \ \ \ \ \textcolor{keywordflow}{if}\ (farea\ !=\ sarea)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ farea\ -\/\ sarea;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00057}00057\ \ \ \ \ \textcolor{comment}{//\ Then\ sort\ on\ width}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00058}00058\ \ \ \ \ \textcolor{keywordflow}{if}\ (fm-\/>\mbox{\hyperlink{struct_g_l_f_wvidmode_a698dcb200562051a7249cb6ae154c71d}{width}}\ !=\ sm-\/>\mbox{\hyperlink{struct_g_l_f_wvidmode_a698dcb200562051a7249cb6ae154c71d}{width}})}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00059}00059\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ fm-\/>\mbox{\hyperlink{struct_g_l_f_wvidmode_a698dcb200562051a7249cb6ae154c71d}{width}}\ -\/\ sm-\/>\mbox{\hyperlink{struct_g_l_f_wvidmode_a698dcb200562051a7249cb6ae154c71d}{width}};}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00061}00061\ \ \ \ \ \textcolor{comment}{//\ Lastly\ sort\ on\ refresh\ rate}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00062}00062\ \ \ \ \ \textcolor{keywordflow}{return}\ fm-\/>\mbox{\hyperlink{struct_g_l_f_wvidmode_a791bdd6c7697b09f7e9c97054bf05649}{refreshRate}}\ -\/\ sm-\/>\mbox{\hyperlink{struct_g_l_f_wvidmode_a791bdd6c7697b09f7e9c97054bf05649}{refreshRate}};}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00063}00063\ \}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00065}00065\ \textcolor{comment}{//\ Retrieves\ the\ available\ modes\ for\ the\ specified\ monitor}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00066}00066\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00067}00067\ \textcolor{keyword}{static}\ GLFWbool\ refreshVideoModes(\mbox{\hyperlink{struct___g_l_f_wmonitor}{\_GLFWmonitor}}*\ monitor)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00068}00068\ \{}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00069}00069\ \ \ \ \ \textcolor{keywordtype}{int}\ modeCount;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00070}00070\ \ \ \ \ \mbox{\hyperlink{struct_g_l_f_wvidmode}{GLFWvidmode}}*\ modes;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00072}00072\ \ \ \ \ \textcolor{keywordflow}{if}\ (monitor-\/>modes)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00073}00073\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{group__init_ga2744fbb29b5631bb28802dbe0cf36eba}{GLFW\_TRUE}};}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00075}00075\ \ \ \ \ modes\ =\ \_glfw.platform.getVideoModes(monitor,\ \&modeCount);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00076}00076\ \ \ \ \ \textcolor{keywordflow}{if}\ (!modes)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00077}00077\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{group__init_gac877fe3b627d21ef3a0a23e0a73ba8c5}{GLFW\_FALSE}};}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00079}00079\ \ \ \ \ qsort(modes,\ modeCount,\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{struct_g_l_f_wvidmode}{GLFWvidmode}}),\ compareVideoModes);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00081}00081\ \ \ \ \ \_glfw\_free(monitor-\/>modes);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00082}00082\ \ \ \ \ monitor-\/>modes\ =\ modes;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00083}00083\ \ \ \ \ monitor-\/>modeCount\ =\ modeCount;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00085}00085\ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{group__init_ga2744fbb29b5631bb28802dbe0cf36eba}{GLFW\_TRUE}};}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00086}00086\ \}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00093}00093\ \textcolor{comment}{//\ Notifies\ shared\ code\ of\ a\ monitor\ connection\ or\ disconnection}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00094}00094\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00095}00095\ \textcolor{keywordtype}{void}\ \_glfwInputMonitor(\mbox{\hyperlink{struct___g_l_f_wmonitor}{\_GLFWmonitor}}*\ monitor,\ \textcolor{keywordtype}{int}\ action,\ \textcolor{keywordtype}{int}\ placement)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00096}00096\ \{}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00097}00097\ \ \ \ \ assert(monitor\ !=\ NULL);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00098}00098\ \ \ \ \ assert(action\ ==\ GLFW\_CONNECTED\ ||\ action\ ==\ GLFW\_DISCONNECTED);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00099}00099\ \ \ \ \ assert(placement\ ==\ \_GLFW\_INSERT\_FIRST\ ||\ placement\ ==\ \_GLFW\_INSERT\_LAST);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00101}00101\ \ \ \ \ \textcolor{keywordflow}{if}\ (action\ ==\ GLFW\_CONNECTED)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00102}00102\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00103}00103\ \ \ \ \ \ \ \ \ \_glfw.monitorCount++;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00104}00104\ \ \ \ \ \ \ \ \ \_glfw.monitors\ =}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \_glfw\_realloc(\_glfw.monitors,}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{struct___g_l_f_wmonitor}{\_GLFWmonitor}}*)\ *\ \_glfw.monitorCount);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00108}00108\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (placement\ ==\ \_GLFW\_INSERT\_FIRST)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00109}00109\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ memmove(\_glfw.monitors\ +\ 1,}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_glfw.monitors,}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ((\textcolor{keywordtype}{size\_t})\ \_glfw.monitorCount\ -\/\ 1)\ *\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{struct___g_l_f_wmonitor}{\_GLFWmonitor}}*));}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ \_glfw.monitors[0]\ =\ monitor;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00114}00114\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00115}00115\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ \_glfw.monitors[\_glfw.monitorCount\ -\/\ 1]\ =\ monitor;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00117}00117\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00118}00118\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (action\ ==\ GLFW\_DISCONNECTED)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00119}00119\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00120}00120\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ i;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00121}00121\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00123}00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (window\ =\ \_glfw.windowListHead;\ \ window;\ \ window\ =\ window-\/>next)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00124}00124\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (window-\/>monitor\ ==\ monitor)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ width,\ height,\ xoff,\ yoff;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_glfw.platform.getWindowSize(window,\ \&width,\ \&height);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_glfw.platform.setWindowMonitor(window,\ NULL,\ 0,\ 0,\ width,\ height,\ 0);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_glfw.platform.getWindowFrameSize(window,\ \&xoff,\ \&yoff,\ NULL,\ NULL);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_glfw.platform.setWindowPos(window,\ xoff,\ yoff);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00133}00133\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00134}00134\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00135}00135\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (i\ =\ 0;\ \ i\ <\ \_glfw.monitorCount;\ \ i++)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00136}00136\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_glfw.monitors[i]\ ==\ monitor)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_glfw.monitorCount-\/-\/;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ memmove(\_glfw.monitors\ +\ i,}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_glfw.monitors\ +\ i\ +\ 1,}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ((\textcolor{keywordtype}{size\_t})\ \_glfw.monitorCount\ -\/\ i)\ *\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{struct___g_l_f_wmonitor}{\_GLFWmonitor}}*));}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00145}00145\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00146}00146\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00147}00147\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00148}00148\ \ \ \ \ \textcolor{keywordflow}{if}\ (\_glfw.callbacks.monitor)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00149}00149\ \ \ \ \ \ \ \ \ \_glfw.callbacks.monitor((\mbox{\hyperlink{group__monitor_ga8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor}}*)\ monitor,\ action);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00150}00150\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00151}00151\ \ \ \ \ \textcolor{keywordflow}{if}\ (action\ ==\ GLFW\_DISCONNECTED)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00152}00152\ \ \ \ \ \ \ \ \ \_glfwFreeMonitor(monitor);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00153}00153\ \}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00154}00154\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00155}00155\ \textcolor{comment}{//\ Notifies\ shared\ code\ that\ a\ full\ screen\ window\ has\ acquired\ or\ released}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00156}00156\ \textcolor{comment}{//\ a\ monitor}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00157}00157\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00158}00158\ \textcolor{keywordtype}{void}\ \_glfwInputMonitorWindow(\mbox{\hyperlink{struct___g_l_f_wmonitor}{\_GLFWmonitor}}*\ monitor,\ \mbox{\hyperlink{struct___g_l_f_wwindow}{\_GLFWwindow}}*\ window)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00159}00159\ \{}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00160}00160\ \ \ \ \ assert(monitor\ !=\ NULL);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00161}00161\ \ \ \ \ monitor-\/>window\ =\ window;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00162}00162\ \}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00163}00163\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00164}00164\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00168}00168\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00169}00169\ \textcolor{comment}{//\ Allocates\ and\ returns\ a\ monitor\ object\ with\ the\ specified\ name\ and\ dimensions}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00170}00170\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00171}00171\ \mbox{\hyperlink{struct___g_l_f_wmonitor}{\_GLFWmonitor}}*\ \_glfwAllocMonitor(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ name,\ \textcolor{keywordtype}{int}\ widthMM,\ \textcolor{keywordtype}{int}\ heightMM)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00172}00172\ \{}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00173}00173\ \ \ \ \ \mbox{\hyperlink{struct___g_l_f_wmonitor}{\_GLFWmonitor}}*\ monitor\ =\ \_glfw\_calloc(1,\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{struct___g_l_f_wmonitor}{\_GLFWmonitor}}));}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00174}00174\ \ \ \ \ monitor-\/>widthMM\ =\ widthMM;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00175}00175\ \ \ \ \ monitor-\/>heightMM\ =\ heightMM;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00176}00176\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00177}00177\ \ \ \ \ strncpy(monitor-\/>name,\ name,\ \textcolor{keyword}{sizeof}(monitor-\/>name)\ -\/\ 1);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00178}00178\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00179}00179\ \ \ \ \ \textcolor{keywordflow}{return}\ monitor;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00180}00180\ \}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00181}00181\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00182}00182\ \textcolor{comment}{//\ Frees\ a\ monitor\ object\ and\ any\ data\ associated\ with\ it}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00183}00183\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00184}00184\ \textcolor{keywordtype}{void}\ \_glfwFreeMonitor(\mbox{\hyperlink{struct___g_l_f_wmonitor}{\_GLFWmonitor}}*\ monitor)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00185}00185\ \{}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00186}00186\ \ \ \ \ \textcolor{keywordflow}{if}\ (monitor\ ==\ NULL)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00187}00187\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00188}00188\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00189}00189\ \ \ \ \ \_glfw.platform.freeMonitor(monitor);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00190}00190\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00191}00191\ \ \ \ \ \_glfwFreeGammaArrays(\&monitor-\/>originalRamp);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00192}00192\ \ \ \ \ \_glfwFreeGammaArrays(\&monitor-\/>currentRamp);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00193}00193\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00194}00194\ \ \ \ \ \_glfw\_free(monitor-\/>modes);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00195}00195\ \ \ \ \ \_glfw\_free(monitor);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00196}00196\ \}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00197}00197\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00198}00198\ \textcolor{comment}{//\ Allocates\ red,\ green\ and\ blue\ value\ arrays\ of\ the\ specified\ size}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00199}00199\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00200}00200\ \textcolor{keywordtype}{void}\ \_glfwAllocGammaArrays(\mbox{\hyperlink{struct_g_l_f_wgammaramp}{GLFWgammaramp}}*\ ramp,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ size)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00201}00201\ \{}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00202}00202\ \ \ \ \ ramp-\/>\mbox{\hyperlink{struct_g_l_f_wgammaramp_a2cce5d968734b685623eef913e635138}{red}}\ =\ \_glfw\_calloc(size,\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}));}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00203}00203\ \ \ \ \ ramp-\/>\mbox{\hyperlink{struct_g_l_f_wgammaramp_affccc6f5df47820b6562d709da3a5a3a}{green}}\ =\ \_glfw\_calloc(size,\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}));}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00204}00204\ \ \ \ \ ramp-\/>\mbox{\hyperlink{struct_g_l_f_wgammaramp_acf0c836d0efe29c392fe8d1a1042744b}{blue}}\ =\ \_glfw\_calloc(size,\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}));}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00205}00205\ \ \ \ \ ramp-\/>\mbox{\hyperlink{struct_g_l_f_wgammaramp_ad620e1cffbff9a32c51bca46301b59a5}{size}}\ =\ size;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00206}00206\ \}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00207}00207\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00208}00208\ \textcolor{comment}{//\ Frees\ the\ red,\ green\ and\ blue\ value\ arrays\ and\ clears\ the\ struct}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00209}00209\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00210}00210\ \textcolor{keywordtype}{void}\ \_glfwFreeGammaArrays(\mbox{\hyperlink{struct_g_l_f_wgammaramp}{GLFWgammaramp}}*\ ramp)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00211}00211\ \{}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00212}00212\ \ \ \ \ \_glfw\_free(ramp-\/>\mbox{\hyperlink{struct_g_l_f_wgammaramp_a2cce5d968734b685623eef913e635138}{red}});}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00213}00213\ \ \ \ \ \_glfw\_free(ramp-\/>\mbox{\hyperlink{struct_g_l_f_wgammaramp_affccc6f5df47820b6562d709da3a5a3a}{green}});}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00214}00214\ \ \ \ \ \_glfw\_free(ramp-\/>\mbox{\hyperlink{struct_g_l_f_wgammaramp_acf0c836d0efe29c392fe8d1a1042744b}{blue}});}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00215}00215\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00216}00216\ \ \ \ \ memset(ramp,\ 0,\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{struct_g_l_f_wgammaramp}{GLFWgammaramp}}));}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00217}00217\ \}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00218}00218\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00219}00219\ \textcolor{comment}{//\ Chooses\ the\ video\ mode\ most\ closely\ matching\ the\ desired\ one}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00220}00220\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00221}00221\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_g_l_f_wvidmode}{GLFWvidmode}}*\ \_glfwChooseVideoMode(\mbox{\hyperlink{struct___g_l_f_wmonitor}{\_GLFWmonitor}}*\ monitor,}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00222}00222\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_g_l_f_wvidmode}{GLFWvidmode}}*\ desired)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00223}00223\ \{}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00224}00224\ \ \ \ \ \textcolor{keywordtype}{int}\ i;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00225}00225\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ sizeDiff,\ leastSizeDiff\ =\ UINT\_MAX;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00226}00226\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ rateDiff,\ leastRateDiff\ =\ UINT\_MAX;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00227}00227\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ colorDiff,\ leastColorDiff\ =\ UINT\_MAX;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00228}00228\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_g_l_f_wvidmode}{GLFWvidmode}}*\ current;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00229}00229\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_g_l_f_wvidmode}{GLFWvidmode}}*\ closest\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00230}00230\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00231}00231\ \ \ \ \ \textcolor{keywordflow}{if}\ (!refreshVideoModes(monitor))}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00232}00232\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ NULL;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00233}00233\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00234}00234\ \ \ \ \ \textcolor{keywordflow}{for}\ (i\ =\ 0;\ \ i\ <\ monitor-\/>modeCount;\ \ i++)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00235}00235\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00236}00236\ \ \ \ \ \ \ \ \ current\ =\ monitor-\/>modes\ +\ i;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00237}00237\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00238}00238\ \ \ \ \ \ \ \ \ colorDiff\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00239}00239\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00240}00240\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (desired-\/>\mbox{\hyperlink{struct_g_l_f_wvidmode_a6066c4ecd251098700062d3b735dba1b}{redBits}}\ !=\ GLFW\_DONT\_CARE)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00241}00241\ \ \ \ \ \ \ \ \ \ \ \ \ colorDiff\ +=\ abs(current-\/>\mbox{\hyperlink{struct_g_l_f_wvidmode_a6066c4ecd251098700062d3b735dba1b}{redBits}}\ -\/\ desired-\/>\mbox{\hyperlink{struct_g_l_f_wvidmode_a6066c4ecd251098700062d3b735dba1b}{redBits}});}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00242}00242\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (desired-\/>\mbox{\hyperlink{struct_g_l_f_wvidmode_a292fdd281f3485fb3ff102a5bda43faa}{greenBits}}\ !=\ GLFW\_DONT\_CARE)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00243}00243\ \ \ \ \ \ \ \ \ \ \ \ \ colorDiff\ +=\ abs(current-\/>\mbox{\hyperlink{struct_g_l_f_wvidmode_a292fdd281f3485fb3ff102a5bda43faa}{greenBits}}\ -\/\ desired-\/>\mbox{\hyperlink{struct_g_l_f_wvidmode_a292fdd281f3485fb3ff102a5bda43faa}{greenBits}});}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00244}00244\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (desired-\/>\mbox{\hyperlink{struct_g_l_f_wvidmode_af310977f58d2e3b188175b6e3d314047}{blueBits}}\ !=\ GLFW\_DONT\_CARE)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00245}00245\ \ \ \ \ \ \ \ \ \ \ \ \ colorDiff\ +=\ abs(current-\/>\mbox{\hyperlink{struct_g_l_f_wvidmode_af310977f58d2e3b188175b6e3d314047}{blueBits}}\ -\/\ desired-\/>\mbox{\hyperlink{struct_g_l_f_wvidmode_af310977f58d2e3b188175b6e3d314047}{blueBits}});}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00246}00246\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00247}00247\ \ \ \ \ \ \ \ \ sizeDiff\ =\ abs((current-\/>\mbox{\hyperlink{struct_g_l_f_wvidmode_a698dcb200562051a7249cb6ae154c71d}{width}}\ -\/\ desired-\/>\mbox{\hyperlink{struct_g_l_f_wvidmode_a698dcb200562051a7249cb6ae154c71d}{width}})\ *}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00248}00248\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (current-\/>\mbox{\hyperlink{struct_g_l_f_wvidmode_a698dcb200562051a7249cb6ae154c71d}{width}}\ -\/\ desired-\/>\mbox{\hyperlink{struct_g_l_f_wvidmode_a698dcb200562051a7249cb6ae154c71d}{width}})\ +}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00249}00249\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (current-\/>\mbox{\hyperlink{struct_g_l_f_wvidmode_ac65942a5f6981695517437a9d571d03c}{height}}\ -\/\ desired-\/>\mbox{\hyperlink{struct_g_l_f_wvidmode_ac65942a5f6981695517437a9d571d03c}{height}})\ *}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00250}00250\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (current-\/>\mbox{\hyperlink{struct_g_l_f_wvidmode_ac65942a5f6981695517437a9d571d03c}{height}}\ -\/\ desired-\/>\mbox{\hyperlink{struct_g_l_f_wvidmode_ac65942a5f6981695517437a9d571d03c}{height}}));}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00251}00251\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00252}00252\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (desired-\/>\mbox{\hyperlink{struct_g_l_f_wvidmode_a791bdd6c7697b09f7e9c97054bf05649}{refreshRate}}\ !=\ GLFW\_DONT\_CARE)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00253}00253\ \ \ \ \ \ \ \ \ \ \ \ \ rateDiff\ =\ abs(current-\/>\mbox{\hyperlink{struct_g_l_f_wvidmode_a791bdd6c7697b09f7e9c97054bf05649}{refreshRate}}\ -\/\ desired-\/>\mbox{\hyperlink{struct_g_l_f_wvidmode_a791bdd6c7697b09f7e9c97054bf05649}{refreshRate}});}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00254}00254\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00255}00255\ \ \ \ \ \ \ \ \ \ \ \ \ rateDiff\ =\ UINT\_MAX\ -\/\ current-\/>\mbox{\hyperlink{struct_g_l_f_wvidmode_a791bdd6c7697b09f7e9c97054bf05649}{refreshRate}};}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00256}00256\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00257}00257\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((colorDiff\ <\ leastColorDiff)\ ||}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00258}00258\ \ \ \ \ \ \ \ \ \ \ \ \ (colorDiff\ ==\ leastColorDiff\ \&\&\ sizeDiff\ <\ leastSizeDiff)\ ||}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00259}00259\ \ \ \ \ \ \ \ \ \ \ \ \ (colorDiff\ ==\ leastColorDiff\ \&\&\ sizeDiff\ ==\ leastSizeDiff\ \&\&\ rateDiff\ <\ leastRateDiff))}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00260}00260\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00261}00261\ \ \ \ \ \ \ \ \ \ \ \ \ closest\ =\ current;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00262}00262\ \ \ \ \ \ \ \ \ \ \ \ \ leastSizeDiff\ =\ sizeDiff;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00263}00263\ \ \ \ \ \ \ \ \ \ \ \ \ leastRateDiff\ =\ rateDiff;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00264}00264\ \ \ \ \ \ \ \ \ \ \ \ \ leastColorDiff\ =\ colorDiff;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00265}00265\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00266}00266\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00267}00267\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00268}00268\ \ \ \ \ \textcolor{keywordflow}{return}\ closest;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00269}00269\ \}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00270}00270\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00271}00271\ \textcolor{comment}{//\ Performs\ lexical\ comparison\ between\ two\ @ref\ GLFWvidmode\ structures}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00272}00272\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00273}00273\ \textcolor{keywordtype}{int}\ \_glfwCompareVideoModes(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_g_l_f_wvidmode}{GLFWvidmode}}*\ fm,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_g_l_f_wvidmode}{GLFWvidmode}}*\ sm)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00274}00274\ \{}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00275}00275\ \ \ \ \ \textcolor{keywordflow}{return}\ compareVideoModes(fm,\ sm);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00276}00276\ \}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00277}00277\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00278}00278\ \textcolor{comment}{//\ Splits\ a\ color\ depth\ into\ red,\ green\ and\ blue\ bit\ depths}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00279}00279\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00280}00280\ \textcolor{keywordtype}{void}\ \_glfwSplitBPP(\textcolor{keywordtype}{int}\ bpp,\ \textcolor{keywordtype}{int}*\ red,\ \textcolor{keywordtype}{int}*\ green,\ \textcolor{keywordtype}{int}*\ blue)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00281}00281\ \{}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00282}00282\ \ \ \ \ \textcolor{keywordtype}{int}\ delta;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00283}00283\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00284}00284\ \ \ \ \ \textcolor{comment}{//\ We\ assume\ that\ by\ 32\ the\ user\ really\ meant\ 24}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00285}00285\ \ \ \ \ \textcolor{keywordflow}{if}\ (bpp\ ==\ 32)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00286}00286\ \ \ \ \ \ \ \ \ bpp\ =\ 24;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00287}00287\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00288}00288\ \ \ \ \ \textcolor{comment}{//\ Convert\ "{}bits\ per\ pixel"{}\ to\ red,\ green\ \&\ blue\ sizes}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00289}00289\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00290}00290\ \ \ \ \ *red\ =\ *green\ =\ *blue\ =\ bpp\ /\ 3;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00291}00291\ \ \ \ \ delta\ =\ bpp\ -\/\ (*red\ *\ 3);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00292}00292\ \ \ \ \ \textcolor{keywordflow}{if}\ (delta\ >=\ 1)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00293}00293\ \ \ \ \ \ \ \ \ *green\ =\ *green\ +\ 1;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00294}00294\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00295}00295\ \ \ \ \ \textcolor{keywordflow}{if}\ (delta\ ==\ 2)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00296}00296\ \ \ \ \ \ \ \ \ *red\ =\ *red\ +\ 1;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00297}00297\ \}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00298}00298\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00299}00299\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00303}00303\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00304}\mbox{\hyperlink{group__monitor_ga8c78e5db186ee10d00c053faf81998af}{00304}}\ GLFWAPI\ \mbox{\hyperlink{group__monitor_ga8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor}}**\ \mbox{\hyperlink{group__monitor_ga8c78e5db186ee10d00c053faf81998af}{glfwGetMonitors}}(\textcolor{keywordtype}{int}*\ count)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00305}00305\ \{}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00306}00306\ \ \ \ \ assert(count\ !=\ NULL);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00307}00307\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00308}00308\ \ \ \ \ *count\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00309}00309\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00310}00310\ \ \ \ \ \_GLFW\_REQUIRE\_INIT\_OR\_RETURN(NULL);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00311}00311\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00312}00312\ \ \ \ \ *count\ =\ \_glfw.monitorCount;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00313}00313\ \ \ \ \ \textcolor{keywordflow}{return}\ (\mbox{\hyperlink{group__monitor_ga8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor}}**)\ \_glfw.monitors;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00314}00314\ \}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00315}00315\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00316}\mbox{\hyperlink{group__monitor_ga34befff4f9f0fae09dd8de6fb0eb4f3e}{00316}}\ GLFWAPI\ \mbox{\hyperlink{group__monitor_ga8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor}}*\ \mbox{\hyperlink{group__monitor_ga34befff4f9f0fae09dd8de6fb0eb4f3e}{glfwGetPrimaryMonitor}}(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00317}00317\ \{}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00318}00318\ \ \ \ \ \_GLFW\_REQUIRE\_INIT\_OR\_RETURN(NULL);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00319}00319\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00320}00320\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\_glfw.monitorCount)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00321}00321\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ NULL;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00322}00322\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00323}00323\ \ \ \ \ \textcolor{keywordflow}{return}\ (\mbox{\hyperlink{group__monitor_ga8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor}}*)\ \_glfw.monitors[0];}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00324}00324\ \}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00325}00325\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00326}\mbox{\hyperlink{group__monitor_ga45b5481a614ad7beb2aade9746d07563}{00326}}\ GLFWAPI\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__monitor_ga45b5481a614ad7beb2aade9746d07563}{glfwGetMonitorPos}}(\mbox{\hyperlink{group__monitor_ga8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor}}*\ handle,\ \textcolor{keywordtype}{int}*\ xpos,\ \textcolor{keywordtype}{int}*\ ypos)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00327}00327\ \{}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00328}00328\ \ \ \ \ \textcolor{keywordflow}{if}\ (xpos)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00329}00329\ \ \ \ \ \ \ \ \ *xpos\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00330}00330\ \ \ \ \ \textcolor{keywordflow}{if}\ (ypos)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00331}00331\ \ \ \ \ \ \ \ \ *ypos\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00332}00332\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00333}00333\ \ \ \ \ \_GLFW\_REQUIRE\_INIT();}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00334}00334\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00335}00335\ \ \ \ \ \mbox{\hyperlink{struct___g_l_f_wmonitor}{\_GLFWmonitor}}*\ monitor\ =\ (\mbox{\hyperlink{struct___g_l_f_wmonitor}{\_GLFWmonitor}}*)\ handle;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00336}00336\ \ \ \ \ assert(monitor\ !=\ NULL);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00337}00337\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00338}00338\ \ \ \ \ \_glfw.platform.getMonitorPos(monitor,\ xpos,\ ypos);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00339}00339\ \}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00340}00340\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00341}\mbox{\hyperlink{group__monitor_ga5a3ac0f6e3786df47aabccfb5760b31d}{00341}}\ GLFWAPI\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__monitor_ga5a3ac0f6e3786df47aabccfb5760b31d}{glfwGetMonitorWorkarea}}(\mbox{\hyperlink{group__monitor_ga8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor}}*\ handle,}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00342}00342\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}*\ xpos,\ \textcolor{keywordtype}{int}*\ ypos,}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00343}00343\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}*\ width,\ \textcolor{keywordtype}{int}*\ height)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00344}00344\ \{}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00345}00345\ \ \ \ \ \textcolor{keywordflow}{if}\ (xpos)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00346}00346\ \ \ \ \ \ \ \ \ *xpos\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00347}00347\ \ \ \ \ \textcolor{keywordflow}{if}\ (ypos)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00348}00348\ \ \ \ \ \ \ \ \ *ypos\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00349}00349\ \ \ \ \ \textcolor{keywordflow}{if}\ (width)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00350}00350\ \ \ \ \ \ \ \ \ *width\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00351}00351\ \ \ \ \ \textcolor{keywordflow}{if}\ (height)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00352}00352\ \ \ \ \ \ \ \ \ *height\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00353}00353\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00354}00354\ \ \ \ \ \_GLFW\_REQUIRE\_INIT();}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00355}00355\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00356}00356\ \ \ \ \ \mbox{\hyperlink{struct___g_l_f_wmonitor}{\_GLFWmonitor}}*\ monitor\ =\ (\mbox{\hyperlink{struct___g_l_f_wmonitor}{\_GLFWmonitor}}*)\ handle;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00357}00357\ \ \ \ \ assert(monitor\ !=\ NULL);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00358}00358\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00359}00359\ \ \ \ \ \_glfw.platform.getMonitorWorkarea(monitor,\ xpos,\ ypos,\ width,\ height);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00360}00360\ \}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00361}00361\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00362}\mbox{\hyperlink{group__monitor_gad0e93a9e42b32394369cabbbdc1ab702}{00362}}\ GLFWAPI\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__monitor_gad0e93a9e42b32394369cabbbdc1ab702}{glfwGetMonitorPhysicalSize}}(\mbox{\hyperlink{group__monitor_ga8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor}}*\ handle,\ \textcolor{keywordtype}{int}*\ widthMM,\ \textcolor{keywordtype}{int}*\ heightMM)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00363}00363\ \{}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00364}00364\ \ \ \ \ \textcolor{keywordflow}{if}\ (widthMM)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00365}00365\ \ \ \ \ \ \ \ \ *widthMM\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00366}00366\ \ \ \ \ \textcolor{keywordflow}{if}\ (heightMM)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00367}00367\ \ \ \ \ \ \ \ \ *heightMM\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00368}00368\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00369}00369\ \ \ \ \ \_GLFW\_REQUIRE\_INIT();}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00370}00370\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00371}00371\ \ \ \ \ \mbox{\hyperlink{struct___g_l_f_wmonitor}{\_GLFWmonitor}}*\ monitor\ =\ (\mbox{\hyperlink{struct___g_l_f_wmonitor}{\_GLFWmonitor}}*)\ handle;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00372}00372\ \ \ \ \ assert(monitor\ !=\ NULL);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00373}00373\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00374}00374\ \ \ \ \ \textcolor{keywordflow}{if}\ (widthMM)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00375}00375\ \ \ \ \ \ \ \ \ *widthMM\ =\ monitor-\/>widthMM;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00376}00376\ \ \ \ \ \textcolor{keywordflow}{if}\ (heightMM)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00377}00377\ \ \ \ \ \ \ \ \ *heightMM\ =\ monitor-\/>heightMM;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00378}00378\ \}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00379}00379\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00380}\mbox{\hyperlink{group__monitor_ga28d856d94bea2ce8f09a67bb0346aaff}{00380}}\ GLFWAPI\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__monitor_ga28d856d94bea2ce8f09a67bb0346aaff}{glfwGetMonitorContentScale}}(\mbox{\hyperlink{group__monitor_ga8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor}}*\ handle,}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00381}00381\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}*\ xscale,\ \textcolor{keywordtype}{float}*\ yscale)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00382}00382\ \{}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00383}00383\ \ \ \ \ \textcolor{keywordflow}{if}\ (xscale)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00384}00384\ \ \ \ \ \ \ \ \ *xscale\ =\ 0.f;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00385}00385\ \ \ \ \ \textcolor{keywordflow}{if}\ (yscale)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00386}00386\ \ \ \ \ \ \ \ \ *yscale\ =\ 0.f;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00387}00387\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00388}00388\ \ \ \ \ \_GLFW\_REQUIRE\_INIT();}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00389}00389\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00390}00390\ \ \ \ \ \mbox{\hyperlink{struct___g_l_f_wmonitor}{\_GLFWmonitor}}*\ monitor\ =\ (\mbox{\hyperlink{struct___g_l_f_wmonitor}{\_GLFWmonitor}}*)\ handle;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00391}00391\ \ \ \ \ assert(monitor\ !=\ NULL);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00392}00392\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00393}00393\ \ \ \ \ \_glfw.platform.getMonitorContentScale(monitor,\ xscale,\ yscale);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00394}00394\ \}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00395}00395\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00396}\mbox{\hyperlink{group__monitor_ga6d0ee079c807cd123b56dc3fc01e8fd9}{00396}}\ GLFWAPI\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{group__monitor_ga6d0ee079c807cd123b56dc3fc01e8fd9}{glfwGetMonitorName}}(\mbox{\hyperlink{group__monitor_ga8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor}}*\ handle)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00397}00397\ \{}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00398}00398\ \ \ \ \ \_GLFW\_REQUIRE\_INIT\_OR\_RETURN(NULL);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00399}00399\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00400}00400\ \ \ \ \ \mbox{\hyperlink{struct___g_l_f_wmonitor}{\_GLFWmonitor}}*\ monitor\ =\ (\mbox{\hyperlink{struct___g_l_f_wmonitor}{\_GLFWmonitor}}*)\ handle;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00401}00401\ \ \ \ \ assert(monitor\ !=\ NULL);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00402}00402\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00403}00403\ \ \ \ \ \textcolor{keywordflow}{return}\ monitor-\/>name;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00404}00404\ \}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00405}00405\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00406}\mbox{\hyperlink{group__monitor_ga6d89c74c1c293f0ab78a00c3c6d1ae44}{00406}}\ GLFWAPI\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__monitor_ga6d89c74c1c293f0ab78a00c3c6d1ae44}{glfwSetMonitorUserPointer}}(\mbox{\hyperlink{group__monitor_ga8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor}}*\ handle,\ \textcolor{keywordtype}{void}*\ pointer)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00407}00407\ \{}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00408}00408\ \ \ \ \ \_GLFW\_REQUIRE\_INIT();}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00409}00409\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00410}00410\ \ \ \ \ \mbox{\hyperlink{struct___g_l_f_wmonitor}{\_GLFWmonitor}}*\ monitor\ =\ (\mbox{\hyperlink{struct___g_l_f_wmonitor}{\_GLFWmonitor}}*)\ handle;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00411}00411\ \ \ \ \ assert(monitor\ !=\ NULL);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00412}00412\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00413}00413\ \ \ \ \ monitor-\/>userPointer\ =\ pointer;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00414}00414\ \}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00415}00415\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00416}\mbox{\hyperlink{group__monitor_ga13cb11e8f507dbc477e10a040f0fad7f}{00416}}\ GLFWAPI\ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{group__monitor_ga13cb11e8f507dbc477e10a040f0fad7f}{glfwGetMonitorUserPointer}}(\mbox{\hyperlink{group__monitor_ga8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor}}*\ handle)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00417}00417\ \{}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00418}00418\ \ \ \ \ \_GLFW\_REQUIRE\_INIT\_OR\_RETURN(NULL);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00419}00419\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00420}00420\ \ \ \ \ \mbox{\hyperlink{struct___g_l_f_wmonitor}{\_GLFWmonitor}}*\ monitor\ =\ (\mbox{\hyperlink{struct___g_l_f_wmonitor}{\_GLFWmonitor}}*)\ handle;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00421}00421\ \ \ \ \ assert(monitor\ !=\ NULL);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00422}00422\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00423}00423\ \ \ \ \ \textcolor{keywordflow}{return}\ monitor-\/>userPointer;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00424}00424\ \}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00425}00425\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00426}\mbox{\hyperlink{group__monitor_ga9fa7cc37cd79216a7fc0b77af54109a1}{00426}}\ GLFWAPI\ \mbox{\hyperlink{group__monitor_gaabe16caca8dea952504dfdebdf4cd249}{GLFWmonitorfun}}\ \mbox{\hyperlink{group__monitor_ga9fa7cc37cd79216a7fc0b77af54109a1}{glfwSetMonitorCallback}}(\mbox{\hyperlink{group__monitor_gaabe16caca8dea952504dfdebdf4cd249}{GLFWmonitorfun}}\ cbfun)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00427}00427\ \{}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00428}00428\ \ \ \ \ \_GLFW\_REQUIRE\_INIT\_OR\_RETURN(NULL);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00429}00429\ \ \ \ \ \_GLFW\_SWAP(\mbox{\hyperlink{group__monitor_gaabe16caca8dea952504dfdebdf4cd249}{GLFWmonitorfun}},\ \_glfw.callbacks.monitor,\ cbfun);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00430}00430\ \ \ \ \ \textcolor{keywordflow}{return}\ cbfun;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00431}00431\ \}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00432}00432\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00433}\mbox{\hyperlink{group__monitor_ga7eaea6132f15e9b5d47eb94f88547f79}{00433}}\ GLFWAPI\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_g_l_f_wvidmode}{GLFWvidmode}}*\ \mbox{\hyperlink{group__monitor_ga7eaea6132f15e9b5d47eb94f88547f79}{glfwGetVideoModes}}(\mbox{\hyperlink{group__monitor_ga8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor}}*\ handle,\ \textcolor{keywordtype}{int}*\ count)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00434}00434\ \{}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00435}00435\ \ \ \ \ assert(count\ !=\ NULL);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00436}00436\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00437}00437\ \ \ \ \ *count\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00438}00438\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00439}00439\ \ \ \ \ \_GLFW\_REQUIRE\_INIT\_OR\_RETURN(NULL);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00440}00440\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00441}00441\ \ \ \ \ \mbox{\hyperlink{struct___g_l_f_wmonitor}{\_GLFWmonitor}}*\ monitor\ =\ (\mbox{\hyperlink{struct___g_l_f_wmonitor}{\_GLFWmonitor}}*)\ handle;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00442}00442\ \ \ \ \ assert(monitor\ !=\ NULL);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00443}00443\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00444}00444\ \ \ \ \ \textcolor{keywordflow}{if}\ (!refreshVideoModes(monitor))}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00445}00445\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ NULL;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00446}00446\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00447}00447\ \ \ \ \ *count\ =\ monitor-\/>modeCount;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00448}00448\ \ \ \ \ \textcolor{keywordflow}{return}\ monitor-\/>modes;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00449}00449\ \}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00450}00450\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00451}\mbox{\hyperlink{group__monitor_ga21f7f60de4f4d0fa360c7ad159b75c9e}{00451}}\ GLFWAPI\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_g_l_f_wvidmode}{GLFWvidmode}}*\ \mbox{\hyperlink{group__monitor_ga21f7f60de4f4d0fa360c7ad159b75c9e}{glfwGetVideoMode}}(\mbox{\hyperlink{group__monitor_ga8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor}}*\ handle)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00452}00452\ \{}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00453}00453\ \ \ \ \ \_GLFW\_REQUIRE\_INIT\_OR\_RETURN(NULL);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00454}00454\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00455}00455\ \ \ \ \ \mbox{\hyperlink{struct___g_l_f_wmonitor}{\_GLFWmonitor}}*\ monitor\ =\ (\mbox{\hyperlink{struct___g_l_f_wmonitor}{\_GLFWmonitor}}*)\ handle;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00456}00456\ \ \ \ \ assert(monitor\ !=\ NULL);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00457}00457\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00458}00458\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\_glfw.platform.getVideoMode(monitor,\ \&monitor-\/>currentMode))}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00459}00459\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ NULL;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00460}00460\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00461}00461\ \ \ \ \ \textcolor{keywordflow}{return}\ \&monitor-\/>currentMode;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00462}00462\ \}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00463}00463\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00464}\mbox{\hyperlink{group__monitor_ga3e4ab484476c935b4cd0bf49a5c429d6}{00464}}\ GLFWAPI\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__monitor_ga3e4ab484476c935b4cd0bf49a5c429d6}{glfwSetGamma}}(\mbox{\hyperlink{group__monitor_ga8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor}}*\ handle,\ \textcolor{keywordtype}{float}\ gamma)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00465}00465\ \{}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00466}00466\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ i;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00467}00467\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}*\ values;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00468}00468\ \ \ \ \ \mbox{\hyperlink{struct_g_l_f_wgammaramp}{GLFWgammaramp}}\ ramp;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00469}00469\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_g_l_f_wgammaramp}{GLFWgammaramp}}*\ original;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00470}00470\ \ \ \ \ assert(gamma\ >\ 0.f);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00471}00471\ \ \ \ \ assert(gamma\ <=\ FLT\_MAX);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00472}00472\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00473}00473\ \ \ \ \ \_GLFW\_REQUIRE\_INIT();}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00474}00474\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00475}00475\ \ \ \ \ assert(handle\ !=\ NULL);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00476}00476\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00477}00477\ \ \ \ \ \textcolor{keywordflow}{if}\ (gamma\ !=\ gamma\ ||\ gamma\ <=\ 0.f\ ||\ gamma\ >\ FLT\_MAX)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00478}00478\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00479}00479\ \ \ \ \ \ \ \ \ \_glfwInputError(\mbox{\hyperlink{group__errors_gaaf2ef9aa8202c2b82ac2d921e554c687}{GLFW\_INVALID\_VALUE}},\ \textcolor{stringliteral}{"{}Invalid\ gamma\ value\ \%f"{}},\ gamma);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00480}00480\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00481}00481\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00482}00482\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00483}00483\ \ \ \ \ original\ =\ \mbox{\hyperlink{group__monitor_gafe7b41852c1a14fe978f0e5381969885}{glfwGetGammaRamp}}(handle);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00484}00484\ \ \ \ \ \textcolor{keywordflow}{if}\ (!original)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00485}00485\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00486}00486\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00487}00487\ \ \ \ \ values\ =\ \_glfw\_calloc(original-\/>\mbox{\hyperlink{struct_g_l_f_wgammaramp_ad620e1cffbff9a32c51bca46301b59a5}{size}},\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}));}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00488}00488\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00489}00489\ \ \ \ \ \textcolor{keywordflow}{for}\ (i\ =\ 0;\ \ i\ <\ original-\/>\mbox{\hyperlink{struct_g_l_f_wgammaramp_ad620e1cffbff9a32c51bca46301b59a5}{size}};\ \ i++)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00490}00490\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00491}00491\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ value;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00492}00492\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00493}00493\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calculate\ intensity}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00494}00494\ \ \ \ \ \ \ \ \ value\ =\ i\ /\ (float)\ (original-\/>\mbox{\hyperlink{struct_g_l_f_wgammaramp_ad620e1cffbff9a32c51bca46301b59a5}{size}}\ -\/\ 1);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00495}00495\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Apply\ gamma\ curve}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00496}00496\ \ \ \ \ \ \ \ \ value\ =\ powf(value,\ 1.f\ /\ gamma)\ *\ 65535.f\ +\ 0.5f;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00497}00497\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Clamp\ to\ value\ range}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00498}00498\ \ \ \ \ \ \ \ \ value\ =\ fminf(value,\ 65535.f);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00499}00499\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00500}00500\ \ \ \ \ \ \ \ \ values[i]\ =\ (\textcolor{keywordtype}{unsigned}\ short)\ value;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00501}00501\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00502}00502\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00503}00503\ \ \ \ \ ramp.\mbox{\hyperlink{struct_g_l_f_wgammaramp_a2cce5d968734b685623eef913e635138}{red}}\ =\ values;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00504}00504\ \ \ \ \ ramp.\mbox{\hyperlink{struct_g_l_f_wgammaramp_affccc6f5df47820b6562d709da3a5a3a}{green}}\ =\ values;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00505}00505\ \ \ \ \ ramp.\mbox{\hyperlink{struct_g_l_f_wgammaramp_acf0c836d0efe29c392fe8d1a1042744b}{blue}}\ =\ values;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00506}00506\ \ \ \ \ ramp.\mbox{\hyperlink{struct_g_l_f_wgammaramp_ad620e1cffbff9a32c51bca46301b59a5}{size}}\ =\ original-\/>\mbox{\hyperlink{struct_g_l_f_wgammaramp_ad620e1cffbff9a32c51bca46301b59a5}{size}};}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00507}00507\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00508}00508\ \ \ \ \ \mbox{\hyperlink{group__monitor_gac9f36a1cfa10eab191d3029ea8bc9558}{glfwSetGammaRamp}}(handle,\ \&ramp);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00509}00509\ \ \ \ \ \_glfw\_free(values);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00510}00510\ \}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00511}00511\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00512}\mbox{\hyperlink{group__monitor_gafe7b41852c1a14fe978f0e5381969885}{00512}}\ GLFWAPI\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_g_l_f_wgammaramp}{GLFWgammaramp}}*\ \mbox{\hyperlink{group__monitor_gafe7b41852c1a14fe978f0e5381969885}{glfwGetGammaRamp}}(\mbox{\hyperlink{group__monitor_ga8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor}}*\ handle)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00513}00513\ \{}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00514}00514\ \ \ \ \ \_GLFW\_REQUIRE\_INIT\_OR\_RETURN(NULL);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00515}00515\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00516}00516\ \ \ \ \ \mbox{\hyperlink{struct___g_l_f_wmonitor}{\_GLFWmonitor}}*\ monitor\ =\ (\mbox{\hyperlink{struct___g_l_f_wmonitor}{\_GLFWmonitor}}*)\ handle;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00517}00517\ \ \ \ \ assert(monitor\ !=\ NULL);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00518}00518\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00519}00519\ \ \ \ \ \_glfwFreeGammaArrays(\&monitor-\/>currentRamp);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00520}00520\ \ \ \ \ \textcolor{keywordflow}{if}\ (!\_glfw.platform.getGammaRamp(monitor,\ \&monitor-\/>currentRamp))}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00521}00521\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ NULL;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00522}00522\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00523}00523\ \ \ \ \ \textcolor{keywordflow}{return}\ \&monitor-\/>currentRamp;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00524}00524\ \}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00525}00525\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00526}\mbox{\hyperlink{group__monitor_gac9f36a1cfa10eab191d3029ea8bc9558}{00526}}\ GLFWAPI\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group__monitor_gac9f36a1cfa10eab191d3029ea8bc9558}{glfwSetGammaRamp}}(\mbox{\hyperlink{group__monitor_ga8d9efd1cde9426692c73fe40437d0ae3}{GLFWmonitor}}*\ handle,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_g_l_f_wgammaramp}{GLFWgammaramp}}*\ ramp)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00527}00527\ \{}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00528}00528\ \ \ \ \ assert(ramp\ !=\ NULL);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00529}00529\ \ \ \ \ assert(ramp-\/>\mbox{\hyperlink{struct_g_l_f_wgammaramp_ad620e1cffbff9a32c51bca46301b59a5}{size}}\ >\ 0);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00530}00530\ \ \ \ \ assert(ramp-\/>\mbox{\hyperlink{struct_g_l_f_wgammaramp_a2cce5d968734b685623eef913e635138}{red}}\ !=\ NULL);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00531}00531\ \ \ \ \ assert(ramp-\/>\mbox{\hyperlink{struct_g_l_f_wgammaramp_affccc6f5df47820b6562d709da3a5a3a}{green}}\ !=\ NULL);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00532}00532\ \ \ \ \ assert(ramp-\/>\mbox{\hyperlink{struct_g_l_f_wgammaramp_acf0c836d0efe29c392fe8d1a1042744b}{blue}}\ !=\ NULL);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00533}00533\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00534}00534\ \ \ \ \ \_GLFW\_REQUIRE\_INIT();}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00535}00535\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00536}00536\ \ \ \ \ \mbox{\hyperlink{struct___g_l_f_wmonitor}{\_GLFWmonitor}}*\ monitor\ =\ (\mbox{\hyperlink{struct___g_l_f_wmonitor}{\_GLFWmonitor}}*)\ handle;}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00537}00537\ \ \ \ \ assert(monitor\ !=\ NULL);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00538}00538\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00539}00539\ \ \ \ \ \textcolor{keywordflow}{if}\ (ramp-\/>\mbox{\hyperlink{struct_g_l_f_wgammaramp_ad620e1cffbff9a32c51bca46301b59a5}{size}}\ <=\ 0)}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00540}00540\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00541}00541\ \ \ \ \ \ \ \ \ \_glfwInputError(\mbox{\hyperlink{group__errors_gaaf2ef9aa8202c2b82ac2d921e554c687}{GLFW\_INVALID\_VALUE}},}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00542}00542\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Invalid\ gamma\ ramp\ size\ \%i"{}},}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00543}00543\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ramp-\/>\mbox{\hyperlink{struct_g_l_f_wgammaramp_ad620e1cffbff9a32c51bca46301b59a5}{size}});}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00544}00544\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00545}00545\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00546}00546\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00547}00547\ \ \ \ \ \textcolor{keywordflow}{if}\ (!monitor-\/>originalRamp.\mbox{\hyperlink{struct_g_l_f_wgammaramp_ad620e1cffbff9a32c51bca46301b59a5}{size}})}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00548}00548\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00549}00549\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\_glfw.platform.getGammaRamp(monitor,\ \&monitor-\/>originalRamp))}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00550}00550\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00551}00551\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00552}00552\ }
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00553}00553\ \ \ \ \ \_glfw.platform.setGammaRamp(monitor,\ ramp);}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00554}00554\ \}}
+\DoxyCodeLine{\Hypertarget{monitor_8c_source_l00555}00555\ }
+
+\end{DoxyCode}

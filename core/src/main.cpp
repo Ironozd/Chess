@@ -1,7 +1,11 @@
-#include <iostream>
+#include "main.h"
 
-int main(int, char**){
-    int a = 5;
-    int* b = &a;
-    std::cout << "Hello, from Chess!\n";
+int main(int argc, char **argv)
+{
+    Chess::Logger::Initialize(); // Logger is seperate from the Engine.
+
+    Chess::Engine engine;
+    engine.Run();
+
+    return 0;
 }

@@ -1,0 +1,148 @@
+\doxysection{allocator.\+c}
+\hypertarget{allocator_8c_source}{}\label{allocator_8c_source}\index{deps/glfw/tests/allocator.c@{deps/glfw/tests/allocator.c}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00001}00001\ \textcolor{comment}{//========================================================================}}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00002}00002\ \textcolor{comment}{//\ Custom\ heap\ allocator\ test}}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00003}00003\ \textcolor{comment}{//\ Copyright\ (c)\ Camilla\ Löwy\ <elmindreda@glfw.org>}}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00004}00004\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00005}00005\ \textcolor{comment}{//\ This\ software\ is\ provided\ 'as-\/is',\ without\ any\ express\ or\ implied}}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00006}00006\ \textcolor{comment}{//\ warranty.\ In\ no\ event\ will\ the\ authors\ be\ held\ liable\ for\ any\ damages}}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00007}00007\ \textcolor{comment}{//\ arising\ from\ the\ use\ of\ this\ software.}}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00008}00008\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00009}00009\ \textcolor{comment}{//\ Permission\ is\ granted\ to\ anyone\ to\ use\ this\ software\ for\ any\ purpose,}}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00010}00010\ \textcolor{comment}{//\ including\ commercial\ applications,\ and\ to\ alter\ it\ and\ redistribute\ it}}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00011}00011\ \textcolor{comment}{//\ freely,\ subject\ to\ the\ following\ restrictions:}}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00012}00012\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00013}00013\ \textcolor{comment}{//\ 1.\ The\ origin\ of\ this\ software\ must\ not\ be\ misrepresented;\ you\ must\ not}}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00014}00014\ \textcolor{comment}{//\ \ \ \ claim\ that\ you\ wrote\ the\ original\ software.\ If\ you\ use\ this\ software}}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00015}00015\ \textcolor{comment}{//\ \ \ \ in\ a\ product,\ an\ acknowledgment\ in\ the\ product\ documentation\ would}}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00016}00016\ \textcolor{comment}{//\ \ \ \ be\ appreciated\ but\ is\ not\ required.}}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00017}00017\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00018}00018\ \textcolor{comment}{//\ 2.\ Altered\ source\ versions\ must\ be\ plainly\ marked\ as\ such,\ and\ must\ not}}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00019}00019\ \textcolor{comment}{//\ \ \ \ be\ misrepresented\ as\ being\ the\ original\ software.}}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00020}00020\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00021}00021\ \textcolor{comment}{//\ 3.\ This\ notice\ may\ not\ be\ removed\ or\ altered\ from\ any\ source}}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00022}00022\ \textcolor{comment}{//\ \ \ \ distribution.}}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00023}00023\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00024}00024\ \textcolor{comment}{//========================================================================}}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00026}00026\ \textcolor{preprocessor}{\#define\ GLAD\_GL\_IMPLEMENTATION}}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00027}00027\ \textcolor{preprocessor}{\#include\ <glad/gl.h>}}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00028}00028\ \textcolor{preprocessor}{\#define\ GLFW\_INCLUDE\_NONE}}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00029}00029\ \textcolor{preprocessor}{\#include\ <\mbox{\hyperlink{glfw3_8h}{GLFW/glfw3.h}}>}}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00031}00031\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00032}00032\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00033}00033\ \textcolor{preprocessor}{\#include\ <assert.h>}}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00035}00035\ \textcolor{preprocessor}{\#define\ CALL(x)\ (function\_name\ =\ \#x,\ x)}}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00036}00036\ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ function\_name\ =\ NULL;}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00038}\mbox{\hyperlink{structallocator__stats}{00038}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structallocator__stats}{allocator\_stats}}}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00039}00039\ \{}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00040}00040\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ total;}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00041}00041\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ current;}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00042}00042\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ maximum;}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00043}00043\ \};}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00045}00045\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ error\_callback(\textcolor{keywordtype}{int}\ error,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ description)}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00046}00046\ \{}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00047}00047\ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}Error:\ \%s\(\backslash\)n"{}},\ description);}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00048}00048\ \}}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00050}00050\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}*\ allocate(\textcolor{keywordtype}{size\_t}\ size,\ \textcolor{keywordtype}{void}*\ user)}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00051}00051\ \{}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00052}00052\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structallocator__stats}{allocator\_stats}}*\ stats\ =\ user;}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00053}00053\ \ \ \ \ assert(size\ >\ 0);}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00055}00055\ \ \ \ \ stats-\/>total\ +=\ size;}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00056}00056\ \ \ \ \ stats-\/>current\ +=\ size;}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00057}00057\ \ \ \ \ \textcolor{keywordflow}{if}\ (stats-\/>current\ >\ stats-\/>maximum)}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00058}00058\ \ \ \ \ \ \ \ \ stats-\/>maximum\ =\ stats-\/>current;}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00060}00060\ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%s:\ allocate\ \%zu\ bytes\ (current\ \%zu\ maximum\ \%zu\ total\ \%zu)\(\backslash\)n"{}},}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ function\_name,\ size,\ stats-\/>current,\ stats-\/>maximum,\ stats-\/>total);}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00063}00063\ \ \ \ \ \textcolor{keywordtype}{size\_t}*\ real\_block\ =\ malloc(size\ +\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{size\_t}));}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00064}00064\ \ \ \ \ assert(real\_block\ !=\ NULL);}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00065}00065\ \ \ \ \ *real\_block\ =\ size;}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00066}00066\ \ \ \ \ \textcolor{keywordflow}{return}\ real\_block\ +\ 1;}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00067}00067\ \}}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00069}00069\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ deallocate(\textcolor{keywordtype}{void}*\ block,\ \textcolor{keywordtype}{void}*\ user)}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00070}00070\ \{}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00071}00071\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structallocator__stats}{allocator\_stats}}*\ stats\ =\ user;}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00072}00072\ \ \ \ \ assert(block\ !=\ NULL);}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00074}00074\ \ \ \ \ \textcolor{keywordtype}{size\_t}*\ real\_block\ =\ (\textcolor{keywordtype}{size\_t}*)\ block\ -\/\ 1;}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00075}00075\ \ \ \ \ stats-\/>current\ -\/=\ *real\_block;}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00077}00077\ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%s:\ deallocate\ \%zu\ bytes\ (current\ \%zu\ maximum\ \%zu\ total\ \%zu)\(\backslash\)n"{}},}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ function\_name,\ *real\_block,\ stats-\/>current,\ stats-\/>maximum,\ stats-\/>total);}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00080}00080\ \ \ \ \ free(real\_block);}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00081}00081\ \}}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00083}00083\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}*\ reallocate(\textcolor{keywordtype}{void}*\ block,\ \textcolor{keywordtype}{size\_t}\ size,\ \textcolor{keywordtype}{void}*\ user)}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00084}00084\ \{}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00085}00085\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structallocator__stats}{allocator\_stats}}*\ stats\ =\ user;}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00086}00086\ \ \ \ \ assert(block\ !=\ NULL);}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00087}00087\ \ \ \ \ assert(size\ >\ 0);}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00089}00089\ \ \ \ \ \textcolor{keywordtype}{size\_t}*\ real\_block\ =\ (\textcolor{keywordtype}{size\_t}*)\ block\ -\/\ 1;}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00090}00090\ \ \ \ \ stats-\/>total\ +=\ size;}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00091}00091\ \ \ \ \ stats-\/>current\ +=\ size\ -\/\ *real\_block;}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00092}00092\ \ \ \ \ \textcolor{keywordflow}{if}\ (stats-\/>current\ >\ stats-\/>maximum)}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00093}00093\ \ \ \ \ \ \ \ \ stats-\/>maximum\ =\ stats-\/>current;}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00095}00095\ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%s:\ reallocate\ \%zu\ bytes\ to\ \%zu\ bytes\ (current\ \%zu\ maximum\ \%zu\ total\ \%zu)\(\backslash\)n"{}},}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ function\_name,\ *real\_block,\ size,\ stats-\/>current,\ stats-\/>maximum,\ stats-\/>total);}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00098}00098\ \ \ \ \ real\_block\ =\ realloc(real\_block,\ size\ +\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{size\_t}));}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00099}00099\ \ \ \ \ assert(real\_block\ !=\ NULL);}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00100}00100\ \ \ \ \ *real\_block\ =\ size;}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00101}00101\ \ \ \ \ \textcolor{keywordflow}{return}\ real\_block\ +\ 1;}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00102}00102\ \}}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00104}00104\ \textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00105}00105\ \{}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00106}00106\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structallocator__stats}{allocator\_stats}}\ stats\ =\ \{0\};}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00107}00107\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_g_l_f_wallocator}{GLFWallocator}}\ allocator\ =}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00108}00108\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00109}00109\ \ \ \ \ \ \ \ \ .\mbox{\hyperlink{struct_g_l_f_wallocator_a18a798136f17a9cb105be18312193bf7}{allocate}}\ =\ allocate,}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00110}00110\ \ \ \ \ \ \ \ \ .deallocate\ =\ deallocate,}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00111}00111\ \ \ \ \ \ \ \ \ .reallocate\ =\ reallocate,}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00112}00112\ \ \ \ \ \ \ \ \ .user\ =\ \&stats}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00113}00113\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00115}00115\ \ \ \ \ \mbox{\hyperlink{group__init_ga746e2757d069eaea423349aca6ae097a}{glfwSetErrorCallback}}(error\_callback);}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00116}00116\ \ \ \ \ \mbox{\hyperlink{group__init_ga0f4c8556a21d9e774a0ba0332da1748e}{glfwInitAllocator}}(\&allocator);}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00118}00118\ \ \ \ \ \textcolor{keywordflow}{if}\ (!CALL(\mbox{\hyperlink{group__init_gab41771f0215a2e0afb4cf1cf98082d40}{glfwInit}})())}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00119}00119\ \ \ \ \ \ \ \ \ exit(EXIT\_FAILURE);}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00120}00120\ }
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00121}00121\ \ \ \ \ \mbox{\hyperlink{group__window_ga3c96d80d363e67d13a41b5d1821f3242}{GLFWwindow}}*\ window\ =\ CALL(\mbox{\hyperlink{group__window_gaaccd00fafe81e2db94e8cdf55721e055}{glfwCreateWindow}})(400,\ 400,\ \textcolor{stringliteral}{"{}Custom\ allocator\ test"{}},\ NULL,\ NULL);}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00122}00122\ \ \ \ \ \textcolor{keywordflow}{if}\ (!window)}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00123}00123\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00124}00124\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group__init_gafd90e6fd4819ea9e22e5e739519a6504}{glfwTerminate}}();}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00125}00125\ \ \ \ \ \ \ \ \ exit(EXIT\_FAILURE);}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00126}00126\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00128}00128\ \ \ \ \ CALL(\mbox{\hyperlink{group__context_gafd76c93e15ec8b0b90506a9936a46185}{glfwMakeContextCurrent}})(window);}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00129}00129\ \ \ \ \ gladLoadGL(\mbox{\hyperlink{group__context_ga0e8af175218929615c16e74938c10f2a}{glfwGetProcAddress}});}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00130}00130\ \ \ \ \ CALL(\mbox{\hyperlink{group__context_ga12a595c06947cec4967c6e1f14210a8a}{glfwSwapInterval}})(1);}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00131}00131\ }
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00132}00132\ \ \ \ \ \textcolor{keywordflow}{while}\ (!CALL(\mbox{\hyperlink{group__window_gaa6162f67dfa38b8beda2fea623649332}{glfwWindowShouldClose}})(window))}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00133}00133\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00134}00134\ \ \ \ \ \ \ \ \ glClear(GL\_COLOR\_BUFFER\_BIT);}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00135}00135\ \ \ \ \ \ \ \ \ CALL(\mbox{\hyperlink{group__window_gafb827800eedbfcbc97b1e5408df668d7}{glfwSwapBuffers}})(window);}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00136}00136\ \ \ \ \ \ \ \ \ CALL(\mbox{\hyperlink{group__window_ga6e042d05823c11e11c7339b81a237738}{glfwWaitEvents}})();}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00137}00137\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00138}00138\ }
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00139}00139\ \ \ \ \ CALL(\mbox{\hyperlink{group__init_gafd90e6fd4819ea9e22e5e739519a6504}{glfwTerminate}})();}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00140}00140\ \ \ \ \ exit(EXIT\_SUCCESS);}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00141}00141\ \}}
+\DoxyCodeLine{\Hypertarget{allocator_8c_source_l00142}00142\ }
+
+\end{DoxyCode}

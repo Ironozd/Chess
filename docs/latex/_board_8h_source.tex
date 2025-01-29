@@ -1,0 +1,38 @@
+\doxysection{Board.\+h}
+\hypertarget{_board_8h_source}{}\label{_board_8h_source}\index{core/src/ChessLogic/Board.h@{core/src/ChessLogic/Board.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_board_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{_board_8h_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_board_8h_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <string\_view>}}
+\DoxyCodeLine{\Hypertarget{_board_8h_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{\Hypertarget{_board_8h_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_board_8h_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}../ChessComponents/Components.h"{}}}
+\DoxyCodeLine{\Hypertarget{_board_8h_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}../ChessComponents/String.h"{}}}
+\DoxyCodeLine{\Hypertarget{_board_8h_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{_board_8h_source_l00009}00009\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_chess}{Chess}}}
+\DoxyCodeLine{\Hypertarget{_board_8h_source_l00010}00010\ \{}
+\DoxyCodeLine{\Hypertarget{_board_8h_source_l00011}\mbox{\hyperlink{class_chess_1_1_board}{00011}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_chess_1_1_board}{Board}}}
+\DoxyCodeLine{\Hypertarget{_board_8h_source_l00012}00012\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_board_8h_source_l00013}00013\ \ \ \ \ \textcolor{keyword}{public}:\ }
+\DoxyCodeLine{\Hypertarget{_board_8h_source_l00014}00014\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_chess_1_1_board}{Board}}(\textcolor{keyword}{const}\ std::string\_view\ \&startFen);}
+\DoxyCodeLine{\Hypertarget{_board_8h_source_l00015}00015\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_chess_1_1_board}{\string~Board}}();}
+\DoxyCodeLine{\Hypertarget{_board_8h_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_board_8h_source_l00017}00017\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_chess_1_1_board}{Board}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_chess_1_1_board}{Board}}\ \&other);}
+\DoxyCodeLine{\Hypertarget{_board_8h_source_l00018}00018\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_chess_1_1_board}{Board}}(\mbox{\hyperlink{class_chess_1_1_board}{Board}}\ \&\&other);}
+\DoxyCodeLine{\Hypertarget{_board_8h_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_board_8h_source_l00029}00029\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_chess_1_1_board_a15ee7b2a52ae08f051407d336110fcea}{Populate}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_chess_1_1_fen_string}{FenString}}\ \&fen);}
+\DoxyCodeLine{\Hypertarget{_board_8h_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_board_8h_source_l00036}\mbox{\hyperlink{class_chess_1_1_board_a027378aec1265fc540f2ec8ab36c6e1b}{00036}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_chess_1_1_fen_string}{FenString}}\ \&\mbox{\hyperlink{class_chess_1_1_board_a027378aec1265fc540f2ec8ab36c6e1b}{CreateFEN}}();}
+\DoxyCodeLine{\Hypertarget{_board_8h_source_l00037}00037\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_board_8h_source_l00038}00038\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chess_1_1_board_components}{BoardComponents}}\ m\_Components;}
+\DoxyCodeLine{\Hypertarget{_board_8h_source_l00039}00039\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_board_8h_source_l00048}00048\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ RetrieveSet(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ \&character)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{_board_8h_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_board_8h_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ PopulateLayout(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_chess_1_1_fen_string}{FenString}}\ \&fen);}
+\DoxyCodeLine{\Hypertarget{_board_8h_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_board_8h_source_l00061}00061\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ ClearLayout();}
+\DoxyCodeLine{\Hypertarget{_board_8h_source_l00062}00062\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_board_8h_source_l00063}00063\ \}}
+
+\end{DoxyCode}

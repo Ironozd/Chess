@@ -1,0 +1,214 @@
+\doxysection{Chess\+::Fen\+String Class Reference}
+\hypertarget{class_chess_1_1_fen_string}{}\label{class_chess_1_1_fen_string}\index{Chess::FenString@{Chess::FenString}}
+
+
+Wrapper class for string\+\_\+view to hold the performance optimized split function.  
+
+
+
+
+{\ttfamily \#include $<$String.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_chess_1_1_fen_string_a00e1da25cb3af801913bbcc2064b98d7}{Fen\+String}} (const std\+::string\+\_\+view \&content)
+\begin{DoxyCompactList}\small\item\em Constructor for Fen String. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_chess_1_1_fen_string_a46fdf55d703493cf0f61a6f6a5cc22c1}{Fen\+String}} (const \mbox{\hyperlink{class_chess_1_1_fen_string}{Fen\+String}} \&other)
+\item 
+\mbox{\hyperlink{class_chess_1_1_fen_string_a4236b1f156d9a5b427a6a61928c57c22}{Fen\+String}} (\mbox{\hyperlink{class_chess_1_1_fen_string}{Fen\+String}} \&\&other)
+\item 
+void \mbox{\hyperlink{class_chess_1_1_fen_string_addf2777051a076d8155a9a4e34513869}{operator=}} (const std\+::string\+\_\+view \&content)
+\item 
+\mbox{\hyperlink{class_chess_1_1_fen_string}{Fen\+String}} \& \mbox{\hyperlink{class_chess_1_1_fen_string_a818793fe3f757c696dbb749c1e204f1f}{operator=}} (const \mbox{\hyperlink{class_chess_1_1_fen_string}{Fen\+String}} \&content)
+\item 
+void \mbox{\hyperlink{class_chess_1_1_fen_string_a14310a332827196068e34b2aea5ad09d}{operator=}} (std\+::string\+\_\+view \&\&content)
+\item 
+\mbox{\hyperlink{class_chess_1_1_fen_string}{Fen\+String}} \& \mbox{\hyperlink{class_chess_1_1_fen_string_aa18ecae729aaabe1d12c7386cd49c2f3}{operator=}} (\mbox{\hyperlink{class_chess_1_1_fen_string}{Fen\+String}} \&\&content)
+\item 
+\mbox{\hyperlink{class_chess_1_1_fen_string_a6251022000a809ad10d36b5fb4567418}{operator std\+::string\+\_\+view}} () const
+\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_chess_1_1_fen_string_aebc04de38ce2efcbc7126d6d7f8d128e}{Data}} () const
+\begin{DoxyCompactList}\small\item\em Returns the memory block containing the \doxylink{class_chess_1_1_fen_string}{Fen\+String}. \end{DoxyCompactList}\item 
+std\+::deque$<$ \mbox{\hyperlink{class_chess_1_1_fen_string}{Fen\+String}} $>$ \mbox{\hyperlink{class_chess_1_1_fen_string_a8348fca8e560381e776d52e3dca5eec6}{Split}} (std\+::string\+\_\+view delim) const
+\begin{DoxyCompactList}\small\item\em Splits the \doxylink{class_chess_1_1_fen_string}{Fen\+String} using the delimeter. \end{DoxyCompactList}\item 
+const size\+\_\+t \mbox{\hyperlink{class_chess_1_1_fen_string_ad5c001009dd9a9d6ee2ce603b3011560}{Size}} () const
+\begin{DoxyCompactList}\small\item\em Returns the size of \doxylink{class_chess_1_1_fen_string}{Fen\+String}. This is a wrapper function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Wrapper class for string\+\_\+view to hold the performance optimized split function. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000004}{Todo}}]Is the use of a wrapper to hold a single function necessary, and is there a good reason to do so? \end{DoxyRefDesc}
+
+
+Definition at line \mbox{\hyperlink{_string_8h_source_l00014}{14}} of file \mbox{\hyperlink{_string_8h_source}{String.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_chess_1_1_fen_string_a00e1da25cb3af801913bbcc2064b98d7}\label{class_chess_1_1_fen_string_a00e1da25cb3af801913bbcc2064b98d7} 
+\index{Chess::FenString@{Chess::FenString}!FenString@{FenString}}
+\index{FenString@{FenString}!Chess::FenString@{Chess::FenString}}
+\doxysubsubsection{\texorpdfstring{FenString()}{FenString()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily Chess\+::\+Fen\+String\+::\+Fen\+String (\begin{DoxyParamCaption}\item[{const std\+::string\+\_\+view \&}]{content }\end{DoxyParamCaption})}
+
+
+
+Constructor for Fen String. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em std\+::string\+\_\+view} & \&content \+: FEN notation string. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_string_8cpp_source_l00005}{5}} of file \mbox{\hyperlink{_string_8cpp_source}{String.\+cpp}}.
+
+\Hypertarget{class_chess_1_1_fen_string_addca655bd4ed4de66dcfd68284d658a7}\label{class_chess_1_1_fen_string_addca655bd4ed4de66dcfd68284d658a7} 
+\index{Chess::FenString@{Chess::FenString}!FenString@{FenString}}
+\index{FenString@{FenString}!Chess::FenString@{Chess::FenString}}
+\doxysubsubsection{\texorpdfstring{FenString()}{FenString()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily Chess\+::\+Fen\+String\+::\+Fen\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_string_8cpp_source_l00009}{9}} of file \mbox{\hyperlink{_string_8cpp_source}{String.\+cpp}}.
+
+\Hypertarget{class_chess_1_1_fen_string_a46fdf55d703493cf0f61a6f6a5cc22c1}\label{class_chess_1_1_fen_string_a46fdf55d703493cf0f61a6f6a5cc22c1} 
+\index{Chess::FenString@{Chess::FenString}!FenString@{FenString}}
+\index{FenString@{FenString}!Chess::FenString@{Chess::FenString}}
+\doxysubsubsection{\texorpdfstring{FenString()}{FenString()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily Chess\+::\+Fen\+String\+::\+Fen\+String (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_chess_1_1_fen_string}{Fen\+String}} \&}]{other }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_string_8cpp_source_l00013}{13}} of file \mbox{\hyperlink{_string_8cpp_source}{String.\+cpp}}.
+
+\Hypertarget{class_chess_1_1_fen_string_a4236b1f156d9a5b427a6a61928c57c22}\label{class_chess_1_1_fen_string_a4236b1f156d9a5b427a6a61928c57c22} 
+\index{Chess::FenString@{Chess::FenString}!FenString@{FenString}}
+\index{FenString@{FenString}!Chess::FenString@{Chess::FenString}}
+\doxysubsubsection{\texorpdfstring{FenString()}{FenString()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily Chess\+::\+Fen\+String\+::\+Fen\+String (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_chess_1_1_fen_string}{Fen\+String}} \&\&}]{other }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_string_8cpp_source_l00017}{17}} of file \mbox{\hyperlink{_string_8cpp_source}{String.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_chess_1_1_fen_string_aebc04de38ce2efcbc7126d6d7f8d128e}\label{class_chess_1_1_fen_string_aebc04de38ce2efcbc7126d6d7f8d128e} 
+\index{Chess::FenString@{Chess::FenString}!Data@{Data}}
+\index{Data@{Data}!Chess::FenString@{Chess::FenString}}
+\doxysubsubsection{\texorpdfstring{Data()}{Data()}}
+{\footnotesize\ttfamily const char \texorpdfstring{$\ast$}{*} Chess\+::\+Fen\+String\+::\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the memory block containing the \doxylink{class_chess_1_1_fen_string}{Fen\+String}. 
+
+\begin{DoxyReturn}{Returns}
+const char\texorpdfstring{$\ast$}{*} 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_string_8h_source_l00061}{61}} of file \mbox{\hyperlink{_string_8h_source}{String.\+h}}.
+
+\Hypertarget{class_chess_1_1_fen_string_a6251022000a809ad10d36b5fb4567418}\label{class_chess_1_1_fen_string_a6251022000a809ad10d36b5fb4567418} 
+\index{Chess::FenString@{Chess::FenString}!operator std::string\_view@{operator std::string\_view}}
+\index{operator std::string\_view@{operator std::string\_view}!Chess::FenString@{Chess::FenString}}
+\doxysubsubsection{\texorpdfstring{operator std::string\_view()}{operator std::string\_view()}}
+{\footnotesize\ttfamily Chess\+::\+Fen\+String\+::operator std\+::string\+\_\+view (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_string_8h_source_l00051}{51}} of file \mbox{\hyperlink{_string_8h_source}{String.\+h}}.
+
+\Hypertarget{class_chess_1_1_fen_string_a818793fe3f757c696dbb749c1e204f1f}\label{class_chess_1_1_fen_string_a818793fe3f757c696dbb749c1e204f1f} 
+\index{Chess::FenString@{Chess::FenString}!operator=@{operator=}}
+\index{operator=@{operator=}!Chess::FenString@{Chess::FenString}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_chess_1_1_fen_string}{Fen\+String}} \& Chess\+::\+Fen\+String\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_chess_1_1_fen_string}{Fen\+String}} \&}]{content }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_string_8h_source_l00034}{34}} of file \mbox{\hyperlink{_string_8h_source}{String.\+h}}.
+
+\Hypertarget{class_chess_1_1_fen_string_addf2777051a076d8155a9a4e34513869}\label{class_chess_1_1_fen_string_addf2777051a076d8155a9a4e34513869} 
+\index{Chess::FenString@{Chess::FenString}!operator=@{operator=}}
+\index{operator=@{operator=}!Chess::FenString@{Chess::FenString}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily void Chess\+::\+Fen\+String\+::operator= (\begin{DoxyParamCaption}\item[{const std\+::string\+\_\+view \&}]{content }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_string_8h_source_l00029}{29}} of file \mbox{\hyperlink{_string_8h_source}{String.\+h}}.
+
+\Hypertarget{class_chess_1_1_fen_string_aa18ecae729aaabe1d12c7386cd49c2f3}\label{class_chess_1_1_fen_string_aa18ecae729aaabe1d12c7386cd49c2f3} 
+\index{Chess::FenString@{Chess::FenString}!operator=@{operator=}}
+\index{operator=@{operator=}!Chess::FenString@{Chess::FenString}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_chess_1_1_fen_string}{Fen\+String}} \& Chess\+::\+Fen\+String\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_chess_1_1_fen_string}{Fen\+String}} \&\&}]{content }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_string_8h_source_l00045}{45}} of file \mbox{\hyperlink{_string_8h_source}{String.\+h}}.
+
+\Hypertarget{class_chess_1_1_fen_string_a14310a332827196068e34b2aea5ad09d}\label{class_chess_1_1_fen_string_a14310a332827196068e34b2aea5ad09d} 
+\index{Chess::FenString@{Chess::FenString}!operator=@{operator=}}
+\index{operator=@{operator=}!Chess::FenString@{Chess::FenString}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily void Chess\+::\+Fen\+String\+::operator= (\begin{DoxyParamCaption}\item[{std\+::string\+\_\+view \&\&}]{content }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_string_8h_source_l00040}{40}} of file \mbox{\hyperlink{_string_8h_source}{String.\+h}}.
+
+\Hypertarget{class_chess_1_1_fen_string_ad5c001009dd9a9d6ee2ce603b3011560}\label{class_chess_1_1_fen_string_ad5c001009dd9a9d6ee2ce603b3011560} 
+\index{Chess::FenString@{Chess::FenString}!Size@{Size}}
+\index{Size@{Size}!Chess::FenString@{Chess::FenString}}
+\doxysubsubsection{\texorpdfstring{Size()}{Size()}}
+{\footnotesize\ttfamily const size\+\_\+t Chess\+::\+Fen\+String\+::\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Returns the size of \doxylink{class_chess_1_1_fen_string}{Fen\+String}. This is a wrapper function. 
+
+\begin{DoxyReturn}{Returns}
+const size\+\_\+t \+: Size of \doxylink{class_chess_1_1_fen_string}{Fen\+String} 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_string_8h_source_l00079}{79}} of file \mbox{\hyperlink{_string_8h_source}{String.\+h}}.
+
+\Hypertarget{class_chess_1_1_fen_string_a8348fca8e560381e776d52e3dca5eec6}\label{class_chess_1_1_fen_string_a8348fca8e560381e776d52e3dca5eec6} 
+\index{Chess::FenString@{Chess::FenString}!Split@{Split}}
+\index{Split@{Split}!Chess::FenString@{Chess::FenString}}
+\doxysubsubsection{\texorpdfstring{Split()}{Split()}}
+{\footnotesize\ttfamily std\+::deque$<$ \mbox{\hyperlink{class_chess_1_1_fen_string}{Fen\+String}} $>$ Chess\+::\+Fen\+String\+::\+Split (\begin{DoxyParamCaption}\item[{std\+::string\+\_\+view}]{delim }\end{DoxyParamCaption}) const}
+
+
+
+Splits the \doxylink{class_chess_1_1_fen_string}{Fen\+String} using the delimeter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em std\+::string\+\_\+view} & delim \+: Delimeter that is used to parse the string. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::deque$<$\+Fen\+String$>$ \+: Contains parsed string. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_string_8cpp_source_l00021}{21}} of file \mbox{\hyperlink{_string_8cpp_source}{String.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+core/src/\+Chess\+Components/String.\+h\item 
+core/src/\+Chess\+Components/String.\+cpp\end{DoxyCompactItemize}

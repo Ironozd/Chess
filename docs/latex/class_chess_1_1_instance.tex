@@ -1,0 +1,103 @@
+\doxysection{Chess\+::Instance Class Reference}
+\hypertarget{class_chess_1_1_instance}{}\label{class_chess_1_1_instance}\index{Chess::Instance@{Chess::Instance}}
+
+
+\doxylink{class_chess_1_1_instance}{Instance} singleton.  
+
+
+
+
+{\ttfamily \#include $<$Instance.\+h$>$}
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_chess_1_1_instance_ae5748eaf5c57a55e3d1ad663ceafb098}{Initialize}} (const \mbox{\hyperlink{struct_chess_1_1_instance_specification}{Instance\+Specification}} \&spec)
+\item 
+static void \mbox{\hyperlink{class_chess_1_1_instance_ab695f0a342d0df90b7cdbdc06c1fcd6c}{Shutdown}} ()
+\item 
+static bool \mbox{\hyperlink{class_chess_1_1_instance_a3b57b3e69beef72fb6842e11ff272d39}{Is\+Validation\+Enabled}} ()
+\begin{DoxyCompactList}\small\item\em Getter for private static variable validation\+Enabled. \end{DoxyCompactList}\item 
+static std\+::vector$<$ const char \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_chess_1_1_instance_acf16a9b6c9cc33b0c9c3977d74c09fea}{Get\+Validation\+Layers}} ()
+\begin{DoxyCompactList}\small\item\em Getter for private static variable validation\+Layers. \end{DoxyCompactList}\item 
+static Vk\+Instance \mbox{\hyperlink{class_chess_1_1_instance_a93e4e93c800dcfcd95056341f54c5aa5}{Data}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{class_chess_1_1_instance}{Instance} singleton. 
+
+\begin{DoxyNote}{Note}
+Since Vulkan instance is expected to be created and destroyed once, this class was made a singleton. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{_instance_8h_source_l00021}{21}} of file \mbox{\hyperlink{_instance_8h_source}{Instance.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_chess_1_1_instance_a93e4e93c800dcfcd95056341f54c5aa5}\label{class_chess_1_1_instance_a93e4e93c800dcfcd95056341f54c5aa5} 
+\index{Chess::Instance@{Chess::Instance}!Data@{Data}}
+\index{Data@{Data}!Chess::Instance@{Chess::Instance}}
+\doxysubsubsection{\texorpdfstring{Data()}{Data()}}
+{\footnotesize\ttfamily static Vk\+Instance Chess\+::\+Instance\+::\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_instance_8h_source_l00037}{37}} of file \mbox{\hyperlink{_instance_8h_source}{Instance.\+h}}.
+
+\Hypertarget{class_chess_1_1_instance_acf16a9b6c9cc33b0c9c3977d74c09fea}\label{class_chess_1_1_instance_acf16a9b6c9cc33b0c9c3977d74c09fea} 
+\index{Chess::Instance@{Chess::Instance}!GetValidationLayers@{GetValidationLayers}}
+\index{GetValidationLayers@{GetValidationLayers}!Chess::Instance@{Chess::Instance}}
+\doxysubsubsection{\texorpdfstring{GetValidationLayers()}{GetValidationLayers()}}
+{\footnotesize\ttfamily static std\+::vector$<$ const char \texorpdfstring{$\ast$}{*} $>$ Chess\+::\+Instance\+::\+Get\+Validation\+Layers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Getter for private static variable validation\+Layers. 
+
+
+
+Definition at line \mbox{\hyperlink{_instance_8h_source_l00035}{35}} of file \mbox{\hyperlink{_instance_8h_source}{Instance.\+h}}.
+
+\Hypertarget{class_chess_1_1_instance_ae5748eaf5c57a55e3d1ad663ceafb098}\label{class_chess_1_1_instance_ae5748eaf5c57a55e3d1ad663ceafb098} 
+\index{Chess::Instance@{Chess::Instance}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!Chess::Instance@{Chess::Instance}}
+\doxysubsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily static void Chess\+::\+Instance\+::\+Initialize (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_chess_1_1_instance_specification}{Instance\+Specification}} \&}]{spec }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_instance_8h_source_l00024}{24}} of file \mbox{\hyperlink{_instance_8h_source}{Instance.\+h}}.
+
+\Hypertarget{class_chess_1_1_instance_a3b57b3e69beef72fb6842e11ff272d39}\label{class_chess_1_1_instance_a3b57b3e69beef72fb6842e11ff272d39} 
+\index{Chess::Instance@{Chess::Instance}!IsValidationEnabled@{IsValidationEnabled}}
+\index{IsValidationEnabled@{IsValidationEnabled}!Chess::Instance@{Chess::Instance}}
+\doxysubsubsection{\texorpdfstring{IsValidationEnabled()}{IsValidationEnabled()}}
+{\footnotesize\ttfamily static bool Chess\+::\+Instance\+::\+Is\+Validation\+Enabled (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Getter for private static variable validation\+Enabled. 
+
+
+
+Definition at line \mbox{\hyperlink{_instance_8h_source_l00031}{31}} of file \mbox{\hyperlink{_instance_8h_source}{Instance.\+h}}.
+
+\Hypertarget{class_chess_1_1_instance_ab695f0a342d0df90b7cdbdc06c1fcd6c}\label{class_chess_1_1_instance_ab695f0a342d0df90b7cdbdc06c1fcd6c} 
+\index{Chess::Instance@{Chess::Instance}!Shutdown@{Shutdown}}
+\index{Shutdown@{Shutdown}!Chess::Instance@{Chess::Instance}}
+\doxysubsubsection{\texorpdfstring{Shutdown()}{Shutdown()}}
+{\footnotesize\ttfamily static void Chess\+::\+Instance\+::\+Shutdown (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_instance_8h_source_l00026}{26}} of file \mbox{\hyperlink{_instance_8h_source}{Instance.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+core/src/\+Renderer/Instance.\+h\item 
+core/src/\+Renderer/Instance.\+cpp\end{DoxyCompactItemize}
