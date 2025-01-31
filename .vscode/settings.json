@@ -81,7 +81,9 @@
         "deque": "cpp",
         "cstdarg": "cpp",
         "random": "cpp",
-        "set": "cpp"
+        "set": "cpp",
+        "any": "cpp",
+        "unordered_set": "cpp"
     },
     "C_Cpp.errorSquiggles": "enabled"
 }

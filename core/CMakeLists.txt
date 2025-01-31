@@ -7,6 +7,7 @@ add_executable(Chess src/main.cpp
     # Core Files #
     src/Core/Logger.cpp
     src/Core/Engine.cpp
+    src/Core/Event.cpp
     # ChessLogic Files #
     src/ChessLogic/Board.cpp
     src/ChessLogic/Evaluation.cpp
@@ -31,3 +32,18 @@ target_include_directories(Chess PRIVATE ${Vulkan_INCLUDE_DIRS})
 target_include_directories(Chess PRIVATE ${CMAKE_SOURCE_DIR}/deps/spdlog/include)
 target_include_directories(Chess PRIVATE ${CMAKE_SOURCE_DIR}/deps/glfw/include)
 target_include_directories(Chess PRIVATE ${CMAKE_SOURCE_DIR}/deps/glm)
+
+add_executable(ChessUNIT_TESTS 
+    # BitboardTests #
+    tests/BitboardTests/CompileTests.cpp
+    tests/BitboardTests/RuntimeTests.cpp
+        # Includes #
+        src/ChessComponents/Bitboard.cpp
+    )
+
+target_link_libraries(ChessUNIT_TESTS PRIVATE gtest gtest_main spdlog::spdlog glfw Vulkan::Vulkan)
+
+target_include_directories(ChessUNIT_TESTS PRIVATE src/)
+
+include(GoogleTest)
+gtest_discover_tests(ChessUNIT_TESTS)
