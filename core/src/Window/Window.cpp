@@ -22,7 +22,12 @@ namespace Chess
 
     Window::~Window()
     {
-        Terminate(); /** @todo Rethink shutdown structure. */
+        Terminate(); 
+        /**
+         * @todo re-think shutdown structure. 
+         * Question: On heap allocation, would this destructor cause errors, 
+         * since Shutdown can be called in other methods?
+         */
     }
 
     void Window::Initialize(const WindowSpecification &spec)

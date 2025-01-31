@@ -7,7 +7,6 @@ add_executable(Chess src/main.cpp
     # Core Files #
     src/Core/Logger.cpp
     src/Core/Engine.cpp
-    src/Core/Event.cpp
     # ChessLogic Files #
     src/ChessLogic/Board.cpp
     src/ChessLogic/Evaluation.cpp
