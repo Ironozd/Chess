@@ -1,15 +1,22 @@
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/8df30e6738094deeaa9f45864b3d0794)](https://app.codacy.com/gh/Ironozd/Chess/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+
 # Vulkan Chess Engine [Work in Progress]
 
 ## Overview
 This project will implement a Chess engine that uses Vulkan Compute API to conduct its search algorithm. The project will introduce a core engine library consisting of all chess functions and renderer functions.
+The project also contains its own performance-critical entity component system (logic inspired by ENTT).
 
 ## Build Instructions
+
 ### Prerequisites
-- [Vulkan SDK](https://vulkan.lunarg.com/sdk/home)
+
+- - [Vulkan SDK](https://vulkan.lunarg.com/sdk/home) (tested sdk version: )
 - CMake
-- C++ compiler; MinGW
+- C++ compiler; MSVC (tested), MinGW
 - VS Code (Optional)
+
 ### Windows
+
 First of all, clone the git repository including its submodules.
 ```
 git clone --recursive https://github.com/Ironozd/Chess.git
@@ -37,8 +44,10 @@ You can still build the project in release mode with;
 ```
 cmake -DCMAKE_BUILD_TYPE=Release ..
 ```
+
 ## What will the project look like in the future?
-- Core project will be a static library, consisting of core engine files for both Chess engine and renderer.
+
+- - Core project will be a static library, consisting of core engine files for both Chess engine and renderer.
 - 2 executables; A Chess Game (which will render graphics using Vulkan and Window using GLFW), A Lichess Integration App (A console view that will support UCI and communication with lichess.org).
 
 ### Future Project Structure
@@ -51,12 +60,14 @@ cmake -DCMAKE_BUILD_TYPE=Release ..
             - src/ (will only hold configuration)
 
 ## Unique Features
-- Search algorithm is conducted through Vulkan Compute API. (not implemented yet)
+
+- - Search algorithm is conducted through Vulkan Compute API. (not implemented yet)
 - Lichess integration through lichess-bot. (not implemented yet)
 - The core library will be designed so that it will support other integrations to the chess engine.
 
 ## Dependencies
-- GLFW Window API : Window
+
+- - GLFW Window API : Window
 - Vulkan API : Renderer to display the visual representation of the game, compute API to increase search algorithm performance.
 - GLM : Math library.
 - spdlog : For performance-critical logging at runtime

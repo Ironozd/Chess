@@ -7,7 +7,7 @@
 #include "../Core/Logger.h"
 #include "../Window/Window.h"
 
-namespace Chess
+namespace Renderer
 {
     PhysicalDevice::PhysicalDevice() : 
         m_PhysicalDevice(VK_NULL_HANDLE), m_Specification({nullptr})

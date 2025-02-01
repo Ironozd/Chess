@@ -7,7 +7,7 @@
 #include "Instance.h"
 #include <set>
 
-namespace Chess
+namespace Renderer
 {
     LogicalDevice::LogicalDevice() : m_LogicalDevice(VK_NULL_HANDLE), m_GraphicsQueue(VK_NULL_HANDLE)
     {

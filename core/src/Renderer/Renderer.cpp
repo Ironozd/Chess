@@ -7,7 +7,7 @@
 
 #include "../Window/Window.h"
 
-namespace Chess
+namespace Renderer
 {
     Renderer::Renderer(const RendererSpecification& spec) :
         m_Specification(spec)

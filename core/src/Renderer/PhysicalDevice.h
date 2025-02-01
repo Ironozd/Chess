@@ -5,7 +5,7 @@
 /* Forward declaration for better compile-time and organization */
 typedef struct VkPhysicalDevice_T *VkPhysicalDevice;
 
-namespace Chess
+namespace Renderer
 {
     /* Forward declaration for better compile-time and organization */
     class Window;

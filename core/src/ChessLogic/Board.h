@@ -15,7 +15,7 @@ namespace Chess
         ~Board();
 
         Board(const Board &other);
-        Board(Board &&other);
+        Board(Board &&other) noexcept;
 
         /**
          * @brief Populates the board.

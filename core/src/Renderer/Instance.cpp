@@ -6,7 +6,7 @@
 #include "../Core/Logger.h"
 #include "DebugMessenger.h"
 
-namespace Chess
+namespace Renderer
 {
     std::vector<const char *> Instance::validationLayers = {
         "VK_LAYER_KHRONOS_validation"};

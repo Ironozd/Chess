@@ -17,6 +17,11 @@ add_executable(Chess src/main.cpp
     src/ChessComponents/Turn.cpp
     # Window Files #
     src/Window/Window.cpp
+    # EntityComponentSystem Files #
+    src/EntityComponentSystem/Allocators/BlockAllocator.cpp
+    src/EntityComponentSystem/Components/Transform.cpp
+    src/EntityComponentSystem/Core/Registry.cpp
+    src/EntityComponentSystem/Storage/Storage.cpp
     # Renderer Files #
     src/Renderer/Renderer.cpp
     src/Renderer/Instance.cpp

@@ -4,7 +4,7 @@
 typedef struct VkDevice_T *VkDevice;
 typedef struct VkQueue_T *VkQueue;
 
-namespace Chess
+namespace Renderer
 {
     /**
      * @brief Logical Device singleton.

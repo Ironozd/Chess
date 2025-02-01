@@ -5,7 +5,7 @@
 #include "Instance.h"
 #include "../Core/Logger.h"
 
-namespace Chess
+namespace Renderer
 {
     VkDebugUtilsMessengerEXT DebugMessenger::m_DebugMessenger = nullptr;
 

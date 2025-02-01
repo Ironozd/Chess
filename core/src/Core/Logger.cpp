@@ -1,6 +1,6 @@
 #include "Logger.h"
 
-namespace Chess
+namespace Application
 {
     std::shared_ptr<spdlog::logger> Logger::s_Logger;
 

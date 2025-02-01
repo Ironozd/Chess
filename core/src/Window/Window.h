@@ -8,7 +8,7 @@
 struct GLFWwindow;
 typedef struct VkSurfaceKHR_T *VkSurfaceKHR;
 
-namespace Chess
+namespace Renderer
 {
     struct WindowSpecification
     {

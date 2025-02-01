@@ -1,7 +1,7 @@
 #pragma once
 #include <memory>
 
-namespace Chess
+namespace Renderer
 {
     /* Forward declaration for better compile-time and organization */
     class Window;

@@ -34,7 +34,7 @@ namespace Chess
         this->m_Components = other.m_Components;
     }
 
-    Board::Board(Board &&other)
+    Board::Board(Board &&other) noexcept
     {
         this->m_Components = other.m_Components;
     }

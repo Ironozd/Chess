@@ -6,7 +6,7 @@
 typedef struct VkInstance_T *VkInstance;
 struct VkApplicationInfo;
 
-namespace Chess
+namespace Renderer
 {
     struct InstanceSpecification
     {

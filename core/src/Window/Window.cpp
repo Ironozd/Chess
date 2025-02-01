@@ -9,7 +9,7 @@
 #include "../Renderer/Instance.h"
 #include "../Core/Logger.h"
 
-namespace Chess
+namespace Renderer
 {
     Window::Window()
         : m_Window(nullptr)

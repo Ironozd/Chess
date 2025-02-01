@@ -4,7 +4,7 @@
 typedef struct VkDebugUtilsMessengerEXT_T *VkDebugUtilsMessengerEXT;
 struct VkDebugUtilsMessengerCreateInfoEXT;
 
-namespace Chess
+namespace Renderer
 {
     /**
      * @brief Vulkan Debug Messenger class.

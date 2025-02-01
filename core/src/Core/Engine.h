@@ -4,7 +4,7 @@
 #include "../Window/Window.h"
 #include "../Renderer/Renderer.h"
 
-namespace Chess
+namespace Application
 {
     /**
      * @brief Engine class, entry point to the Chess Engine, Renderer, Window.
@@ -30,9 +30,9 @@ namespace Chess
         void Shutdown();
 
     private:
-        Board m_Board;       /** @warning Stack allocation limits use-case, only a single board object is used throughout. There is a possibility of making this std::shared_ptr or creating it when necessary instead of engine-initialization time. \todo Revise board object instantiation. */
-        Window m_Window;     /** @note Does not need to be shared, therefore for the purposes of performance-critical code, it is stack allocated. */
-        Renderer m_Renderer; /** @note Does not need to be shared, therefore for the purposes of performance-critical code, it is stack allocated. */
+        Chess::Board m_Board;       /** @warning Stack allocation limits use-case, only a single board object is used throughout. There is a possibility of making this std::shared_ptr or creating it when necessary instead of engine-initialization time. \todo Revise board object instantiation. */
+        Renderer::Window m_Window;     /** @note Does not need to be shared, therefore for the purposes of performance-critical code, it is stack allocated. */
+        Renderer::Renderer m_Renderer; /** @note Does not need to be shared, therefore for the purposes of performance-critical code, it is stack allocated. */
 
         bool m_Running = true;
     };
