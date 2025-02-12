@@ -1,8 +1,8 @@
 var class_chess_1_1_bitboard =
 [
-    [ "Bitboard", "class_chess_1_1_bitboard.html#a480d87e6f2fd5a5eab4e0857b3b63684", null ],
-    [ "~Bitboard", "class_chess_1_1_bitboard.html#ad77c0f0d2d9bafd291757ee00f0bdf51", null ],
-    [ "Clear", "class_chess_1_1_bitboard.html#a18bf34d731003b7e2be18e2c3ef2571a", null ],
-    [ "Reset", "class_chess_1_1_bitboard.html#aab941a568d287baf7224bec2847c80fd", null ],
-    [ "Set", "class_chess_1_1_bitboard.html#a639f1f0cba77a1b95b4c8b0bdd6a2994", null ]
+    [ "Bitboard", "class_chess_1_1_bitboard.html#aaa600305218913a50070cb848a156f2e", null ],
+    [ "Board", "class_chess_1_1_bitboard.html#a76ea2ae63670d8cdf1e1ae9afe36aebf", null ],
+    [ "ClearImpl", "class_chess_1_1_bitboard.html#a0ee5283a29519265d0555b8d91d4de8a", null ],
+    [ "ResetImpl", "class_chess_1_1_bitboard.html#ae470b7ba8cca1f83b086bf4834236a5d", null ],
+    [ "SetImpl", "class_chess_1_1_bitboard.html#aae5e21dfc319944a3d665f02540bca60", null ]
 ];

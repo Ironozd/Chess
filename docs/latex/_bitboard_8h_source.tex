@@ -5,33 +5,59 @@
 \DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
 \DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <cstdint>}}
 \DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00003}00003\ }
-\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00004}00004\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_chess}{Chess}}}
+\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00004}00004\ \textcolor{keyword}{namespace\ }Chess}
 \DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00005}00005\ \{}
-\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00009}\mbox{\hyperlink{class_chess_1_1_bitboard}{00009}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_chess_1_1_bitboard}{Bitboard}}}
-\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00010}00010\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00011}00011\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00012}00012\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_chess_1_1_bitboard}{Bitboard}}();}
-\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00018}00018\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_chess_1_1_bitboard}{Bitboard}}(uint64\_t\ m\_Board);}
-\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00019}00019\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00023}00023\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_chess_1_1_bitboard_ad77c0f0d2d9bafd291757ee00f0bdf51}{\string~Bitboard}}();}
-\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00024}00024\ }
-\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00029}00029\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Bitboard::Bitboard(const\ Bitboard\ \&other);}}
-\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Bitboard::Bitboard(Bitboard\ \&\&other);}}
-\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00031}00031\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_chess_1_1_bitboard_a639f1f0cba77a1b95b4c8b0bdd6a2994}{Set}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ \&index);}
-\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00038}00038\ }
-\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00048}00048\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_chess_1_1_bitboard_aab941a568d287baf7224bec2847c80fd}{Reset}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ \&index);}
+\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00014}00014\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Derived>}
+\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00015}\mbox{\hyperlink{class_chess_1_1_bitboard_interface}{00015}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_chess_1_1_bitboard_interface}{BitboardInterface}}}
+\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00016}00016\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00017}00017\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00018}00018\ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{void}\ Set(\textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ \&index)}
+\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00019}00019\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00020}00020\ \ \ \ \ \ \ \ \ \ \ \ \ Self()-\/>SetImpl(index);}
+\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00021}00021\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00022}00022\ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{void}\ Reset(\textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ \&index)}
+\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00023}00023\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ Self()-\/>ResetImpl(index);}
+\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00025}00025\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00026}00026\ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{void}\ Clear()}
+\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00027}00027\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ Self()-\/>ClearImpl();}
+\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00029}00029\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00031}00031\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ Derived\ *Self()\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}Derived\ *\textcolor{keyword}{>}(\textcolor{keyword}{this});\ \}}
+\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00033}00033\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00038}\mbox{\hyperlink{class_chess_1_1_bitboard}{00038}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_chess_1_1_bitboard}{Bitboard}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_chess_1_1_bitboard_interface}{BitboardInterface}}<Bitboard>}
+\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00039}00039\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00040}00040\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00041}00041\ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{class_chess_1_1_bitboard}{Bitboard}}()\ :\ m\_Board(0)\ \{\}}
+\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00048}\mbox{\hyperlink{class_chess_1_1_bitboard_aaa600305218913a50070cb848a156f2e}{00048}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \mbox{\hyperlink{class_chess_1_1_bitboard_aaa600305218913a50070cb848a156f2e}{Bitboard}}(uint64\_t\ board)\ :\ m\_Board(board)\ \{\}}
 \DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00049}00049\ }
-\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_chess_1_1_bitboard_a18bf34d731003b7e2be18e2c3ef2571a}{Clear}}();}
-\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00056}00056\ }
-\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00057}00057\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Operator\ overloads\ */}}
-\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00058}00058\ \ \ \ \ \ \ \ \ uint64\_t\ \&\mbox{\hyperlink{class_chess_1_1_board}{Board}}()}
-\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00059}00059\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_Board;}
-\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00061}00061\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00062}00062\ \ \ \ \ \textcolor{keyword}{private}:}
-\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00063}00063\ \ \ \ \ \ \ \ \ uint64\_t\ m\_Board;}
-\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00064}00064\ \ \ \ \ \};}
-\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00065}00065\ \}}
+\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00055}\mbox{\hyperlink{class_chess_1_1_bitboard_aae5e21dfc319944a3d665f02540bca60}{00055}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_chess_1_1_bitboard_aae5e21dfc319944a3d665f02540bca60}{SetImpl}}(\textcolor{keyword}{const}\ uint64\_t\ \&index)}
+\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00056}00056\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ m\_Board\ |=\ (uint64\_t)1\ <<\ index;}
+\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00058}00058\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00069}\mbox{\hyperlink{class_chess_1_1_bitboard_ae470b7ba8cca1f83b086bf4834236a5d}{00069}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_chess_1_1_bitboard_ae470b7ba8cca1f83b086bf4834236a5d}{ResetImpl}}(\textcolor{keyword}{const}\ uint64\_t\ \&index)}
+\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00070}00070\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ m\_Board\ \string^=\ (uint64\_t)1\ <<\ index;}
+\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00072}00072\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00079}\mbox{\hyperlink{class_chess_1_1_bitboard_a0ee5283a29519265d0555b8d91d4de8a}{00079}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_chess_1_1_bitboard_a0ee5283a29519265d0555b8d91d4de8a}{ClearImpl}}()}
+\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00080}00080\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ m\_Board\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00082}00082\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00089}\mbox{\hyperlink{class_chess_1_1_bitboard_a76ea2ae63670d8cdf1e1ae9afe36aebf}{00089}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{constexpr}\ uint64\_t\ \&\mbox{\hyperlink{class_chess_1_1_bitboard_a76ea2ae63670d8cdf1e1ae9afe36aebf}{Board}}()}
+\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00090}00090\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_Board;}
+\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00092}00092\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00094}00094\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00095}00095\ \ \ \ \ \ \ \ \ uint64\_t\ m\_Board;}
+\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00096}00096\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_bitboard_8h_source_l00097}00097\ \}}
 
 \end{DoxyCode}

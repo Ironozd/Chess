@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['join_5fview_0',['join_view',['../structjoin__view.html',1,'']]]
+  ['queuefamilyindices_0',['QueueFamilyIndices',['../struct_renderer_1_1_queue_family_indices.html',1,'Renderer']]]
 ];

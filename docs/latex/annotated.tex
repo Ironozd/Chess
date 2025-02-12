@@ -1,21 +1,29 @@
 \doxysection{Class List}
 Here are the classes, structs, unions and interfaces with brief descriptions\+:\begin{DoxyCompactList}
+\item\contentsline{section}{\mbox{\hyperlink{classstd_1_1allocator}{std\+::allocator$<$ T $>$}} }{\pageref{classstd_1_1allocator}}{}
 \item\contentsline{section}{\mbox{\hyperlink{class_chess_1_1_bitboard}{Chess\+::\+Bitboard}} \\*64 bit board (uint64\+\_\+t) wrapper class }{\pageref{class_chess_1_1_bitboard}}{}
+\item\contentsline{section}{\mbox{\hyperlink{class_chess_1_1_bitboard_interface}{Chess\+::\+Bitboard\+Interface$<$ Derived $>$}} \\*CRTP design using interface class for \doxylink{class_chess_1_1_bitboard}{Bitboard} to support compile-\/time initializations of bitboards. Mainly designed for future possibility of enhanced integrations. (Pre-\/calculations of chess attacks on bitboard etc.) }{\pageref{class_chess_1_1_bitboard_interface}}{}
 \item\contentsline{section}{\mbox{\hyperlink{class_chess_1_1_board}{Chess\+::\+Board}} }{\pageref{class_chess_1_1_board}}{}
-\item\contentsline{section}{\mbox{\hyperlink{struct_chess_1_1_board_components}{Chess\+::\+Board\+Components}} \\*This struct holds members of \doxylink{class_chess_1_1_board}{Board} class that are related to \doxylink{namespace_chess}{Chess} functionality }{\pageref{struct_chess_1_1_board_components}}{}
-\item\contentsline{section}{\mbox{\hyperlink{class_chess_1_1_debug_messenger}{Chess\+::\+Debug\+Messenger}} \\*Vulkan Debug Messenger class }{\pageref{class_chess_1_1_debug_messenger}}{}
-\item\contentsline{section}{\mbox{\hyperlink{class_chess_1_1_engine}{Chess\+::\+Engine}} \\*\doxylink{class_chess_1_1_engine}{Engine} class, entry point to the \doxylink{namespace_chess}{Chess} \doxylink{class_chess_1_1_engine}{Engine}, \doxylink{class_chess_1_1_renderer}{Renderer}, \doxylink{class_chess_1_1_window}{Window} }{\pageref{class_chess_1_1_engine}}{}
+\item\contentsline{section}{\mbox{\hyperlink{struct_chess_1_1_board_components}{Chess\+::\+Board\+Components}} \\*This struct holds members of \doxylink{class_chess_1_1_board}{Board} class that are related to Chess functionality }{\pageref{struct_chess_1_1_board_components}}{}
+\item\contentsline{section}{\mbox{\hyperlink{class_e_c_s_1_1_component_storage}{ECS\+::\+Component\+Storage$<$ Type, Entity $>$}} \\*\doxylink{class_e_c_s_1_1_component_storage}{Component\+Storage} class, stores components of type "{}\+Type"{}, who has owner "{}\+Entity"{}. This class represents the pool of 1 component }{\pageref{class_e_c_s_1_1_component_storage}}{}
+\item\contentsline{section}{\mbox{\hyperlink{class_renderer_1_1_debug_messenger}{Renderer\+::\+Debug\+Messenger}} \\*Vulkan Debug Messenger class }{\pageref{class_renderer_1_1_debug_messenger}}{}
+\item\contentsline{section}{\mbox{\hyperlink{class_application_1_1_engine}{Application\+::\+Engine}} \\*\doxylink{class_application_1_1_engine}{Engine} class, entry point to the Chess \doxylink{class_application_1_1_engine}{Engine}, Renderer, Window }{\pageref{class_application_1_1_engine}}{}
+\item\contentsline{section}{\mbox{\hyperlink{struct_e_c_s_1_1internals_1_1entity}{ECS\+::internals\+::entity$<$ Type $>$}} }{\pageref{struct_e_c_s_1_1internals_1_1entity}}{}
 \item\contentsline{section}{\mbox{\hyperlink{class_chess_1_1_evaluation}{Chess\+::\+Evaluation}} \\*This class will hold evaluation logic }{\pageref{class_chess_1_1_evaluation}}{}
 \item\contentsline{section}{\mbox{\hyperlink{class_chess_1_1_fen_string}{Chess\+::\+Fen\+String}} \\*Wrapper class for string\+\_\+view to hold the performance optimized split function }{\pageref{class_chess_1_1_fen_string}}{}
-\item\contentsline{section}{\mbox{\hyperlink{class_chess_1_1_instance}{Chess\+::\+Instance}} \\*\doxylink{class_chess_1_1_instance}{Instance} singleton }{\pageref{class_chess_1_1_instance}}{}
-\item\contentsline{section}{\mbox{\hyperlink{struct_chess_1_1_instance_specification}{Chess\+::\+Instance\+Specification}} }{\pageref{struct_chess_1_1_instance_specification}}{}
-\item\contentsline{section}{\mbox{\hyperlink{class_chess_1_1_logger}{Chess\+::\+Logger}} }{\pageref{class_chess_1_1_logger}}{}
-\item\contentsline{section}{\mbox{\hyperlink{class_chess_1_1_logical_device}{Chess\+::\+Logical\+Device}} \\*Logical Device singleton }{\pageref{class_chess_1_1_logical_device}}{}
-\item\contentsline{section}{\mbox{\hyperlink{class_chess_1_1_physical_device}{Chess\+::\+Physical\+Device}} \\*Physical Device singleton }{\pageref{class_chess_1_1_physical_device}}{}
-\item\contentsline{section}{\mbox{\hyperlink{struct_chess_1_1_physical_device_specification}{Chess\+::\+Physical\+Device\+Specification}} }{\pageref{struct_chess_1_1_physical_device_specification}}{}
-\item\contentsline{section}{\mbox{\hyperlink{struct_chess_1_1_queue_family_indices}{Chess\+::\+Queue\+Family\+Indices}} \\*Duplicate as in the one in Vulkan Tutorial }{\pageref{struct_chess_1_1_queue_family_indices}}{}
-\item\contentsline{section}{\mbox{\hyperlink{class_chess_1_1_renderer}{Chess\+::\+Renderer}} \\*\doxylink{class_chess_1_1_renderer}{Renderer} class, lifetime of all Vulkan objects are stored here }{\pageref{class_chess_1_1_renderer}}{}
-\item\contentsline{section}{\mbox{\hyperlink{struct_chess_1_1_renderer_specification}{Chess\+::\+Renderer\+Specification}} }{\pageref{struct_chess_1_1_renderer_specification}}{}
-\item\contentsline{section}{\mbox{\hyperlink{class_chess_1_1_window}{Chess\+::\+Window}} \\*\doxylink{class_chess_1_1_window}{Window} class, uses GLFW library }{\pageref{class_chess_1_1_window}}{}
-\item\contentsline{section}{\mbox{\hyperlink{struct_chess_1_1_window_specification}{Chess\+::\+Window\+Specification}} }{\pageref{struct_chess_1_1_window_specification}}{}
+\item\contentsline{section}{\mbox{\hyperlink{struct_e_c_s_1_1_hash}{ECS\+::\+Hash$<$ Type $>$}} }{\pageref{struct_e_c_s_1_1_hash}}{}
+\item\contentsline{section}{\mbox{\hyperlink{class_renderer_1_1_instance}{Renderer\+::\+Instance}} \\*\doxylink{class_renderer_1_1_instance}{Instance} singleton }{\pageref{class_renderer_1_1_instance}}{}
+\item\contentsline{section}{\mbox{\hyperlink{struct_renderer_1_1_instance_specification}{Renderer\+::\+Instance\+Specification}} }{\pageref{struct_renderer_1_1_instance_specification}}{}
+\item\contentsline{section}{\mbox{\hyperlink{class_application_1_1_logger}{Application\+::\+Logger}} }{\pageref{class_application_1_1_logger}}{}
+\item\contentsline{section}{\mbox{\hyperlink{class_renderer_1_1_logical_device}{Renderer\+::\+Logical\+Device}} \\*Logical Device singleton }{\pageref{class_renderer_1_1_logical_device}}{}
+\item\contentsline{section}{\mbox{\hyperlink{class_renderer_1_1_physical_device}{Renderer\+::\+Physical\+Device}} \\*Physical Device singleton }{\pageref{class_renderer_1_1_physical_device}}{}
+\item\contentsline{section}{\mbox{\hyperlink{struct_renderer_1_1_physical_device_specification}{Renderer\+::\+Physical\+Device\+Specification}} }{\pageref{struct_renderer_1_1_physical_device_specification}}{}
+\item\contentsline{section}{\mbox{\hyperlink{struct_renderer_1_1_queue_family_indices}{Renderer\+::\+Queue\+Family\+Indices}} \\*Duplicate as in the one in Vulkan Tutorial }{\pageref{struct_renderer_1_1_queue_family_indices}}{}
+\item\contentsline{section}{\mbox{\hyperlink{class_renderer_1_1_renderer}{Renderer\+::\+Renderer}} \\*\doxylink{class_renderer_1_1_renderer}{Renderer} class, lifetime of all Vulkan objects are stored here }{\pageref{class_renderer_1_1_renderer}}{}
+\item\contentsline{section}{\mbox{\hyperlink{struct_renderer_1_1_renderer_specification}{Renderer\+::\+Renderer\+Specification}} }{\pageref{struct_renderer_1_1_renderer_specification}}{}
+\item\contentsline{section}{\mbox{\hyperlink{struct_e_c_s_1_1_storage_traits}{ECS\+::\+Storage\+Traits$<$ Type, Entity $>$}} \\*\doxylink{struct_e_c_s_1_1_storage_traits}{Storage\+Traits} struct, exists for better organization, and, accessing types through storage interface }{\pageref{struct_e_c_s_1_1_storage_traits}}{}
+\item\contentsline{section}{\mbox{\hyperlink{class_e_c_s_1_1_transform}{ECS\+::\+Transform}} }{\pageref{class_e_c_s_1_1_transform}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classstd_1_1vector}{std\+::vector$<$ T, Allocator $>$}} }{\pageref{classstd_1_1vector}}{}
+\item\contentsline{section}{\mbox{\hyperlink{class_renderer_1_1_window}{Renderer\+::\+Window}} \\*\doxylink{class_renderer_1_1_window}{Window} class, uses GLFW library }{\pageref{class_renderer_1_1_window}}{}
+\item\contentsline{section}{\mbox{\hyperlink{struct_renderer_1_1_window_specification}{Renderer\+::\+Window\+Specification}} }{\pageref{struct_renderer_1_1_window_specification}}{}
 \end{DoxyCompactList}

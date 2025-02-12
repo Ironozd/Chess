@@ -1,0 +1,76 @@
+\doxysection{ECS\+::Storage\+Traits\texorpdfstring{$<$}{<} Type, Entity \texorpdfstring{$>$}{>} Struct Template Reference}
+\hypertarget{struct_e_c_s_1_1_storage_traits}{}\label{struct_e_c_s_1_1_storage_traits}\index{ECS::StorageTraits$<$ Type, Entity $>$@{ECS::StorageTraits$<$ Type, Entity $>$}}
+
+
+\doxylink{struct_e_c_s_1_1_storage_traits}{Storage\+Traits} struct, exists for better organization, and, accessing types through storage interface.  
+
+
+
+
+{\ttfamily \#include $<$Storage.\+h$>$}
+
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{struct_e_c_s_1_1_storage_traits_ac7b45831aaf44aec7699cd9fae22272a}{Value\+Type}} = Type
+\item 
+using \mbox{\hyperlink{struct_e_c_s_1_1_storage_traits_a5a347c464e50855c3faa90088026f272}{Value\+Ref}} = Value\+Type\&
+\item 
+using \mbox{\hyperlink{struct_e_c_s_1_1_storage_traits_ae7d061b659002cae48aaf92aea78f6f0}{Index\+Type}} = Entity
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename Type, typename Entity$>$\newline
+struct ECS\+::\+Storage\+Traits$<$ Type, Entity $>$}
+\doxylink{struct_e_c_s_1_1_storage_traits}{Storage\+Traits} struct, exists for better organization, and, accessing types through storage interface. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000011}{Todo}}]Implement a Storage interface, use CRTP. 
+
+Create tests for Storage.\end{DoxyRefDesc}
+
+
+Definition at line \mbox{\hyperlink{_storage_8h_source_l00026}{26}} of file \mbox{\hyperlink{_storage_8h_source}{Storage.\+h}}.
+
+
+
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{struct_e_c_s_1_1_storage_traits_ae7d061b659002cae48aaf92aea78f6f0}\label{struct_e_c_s_1_1_storage_traits_ae7d061b659002cae48aaf92aea78f6f0} 
+\index{ECS::StorageTraits$<$ Type, Entity $>$@{ECS::StorageTraits$<$ Type, Entity $>$}!IndexType@{IndexType}}
+\index{IndexType@{IndexType}!ECS::StorageTraits$<$ Type, Entity $>$@{ECS::StorageTraits$<$ Type, Entity $>$}}
+\doxysubsubsection{\texorpdfstring{IndexType}{IndexType}}
+{\footnotesize\ttfamily template$<$typename Type , typename Entity $>$ \\
+using \mbox{\hyperlink{struct_e_c_s_1_1_storage_traits}{ECS\+::\+Storage\+Traits}}$<$ Type, Entity $>$\+::\+Index\+Type = Entity}
+
+
+
+Definition at line \mbox{\hyperlink{_storage_8h_source_l00030}{30}} of file \mbox{\hyperlink{_storage_8h_source}{Storage.\+h}}.
+
+\Hypertarget{struct_e_c_s_1_1_storage_traits_a5a347c464e50855c3faa90088026f272}\label{struct_e_c_s_1_1_storage_traits_a5a347c464e50855c3faa90088026f272} 
+\index{ECS::StorageTraits$<$ Type, Entity $>$@{ECS::StorageTraits$<$ Type, Entity $>$}!ValueRef@{ValueRef}}
+\index{ValueRef@{ValueRef}!ECS::StorageTraits$<$ Type, Entity $>$@{ECS::StorageTraits$<$ Type, Entity $>$}}
+\doxysubsubsection{\texorpdfstring{ValueRef}{ValueRef}}
+{\footnotesize\ttfamily template$<$typename Type , typename Entity $>$ \\
+using \mbox{\hyperlink{struct_e_c_s_1_1_storage_traits}{ECS\+::\+Storage\+Traits}}$<$ Type, Entity $>$\+::\+Value\+Ref = Value\+Type\&}
+
+
+
+Definition at line \mbox{\hyperlink{_storage_8h_source_l00029}{29}} of file \mbox{\hyperlink{_storage_8h_source}{Storage.\+h}}.
+
+\Hypertarget{struct_e_c_s_1_1_storage_traits_ac7b45831aaf44aec7699cd9fae22272a}\label{struct_e_c_s_1_1_storage_traits_ac7b45831aaf44aec7699cd9fae22272a} 
+\index{ECS::StorageTraits$<$ Type, Entity $>$@{ECS::StorageTraits$<$ Type, Entity $>$}!ValueType@{ValueType}}
+\index{ValueType@{ValueType}!ECS::StorageTraits$<$ Type, Entity $>$@{ECS::StorageTraits$<$ Type, Entity $>$}}
+\doxysubsubsection{\texorpdfstring{ValueType}{ValueType}}
+{\footnotesize\ttfamily template$<$typename Type , typename Entity $>$ \\
+using \mbox{\hyperlink{struct_e_c_s_1_1_storage_traits}{ECS\+::\+Storage\+Traits}}$<$ Type, Entity $>$\+::\+Value\+Type = Type}
+
+
+
+Definition at line \mbox{\hyperlink{_storage_8h_source_l00028}{28}} of file \mbox{\hyperlink{_storage_8h_source}{Storage.\+h}}.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+core/src/\+Entity\+Component\+System/\+Storage/Storage.\+h\end{DoxyCompactItemize}

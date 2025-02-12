@@ -3,15 +3,30 @@
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\Hypertarget{main_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}main.h"{}}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00002}00002\ }
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00003}00003\ \textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{int}\ argc,\ \textcolor{keywordtype}{char}\ **argv)}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00004}00004\ \{}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00005}00005\ \ \ \ \ Chess::Logger::Initialize();\ \textcolor{comment}{//\ Logger\ is\ seperate\ from\ the\ Engine.}}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00006}00006\ }
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00007}00007\ \ \ \ \ \mbox{\hyperlink{class_chess_1_1_engine}{Chess::Engine}}\ engine;}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00008}00008\ \ \ \ \ engine.\mbox{\hyperlink{class_chess_1_1_engine_ab1a9bd7ebcf9fdd7947944953c6ea0b1}{Run}}();}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00009}00009\ }
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00010}00010\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
-\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00011}00011\ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}EntityComponentSystem/Components/Transform.h"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00004}00004\ \textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{int}\ argc,\ \textcolor{keywordtype}{char}**\ argv)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00005}00005\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00006}00006\ \ \ \ \ Application::Logger::Initialize();\ \textcolor{comment}{//\ Logger\ is\ seperate\ from\ the\ Engine.}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00008}00008\ \ \ \ \ \textcolor{comment}{//Application::Engine\ Engine;}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00009}00009\ \ \ \ \ \textcolor{comment}{//Engine.Run();}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00010}00010\ \ \ \ \ \mbox{\hyperlink{class_e_c_s_1_1_component_storage}{ECS::ComponentStorage<ECS::Transform,\ ECS::Entity>}}\ transformStorage;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00012}00012\ \ \ \ \ \textcolor{comment}{//transformStorage.Add(0,\ ECS::Transform(1.0f,\ 1.0f));}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00013}00013\ \ \ \ \ \textcolor{comment}{//transformStorage.Add(1,\ ECS::Transform(3.5f,\ 7.2f));}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00014}00014\ \ \ \ \ \textcolor{comment}{//transformStorage.Remove(0);}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00015}00015\ \ \ \ \ \textcolor{comment}{//transformStorage.Add(0,\ ECS::Transform(5.74f,\ 3.14f));}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00016}00016\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00017}00017\ \ \ \ \ \textcolor{comment}{//auto\&\ component\ =\ transformStorage.Get(0);}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00018}00018\ \ \ \ \ \textcolor{comment}{//LOG\_INFO("{}X:\ \{0\},\ Y:\{1\}"{},\ component.GetPosition().x,\ component.GetPosition().y);}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00019}00019\ \ \ \ \ \textcolor{comment}{//component.SetPosition(\{3.5f,\ 1.62f\});}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00020}00020\ \ \ \ \ \textcolor{comment}{//LOG\_INFO("{}X:\ \{0\},\ Y:\{1\}"{},\ component.GetPosition().x,\ component.GetPosition().y);}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00022}00022\ \ \ \ \ LOG\_INFO(\textcolor{stringliteral}{"{}int:\ \{0\},\ double:\ \{1\},\ transform:\ \{2\},\ int:\ \{0\}"{}},\ \mbox{\hyperlink{struct_e_c_s_1_1_hash}{ECS::Hash<int>::Value}},\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00023}00023\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_e_c_s_1_1_hash}{ECS::Hash<double>::Value}},\ \mbox{\hyperlink{struct_e_c_s_1_1_hash}{ECS::Hash<ECS::Transform>::Value}},\ \mbox{\hyperlink{struct_e_c_s_1_1_hash}{ECS::Hash<int>::Value}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00025}00025\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00026}00026\ \}}
 
 \end{DoxyCode}

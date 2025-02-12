@@ -9,7 +9,7 @@
 \DoxyCodeLine{\Hypertarget{_debug_messenger_8cpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}Instance.h"{}}}
 \DoxyCodeLine{\Hypertarget{_debug_messenger_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}../Core/Logger.h"{}}}
 \DoxyCodeLine{\Hypertarget{_debug_messenger_8cpp_source_l00007}00007\ }
-\DoxyCodeLine{\Hypertarget{_debug_messenger_8cpp_source_l00008}00008\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_chess}{Chess}}}
+\DoxyCodeLine{\Hypertarget{_debug_messenger_8cpp_source_l00008}00008\ \textcolor{keyword}{namespace\ }Renderer}
 \DoxyCodeLine{\Hypertarget{_debug_messenger_8cpp_source_l00009}00009\ \{}
 \DoxyCodeLine{\Hypertarget{_debug_messenger_8cpp_source_l00010}00010\ \ \ \ \ VkDebugUtilsMessengerEXT\ DebugMessenger::m\_DebugMessenger\ =\ \textcolor{keyword}{nullptr};}
 \DoxyCodeLine{\Hypertarget{_debug_messenger_8cpp_source_l00011}00011\ }
@@ -26,11 +26,11 @@
 \DoxyCodeLine{\Hypertarget{_debug_messenger_8cpp_source_l00022}00022\ \ \ \ \ }
 \DoxyCodeLine{\Hypertarget{_debug_messenger_8cpp_source_l00023}00023\ \ \ \ \ \textcolor{keywordtype}{void}\ DebugMessenger::Implement()}
 \DoxyCodeLine{\Hypertarget{_debug_messenger_8cpp_source_l00024}00024\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_debug_messenger_8cpp_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_chess_1_1_instance_a3b57b3e69beef72fb6842e11ff272d39}{Instance::IsValidationEnabled}}())}
+\DoxyCodeLine{\Hypertarget{_debug_messenger_8cpp_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_renderer_1_1_instance_a353b480e65f09fdab96bbf77487ae38f}{Instance::IsValidationEnabled}}())}
 \DoxyCodeLine{\Hypertarget{_debug_messenger_8cpp_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
 \DoxyCodeLine{\Hypertarget{_debug_messenger_8cpp_source_l00027}00027\ }
 \DoxyCodeLine{\Hypertarget{_debug_messenger_8cpp_source_l00028}00028\ \ \ \ \ \ \ \ \ VkDebugUtilsMessengerCreateInfoEXT\ createInfo\{\};}
-\DoxyCodeLine{\Hypertarget{_debug_messenger_8cpp_source_l00029}00029\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_chess_1_1_debug_messenger_a901f2b12da1f9cf5a6c8c33507eedf4a}{populateInfo}}(createInfo);}
+\DoxyCodeLine{\Hypertarget{_debug_messenger_8cpp_source_l00029}00029\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_renderer_1_1_debug_messenger_a4069fa5193b08574f21318faba0f37f6}{populateInfo}}(createInfo);}
 \DoxyCodeLine{\Hypertarget{_debug_messenger_8cpp_source_l00030}00030\ }
 \DoxyCodeLine{\Hypertarget{_debug_messenger_8cpp_source_l00031}00031\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ func\ =\ (PFN\_vkCreateDebugUtilsMessengerEXT)vkGetInstanceProcAddr(Instance::Data(),\ \textcolor{stringliteral}{"{}vkCreateDebugUtilsMessengerEXT"{}});}
 \DoxyCodeLine{\Hypertarget{_debug_messenger_8cpp_source_l00032}00032\ }
@@ -49,7 +49,7 @@
 \DoxyCodeLine{\Hypertarget{_debug_messenger_8cpp_source_l00045}00045\ \ \ \ \ }
 \DoxyCodeLine{\Hypertarget{_debug_messenger_8cpp_source_l00046}00046\ \ \ \ \ \textcolor{keywordtype}{void}\ DebugMessenger::Destroy()}
 \DoxyCodeLine{\Hypertarget{_debug_messenger_8cpp_source_l00047}00047\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_debug_messenger_8cpp_source_l00048}00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_chess_1_1_instance_a3b57b3e69beef72fb6842e11ff272d39}{Instance::IsValidationEnabled}}())}
+\DoxyCodeLine{\Hypertarget{_debug_messenger_8cpp_source_l00048}00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_renderer_1_1_instance_a353b480e65f09fdab96bbf77487ae38f}{Instance::IsValidationEnabled}}())}
 \DoxyCodeLine{\Hypertarget{_debug_messenger_8cpp_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
 \DoxyCodeLine{\Hypertarget{_debug_messenger_8cpp_source_l00050}00050\ }
 \DoxyCodeLine{\Hypertarget{_debug_messenger_8cpp_source_l00051}00051\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ destroy\ =\ (PFN\_vkDestroyDebugUtilsMessengerEXT)vkGetInstanceProcAddr(Instance::Data(),\ \textcolor{stringliteral}{"{}vkDestroyDebugUtilsMessengerEXT"{}});}
@@ -63,7 +63,7 @@
 \DoxyCodeLine{\Hypertarget{_debug_messenger_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ destroy(Instance::Data(),\ m\_DebugMessenger,\ \textcolor{keyword}{nullptr});}
 \DoxyCodeLine{\Hypertarget{_debug_messenger_8cpp_source_l00060}00060\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_debug_messenger_8cpp_source_l00061}00061\ }
-\DoxyCodeLine{\Hypertarget{_debug_messenger_8cpp_source_l00062}\mbox{\hyperlink{class_chess_1_1_debug_messenger_a901f2b12da1f9cf5a6c8c33507eedf4a}{00062}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_chess_1_1_debug_messenger_a901f2b12da1f9cf5a6c8c33507eedf4a}{DebugMessenger::populateInfo}}(VkDebugUtilsMessengerCreateInfoEXT\ \&createInfo)}
+\DoxyCodeLine{\Hypertarget{_debug_messenger_8cpp_source_l00062}\mbox{\hyperlink{class_renderer_1_1_debug_messenger_a4069fa5193b08574f21318faba0f37f6}{00062}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_renderer_1_1_debug_messenger_a4069fa5193b08574f21318faba0f37f6}{DebugMessenger::populateInfo}}(VkDebugUtilsMessengerCreateInfoEXT\ \&createInfo)}
 \DoxyCodeLine{\Hypertarget{_debug_messenger_8cpp_source_l00063}00063\ \ \ \ \ \{}
 \DoxyCodeLine{\Hypertarget{_debug_messenger_8cpp_source_l00064}00064\ \ \ \ \ \ \ \ \ createInfo.sType\ =\ VK\_STRUCTURE\_TYPE\_DEBUG\_UTILS\_MESSENGER\_CREATE\_INFO\_EXT;}
 \DoxyCodeLine{\Hypertarget{_debug_messenger_8cpp_source_l00065}00065\ \ \ \ \ \ \ \ \ createInfo.messageSeverity\ =\ VK\_DEBUG\_UTILS\_MESSAGE\_SEVERITY\_VERBOSE\_BIT\_EXT\ |\ VK\_DEBUG\_UTILS\_MESSAGE\_SEVERITY\_WARNING\_BIT\_EXT\ |\ VK\_DEBUG\_UTILS\_MESSAGE\_SEVERITY\_ERROR\_BIT\_EXT;}

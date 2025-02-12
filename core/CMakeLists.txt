@@ -22,6 +22,8 @@ add_executable(Chess src/main.cpp
     src/EntityComponentSystem/Components/Transform.cpp
     src/EntityComponentSystem/Core/Registry.cpp
     src/EntityComponentSystem/Storage/Storage.cpp
+    "src/EntityComponentSystem/Storage/DenseContainer.cpp"
+    src/EntityComponentSystem/Storage/ComponentPool.cpp
     # Renderer Files #
     src/Renderer/Renderer.cpp
     src/Renderer/Instance.cpp

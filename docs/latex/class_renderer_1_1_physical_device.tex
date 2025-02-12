@@ -1,0 +1,71 @@
+\doxysection{Renderer\+::Physical\+Device Class Reference}
+\hypertarget{class_renderer_1_1_physical_device}{}\label{class_renderer_1_1_physical_device}\index{Renderer::PhysicalDevice@{Renderer::PhysicalDevice}}
+
+
+Physical Device singleton.  
+
+
+
+
+{\ttfamily \#include $<$Physical\+Device.\+h$>$}
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_renderer_1_1_physical_device_aed51c64da12f43181c25bed7c2f79c6b}{Pick}} (const \mbox{\hyperlink{struct_renderer_1_1_physical_device_specification}{Physical\+Device\+Specification}} \&spec)
+\item 
+static Vk\+Physical\+Device \mbox{\hyperlink{class_renderer_1_1_physical_device_ae05b1f60776e382cb3019934b39970ad}{Data}} ()
+\item 
+static \mbox{\hyperlink{struct_renderer_1_1_queue_family_indices}{Queue\+Family\+Indices}} \mbox{\hyperlink{class_renderer_1_1_physical_device_ad77c53f65f20d7491b375aff516c52f7}{Get\+Family\+Indices}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Physical Device singleton. 
+
+\begin{DoxyNote}{Note}
+Since Vulkan Vk\+Device (\doxylink{class_renderer_1_1_physical_device}{Physical\+Device}) is expected to be picked once and Queues\+Families are created depending on this class, this class was made a singleton. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{_physical_device_8h_source_l00036}{36}} of file \mbox{\hyperlink{_physical_device_8h_source}{Physical\+Device.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_renderer_1_1_physical_device_ae05b1f60776e382cb3019934b39970ad}\label{class_renderer_1_1_physical_device_ae05b1f60776e382cb3019934b39970ad} 
+\index{Renderer::PhysicalDevice@{Renderer::PhysicalDevice}!Data@{Data}}
+\index{Data@{Data}!Renderer::PhysicalDevice@{Renderer::PhysicalDevice}}
+\doxysubsubsection{\texorpdfstring{Data()}{Data()}}
+{\footnotesize\ttfamily static Vk\+Physical\+Device Renderer\+::\+Physical\+Device\+::\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_physical_device_8h_source_l00041}{41}} of file \mbox{\hyperlink{_physical_device_8h_source}{Physical\+Device.\+h}}.
+
+\Hypertarget{class_renderer_1_1_physical_device_ad77c53f65f20d7491b375aff516c52f7}\label{class_renderer_1_1_physical_device_ad77c53f65f20d7491b375aff516c52f7} 
+\index{Renderer::PhysicalDevice@{Renderer::PhysicalDevice}!GetFamilyIndices@{GetFamilyIndices}}
+\index{GetFamilyIndices@{GetFamilyIndices}!Renderer::PhysicalDevice@{Renderer::PhysicalDevice}}
+\doxysubsubsection{\texorpdfstring{GetFamilyIndices()}{GetFamilyIndices()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{struct_renderer_1_1_queue_family_indices}{Queue\+Family\+Indices}} Renderer\+::\+Physical\+Device\+::\+Get\+Family\+Indices (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_physical_device_8h_source_l00043}{43}} of file \mbox{\hyperlink{_physical_device_8h_source}{Physical\+Device.\+h}}.
+
+\Hypertarget{class_renderer_1_1_physical_device_aed51c64da12f43181c25bed7c2f79c6b}\label{class_renderer_1_1_physical_device_aed51c64da12f43181c25bed7c2f79c6b} 
+\index{Renderer::PhysicalDevice@{Renderer::PhysicalDevice}!Pick@{Pick}}
+\index{Pick@{Pick}!Renderer::PhysicalDevice@{Renderer::PhysicalDevice}}
+\doxysubsubsection{\texorpdfstring{Pick()}{Pick()}}
+{\footnotesize\ttfamily static void Renderer\+::\+Physical\+Device\+::\+Pick (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_renderer_1_1_physical_device_specification}{Physical\+Device\+Specification}} \&}]{spec }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_physical_device_8h_source_l00039}{39}} of file \mbox{\hyperlink{_physical_device_8h_source}{Physical\+Device.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+core/src/\+Renderer/Physical\+Device.\+h\item 
+core/src/\+Renderer/Physical\+Device.\+cpp\end{DoxyCompactItemize}

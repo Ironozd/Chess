@@ -10,9 +10,9 @@
 \DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}../Core/Logger.h"{}}}
 \DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}DebugMessenger.h"{}}}
 \DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00008}00008\ }
-\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00009}00009\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_chess}{Chess}}}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00009}00009\ \textcolor{keyword}{namespace\ }Renderer}
 \DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00010}00010\ \{}
-\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00011}00011\ \ \ \ \ std::vector<const\ char\ *>\ Instance::validationLayers\ =\ \{}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00011}00011\ \ \ \ \ \mbox{\hyperlink{classstd_1_1vector}{std::vector<const\ char\ *>}}\ Instance::validationLayers\ =\ \{}
 \DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00012}00012\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}VK\_LAYER\_KHRONOS\_validation"{}}\};}
 \DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00013}00013\ \ \ \ \ \ \ \ \ }
 \DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00014}00014\ \ \ \ \ \textcolor{keywordtype}{bool}\ Instance::validationEnabled\ =\ \textcolor{keyword}{true};}
@@ -56,7 +56,7 @@
 \DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00052}00052\ \ \ \ \ \ \ \ \ createInfo.sType\ =\ VK\_STRUCTURE\_TYPE\_INSTANCE\_CREATE\_INFO;}
 \DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00053}00053\ \ \ \ \ \ \ \ \ createInfo.pApplicationInfo\ =\ \&appInfo;}
 \DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00054}00054\ }
-\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00055}00055\ \ \ \ \ \ \ \ \ std::vector<const\ char\ *>\ extensions\ =\ Window::GetExtensions();}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00055}00055\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classstd_1_1vector}{std::vector<const\ char\ *>}}\ extensions\ =\ Window::GetExtensions();}
 \DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00056}00056\ }
 \DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00057}00057\ \ \ \ \ \ \ \ \ createInfo.enabledExtensionCount\ =\ \textcolor{keyword}{static\_cast<}uint32\_t\textcolor{keyword}{>}(extensions.size());}
 \DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ createInfo.ppEnabledExtensionNames\ =\ extensions.data();}
@@ -91,7 +91,7 @@
 \DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00087}00087\ \ \ \ \ \ \ \ \ uint32\_t\ layerCount;}
 \DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ vkEnumerateInstanceLayerProperties(\&layerCount,\ \textcolor{keyword}{nullptr});}
 \DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00089}00089\ }
-\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00090}00090\ \ \ \ \ \ \ \ \ std::vector<VkLayerProperties>\ availableLayers(layerCount);}
+\DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00090}00090\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classstd_1_1vector}{std::vector<VkLayerProperties>}}\ availableLayers(layerCount);}
 \DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ vkEnumerateInstanceLayerProperties(\&layerCount,\ availableLayers.data());}
 \DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00092}00092\ }
 \DoxyCodeLine{\Hypertarget{_instance_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *layerName\ :\ validationLayers)}

@@ -9,46 +9,59 @@
 
 {\ttfamily \#include $<$Bitboard.\+h$>$}
 
+Inheritance diagram for Chess\+::Bitboard\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_chess_1_1_bitboard}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_chess_1_1_bitboard_a480d87e6f2fd5a5eab4e0857b3b63684}{Bitboard}} (uint64\+\_\+t m\+\_\+\+Board)
+constexpr \mbox{\hyperlink{class_chess_1_1_bitboard_aaa600305218913a50070cb848a156f2e}{Bitboard}} (uint64\+\_\+t board)
 \begin{DoxyCompactList}\small\item\em Constructor for \doxylink{class_chess_1_1_bitboard}{Bitboard}. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{class_chess_1_1_bitboard_ad77c0f0d2d9bafd291757ee00f0bdf51}{\texorpdfstring{$\sim$}{\string~}\+Bitboard}} ()
-\begin{DoxyCompactList}\small\item\em Destructor for bitboard. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_chess_1_1_bitboard_a639f1f0cba77a1b95b4c8b0bdd6a2994}{Set}} (const size\+\_\+t \&index)
+constexpr void \mbox{\hyperlink{class_chess_1_1_bitboard_aae5e21dfc319944a3d665f02540bca60}{Set\+Impl}} (const uint64\+\_\+t \&index)
 \begin{DoxyCompactList}\small\item\em Sets the given position inside the bitboard to 1. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_chess_1_1_bitboard_aab941a568d287baf7224bec2847c80fd}{Reset}} (const size\+\_\+t \&index)
+constexpr void \mbox{\hyperlink{class_chess_1_1_bitboard_ae470b7ba8cca1f83b086bf4834236a5d}{Reset\+Impl}} (const uint64\+\_\+t \&index)
 \begin{DoxyCompactList}\small\item\em Sets the given position inside the bitboard to 0. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{class_chess_1_1_bitboard_a18bf34d731003b7e2be18e2c3ef2571a}{Clear}} ()
+constexpr void \mbox{\hyperlink{class_chess_1_1_bitboard_a0ee5283a29519265d0555b8d91d4de8a}{Clear\+Impl}} ()
 \begin{DoxyCompactList}\small\item\em Clears the bitboard. \end{DoxyCompactList}\item 
-uint64\+\_\+t \& \mbox{\hyperlink{class_chess_1_1_bitboard_a8e013fbc323caed4967e6b9240ebff6c}{Board}} ()
+constexpr uint64\+\_\+t \& \mbox{\hyperlink{class_chess_1_1_bitboard_a76ea2ae63670d8cdf1e1ae9afe36aebf}{Board}} ()
+\begin{DoxyCompactList}\small\item\em Get memory block of the board. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_chess_1_1_bitboard_interface}{Chess\+::\+Bitboard\+Interface$<$ Bitboard $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+constexpr void \mbox{\hyperlink{class_chess_1_1_bitboard_interface_a7b2c72cec4b9f7f66f2b025f85741fc9}{Set}} (const size\+\_\+t \&index)
+\item 
+constexpr void \mbox{\hyperlink{class_chess_1_1_bitboard_interface_a306a947a4df62f8b2f388d412c71ceaa}{Reset}} (const size\+\_\+t \&index)
+\item 
+constexpr void \mbox{\hyperlink{class_chess_1_1_bitboard_interface_a82c84068527583f983a77e9753984594}{Clear}} ()
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 64 bit board (uint64\+\_\+t) wrapper class. 
 
-Definition at line \mbox{\hyperlink{_bitboard_8h_source_l00009}{9}} of file \mbox{\hyperlink{_bitboard_8h_source}{Bitboard.\+h}}.
+Definition at line \mbox{\hyperlink{_bitboard_8h_source_l00038}{38}} of file \mbox{\hyperlink{_bitboard_8h_source}{Bitboard.\+h}}.
 
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\Hypertarget{class_chess_1_1_bitboard_a2a2e78dc2beaaebde989b9fae0dbdb8a}\label{class_chess_1_1_bitboard_a2a2e78dc2beaaebde989b9fae0dbdb8a} 
+\Hypertarget{class_chess_1_1_bitboard_a1d733fea345426bb708911148c59a320}\label{class_chess_1_1_bitboard_a1d733fea345426bb708911148c59a320} 
 \index{Chess::Bitboard@{Chess::Bitboard}!Bitboard@{Bitboard}}
 \index{Bitboard@{Bitboard}!Chess::Bitboard@{Chess::Bitboard}}
 \doxysubsubsection{\texorpdfstring{Bitboard()}{Bitboard()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily Chess\+::\+Bitboard\+::\+Bitboard (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily constexpr Chess\+::\+Bitboard\+::\+Bitboard (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
 
 
-Definition at line \mbox{\hyperlink{_bitboard_8cpp_source_l00006}{6}} of file \mbox{\hyperlink{_bitboard_8cpp_source}{Bitboard.\+cpp}}.
+Definition at line \mbox{\hyperlink{_bitboard_8h_source_l00041}{41}} of file \mbox{\hyperlink{_bitboard_8h_source}{Bitboard.\+h}}.
 
-\Hypertarget{class_chess_1_1_bitboard_a480d87e6f2fd5a5eab4e0857b3b63684}\label{class_chess_1_1_bitboard_a480d87e6f2fd5a5eab4e0857b3b63684} 
+\Hypertarget{class_chess_1_1_bitboard_aaa600305218913a50070cb848a156f2e}\label{class_chess_1_1_bitboard_aaa600305218913a50070cb848a156f2e} 
 \index{Chess::Bitboard@{Chess::Bitboard}!Bitboard@{Bitboard}}
 \index{Bitboard@{Bitboard}!Chess::Bitboard@{Chess::Bitboard}}
 \doxysubsubsection{\texorpdfstring{Bitboard()}{Bitboard()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily Chess\+::\+Bitboard\+::\+Bitboard (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{m\+\_\+\+Board }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily constexpr Chess\+::\+Bitboard\+::\+Bitboard (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{board }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
 
 
@@ -61,40 +74,33 @@ Constructor for \doxylink{class_chess_1_1_bitboard}{Bitboard}.
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_bitboard_8cpp_source_l00011}{11}} of file \mbox{\hyperlink{_bitboard_8cpp_source}{Bitboard.\+cpp}}.
-
-\Hypertarget{class_chess_1_1_bitboard_ad77c0f0d2d9bafd291757ee00f0bdf51}\label{class_chess_1_1_bitboard_ad77c0f0d2d9bafd291757ee00f0bdf51} 
-\index{Chess::Bitboard@{Chess::Bitboard}!````~Bitboard@{\texorpdfstring{$\sim$}{\string~}Bitboard}}
-\index{````~Bitboard@{\texorpdfstring{$\sim$}{\string~}Bitboard}!Chess::Bitboard@{Chess::Bitboard}}
-\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Bitboard()}{\string~Bitboard()}}
-{\footnotesize\ttfamily Chess\+::\+Bitboard\+::\texorpdfstring{$\sim$}{\string~}\+Bitboard (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-
-
-Destructor for bitboard. 
-
-
-
-Definition at line \mbox{\hyperlink{_bitboard_8cpp_source_l00016}{16}} of file \mbox{\hyperlink{_bitboard_8cpp_source}{Bitboard.\+cpp}}.
+Definition at line \mbox{\hyperlink{_bitboard_8h_source_l00048}{48}} of file \mbox{\hyperlink{_bitboard_8h_source}{Bitboard.\+h}}.
 
 
 
 \doxysubsection{Member Function Documentation}
-\Hypertarget{class_chess_1_1_bitboard_a8e013fbc323caed4967e6b9240ebff6c}\label{class_chess_1_1_bitboard_a8e013fbc323caed4967e6b9240ebff6c} 
+\Hypertarget{class_chess_1_1_bitboard_a76ea2ae63670d8cdf1e1ae9afe36aebf}\label{class_chess_1_1_bitboard_a76ea2ae63670d8cdf1e1ae9afe36aebf} 
 \index{Chess::Bitboard@{Chess::Bitboard}!Board@{Board}}
 \index{Board@{Board}!Chess::Bitboard@{Chess::Bitboard}}
 \doxysubsubsection{\texorpdfstring{Board()}{Board()}}
-{\footnotesize\ttfamily uint64\+\_\+t \& Chess\+::\+Bitboard\+::\+Board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+{\footnotesize\ttfamily constexpr uint64\+\_\+t \& Chess\+::\+Bitboard\+::\+Board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
 
 
-Definition at line \mbox{\hyperlink{_bitboard_8h_source_l00058}{58}} of file \mbox{\hyperlink{_bitboard_8h_source}{Bitboard.\+h}}.
+Get memory block of the board. 
 
-\Hypertarget{class_chess_1_1_bitboard_a18bf34d731003b7e2be18e2c3ef2571a}\label{class_chess_1_1_bitboard_a18bf34d731003b7e2be18e2c3ef2571a} 
-\index{Chess::Bitboard@{Chess::Bitboard}!Clear@{Clear}}
-\index{Clear@{Clear}!Chess::Bitboard@{Chess::Bitboard}}
-\doxysubsubsection{\texorpdfstring{Clear()}{Clear()}}
-{\footnotesize\ttfamily void Chess\+::\+Bitboard\+::\+Clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\begin{DoxyReturn}{Returns}
+constexpr uint64\+\_\+t\& 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_bitboard_8h_source_l00089}{89}} of file \mbox{\hyperlink{_bitboard_8h_source}{Bitboard.\+h}}.
+
+\Hypertarget{class_chess_1_1_bitboard_a0ee5283a29519265d0555b8d91d4de8a}\label{class_chess_1_1_bitboard_a0ee5283a29519265d0555b8d91d4de8a} 
+\index{Chess::Bitboard@{Chess::Bitboard}!ClearImpl@{ClearImpl}}
+\index{ClearImpl@{ClearImpl}!Chess::Bitboard@{Chess::Bitboard}}
+\doxysubsubsection{\texorpdfstring{ClearImpl()}{ClearImpl()}}
+{\footnotesize\ttfamily constexpr void Chess\+::\+Bitboard\+::\+Clear\+Impl (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
 
 
@@ -105,13 +111,13 @@ Sets the uint64\+\_\+t value to 0.
 \end{DoxyNote}
 
 
-Definition at line \mbox{\hyperlink{_bitboard_8cpp_source_l00031}{31}} of file \mbox{\hyperlink{_bitboard_8cpp_source}{Bitboard.\+cpp}}.
+Definition at line \mbox{\hyperlink{_bitboard_8h_source_l00079}{79}} of file \mbox{\hyperlink{_bitboard_8h_source}{Bitboard.\+h}}.
 
-\Hypertarget{class_chess_1_1_bitboard_aab941a568d287baf7224bec2847c80fd}\label{class_chess_1_1_bitboard_aab941a568d287baf7224bec2847c80fd} 
-\index{Chess::Bitboard@{Chess::Bitboard}!Reset@{Reset}}
-\index{Reset@{Reset}!Chess::Bitboard@{Chess::Bitboard}}
-\doxysubsubsection{\texorpdfstring{Reset()}{Reset()}}
-{\footnotesize\ttfamily void Chess\+::\+Bitboard\+::\+Reset (\begin{DoxyParamCaption}\item[{const size\+\_\+t \&}]{index }\end{DoxyParamCaption})}
+\Hypertarget{class_chess_1_1_bitboard_ae470b7ba8cca1f83b086bf4834236a5d}\label{class_chess_1_1_bitboard_ae470b7ba8cca1f83b086bf4834236a5d} 
+\index{Chess::Bitboard@{Chess::Bitboard}!ResetImpl@{ResetImpl}}
+\index{ResetImpl@{ResetImpl}!Chess::Bitboard@{Chess::Bitboard}}
+\doxysubsubsection{\texorpdfstring{ResetImpl()}{ResetImpl()}}
+{\footnotesize\ttfamily constexpr void Chess\+::\+Bitboard\+::\+Reset\+Impl (\begin{DoxyParamCaption}\item[{const uint64\+\_\+t \&}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
 
 
@@ -126,24 +132,20 @@ Sets the given position inside the bitboard to 0.
 Operation used is XOR 1. Use with caution.
 \end{DoxyWarning}
 \begin{DoxyRefDesc}{Todo}
-\item[\mbox{\hyperlink{todo__todo000002}{Todo}}]Wrap the reset function around a performance critical bit-\/test to see whether the provided index value is 1. \end{DoxyRefDesc}
+\item[\mbox{\hyperlink{todo__todo000001}{Todo}}]Wrap the reset function around a performance critical bit-\/test to see whether the provided index value is 1. \end{DoxyRefDesc}
 
 
-Definition at line \mbox{\hyperlink{_bitboard_8cpp_source_l00026}{26}} of file \mbox{\hyperlink{_bitboard_8cpp_source}{Bitboard.\+cpp}}.
+Definition at line \mbox{\hyperlink{_bitboard_8h_source_l00069}{69}} of file \mbox{\hyperlink{_bitboard_8h_source}{Bitboard.\+h}}.
 
-\Hypertarget{class_chess_1_1_bitboard_a639f1f0cba77a1b95b4c8b0bdd6a2994}\label{class_chess_1_1_bitboard_a639f1f0cba77a1b95b4c8b0bdd6a2994} 
-\index{Chess::Bitboard@{Chess::Bitboard}!Set@{Set}}
-\index{Set@{Set}!Chess::Bitboard@{Chess::Bitboard}}
-\doxysubsubsection{\texorpdfstring{Set()}{Set()}}
-{\footnotesize\ttfamily void Chess\+::\+Bitboard\+::\+Set (\begin{DoxyParamCaption}\item[{const size\+\_\+t \&}]{index }\end{DoxyParamCaption})}
+\Hypertarget{class_chess_1_1_bitboard_aae5e21dfc319944a3d665f02540bca60}\label{class_chess_1_1_bitboard_aae5e21dfc319944a3d665f02540bca60} 
+\index{Chess::Bitboard@{Chess::Bitboard}!SetImpl@{SetImpl}}
+\index{SetImpl@{SetImpl}!Chess::Bitboard@{Chess::Bitboard}}
+\doxysubsubsection{\texorpdfstring{SetImpl()}{SetImpl()}}
+{\footnotesize\ttfamily constexpr void Chess\+::\+Bitboard\+::\+Set\+Impl (\begin{DoxyParamCaption}\item[{const uint64\+\_\+t \&}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
 
 
 
 Sets the given position inside the bitboard to 1. 
-
-\begin{DoxyRefDesc}{Todo}
-\item[\mbox{\hyperlink{todo__todo000001}{Todo}}]Implement Copy \& Move constructors.\end{DoxyRefDesc}
-
 
 
 \begin{DoxyParams}{Parameters}
@@ -152,11 +154,10 @@ Sets the given position inside the bitboard to 1.
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{_bitboard_8cpp_source_l00021}{21}} of file \mbox{\hyperlink{_bitboard_8cpp_source}{Bitboard.\+cpp}}.
+Definition at line \mbox{\hyperlink{_bitboard_8h_source_l00055}{55}} of file \mbox{\hyperlink{_bitboard_8h_source}{Bitboard.\+h}}.
 
 
 
-The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-core/src/\+Chess\+Components/Bitboard.\+h\item 
-core/src/\+Chess\+Components/Bitboard.\+cpp\end{DoxyCompactItemize}
+core/src/\+Chess\+Components/Bitboard.\+h\end{DoxyCompactItemize}

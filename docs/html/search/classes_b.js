@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['kafka_5fsink_0',['kafka_sink',['../classspdlog_1_1sinks_1_1kafka__sink.html',1,'spdlog::sinks']]],
-  ['kafka_5fsink_5fconfig_1',['kafka_sink_config',['../structspdlog_1_1sinks_1_1kafka__sink__config.html',1,'spdlog::sinks']]]
+  ['renderer_0',['Renderer',['../class_renderer_1_1_renderer.html',1,'Renderer']]],
+  ['rendererspecification_1',['RendererSpecification',['../struct_renderer_1_1_renderer_specification.html',1,'Renderer']]]
 ];

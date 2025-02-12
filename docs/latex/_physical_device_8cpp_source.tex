@@ -11,7 +11,7 @@
 \DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}../Core/Logger.h"{}}}
 \DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}../Window/Window.h"{}}}
 \DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00009}00009\ }
-\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00010}00010\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_chess}{Chess}}}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00010}00010\ \textcolor{keyword}{namespace\ }Renderer}
 \DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00011}00011\ \{}
 \DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00012}00012\ \ \ \ \ PhysicalDevice::PhysicalDevice()\ :\ }
 \DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00013}00013\ \ \ \ \ \ \ \ \ m\_PhysicalDevice(VK\_NULL\_HANDLE),\ m\_Specification(\{\textcolor{keyword}{nullptr}\})}
@@ -30,7 +30,7 @@
 \DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ assert(\textcolor{keyword}{false});}
 \DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00027}00027\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00028}00028\ }
-\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00029}00029\ \ \ \ \ \ \ \ \ std::vector<VkPhysicalDevice>\ devices(deviceCount);}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00029}00029\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classstd_1_1vector}{std::vector<VkPhysicalDevice>}}\ devices(deviceCount);}
 \DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00030}00030\ \ \ \ \ \ \ \ \ vkEnumeratePhysicalDevices(Instance::Data(),\ \&deviceCount,\ devices.data());}
 \DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00031}00031\ }
 \DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&device\ :\ devices)}
@@ -62,7 +62,7 @@
 \DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ uint32\_t\ queueFamilyCount\ =\ 0;}
 \DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ vkGetPhysicalDeviceQueueFamilyProperties(device,\ \&queueFamilyCount,\ \textcolor{keyword}{nullptr});}
 \DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00060}00060\ }
-\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00061}00061\ \ \ \ \ \ \ \ \ std::vector<VkQueueFamilyProperties>\ queueFamilies(queueFamilyCount);}
+\DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00061}00061\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classstd_1_1vector}{std::vector<VkQueueFamilyProperties>}}\ queueFamilies(queueFamilyCount);}
 \DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00062}00062\ \ \ \ \ \ \ \ \ vkGetPhysicalDeviceQueueFamilyProperties(device,\ \&queueFamilyCount,\ queueFamilies.data());}
 \DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00063}00063\ }
 \DoxyCodeLine{\Hypertarget{_physical_device_8cpp_source_l00064}00064\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ i\ =\ 0;}

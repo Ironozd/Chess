@@ -1,0 +1,237 @@
+\doxysection{ECS\+::Component\+Storage\texorpdfstring{$<$}{<} Type, Entity \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{class_e_c_s_1_1_component_storage}{}\label{class_e_c_s_1_1_component_storage}\index{ECS::ComponentStorage$<$ Type, Entity $>$@{ECS::ComponentStorage$<$ Type, Entity $>$}}
+
+
+\doxylink{class_e_c_s_1_1_component_storage}{Component\+Storage} class, stores components of type "{}\+Type"{}, who has owner "{}\+Entity"{}. This class represents the pool of 1 component.  
+
+
+
+
+{\ttfamily \#include $<$Storage.\+h$>$}
+
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{class_e_c_s_1_1_component_storage_a961cf86f365c274d7a80f3418a29f3bc}{Traits}} = \mbox{\hyperlink{struct_e_c_s_1_1_storage_traits}{Storage\+Traits}}$<$Type, Entity$>$
+\item 
+using \mbox{\hyperlink{class_e_c_s_1_1_component_storage_a20b015bc9b84608e1b6a328e529d92a8}{Value\+Type}} = typename Traits\+::\+Value\+Type
+\item 
+using \mbox{\hyperlink{class_e_c_s_1_1_component_storage_a6e2dbd24870f95daf25943e196a82b55}{Value\+Ref}} = typename Traits\+::\+Value\+Type\&
+\item 
+using \mbox{\hyperlink{class_e_c_s_1_1_component_storage_a11c2193934408bd93a7ddabebcaba903}{Index\+Type}} = typename Traits\+::\+Index\+Type
+\item 
+using \mbox{\hyperlink{class_e_c_s_1_1_component_storage_a9fda0740d3fd5b4281b68234ff69a799}{Sparse\+Set\+Type}} = \mbox{\hyperlink{classstd_1_1vector}{std\+::vector}}$<$Index\+Type$>$
+\item 
+using \mbox{\hyperlink{class_e_c_s_1_1_component_storage_ac0462574142ff478da6b3c718095510f}{Dense\+Set\+Type}} = \mbox{\hyperlink{classstd_1_1vector}{std\+::vector}}$<$Value\+Type$>$
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_e_c_s_1_1_component_storage_ae0ae92e1427e687101386d13a7dbe074}{Add}} (Index\+Type index, Value\+Type \&value)
+\begin{DoxyCompactList}\small\item\em Adds Component to the storage. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_e_c_s_1_1_component_storage_a28209d6e2c94b9707602ab0104262659}{Remove}} (Index\+Type index)
+\begin{DoxyCompactList}\small\item\em Removes the component from Dense\+Set and, removes the ownership of Entity from Sparse\+Set. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_e_c_s_1_1_component_storage_aeecb9190a9ff80840dce578dffcdcacf}{Has}} (Index\+Type index)
+\begin{DoxyCompactList}\small\item\em Component existence test by checking sizes and value of Sparse\+Set entry. \end{DoxyCompactList}\item 
+Value\+Ref \mbox{\hyperlink{class_e_c_s_1_1_component_storage_afae98809009a96545d591a42840aca2b}{Get}} (Index\+Type index)
+\begin{DoxyCompactList}\small\item\em Gets component of the given Entity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename Type, typename Entity$>$\newline
+class ECS\+::\+Component\+Storage$<$ Type, Entity $>$}
+\doxylink{class_e_c_s_1_1_component_storage}{Component\+Storage} class, stores components of type "{}\+Type"{}, who has owner "{}\+Entity"{}. This class represents the pool of 1 component. 
+
+Definition at line \mbox{\hyperlink{_storage_8h_source_l00039}{39}} of file \mbox{\hyperlink{_storage_8h_source}{Storage.\+h}}.
+
+
+
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{class_e_c_s_1_1_component_storage_ac0462574142ff478da6b3c718095510f}\label{class_e_c_s_1_1_component_storage_ac0462574142ff478da6b3c718095510f} 
+\index{ECS::ComponentStorage$<$ Type, Entity $>$@{ECS::ComponentStorage$<$ Type, Entity $>$}!DenseSetType@{DenseSetType}}
+\index{DenseSetType@{DenseSetType}!ECS::ComponentStorage$<$ Type, Entity $>$@{ECS::ComponentStorage$<$ Type, Entity $>$}}
+\doxysubsubsection{\texorpdfstring{DenseSetType}{DenseSetType}}
+{\footnotesize\ttfamily template$<$typename Type , typename Entity $>$ \\
+using \mbox{\hyperlink{class_e_c_s_1_1_component_storage}{ECS\+::\+Component\+Storage}}$<$ Type, Entity $>$\+::\+Dense\+Set\+Type = \mbox{\hyperlink{classstd_1_1vector}{std\+::vector}}$<$Value\+Type$>$}
+
+
+
+Definition at line \mbox{\hyperlink{_storage_8h_source_l00051}{51}} of file \mbox{\hyperlink{_storage_8h_source}{Storage.\+h}}.
+
+\Hypertarget{class_e_c_s_1_1_component_storage_a11c2193934408bd93a7ddabebcaba903}\label{class_e_c_s_1_1_component_storage_a11c2193934408bd93a7ddabebcaba903} 
+\index{ECS::ComponentStorage$<$ Type, Entity $>$@{ECS::ComponentStorage$<$ Type, Entity $>$}!IndexType@{IndexType}}
+\index{IndexType@{IndexType}!ECS::ComponentStorage$<$ Type, Entity $>$@{ECS::ComponentStorage$<$ Type, Entity $>$}}
+\doxysubsubsection{\texorpdfstring{IndexType}{IndexType}}
+{\footnotesize\ttfamily template$<$typename Type , typename Entity $>$ \\
+using \mbox{\hyperlink{class_e_c_s_1_1_component_storage}{ECS\+::\+Component\+Storage}}$<$ Type, Entity $>$\+::\+Index\+Type = typename Traits\+::\+Index\+Type}
+
+
+
+Definition at line \mbox{\hyperlink{_storage_8h_source_l00047}{47}} of file \mbox{\hyperlink{_storage_8h_source}{Storage.\+h}}.
+
+\Hypertarget{class_e_c_s_1_1_component_storage_a9fda0740d3fd5b4281b68234ff69a799}\label{class_e_c_s_1_1_component_storage_a9fda0740d3fd5b4281b68234ff69a799} 
+\index{ECS::ComponentStorage$<$ Type, Entity $>$@{ECS::ComponentStorage$<$ Type, Entity $>$}!SparseSetType@{SparseSetType}}
+\index{SparseSetType@{SparseSetType}!ECS::ComponentStorage$<$ Type, Entity $>$@{ECS::ComponentStorage$<$ Type, Entity $>$}}
+\doxysubsubsection{\texorpdfstring{SparseSetType}{SparseSetType}}
+{\footnotesize\ttfamily template$<$typename Type , typename Entity $>$ \\
+using \mbox{\hyperlink{class_e_c_s_1_1_component_storage}{ECS\+::\+Component\+Storage}}$<$ Type, Entity $>$\+::\+Sparse\+Set\+Type = \mbox{\hyperlink{classstd_1_1vector}{std\+::vector}}$<$Index\+Type$>$}
+
+
+
+Definition at line \mbox{\hyperlink{_storage_8h_source_l00050}{50}} of file \mbox{\hyperlink{_storage_8h_source}{Storage.\+h}}.
+
+\Hypertarget{class_e_c_s_1_1_component_storage_a961cf86f365c274d7a80f3418a29f3bc}\label{class_e_c_s_1_1_component_storage_a961cf86f365c274d7a80f3418a29f3bc} 
+\index{ECS::ComponentStorage$<$ Type, Entity $>$@{ECS::ComponentStorage$<$ Type, Entity $>$}!Traits@{Traits}}
+\index{Traits@{Traits}!ECS::ComponentStorage$<$ Type, Entity $>$@{ECS::ComponentStorage$<$ Type, Entity $>$}}
+\doxysubsubsection{\texorpdfstring{Traits}{Traits}}
+{\footnotesize\ttfamily template$<$typename Type , typename Entity $>$ \\
+using \mbox{\hyperlink{class_e_c_s_1_1_component_storage}{ECS\+::\+Component\+Storage}}$<$ Type, Entity $>$\+::\+Traits = \mbox{\hyperlink{struct_e_c_s_1_1_storage_traits}{Storage\+Traits}}$<$Type, Entity$>$}
+
+
+
+Definition at line \mbox{\hyperlink{_storage_8h_source_l00043}{43}} of file \mbox{\hyperlink{_storage_8h_source}{Storage.\+h}}.
+
+\Hypertarget{class_e_c_s_1_1_component_storage_a6e2dbd24870f95daf25943e196a82b55}\label{class_e_c_s_1_1_component_storage_a6e2dbd24870f95daf25943e196a82b55} 
+\index{ECS::ComponentStorage$<$ Type, Entity $>$@{ECS::ComponentStorage$<$ Type, Entity $>$}!ValueRef@{ValueRef}}
+\index{ValueRef@{ValueRef}!ECS::ComponentStorage$<$ Type, Entity $>$@{ECS::ComponentStorage$<$ Type, Entity $>$}}
+\doxysubsubsection{\texorpdfstring{ValueRef}{ValueRef}}
+{\footnotesize\ttfamily template$<$typename Type , typename Entity $>$ \\
+using \mbox{\hyperlink{class_e_c_s_1_1_component_storage}{ECS\+::\+Component\+Storage}}$<$ Type, Entity $>$\+::\+Value\+Ref = typename Traits\+::\+Value\+Type\&}
+
+
+
+Definition at line \mbox{\hyperlink{_storage_8h_source_l00046}{46}} of file \mbox{\hyperlink{_storage_8h_source}{Storage.\+h}}.
+
+\Hypertarget{class_e_c_s_1_1_component_storage_a20b015bc9b84608e1b6a328e529d92a8}\label{class_e_c_s_1_1_component_storage_a20b015bc9b84608e1b6a328e529d92a8} 
+\index{ECS::ComponentStorage$<$ Type, Entity $>$@{ECS::ComponentStorage$<$ Type, Entity $>$}!ValueType@{ValueType}}
+\index{ValueType@{ValueType}!ECS::ComponentStorage$<$ Type, Entity $>$@{ECS::ComponentStorage$<$ Type, Entity $>$}}
+\doxysubsubsection{\texorpdfstring{ValueType}{ValueType}}
+{\footnotesize\ttfamily template$<$typename Type , typename Entity $>$ \\
+using \mbox{\hyperlink{class_e_c_s_1_1_component_storage}{ECS\+::\+Component\+Storage}}$<$ Type, Entity $>$\+::\+Value\+Type = typename Traits\+::\+Value\+Type}
+
+
+
+Definition at line \mbox{\hyperlink{_storage_8h_source_l00045}{45}} of file \mbox{\hyperlink{_storage_8h_source}{Storage.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_e_c_s_1_1_component_storage_a655adafe22c7a8c8ad11cf1bb723dcdf}\label{class_e_c_s_1_1_component_storage_a655adafe22c7a8c8ad11cf1bb723dcdf} 
+\index{ECS::ComponentStorage$<$ Type, Entity $>$@{ECS::ComponentStorage$<$ Type, Entity $>$}!ComponentStorage@{ComponentStorage}}
+\index{ComponentStorage@{ComponentStorage}!ECS::ComponentStorage$<$ Type, Entity $>$@{ECS::ComponentStorage$<$ Type, Entity $>$}}
+\doxysubsubsection{\texorpdfstring{ComponentStorage()}{ComponentStorage()}}
+{\footnotesize\ttfamily template$<$typename Type , typename Entity $>$ \\
+\mbox{\hyperlink{class_e_c_s_1_1_component_storage}{ECS\+::\+Component\+Storage}}$<$ Type, Entity $>$\+::\+Component\+Storage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{_storage_8h_source_l00054}{54}} of file \mbox{\hyperlink{_storage_8h_source}{Storage.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_e_c_s_1_1_component_storage_ae0ae92e1427e687101386d13a7dbe074}\label{class_e_c_s_1_1_component_storage_ae0ae92e1427e687101386d13a7dbe074} 
+\index{ECS::ComponentStorage$<$ Type, Entity $>$@{ECS::ComponentStorage$<$ Type, Entity $>$}!Add@{Add}}
+\index{Add@{Add}!ECS::ComponentStorage$<$ Type, Entity $>$@{ECS::ComponentStorage$<$ Type, Entity $>$}}
+\doxysubsubsection{\texorpdfstring{Add()}{Add()}}
+{\footnotesize\ttfamily template$<$typename Type , typename Entity $>$ \\
+bool \mbox{\hyperlink{class_e_c_s_1_1_component_storage}{ECS\+::\+Component\+Storage}}$<$ Type, Entity $>$\+::\+Add (\begin{DoxyParamCaption}\item[{Index\+Type}]{index,  }\item[{Value\+Type \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Adds Component to the storage. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Entity} & \+: Parent of the component. \\
+\hline
+{\em Component} & \+: Component object.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true \+: if operation is successful. 
+
+false \+: if operation is not successful. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_storage_8h_source_l00065}{65}} of file \mbox{\hyperlink{_storage_8h_source}{Storage.\+h}}.
+
+\Hypertarget{class_e_c_s_1_1_component_storage_afae98809009a96545d591a42840aca2b}\label{class_e_c_s_1_1_component_storage_afae98809009a96545d591a42840aca2b} 
+\index{ECS::ComponentStorage$<$ Type, Entity $>$@{ECS::ComponentStorage$<$ Type, Entity $>$}!Get@{Get}}
+\index{Get@{Get}!ECS::ComponentStorage$<$ Type, Entity $>$@{ECS::ComponentStorage$<$ Type, Entity $>$}}
+\doxysubsubsection{\texorpdfstring{Get()}{Get()}}
+{\footnotesize\ttfamily template$<$typename Type , typename Entity $>$ \\
+Value\+Ref \mbox{\hyperlink{class_e_c_s_1_1_component_storage}{ECS\+::\+Component\+Storage}}$<$ Type, Entity $>$\+::\+Get (\begin{DoxyParamCaption}\item[{Index\+Type}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets component of the given Entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Entity} & \+: Parent of the component.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Type\& \+: reference of component. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_storage_8h_source_l00133}{133}} of file \mbox{\hyperlink{_storage_8h_source}{Storage.\+h}}.
+
+\Hypertarget{class_e_c_s_1_1_component_storage_aeecb9190a9ff80840dce578dffcdcacf}\label{class_e_c_s_1_1_component_storage_aeecb9190a9ff80840dce578dffcdcacf} 
+\index{ECS::ComponentStorage$<$ Type, Entity $>$@{ECS::ComponentStorage$<$ Type, Entity $>$}!Has@{Has}}
+\index{Has@{Has}!ECS::ComponentStorage$<$ Type, Entity $>$@{ECS::ComponentStorage$<$ Type, Entity $>$}}
+\doxysubsubsection{\texorpdfstring{Has()}{Has()}}
+{\footnotesize\ttfamily template$<$typename Type , typename Entity $>$ \\
+bool \mbox{\hyperlink{class_e_c_s_1_1_component_storage}{ECS\+::\+Component\+Storage}}$<$ Type, Entity $>$\+::\+Has (\begin{DoxyParamCaption}\item[{Index\+Type}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Component existence test by checking sizes and value of Sparse\+Set entry. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Entity} & \+: Parent of the component.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true \+: if entity has component. 
+
+false \+: if entity does not have component. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_storage_8h_source_l00119}{119}} of file \mbox{\hyperlink{_storage_8h_source}{Storage.\+h}}.
+
+\Hypertarget{class_e_c_s_1_1_component_storage_a28209d6e2c94b9707602ab0104262659}\label{class_e_c_s_1_1_component_storage_a28209d6e2c94b9707602ab0104262659} 
+\index{ECS::ComponentStorage$<$ Type, Entity $>$@{ECS::ComponentStorage$<$ Type, Entity $>$}!Remove@{Remove}}
+\index{Remove@{Remove}!ECS::ComponentStorage$<$ Type, Entity $>$@{ECS::ComponentStorage$<$ Type, Entity $>$}}
+\doxysubsubsection{\texorpdfstring{Remove()}{Remove()}}
+{\footnotesize\ttfamily template$<$typename Type , typename Entity $>$ \\
+bool \mbox{\hyperlink{class_e_c_s_1_1_component_storage}{ECS\+::\+Component\+Storage}}$<$ Type, Entity $>$\+::\+Remove (\begin{DoxyParamCaption}\item[{Index\+Type}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Removes the component from Dense\+Set and, removes the ownership of Entity from Sparse\+Set. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Entity} & \+: Parent of the component.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true \+: if operation is successful. 
+
+false \+: if operation is not successful. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_storage_8h_source_l00091}{91}} of file \mbox{\hyperlink{_storage_8h_source}{Storage.\+h}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+core/src/\+Entity\+Component\+System/\+Storage/Storage.\+h\end{DoxyCompactItemize}

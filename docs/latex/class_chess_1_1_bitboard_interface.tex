@@ -1,0 +1,77 @@
+\doxysection{Chess\+::Bitboard\+Interface\texorpdfstring{$<$}{<} Derived \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{class_chess_1_1_bitboard_interface}{}\label{class_chess_1_1_bitboard_interface}\index{Chess::BitboardInterface$<$ Derived $>$@{Chess::BitboardInterface$<$ Derived $>$}}
+
+
+CRTP design using interface class for \doxylink{class_chess_1_1_bitboard}{Bitboard} to support compile-\/time initializations of bitboards. Mainly designed for future possibility of enhanced integrations. (Pre-\/calculations of chess attacks on bitboard etc.).  
+
+
+
+
+{\ttfamily \#include $<$Bitboard.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+constexpr void \mbox{\hyperlink{class_chess_1_1_bitboard_interface_a7b2c72cec4b9f7f66f2b025f85741fc9}{Set}} (const size\+\_\+t \&index)
+\item 
+constexpr void \mbox{\hyperlink{class_chess_1_1_bitboard_interface_a306a947a4df62f8b2f388d412c71ceaa}{Reset}} (const size\+\_\+t \&index)
+\item 
+constexpr void \mbox{\hyperlink{class_chess_1_1_bitboard_interface_a82c84068527583f983a77e9753984594}{Clear}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename Derived$>$\newline
+class Chess\+::\+Bitboard\+Interface$<$ Derived $>$}
+CRTP design using interface class for \doxylink{class_chess_1_1_bitboard}{Bitboard} to support compile-\/time initializations of bitboards. Mainly designed for future possibility of enhanced integrations. (Pre-\/calculations of chess attacks on bitboard etc.). 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Derived} & -- \doxylink{class_chess_1_1_bitboard}{Bitboard} class \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line \mbox{\hyperlink{_bitboard_8h_source_l00015}{15}} of file \mbox{\hyperlink{_bitboard_8h_source}{Bitboard.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_chess_1_1_bitboard_interface_a82c84068527583f983a77e9753984594}\label{class_chess_1_1_bitboard_interface_a82c84068527583f983a77e9753984594} 
+\index{Chess::BitboardInterface$<$ Derived $>$@{Chess::BitboardInterface$<$ Derived $>$}!Clear@{Clear}}
+\index{Clear@{Clear}!Chess::BitboardInterface$<$ Derived $>$@{Chess::BitboardInterface$<$ Derived $>$}}
+\doxysubsubsection{\texorpdfstring{Clear()}{Clear()}}
+{\footnotesize\ttfamily template$<$typename Derived $>$ \\
+constexpr void \mbox{\hyperlink{class_chess_1_1_bitboard_interface}{Chess\+::\+Bitboard\+Interface}}$<$ Derived $>$\+::\+Clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Definition at line \mbox{\hyperlink{_bitboard_8h_source_l00026}{26}} of file \mbox{\hyperlink{_bitboard_8h_source}{Bitboard.\+h}}.
+
+\Hypertarget{class_chess_1_1_bitboard_interface_a306a947a4df62f8b2f388d412c71ceaa}\label{class_chess_1_1_bitboard_interface_a306a947a4df62f8b2f388d412c71ceaa} 
+\index{Chess::BitboardInterface$<$ Derived $>$@{Chess::BitboardInterface$<$ Derived $>$}!Reset@{Reset}}
+\index{Reset@{Reset}!Chess::BitboardInterface$<$ Derived $>$@{Chess::BitboardInterface$<$ Derived $>$}}
+\doxysubsubsection{\texorpdfstring{Reset()}{Reset()}}
+{\footnotesize\ttfamily template$<$typename Derived $>$ \\
+constexpr void \mbox{\hyperlink{class_chess_1_1_bitboard_interface}{Chess\+::\+Bitboard\+Interface}}$<$ Derived $>$\+::\+Reset (\begin{DoxyParamCaption}\item[{const size\+\_\+t \&}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Definition at line \mbox{\hyperlink{_bitboard_8h_source_l00022}{22}} of file \mbox{\hyperlink{_bitboard_8h_source}{Bitboard.\+h}}.
+
+\Hypertarget{class_chess_1_1_bitboard_interface_a7b2c72cec4b9f7f66f2b025f85741fc9}\label{class_chess_1_1_bitboard_interface_a7b2c72cec4b9f7f66f2b025f85741fc9} 
+\index{Chess::BitboardInterface$<$ Derived $>$@{Chess::BitboardInterface$<$ Derived $>$}!Set@{Set}}
+\index{Set@{Set}!Chess::BitboardInterface$<$ Derived $>$@{Chess::BitboardInterface$<$ Derived $>$}}
+\doxysubsubsection{\texorpdfstring{Set()}{Set()}}
+{\footnotesize\ttfamily template$<$typename Derived $>$ \\
+constexpr void \mbox{\hyperlink{class_chess_1_1_bitboard_interface}{Chess\+::\+Bitboard\+Interface}}$<$ Derived $>$\+::\+Set (\begin{DoxyParamCaption}\item[{const size\+\_\+t \&}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Definition at line \mbox{\hyperlink{_bitboard_8h_source_l00018}{18}} of file \mbox{\hyperlink{_bitboard_8h_source}{Bitboard.\+h}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+core/src/\+Chess\+Components/Bitboard.\+h\end{DoxyCompactItemize}

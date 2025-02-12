@@ -1,0 +1,103 @@
+\doxysection{Renderer\+::Instance Class Reference}
+\hypertarget{class_renderer_1_1_instance}{}\label{class_renderer_1_1_instance}\index{Renderer::Instance@{Renderer::Instance}}
+
+
+\doxylink{class_renderer_1_1_instance}{Instance} singleton.  
+
+
+
+
+{\ttfamily \#include $<$Instance.\+h$>$}
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_renderer_1_1_instance_af4692f9c83f88bff496540e498b042f9}{Initialize}} (const \mbox{\hyperlink{struct_renderer_1_1_instance_specification}{Instance\+Specification}} \&spec)
+\item 
+static void \mbox{\hyperlink{class_renderer_1_1_instance_a0ac310f2f2702aaf0e1b6fe18e3284fa}{Shutdown}} ()
+\item 
+static bool \mbox{\hyperlink{class_renderer_1_1_instance_a353b480e65f09fdab96bbf77487ae38f}{Is\+Validation\+Enabled}} ()
+\begin{DoxyCompactList}\small\item\em Getter for private static variable validation\+Enabled. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{classstd_1_1vector}{std\+::vector}}$<$ const char \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_renderer_1_1_instance_ac4502bda4edbffc8ccf113e9ce5b6a17}{Get\+Validation\+Layers}} ()
+\begin{DoxyCompactList}\small\item\em Getter for private static variable validation\+Layers. \end{DoxyCompactList}\item 
+static Vk\+Instance \mbox{\hyperlink{class_renderer_1_1_instance_a7da1f0c804824281169f0ed75f190983}{Data}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{class_renderer_1_1_instance}{Instance} singleton. 
+
+\begin{DoxyNote}{Note}
+Since Vulkan instance is expected to be created and destroyed once, this class was made a singleton. 
+\end{DoxyNote}
+
+
+Definition at line \mbox{\hyperlink{_instance_8h_source_l00021}{21}} of file \mbox{\hyperlink{_instance_8h_source}{Instance.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_renderer_1_1_instance_a7da1f0c804824281169f0ed75f190983}\label{class_renderer_1_1_instance_a7da1f0c804824281169f0ed75f190983} 
+\index{Renderer::Instance@{Renderer::Instance}!Data@{Data}}
+\index{Data@{Data}!Renderer::Instance@{Renderer::Instance}}
+\doxysubsubsection{\texorpdfstring{Data()}{Data()}}
+{\footnotesize\ttfamily static Vk\+Instance Renderer\+::\+Instance\+::\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_instance_8h_source_l00037}{37}} of file \mbox{\hyperlink{_instance_8h_source}{Instance.\+h}}.
+
+\Hypertarget{class_renderer_1_1_instance_ac4502bda4edbffc8ccf113e9ce5b6a17}\label{class_renderer_1_1_instance_ac4502bda4edbffc8ccf113e9ce5b6a17} 
+\index{Renderer::Instance@{Renderer::Instance}!GetValidationLayers@{GetValidationLayers}}
+\index{GetValidationLayers@{GetValidationLayers}!Renderer::Instance@{Renderer::Instance}}
+\doxysubsubsection{\texorpdfstring{GetValidationLayers()}{GetValidationLayers()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{classstd_1_1vector}{std\+::vector}}$<$ const char \texorpdfstring{$\ast$}{*} $>$ Renderer\+::\+Instance\+::\+Get\+Validation\+Layers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Getter for private static variable validation\+Layers. 
+
+
+
+Definition at line \mbox{\hyperlink{_instance_8h_source_l00035}{35}} of file \mbox{\hyperlink{_instance_8h_source}{Instance.\+h}}.
+
+\Hypertarget{class_renderer_1_1_instance_af4692f9c83f88bff496540e498b042f9}\label{class_renderer_1_1_instance_af4692f9c83f88bff496540e498b042f9} 
+\index{Renderer::Instance@{Renderer::Instance}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!Renderer::Instance@{Renderer::Instance}}
+\doxysubsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily static void Renderer\+::\+Instance\+::\+Initialize (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_renderer_1_1_instance_specification}{Instance\+Specification}} \&}]{spec }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_instance_8h_source_l00024}{24}} of file \mbox{\hyperlink{_instance_8h_source}{Instance.\+h}}.
+
+\Hypertarget{class_renderer_1_1_instance_a353b480e65f09fdab96bbf77487ae38f}\label{class_renderer_1_1_instance_a353b480e65f09fdab96bbf77487ae38f} 
+\index{Renderer::Instance@{Renderer::Instance}!IsValidationEnabled@{IsValidationEnabled}}
+\index{IsValidationEnabled@{IsValidationEnabled}!Renderer::Instance@{Renderer::Instance}}
+\doxysubsubsection{\texorpdfstring{IsValidationEnabled()}{IsValidationEnabled()}}
+{\footnotesize\ttfamily static bool Renderer\+::\+Instance\+::\+Is\+Validation\+Enabled (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Getter for private static variable validation\+Enabled. 
+
+
+
+Definition at line \mbox{\hyperlink{_instance_8h_source_l00031}{31}} of file \mbox{\hyperlink{_instance_8h_source}{Instance.\+h}}.
+
+\Hypertarget{class_renderer_1_1_instance_a0ac310f2f2702aaf0e1b6fe18e3284fa}\label{class_renderer_1_1_instance_a0ac310f2f2702aaf0e1b6fe18e3284fa} 
+\index{Renderer::Instance@{Renderer::Instance}!Shutdown@{Shutdown}}
+\index{Shutdown@{Shutdown}!Renderer::Instance@{Renderer::Instance}}
+\doxysubsubsection{\texorpdfstring{Shutdown()}{Shutdown()}}
+{\footnotesize\ttfamily static void Renderer\+::\+Instance\+::\+Shutdown (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_instance_8h_source_l00026}{26}} of file \mbox{\hyperlink{_instance_8h_source}{Instance.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+core/src/\+Renderer/Instance.\+h\item 
+core/src/\+Renderer/Instance.\+cpp\end{DoxyCompactItemize}

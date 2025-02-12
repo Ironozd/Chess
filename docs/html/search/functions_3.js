@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['fenstring_0',['FenString',['../class_chess_1_1_fen_string.html#a00e1da25cb3af801913bbcc2064b98d7',1,'Chess::FenString']]]
+  ['data_0',['Data',['../class_chess_1_1_fen_string.html#aebc04de38ce2efcbc7126d6d7f8d128e',1,'Chess::FenString']]]
 ];

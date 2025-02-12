@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['queuefamilyindices_0',['QueueFamilyIndices',['../struct_chess_1_1_queue_family_indices.html',1,'Chess']]]
+  ['instance_0',['Instance',['../class_renderer_1_1_instance.html',1,'Renderer']]],
+  ['instancespecification_1',['InstanceSpecification',['../struct_renderer_1_1_instance_specification.html',1,'Renderer']]]
 ];

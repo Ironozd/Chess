@@ -128,30 +128,31 @@ $(function(){initNavTree('todo.html',''); initResizable(); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><dl class="reflist">
-<dt>Namespace <a class="el" href="namespace_chess.html">Chess</a>  </dt>
-<dd><a class="anchor" id="_todo000011"></a>Only include LOGGER functions during DEBUG configuration.  </dd>
-<dt>Member <a class="el" href="class_chess_1_1_bitboard.html#aab941a568d287baf7224bec2847c80fd">Chess::Bitboard::Reset</a>  (const size_t &amp;index)</dt>
-<dd><a class="anchor" id="_todo000002"></a>Wrap the reset function around a performance critical bit-test to see whether the provided index value is 1.  </dd>
-<dt>Member <a class="el" href="class_chess_1_1_bitboard.html#a639f1f0cba77a1b95b4c8b0bdd6a2994">Chess::Bitboard::Set</a>  (const size_t &amp;index)</dt>
-<dd><a class="anchor" id="_todo000001"></a>Implement Copy &amp; Move constructors. </dd>
+<dt>Namespace <a class="el" href="namespace_application.html">Application</a>  </dt>
+<dd><a class="anchor" id="_todo000010"></a>Only include LOGGER functions during DEBUG configuration.  </dd>
+<dt>Class <a class="el" href="class_application_1_1_engine.html">Application::Engine</a>  </dt>
+<dd><a class="anchor" id="_todo000008"></a>Seperate both engines (Renderer, Chess) </dd>
+<dt>Member <a class="el" href="class_chess_1_1_bitboard.html#ae470b7ba8cca1f83b086bf4834236a5d">Chess::Bitboard::ResetImpl</a>  (const uint64_t &amp;index)</dt>
+<dd><a class="anchor" id="_todo000001"></a>Wrap the reset function around a performance critical bit-test to see whether the provided index value is 1.  </dd>
 <dt>Member <a class="el" href="class_chess_1_1_board.html#a15ee7b2a52ae08f051407d336110fcea">Chess::Board::Populate</a>  (const <a class="el" href="class_chess_1_1_fen_string.html" title="Wrapper class for string_view to hold the performance optimized split function.">FenString</a> &amp;fen)</dt>
-<dd><a class="anchor" id="_todo000007"></a>Incomplete  </dd>
+<dd><a class="anchor" id="_todo000006"></a>Incomplete  </dd>
 <dt>Struct <a class="el" href="struct_chess_1_1_board_components.html">Chess::BoardComponents</a>  </dt>
-<dd><a class="anchor" id="_todo000003"></a>Each type (except "Bitboard" m_Layout) will be changed to be represented in a bit form (e.g. WhiteKingCastleAbility = 0b0001).  </dd>
-<dt>Member <a class="el" href="namespace_chess.html#a3560352671dbb6913bc56621ea6bdd47">Chess::display_bits</a>  (T bits)</dt>
-<dd><a class="anchor" id="_todo000005"></a>Modify spdlog to support std::bit  </dd>
-<dt>Class <a class="el" href="class_chess_1_1_engine.html">Chess::Engine</a>  </dt>
-<dd><a class="anchor" id="_todo000009"></a>Seperate both engines (<a class="el" href="class_chess_1_1_renderer.html" title="Renderer class, lifetime of all Vulkan objects are stored here.">Renderer</a>, <a class="el" href="namespace_chess.html" title="Logger file.">Chess</a>) </dd>
+<dd><a class="anchor" id="_todo000002"></a>Each type (except "Bitboard" m_Layout) will be changed to be represented in a bit form (e.g. WhiteKingCastleAbility = 0b0001).  </dd>
 <dt>Class <a class="el" href="class_chess_1_1_evaluation.html">Chess::Evaluation</a>  </dt>
-<dd><a class="anchor" id="_todo000008"></a>Implement, re-think structure.  </dd>
+<dd><a class="anchor" id="_todo000007"></a>Implement, re-think structure.  </dd>
 <dt>Class <a class="el" href="class_chess_1_1_fen_string.html">Chess::FenString</a>  </dt>
-<dd><a class="anchor" id="_todo000004"></a>Is the use of a wrapper to hold a single function necessary, and is there a good reason to do so?  </dd>
-<dt>Class <a class="el" href="class_chess_1_1_renderer.html">Chess::Renderer</a>  </dt>
-<dd><a class="anchor" id="_todo000014"></a>Rename the class to suit Vulkan Compute API, and re-think structure.  </dd>
-<dt>Struct <a class="el" href="struct_chess_1_1_renderer_specification.html">Chess::RendererSpecification</a>  </dt>
-<dd><a class="anchor" id="_todo000013"></a>Specification behavior (holding reference of a stack allocated memory) is subject to change.  </dd>
-<dt>Member <a class="el" href="class_chess_1_1_window.html#a9cf7357e822303b352bd3c4dfccfe459">Chess::Window::~Window</a>  ()</dt>
-<dd><a class="anchor" id="_todo000015"></a>Rethink shutdown structure. </dd>
+<dd><a class="anchor" id="_todo000003"></a>Is the use of a wrapper to hold a single function necessary, and is there a good reason to do so?  </dd>
+<dt>Struct <a class="el" href="struct_e_c_s_1_1_storage_traits.html">ECS::StorageTraits&lt; Type, Entity &gt;</a>  </dt>
+<dd><p class="startdd"><a class="anchor" id="_todo000011"></a>Implement a Storage interface, use CRTP. </p>
+<p class="interdd"></p>
+<p class="enddd">Create tests for Storage. </p>
+</dd>
+<dt>Class <a class="el" href="class_renderer_1_1_renderer.html">Renderer::Renderer</a>  </dt>
+<dd><a class="anchor" id="_todo000015"></a>Rename the class to suit Vulkan Compute API, and re-think structure.  </dd>
+<dt>Struct <a class="el" href="struct_renderer_1_1_renderer_specification.html">Renderer::RendererSpecification</a>  </dt>
+<dd><a class="anchor" id="_todo000014"></a>Specification behavior (holding reference of a stack allocated memory) is subject to change.  </dd>
+<dt>Member <a class="el" href="class_renderer_1_1_window.html#a884079fea19cb003aa37a8be5058bfbc">Renderer::Window::~Window</a>  ()</dt>
+<dd><a class="anchor" id="_todo000016"></a>re-think shutdown structure. Question: On heap allocation, would this destructor cause errors, since Shutdown can be called in other methods? </dd>
 </dl>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->

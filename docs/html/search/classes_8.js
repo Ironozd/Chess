@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['renderer_0',['Renderer',['../class_chess_1_1_renderer.html',1,'Chess']]],
-  ['rendererspecification_1',['RendererSpecification',['../struct_chess_1_1_renderer_specification.html',1,'Chess']]]
+  ['logger_0',['Logger',['../class_application_1_1_logger.html',1,'Application']]],
+  ['logicaldevice_1',['LogicalDevice',['../class_renderer_1_1_logical_device.html',1,'Renderer']]]
 ];

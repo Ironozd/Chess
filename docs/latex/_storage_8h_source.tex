@@ -1,0 +1,113 @@
+\doxysection{Storage.\+h}
+\hypertarget{_storage_8h_source}{}\label{_storage_8h_source}\index{core/src/EntityComponentSystem/Storage/Storage.h@{core/src/EntityComponentSystem/Storage/Storage.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00003}00003\ \textcolor{comment}{/*\ Forward\ declarations\ for\ better\ compile-\/time\ and\ organization\ */}}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00004}00004\ \textcolor{keyword}{namespace\ }std}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00005}00005\ \{}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00006}00006\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00007}\mbox{\hyperlink{classstd_1_1allocator}{00007}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classstd_1_1allocator}{allocator}};}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00009}00009\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ Allocator\ =\ allocator<T>>}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00010}\mbox{\hyperlink{classstd_1_1vector}{00010}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classstd_1_1vector}{vector}};}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00011}00011\ \}}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00013}00013\ \textcolor{keyword}{namespace\ }ECS}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00014}00014\ \{}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00025}00025\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type,\ \textcolor{keyword}{typename}\ Entity>}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00026}\mbox{\hyperlink{struct_e_c_s_1_1_storage_traits}{00026}}\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_e_c_s_1_1_storage_traits}{StorageTraits}}}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00027}00027\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }ValueType\ =\ Type;}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00029}00029\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }ValueRef\ =\ ValueType\&;}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }IndexType\ =\ Entity;}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00031}00031\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00038}00038\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ Type,\ \textcolor{keyword}{typename}\ Entity>}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00039}\mbox{\hyperlink{class_e_c_s_1_1_component_storage}{00039}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_e_c_s_1_1_component_storage}{ComponentStorage}}}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00040}00040\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00041}00041\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00042}00042\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Defining\ type\ traits\ for\ a\ better\ convention.\ */}}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{struct_e_c_s_1_1_storage_traits}{Traits}}\ =\ \mbox{\hyperlink{struct_e_c_s_1_1_storage_traits}{StorageTraits<Type,\ Entity>}};}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00045}00045\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }ValueType\ =\ \textcolor{keyword}{typename}\ Traits::ValueType;}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00046}00046\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }ValueRef\ =\ \textcolor{keyword}{typename}\ Traits::ValueType\&;}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00047}00047\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }IndexType\ =\ \textcolor{keyword}{typename}\ Traits::IndexType;}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Container\ types\ */}}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00050}00050\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classstd_1_1vector}{SparseSetType}}\ =\ \mbox{\hyperlink{classstd_1_1vector}{std::vector<IndexType>}};}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00051}00051\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ }\mbox{\hyperlink{classstd_1_1vector}{DenseSetType}}\ =\ \mbox{\hyperlink{classstd_1_1vector}{std::vector<ValueType>}};}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00052}00052\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00054}00054\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_e_c_s_1_1_component_storage}{ComponentStorage}}()\ :\ m\_SparseSet(\mbox{\hyperlink{classstd_1_1vector}{SparseSetType}}\{\}),\ m\_DenseSet(\mbox{\hyperlink{classstd_1_1vector}{DenseSetType}}\{\})\ \{\ \}}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00065}\mbox{\hyperlink{class_e_c_s_1_1_component_storage_ae0ae92e1427e687101386d13a7dbe074}{00065}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_e_c_s_1_1_component_storage_ae0ae92e1427e687101386d13a7dbe074}{Add}}(IndexType\ index,\ ValueType\&\ value)}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00066}00066\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_e_c_s_1_1_component_storage_aeecb9190a9ff80840dce578dffcdcacf}{Has}}(index))\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (index\ >=\ m\_SparseSet.size())}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_SparseSet.resize(index\ +\ 1,\ \textcolor{keyword}{static\_cast<}IndexType\textcolor{keyword}{>}(-\/1));}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_SparseSet[index]\ ==\ \textcolor{keyword}{static\_cast<}IndexType\textcolor{keyword}{>}(-\/1))}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_SparseSet[index]\ =\ m\_DenseSet.size();}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_DenseSet.emplace\_back(std::move(value));}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00081}00081\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00091}\mbox{\hyperlink{class_e_c_s_1_1_component_storage_a28209d6e2c94b9707602ab0104262659}{00091}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_e_c_s_1_1_component_storage_a28209d6e2c94b9707602ab0104262659}{Remove}}(IndexType\ index)}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00092}00092\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_e_c_s_1_1_component_storage_aeecb9190a9ff80840dce578dffcdcacf}{Has}}(index))\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ IndexType\ DenseIndex\ =\ m\_SparseSet[index];}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ IndexType\ LastIndex\ =\ m\_DenseSet.size()\ -\/\ 1;}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (LastIndex\ !=\ DenseIndex)}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Swap(m\_SparseSet[LastIndex],\ m\_SparseSet[DenseIndex]);}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Swap(m\_DenseSet[LastIndex],\ m\_DenseSet[DenseIndex]);}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_SparseSet[LastIndex]\ =\ DenseIndex;}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ m\_SparseSet[index]\ =\ \textcolor{keyword}{static\_cast<}IndexType\textcolor{keyword}{>}(-\/1);}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ m\_DenseSet.pop\_back();}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00108}00108\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00119}\mbox{\hyperlink{class_e_c_s_1_1_component_storage_aeecb9190a9ff80840dce578dffcdcacf}{00119}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_e_c_s_1_1_component_storage_aeecb9190a9ff80840dce578dffcdcacf}{Has}}(IndexType\ index)}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00120}00120\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (index\ >=\ m\_SparseSet.size()\ ||\ m\_SparseSet[index]\ ==\ \textcolor{keyword}{static\_cast<}IndexType\textcolor{keyword}{>}(-\/1))\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_SparseSet[index]\ >=\ m\_DenseSet.size())\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00124}00124\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00125}00125\ }
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00133}\mbox{\hyperlink{class_e_c_s_1_1_component_storage_afae98809009a96545d591a42840aca2b}{00133}}\ \ \ \ \ \ \ \ \ ValueRef\ \mbox{\hyperlink{class_e_c_s_1_1_component_storage_afae98809009a96545d591a42840aca2b}{Get}}(IndexType\ index)}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00134}00134\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_e_c_s_1_1_component_storage_aeecb9190a9ff80840dce578dffcdcacf}{Has}}(index))}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ LOG\_INFO(\textcolor{stringliteral}{"{}Entity\ does\ not\ have\ component."{}});}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ assert(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ m\_DenseSet[m\_SparseSet[index]];}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00141}00141\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00142}00142\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00143}00143\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Container\ holding\ the\ owner's\ representation\ of\ component.\ */}}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00144}00144\ \ \ \ \ \ \ \ \ SparseSetType\ m\_SparseSet;}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00145}00145\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ Container\ holding\ all\ components\ contagiously\ in\ memory.\ */}}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00146}00146\ \ \ \ \ \ \ \ \ DenseSetType\ m\_DenseSet;}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00147}00147\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00155}00155\ \ \ \ \ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00156}00156\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ Swap(T\&\ lhs,\ T\&\ rhs)}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00157}00157\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ T\ Temp\ =\ std::move(lhs);}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ lhs\ =\ std::move(rhs);}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ rhs\ =\ std::move(Temp);}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00161}00161\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00162}00162\ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_storage_8h_source_l00163}00163\ \}}
+
+\end{DoxyCode}

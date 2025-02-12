@@ -10,29 +10,29 @@
 \DoxyCodeLine{\Hypertarget{_instance_8h_source_l00006}00006\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }VkInstance\_T\ *VkInstance;}
 \DoxyCodeLine{\Hypertarget{_instance_8h_source_l00007}00007\ \textcolor{keyword}{struct\ }VkApplicationInfo;}
 \DoxyCodeLine{\Hypertarget{_instance_8h_source_l00008}00008\ }
-\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00009}00009\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_chess}{Chess}}}
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00009}00009\ \textcolor{keyword}{namespace\ }Renderer}
 \DoxyCodeLine{\Hypertarget{_instance_8h_source_l00010}00010\ \{}
-\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00011}\mbox{\hyperlink{struct_chess_1_1_instance_specification}{00011}}\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_chess_1_1_instance_specification}{InstanceSpecification}}}
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00011}\mbox{\hyperlink{struct_renderer_1_1_instance_specification}{00011}}\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_renderer_1_1_instance_specification}{InstanceSpecification}}}
 \DoxyCodeLine{\Hypertarget{_instance_8h_source_l00012}00012\ \ \ \ \ \{}
 \DoxyCodeLine{\Hypertarget{_instance_8h_source_l00013}00013\ \ \ \ \ \ \ \ \ std::string\_view\ ApplicationName;}
 \DoxyCodeLine{\Hypertarget{_instance_8h_source_l00014}00014\ \ \ \ \ \ \ \ \ std::string\_view\ EngineName;}
 \DoxyCodeLine{\Hypertarget{_instance_8h_source_l00015}00015\ \ \ \ \ \};}
-\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00021}\mbox{\hyperlink{class_chess_1_1_instance}{00021}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_chess_1_1_instance}{Instance}}}
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00021}\mbox{\hyperlink{class_renderer_1_1_instance}{00021}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_renderer_1_1_instance}{Instance}}}
 \DoxyCodeLine{\Hypertarget{_instance_8h_source_l00022}00022\ \ \ \ \ \{}
 \DoxyCodeLine{\Hypertarget{_instance_8h_source_l00023}00023\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00024}00024\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ Initialize(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_chess_1_1_instance_specification}{InstanceSpecification}}\ \&spec)\ \{\ Get().InitializeImpl(spec);\ \}}
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00024}00024\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ Initialize(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_renderer_1_1_instance_specification}{InstanceSpecification}}\ \&spec)\ \{\ Get().InitializeImpl(spec);\ \}}
 \DoxyCodeLine{\Hypertarget{_instance_8h_source_l00025}00025\ }
 \DoxyCodeLine{\Hypertarget{_instance_8h_source_l00026}00026\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ Shutdown()\ \{\ Get().ShutdownImpl();\ \}}
 \DoxyCodeLine{\Hypertarget{_instance_8h_source_l00027}00027\ }
-\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00031}\mbox{\hyperlink{class_chess_1_1_instance_a3b57b3e69beef72fb6842e11ff272d39}{00031}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_chess_1_1_instance_a3b57b3e69beef72fb6842e11ff272d39}{IsValidationEnabled}}()\ \{\ \textcolor{keywordflow}{return}\ validationEnabled;\ \}}
-\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00035}\mbox{\hyperlink{class_chess_1_1_instance_acf16a9b6c9cc33b0c9c3977d74c09fea}{00035}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ std::vector<const\ char*>\ \mbox{\hyperlink{class_chess_1_1_instance_acf16a9b6c9cc33b0c9c3977d74c09fea}{GetValidationLayers}}()\ \{\ \textcolor{keywordflow}{return}\ validationLayers;\ \}}
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00031}\mbox{\hyperlink{class_renderer_1_1_instance_a353b480e65f09fdab96bbf77487ae38f}{00031}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_renderer_1_1_instance_a353b480e65f09fdab96bbf77487ae38f}{IsValidationEnabled}}()\ \{\ \textcolor{keywordflow}{return}\ validationEnabled;\ \}}
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00035}\mbox{\hyperlink{class_renderer_1_1_instance_ac4502bda4edbffc8ccf113e9ce5b6a17}{00035}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classstd_1_1vector}{std::vector<const\ char*>}}\ \mbox{\hyperlink{class_renderer_1_1_instance_ac4502bda4edbffc8ccf113e9ce5b6a17}{GetValidationLayers}}()\ \{\ \textcolor{keywordflow}{return}\ validationLayers;\ \}}
 \DoxyCodeLine{\Hypertarget{_instance_8h_source_l00036}00036\ }
 \DoxyCodeLine{\Hypertarget{_instance_8h_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ VkInstance\ Data()\ \{\ \textcolor{keywordflow}{return}\ Get().m\_Instance;\ \}}
 \DoxyCodeLine{\Hypertarget{_instance_8h_source_l00038}00038\ \ \ \ \ \textcolor{keyword}{private}:\ \textcolor{comment}{/*\ Private\ variables*/}}
 \DoxyCodeLine{\Hypertarget{_instance_8h_source_l00039}00039\ \ \ \ \ \ \ \ \ VkInstance\ m\_Instance;}
 \DoxyCodeLine{\Hypertarget{_instance_8h_source_l00040}00040\ \ \ \ \ \textcolor{keyword}{private}:\ \textcolor{comment}{/*\ Below\ variables\ should\ be\ accessible\ before\ instance\ creation\ of\ singleton,\ therefore,\ static\ and\ private\ */}}
 \DoxyCodeLine{\Hypertarget{_instance_8h_source_l00041}00041\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ validationEnabled;}
-\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00042}00042\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ std::vector<const\ char\ *>\ validationLayers;}
+\DoxyCodeLine{\Hypertarget{_instance_8h_source_l00042}00042\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classstd_1_1vector}{std::vector<const\ char\ *>}}\ validationLayers;}
 \DoxyCodeLine{\Hypertarget{_instance_8h_source_l00043}00043\ \ \ \ \ \textcolor{keyword}{private}:\ \textcolor{comment}{/*\ Singleton\ functionality\ */}}
 \DoxyCodeLine{\Hypertarget{_instance_8h_source_l00044}00044\ \ \ \ \ \ \ \ \ Instance();}
 \DoxyCodeLine{\Hypertarget{_instance_8h_source_l00045}00045\ \ \ \ \ \ \ \ \ \string~Instance();}

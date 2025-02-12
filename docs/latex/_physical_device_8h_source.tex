@@ -9,16 +9,16 @@
 \DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00005}00005\ \textcolor{comment}{/*\ Forward\ declaration\ for\ better\ compile-\/time\ and\ organization\ */}}
 \DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00006}00006\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }VkPhysicalDevice\_T\ *VkPhysicalDevice;}
 \DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00007}00007\ }
-\DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00008}00008\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_chess}{Chess}}}
+\DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00008}00008\ \textcolor{keyword}{namespace\ }Renderer}
 \DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00009}00009\ \{}
 \DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00010}00010\ \ \ \ \ \textcolor{comment}{/*\ Forward\ declaration\ for\ better\ compile-\/time\ and\ organization\ */}}
 \DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00011}00011\ \ \ \ \ \textcolor{keyword}{class\ }Window;}
 \DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00012}00012\ }
-\DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00013}\mbox{\hyperlink{struct_chess_1_1_physical_device_specification}{00013}}\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_chess_1_1_physical_device_specification}{PhysicalDeviceSpecification}}}
+\DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00013}\mbox{\hyperlink{struct_renderer_1_1_physical_device_specification}{00013}}\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_renderer_1_1_physical_device_specification}{PhysicalDeviceSpecification}}}
 \DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00014}00014\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00015}00015\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_chess_1_1_window}{Window}}\ *WindowRef\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00015}00015\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_renderer_1_1_window}{Window}}\ *WindowRef\ =\ \textcolor{keyword}{nullptr};}
 \DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00016}00016\ \ \ \ \ \};}
-\DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00020}\mbox{\hyperlink{struct_chess_1_1_queue_family_indices}{00020}}\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_chess_1_1_queue_family_indices}{QueueFamilyIndices}}}
+\DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00020}\mbox{\hyperlink{struct_renderer_1_1_queue_family_indices}{00020}}\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_renderer_1_1_queue_family_indices}{QueueFamilyIndices}}}
 \DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00021}00021\ \ \ \ \ \{}
 \DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00022}00022\ \ \ \ \ \ \ \ \ std::optional<uint32\_t>\ GraphicsFamily;}
 \DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00023}00023\ \ \ \ \ \ \ \ \ std::optional<uint32\_t>\ PresentFamily;}
@@ -28,34 +28,34 @@
 \DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ GraphicsFamily.has\_value()\ \&\&\ PresentFamily.has\_value();}
 \DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00028}00028\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00029}00029\ \ \ \ \ \};}
-\DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00036}\mbox{\hyperlink{class_chess_1_1_physical_device}{00036}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_chess_1_1_physical_device}{PhysicalDevice}}}
+\DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00036}\mbox{\hyperlink{class_renderer_1_1_physical_device}{00036}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_renderer_1_1_physical_device}{PhysicalDevice}}}
 \DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00037}00037\ \ \ \ \ \{}
 \DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00038}00038\ \ \ \ \ \textcolor{keyword}{public}:}
-\DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00039}00039\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ Pick(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_chess_1_1_physical_device_specification}{PhysicalDeviceSpecification}}\ \&spec)\ \{\ Get().PickImpl(spec);\ \}}
+\DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00039}00039\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ Pick(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_renderer_1_1_physical_device_specification}{PhysicalDeviceSpecification}}\ \&spec)\ \{\ Get().PickImpl(spec);\ \}}
 \DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00040}00040\ }
 \DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00041}00041\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ VkPhysicalDevice\ Data()\ \{\ \textcolor{keywordflow}{return}\ Get().m\_PhysicalDevice;\ \}}
 \DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00042}00042\ }
-\DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{struct_chess_1_1_queue_family_indices}{QueueFamilyIndices}}\ GetFamilyIndices()\ \{\ \textcolor{keywordflow}{return}\ Get().FindQueueFamilies(Get().m\_PhysicalDevice);\ \}}
+\DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{struct_renderer_1_1_queue_family_indices}{QueueFamilyIndices}}\ GetFamilyIndices()\ \{\ \textcolor{keywordflow}{return}\ Get().FindQueueFamilies(Get().m\_PhysicalDevice);\ \}}
 \DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00044}00044\ }
 \DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00045}00045\ \ \ \ \ \textcolor{keyword}{private}:}
 \DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00046}00046\ \ \ \ \ \ \ \ \ VkPhysicalDevice\ m\_PhysicalDevice;}
-\DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00047}00047\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chess_1_1_physical_device_specification}{PhysicalDeviceSpecification}}\ m\_Specification;}
+\DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00047}00047\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_renderer_1_1_physical_device_specification}{PhysicalDeviceSpecification}}\ m\_Specification;}
 \DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00048}00048\ }
 \DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00049}00049\ \ \ \ \ \textcolor{keyword}{private}:\ \textcolor{comment}{/*\ Singleton\ functionality\ */}}
-\DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00050}00050\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_chess_1_1_physical_device}{PhysicalDevice}}\ \&Get()}
+\DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00050}00050\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_renderer_1_1_physical_device}{PhysicalDevice}}\ \&Get()}
 \DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00051}00051\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_chess_1_1_physical_device}{PhysicalDevice}}\ device;}
+\DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_renderer_1_1_physical_device}{PhysicalDevice}}\ device;}
 \DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ device;}
 \DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00054}00054\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00055}00055\ }
-\DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00056}00056\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_chess_1_1_physical_device}{PhysicalDevice}}();}
+\DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00056}00056\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_renderer_1_1_physical_device}{PhysicalDevice}}();}
 \DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00057}00057\ }
 \DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00058}00058\ \ \ \ \ \textcolor{keyword}{private}:\ \textcolor{comment}{/*\ Implementations\ */}}
-\DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00059}00059\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ PickImpl(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_chess_1_1_physical_device_specification}{PhysicalDeviceSpecification}}\ \&spec);}
+\DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00059}00059\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ PickImpl(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_renderer_1_1_physical_device_specification}{PhysicalDeviceSpecification}}\ \&spec);}
 \DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00060}00060\ }
 \DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00061}00061\ \ \ \ \ \textcolor{keyword}{private}:\ \textcolor{comment}{/*\ Private\ functions\ */}}
 \DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00069}00069\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ IsDeviceSuitable(VkPhysicalDevice\ device);}
-\DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00076}00076\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chess_1_1_queue_family_indices}{QueueFamilyIndices}}\ FindQueueFamilies(VkPhysicalDevice\ device);}
+\DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00076}00076\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_renderer_1_1_queue_family_indices}{QueueFamilyIndices}}\ FindQueueFamilies(VkPhysicalDevice\ device);}
 \DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00077}00077\ \ \ \ \ \};}
 \DoxyCodeLine{\Hypertarget{_physical_device_8h_source_l00078}00078\ \}}
 

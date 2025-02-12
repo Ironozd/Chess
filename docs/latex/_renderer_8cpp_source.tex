@@ -11,9 +11,9 @@
 \DoxyCodeLine{\Hypertarget{_renderer_8cpp_source_l00007}00007\ }
 \DoxyCodeLine{\Hypertarget{_renderer_8cpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}../Window/Window.h"{}}}
 \DoxyCodeLine{\Hypertarget{_renderer_8cpp_source_l00009}00009\ }
-\DoxyCodeLine{\Hypertarget{_renderer_8cpp_source_l00010}00010\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_chess}{Chess}}}
+\DoxyCodeLine{\Hypertarget{_renderer_8cpp_source_l00010}00010\ \textcolor{keyword}{namespace\ }Renderer}
 \DoxyCodeLine{\Hypertarget{_renderer_8cpp_source_l00011}00011\ \{}
-\DoxyCodeLine{\Hypertarget{_renderer_8cpp_source_l00012}00012\ \ \ \ \ Renderer::Renderer(\textcolor{keyword}{const}\ RendererSpecification\&\ spec)\ :}
+\DoxyCodeLine{\Hypertarget{_renderer_8cpp_source_l00012}00012\ \ \ \ \ \mbox{\hyperlink{class_renderer_1_1_renderer}{Renderer::Renderer}}(\textcolor{keyword}{const}\ RendererSpecification\&\ spec)\ :}
 \DoxyCodeLine{\Hypertarget{_renderer_8cpp_source_l00013}00013\ \ \ \ \ \ \ \ \ m\_Specification(spec)}
 \DoxyCodeLine{\Hypertarget{_renderer_8cpp_source_l00014}00014\ \ \ \ \ \{}
 \DoxyCodeLine{\Hypertarget{_renderer_8cpp_source_l00015}00015\ }
@@ -23,9 +23,9 @@
 \DoxyCodeLine{\Hypertarget{_renderer_8cpp_source_l00019}00019\ \ \ \ \ \{}
 \DoxyCodeLine{\Hypertarget{_renderer_8cpp_source_l00020}00020\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_renderer_8cpp_source_l00021}00021\ }
-\DoxyCodeLine{\Hypertarget{_renderer_8cpp_source_l00022}\mbox{\hyperlink{class_chess_1_1_renderer_a278f205d1b7513785486e525ce302a74}{00022}}\ \ \ \ \ \textcolor{keywordtype}{void}\ Renderer::Initialize()}
+\DoxyCodeLine{\Hypertarget{_renderer_8cpp_source_l00022}\mbox{\hyperlink{class_renderer_1_1_renderer_a065d0c36cf690e5cfa22ab845f7694f1}{00022}}\ \ \ \ \ \textcolor{keywordtype}{void}\ Renderer::Initialize()}
 \DoxyCodeLine{\Hypertarget{_renderer_8cpp_source_l00023}00023\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_renderer_8cpp_source_l00024}00024\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chess_1_1_instance_specification}{InstanceSpecification}}\ instanceSpec\{\};}
+\DoxyCodeLine{\Hypertarget{_renderer_8cpp_source_l00024}00024\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_renderer_1_1_instance_specification}{InstanceSpecification}}\ instanceSpec\{\};}
 \DoxyCodeLine{\Hypertarget{_renderer_8cpp_source_l00025}00025\ \ \ \ \ \ \ \ \ instanceSpec.ApplicationName\ =\ \textcolor{stringliteral}{"{}Chess"{}};}
 \DoxyCodeLine{\Hypertarget{_renderer_8cpp_source_l00026}00026\ \ \ \ \ \ \ \ \ instanceSpec.EngineName\ =\ \textcolor{stringliteral}{"{}Chess\ Display\ Engine"{}};}
 \DoxyCodeLine{\Hypertarget{_renderer_8cpp_source_l00027}00027\ }
@@ -33,7 +33,7 @@
 \DoxyCodeLine{\Hypertarget{_renderer_8cpp_source_l00029}00029\ \ \ \ \ \ \ \ \ DebugMessenger::Implement();}
 \DoxyCodeLine{\Hypertarget{_renderer_8cpp_source_l00030}00030\ \ \ \ \ \ \ \ \ m\_Specification.WindowRef.CreateSurface();}
 \DoxyCodeLine{\Hypertarget{_renderer_8cpp_source_l00031}00031\ }
-\DoxyCodeLine{\Hypertarget{_renderer_8cpp_source_l00032}00032\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_chess_1_1_physical_device_specification}{PhysicalDeviceSpecification}}\ physicalDeviceSpec\{\textcolor{keyword}{nullptr}\};}
+\DoxyCodeLine{\Hypertarget{_renderer_8cpp_source_l00032}00032\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_renderer_1_1_physical_device_specification}{PhysicalDeviceSpecification}}\ physicalDeviceSpec\{\textcolor{keyword}{nullptr}\};}
 \DoxyCodeLine{\Hypertarget{_renderer_8cpp_source_l00033}00033\ \ \ \ \ \ \ \ \ physicalDeviceSpec.WindowRef\ =\ \&m\_Specification.WindowRef;}
 \DoxyCodeLine{\Hypertarget{_renderer_8cpp_source_l00034}00034\ \ \ \ \ \ \ \ \ PhysicalDevice::Pick(physicalDeviceSpec);}
 \DoxyCodeLine{\Hypertarget{_renderer_8cpp_source_l00035}00035\ \ \ \ \ \ \ \ \ LogicalDevice::Create();}

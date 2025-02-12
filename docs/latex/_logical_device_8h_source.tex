@@ -8,9 +8,9 @@
 \DoxyCodeLine{\Hypertarget{_logical_device_8h_source_l00004}00004\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }VkDevice\_T\ *VkDevice;}
 \DoxyCodeLine{\Hypertarget{_logical_device_8h_source_l00005}00005\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }VkQueue\_T\ *VkQueue;}
 \DoxyCodeLine{\Hypertarget{_logical_device_8h_source_l00006}00006\ }
-\DoxyCodeLine{\Hypertarget{_logical_device_8h_source_l00007}00007\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_chess}{Chess}}}
+\DoxyCodeLine{\Hypertarget{_logical_device_8h_source_l00007}00007\ \textcolor{keyword}{namespace\ }Renderer}
 \DoxyCodeLine{\Hypertarget{_logical_device_8h_source_l00008}00008\ \{}
-\DoxyCodeLine{\Hypertarget{_logical_device_8h_source_l00018}\mbox{\hyperlink{class_chess_1_1_logical_device}{00018}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_chess_1_1_logical_device}{LogicalDevice}}}
+\DoxyCodeLine{\Hypertarget{_logical_device_8h_source_l00018}\mbox{\hyperlink{class_renderer_1_1_logical_device}{00018}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_renderer_1_1_logical_device}{LogicalDevice}}}
 \DoxyCodeLine{\Hypertarget{_logical_device_8h_source_l00019}00019\ \ \ \ \ \{}
 \DoxyCodeLine{\Hypertarget{_logical_device_8h_source_l00020}00020\ \ \ \ \ \textcolor{keyword}{public}:}
 \DoxyCodeLine{\Hypertarget{_logical_device_8h_source_l00021}00021\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ Create()\ \{\ Get().CreateImpl();\ \}}
@@ -22,14 +22,14 @@
 \DoxyCodeLine{\Hypertarget{_logical_device_8h_source_l00027}00027\ \ \ \ \ \ \ \ \ VkQueue\ m\_PresentQueue;}
 \DoxyCodeLine{\Hypertarget{_logical_device_8h_source_l00028}00028\ }
 \DoxyCodeLine{\Hypertarget{_logical_device_8h_source_l00029}00029\ \ \ \ \ \textcolor{keyword}{private}:\ \textcolor{comment}{/*\ Singleton\ functionality\ */}}
-\DoxyCodeLine{\Hypertarget{_logical_device_8h_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_chess_1_1_logical_device}{LogicalDevice}}\ \&Get()}
+\DoxyCodeLine{\Hypertarget{_logical_device_8h_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_renderer_1_1_logical_device}{LogicalDevice}}\ \&Get()}
 \DoxyCodeLine{\Hypertarget{_logical_device_8h_source_l00031}00031\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_logical_device_8h_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_chess_1_1_logical_device}{LogicalDevice}}\ device;}
+\DoxyCodeLine{\Hypertarget{_logical_device_8h_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_renderer_1_1_logical_device}{LogicalDevice}}\ device;}
 \DoxyCodeLine{\Hypertarget{_logical_device_8h_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ device;}
 \DoxyCodeLine{\Hypertarget{_logical_device_8h_source_l00034}00034\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_logical_device_8h_source_l00035}00035\ }
-\DoxyCodeLine{\Hypertarget{_logical_device_8h_source_l00036}00036\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_chess_1_1_logical_device}{LogicalDevice}}();}
-\DoxyCodeLine{\Hypertarget{_logical_device_8h_source_l00037}00037\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_chess_1_1_logical_device}{\string~LogicalDevice}}();}
+\DoxyCodeLine{\Hypertarget{_logical_device_8h_source_l00036}00036\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_renderer_1_1_logical_device}{LogicalDevice}}();}
+\DoxyCodeLine{\Hypertarget{_logical_device_8h_source_l00037}00037\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_renderer_1_1_logical_device}{\string~LogicalDevice}}();}
 \DoxyCodeLine{\Hypertarget{_logical_device_8h_source_l00038}00038\ }
 \DoxyCodeLine{\Hypertarget{_logical_device_8h_source_l00039}00039\ \ \ \ \ \textcolor{keyword}{private}:\ \textcolor{comment}{/*\ Implementations\ */}}
 \DoxyCodeLine{\Hypertarget{_logical_device_8h_source_l00040}00040\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ CreateImpl();}

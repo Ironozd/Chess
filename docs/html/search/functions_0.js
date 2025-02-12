@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['bitboard_0',['Bitboard',['../class_chess_1_1_bitboard.html#a480d87e6f2fd5a5eab4e0857b3b63684',1,'Chess::Bitboard']]]
+  ['add_0',['Add',['../class_e_c_s_1_1_component_storage.html#ae0ae92e1427e687101386d13a7dbe074',1,'ECS::ComponentStorage']]]
 ];

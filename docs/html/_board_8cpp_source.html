@@ -135,11 +135,10 @@ $(function(){initNavTree('_board_8cpp_source.html',''); initResizable(); });
 <div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;Board.h&quot;</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;../Core/Logger.h&quot;</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespace_chess.html">Chess</a></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="keyword">namespace </span>Chess</div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>{</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="foldopen" id="foldopen00016" data-start="{" data-end="}">
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="namespace_chess.html#a3560352671dbb6913bc56621ea6bdd47">   16</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="namespace_chess.html#a3560352671dbb6913bc56621ea6bdd47">display_bits</a>(T bits)</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keywordtype">void</span> display_bits(T bits)</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    {</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        <span class="keywordtype">int</span> bits_size = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(<span class="keyword">sizeof</span>(bits) * 8);</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = bits_size - 1; i &gt;= 0; i--)</div>
@@ -148,7 +147,6 @@ $(function(){initNavTree('_board_8cpp_source.html',''); initResizable(); });
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        }</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        std::cout &lt;&lt; std::endl;</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    }</div>
-</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    Board::Board(<span class="keyword">const</span> std::string_view &amp;startFen)</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    {</div>
@@ -161,7 +159,7 @@ $(function(){initNavTree('_board_8cpp_source.html',''); initResizable(); });
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        this-&gt;m_Components = other.m_Components;</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    }</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    Board::Board(Board &amp;&amp;other)</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    Board::Board(Board &amp;&amp;other) <span class="keyword">noexcept</span></div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    {</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        this-&gt;m_Components = other.m_Components;</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    }</div>
@@ -180,7 +178,7 @@ $(function(){initNavTree('_board_8cpp_source.html',''); initResizable(); });
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 12; i++)</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        {</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            <a class="code hl_function" href="namespace_chess.html#a3560352671dbb6913bc56621ea6bdd47">display_bits</a>(m_Components.m_Layout[i].Board());</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            display_bits(m_Components.m_Layout[i].<a class="code hl_function" href="class_chess_1_1_bitboard.html#a76ea2ae63670d8cdf1e1ae9afe36aebf">Board</a>());</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        }</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>; <span class="comment">// not fully implemented</span></div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    }</div>
@@ -234,7 +232,7 @@ $(function(){initNavTree('_board_8cpp_source.html',''); initResizable(); });
 <div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>                <span class="keywordflow">if</span> ((piece &gt;= <span class="charliteral">&#39;a&#39;</span> &amp;&amp; piece &lt;= <span class="charliteral">&#39;z&#39;</span>) || (piece &gt;= <span class="charliteral">&#39;A&#39;</span> &amp;&amp; piece &lt;= <span class="charliteral">&#39;Z&#39;</span>)) <span class="comment">// Performance-critcal isDigit.</span></div>
 <div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>                {</div>
 <div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>                    <span class="keyword">const</span> <span class="keywordtype">size_t</span> layoutIndex = RetrieveSet(piece);</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>                    m_Components.m_Layout[layoutIndex].<a class="code hl_function" href="class_chess_1_1_bitboard.html#a639f1f0cba77a1b95b4c8b0bdd6a2994">Set</a>(index);</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>                    m_Components.m_Layout[layoutIndex].Set(index);</div>
 <div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>                    index++;</div>
 <div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>                }</div>
 <div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>                <span class="keywordflow">else</span></div>
@@ -253,12 +251,10 @@ $(function(){initNavTree('_board_8cpp_source.html',''); initResizable(); });
 <div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>        }</div>
 <div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    }</div>
 <div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>}</div>
-<div class="ttc" id="aclass_chess_1_1_bitboard_html_a639f1f0cba77a1b95b4c8b0bdd6a2994"><div class="ttname"><a href="class_chess_1_1_bitboard.html#a639f1f0cba77a1b95b4c8b0bdd6a2994">Chess::Bitboard::Set</a></div><div class="ttdeci">void Set(const size_t &amp;index)</div><div class="ttdoc">Sets the given position inside the bitboard to 1.</div><div class="ttdef"><b>Definition</b> <a href="_bitboard_8cpp_source.html#l00021">Bitboard.cpp:21</a></div></div>
+<div class="ttc" id="aclass_chess_1_1_bitboard_html_a76ea2ae63670d8cdf1e1ae9afe36aebf"><div class="ttname"><a href="class_chess_1_1_bitboard.html#a76ea2ae63670d8cdf1e1ae9afe36aebf">Chess::Bitboard::Board</a></div><div class="ttdeci">constexpr uint64_t &amp; Board()</div><div class="ttdoc">Get memory block of the board.</div><div class="ttdef"><b>Definition</b> <a href="_bitboard_8h_source.html#l00089">Bitboard.h:89</a></div></div>
 <div class="ttc" id="aclass_chess_1_1_board_html_a15ee7b2a52ae08f051407d336110fcea"><div class="ttname"><a href="class_chess_1_1_board.html#a15ee7b2a52ae08f051407d336110fcea">Chess::Board::Populate</a></div><div class="ttdeci">bool Populate(const FenString &amp;fen)</div><div class="ttdoc">Populates the board.</div><div class="ttdef"><b>Definition</b> <a href="#l00047">Board.cpp:47</a></div></div>
 <div class="ttc" id="aclass_chess_1_1_fen_string_html"><div class="ttname"><a href="class_chess_1_1_fen_string.html">Chess::FenString</a></div><div class="ttdoc">Wrapper class for string_view to hold the performance optimized split function.</div><div class="ttdef"><b>Definition</b> <a href="_string_8h_source.html#l00014">String.h:15</a></div></div>
 <div class="ttc" id="aclass_chess_1_1_fen_string_html_a8348fca8e560381e776d52e3dca5eec6"><div class="ttname"><a href="class_chess_1_1_fen_string.html#a8348fca8e560381e776d52e3dca5eec6">Chess::FenString::Split</a></div><div class="ttdeci">std::deque&lt; FenString &gt; Split(std::string_view delim) const</div><div class="ttdoc">Splits the FenString using the delimeter.</div><div class="ttdef"><b>Definition</b> <a href="_string_8cpp_source.html#l00021">String.cpp:21</a></div></div>
-<div class="ttc" id="anamespace_chess_html"><div class="ttname"><a href="namespace_chess.html">Chess</a></div><div class="ttdoc">Logger file.</div><div class="ttdef"><b>Definition</b> <a href="_bitboard_8cpp_source.html#l00004">Bitboard.cpp:5</a></div></div>
-<div class="ttc" id="anamespace_chess_html_a3560352671dbb6913bc56621ea6bdd47"><div class="ttname"><a href="namespace_chess.html#a3560352671dbb6913bc56621ea6bdd47">Chess::display_bits</a></div><div class="ttdeci">void display_bits(T bits)</div><div class="ttdoc">TEMPORARY FUNCTION to display bits.</div><div class="ttdef"><b>Definition</b> <a href="#l00016">Board.cpp:16</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
